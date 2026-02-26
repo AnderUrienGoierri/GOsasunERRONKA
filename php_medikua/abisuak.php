@@ -1,6 +1,5 @@
 <?php
-$base_path = '../';
-session_start();
+$bide_absolutua = '../'; session_start();
 if (!isset($_SESSION['rol_id']) || $_SESSION['rol_izena'] !== 'Medikua') {
     header("Location: ../php_hasiera/login.php");
     exit;
@@ -22,11 +21,9 @@ $stmt->execute([$mediku_id]);
 $abisuak = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
-<?php
-$base_path = '../';
-$page_title = "Pazienteen Abisuak - GOsasun";
-$current_page = "abisuak";
-$custom_css = "abisuak.css";
+<?php $orri_izenburua = "Pazienteen Abisuak - GOsasun";
+$uneko_orria = "abisuak";
+$css_pertsonalizatua = "abisuak.css";
 
 include_once '../php_includeak/mediku_goiburua.php';
 ?>
@@ -39,8 +36,7 @@ include_once '../php_includeak/mediku_goiburua.php';
             <p>Zure pazienteen neurketetan detektatutako anomalia guztiak.</p>
         </div>
 
-        <?php $base_path = '../';
-if (count($abisuak) > 0): ?>
+        <?php if (count($abisuak) > 0): ?>
             <div class="korritze-horizontala">
                 <table class="abisu-taula">
                     <thead>
@@ -52,54 +48,39 @@ if (count($abisuak) > 0): ?>
                             <th>Deskribapena</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <?php $base_path = '../';
-foreach ($abisuak as $a): ?>
+                    <taula_gorputza>
+                        <?php foreach ($abisuak as $a): ?>
                             <tr>
                                 <td>
-                                    <?php $base_path = '../';
-if ($a['irakurrita']): ?>
+                                    <?php if ($a['irakurrita']): ?>
                                         <span class="irakurrita-badge">Irakurrita</span>
-                                    <?php $base_path = '../';
-else: ?>
+                                    <?php else: ?>
                                         <span class="berria-badge">BERRIA</span>
-                                    <?php $base_path = '../';
-endif; ?>
+                                    <?php endif; ?>
                                 </td>
-                                <td class="testu-grisa-lerrobakarra"><?php $base_path = '../';
-echo date('Y/m/d H:i', strtotime($a['data'])); ?></td>
+                                <td class="testu-grisa-lerrobakarra"><?php echo date('Y/m/d H:i', strtotime($a['data'])); ?></td>
                                 <td>
-                                    <a href="paziente_info.php?id=<?php $base_path = '../';
-echo $a['paziente_id']; ?>" class="paziente-izena">
-                                        <?php $base_path = '../';
-echo htmlspecialchars($a['izena'] . ' ' . $a['abizenak']); ?>
+                                    <a href="paziente_info.php?id=<?php echo $a['paziente_id']; ?>" class="paziente-izena">
+                                        <?php echo htmlspecialchars($a['izena'] . ' ' . $a['abizenak']); ?>
                                     </a>
                                 </td>
-                                <td><span class="mota-etiketa mota-<?php $base_path = '../';
-echo strtolower($a['mota']); ?> hondo-grisa"><?php $base_path = '../';
-echo htmlspecialchars($a['mota']); ?></span></td>
-                                <td class="testu-iluna-444"><?php $base_path = '../';
-echo htmlspecialchars($a['testua']); ?></td>
+                                <td><span class="mota-etiketa mota-<?php echo strtolower($a['mota']); ?> hondo-grisa"><?php echo htmlspecialchars($a['mota']); ?></span></td>
+                                <td class="testu-iluna-444"><?php echo htmlspecialchars($a['testua']); ?></td>
                             </tr>
-                        <?php $base_path = '../';
-endforeach; ?>
-                    </tbody>
+                        <?php endforeach; ?>
+                    </taula_gorputza>
                 </table>
             </div>
-        <?php $base_path = '../';
-else: ?>
+        <?php else: ?>
             <div class="egoera-hutsa kutxa-zuria-hutsa" >
                 <div class="ikono-handia-4">🛡️</div>
                 <h3>Ez dago abisurik aktibo</h3>
                 <p>Zure paziente guztien neurketak normaltasunaren barruan daude momentuz.</p>
             </div>
-        <?php $base_path = '../';
-endif; ?>
+        <?php endif; ?>
     </main>
 
-<?php
-$base_path = '../';
-include_once '../php_includeak/mediku_footer.php';
+<?php include_once '../php_includeak/mediku_footer.php';
 ?>
 
 

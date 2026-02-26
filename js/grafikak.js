@@ -18,13 +18,13 @@ $(document).ready(function() {
         // neurketakData exists in global scope via PHP
         if (typeof neurketakData === 'undefined' || neurketakData.length === 0) return;
         
-        const labels = neurketakData.map(row => row.data);
+        const labels = neurketakData.map(errenkada => errenkada.data);
         let datasets = [];
         
         if (type === 'pisua') {
             datasets = [{
                 label: 'Pisua (kg)',
-                data: neurketakData.map(row => parseFloat(row.pisua_kg)),
+                data: neurketakData.map(errenkada => parseFloat(errenkada.pisua_kg)),
                 borderColor: '#007bff',
                 backgroundColor: 'rgba(0, 123, 255, 0.1)',
                 borderWidth: 2,
@@ -35,7 +35,7 @@ $(document).ready(function() {
             datasets = [
                 {
                     label: 'Tentsio Sistolikoa ',
-                    data: neurketakData.map(row => parseInt(row.tentsio_sistolikoa)),
+                    data: neurketakData.map(errenkada => parseInt(errenkada.tentsio_sistolikoa)),
                     borderColor: '#dc3545',
                     backgroundColor: 'rgba(220, 53, 69, 0.1)',
                     borderWidth: 2,
@@ -44,7 +44,7 @@ $(document).ready(function() {
                 },
                 {
                     label: 'Tentsio Diastolikoa',
-                    data: neurketakData.map(row => parseInt(row.tentsio_diastolikoa)),
+                    data: neurketakData.map(errenkada => parseInt(errenkada.tentsio_diastolikoa)),
                     borderColor: '#17a2b8',
                     backgroundColor: 'rgba(23, 162, 184, 0.1)',
                     borderWidth: 2,
@@ -55,7 +55,7 @@ $(document).ready(function() {
         } else if (type === 'glukosa') {
             datasets = [{
                 label: 'Glukosa (mg/dl)',
-                data: neurketakData.map(row => parseFloat(row.glukosa_mg_dl)),
+                data: neurketakData.map(errenkada => parseFloat(errenkada.glukosa_mg_dl)),
                 borderColor: '#28a745',
                 backgroundColor: 'rgba(40, 167, 69, 0.1)',
                 borderWidth: 2,

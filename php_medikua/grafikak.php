@@ -1,6 +1,5 @@
 <?php
-$base_path = '../';
-session_start();
+$bide_absolutua = '../'; session_start();
 require_once '../php_laguntzaileak/DB_konexioa.php';
 
 if (!isset($_SESSION['rol_id']) || $_SESSION['rol_izena'] !== 'Medikua') {
@@ -42,11 +41,9 @@ if ($aukeratutako_pazientea) {
 }
 $json_neurketak = json_encode($neurketak);
 ?>
-<?php
-$base_path = '../';
-$page_title = "Pazienteen Grafikak - GOsasun";
-$current_page = "grafikak";
-$custom_css = "grafikak.css";
+<?php $orri_izenburua = "Pazienteen Grafikak - GOsasun";
+$uneko_orria = "grafikak";
+$css_pertsonalizatua = "grafikak.css";
 
 include_once '../php_includeak/mediku_goiburua.php';
 ?>
@@ -62,22 +59,16 @@ include_once '../php_includeak/mediku_goiburua.php';
             <form action="grafikak.php" method="GET" class="grafika-kontrolak">
                 <select name="paziente_id" class="inprimaki-kontrola" onchange="this.form.submit()">
                     <option value="">-- Aukeratu Pazientea --</option>
-                    <?php $base_path = '../';
-foreach ($pazienteZerrenda as $pz): ?>
-                        <option value="<?php $base_path = '../';
-echo $pz['paziente_id']; ?>" <?php $base_path = '../';
-echo ($aukeratutako_pazientea == $pz['paziente_id']) ? 'selected' : ''; ?>>
-                            <?php $base_path = '../';
-echo htmlspecialchars($pz['izena'] . ' ' . $pz['abizenak']); ?>
+                    <?php foreach ($pazienteZerrenda as $pz): ?>
+                        <option value="<?php echo $pz['paziente_id']; ?>" <?php echo ($aukeratutako_pazientea == $pz['paziente_id']) ? 'selected' : ''; ?>>
+                            <?php echo htmlspecialchars($pz['izena'] . ' ' . $pz['abizenak']); ?>
                         </option>
-                    <?php $base_path = '../';
-endforeach; ?>
+                    <?php endforeach; ?>
                 </select>
             </form>
         </div>
 
-        <?php $base_path = '../';
-if ($aukeratutako_pazientea && count($neurketak) > 0): ?>
+        <?php if ($aukeratutako_pazientea && count($neurketak) > 0): ?>
             <div class="grafika-goiburua marjina-goi-30" >
                 <h3>Hautatutako pazientearen bilakaera</h3>
                 <div class="grafika-kontrolak" data-html2canvas-ignore="true">
@@ -87,7 +78,7 @@ if ($aukeratutako_pazientea && count($neurketak) > 0): ?>
                         <option value="glukosa">Glukosa (mg/dl)</option>
                     </select>
                     <button type="button" class="botoia botoi-nagusia" id="btn-deskargatu-pdf">
-                        <img src="../img/file-text.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"> Deskargatu PDF (Txostena)
+                        <img src="../img/file-text.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; iragazkia: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"> Deskargatu PDF (Txostena)
                     </button>
                 </div>
             </div>
@@ -97,26 +88,19 @@ if ($aukeratutako_pazientea && count($neurketak) > 0): ?>
             <div class="grafika-txartela">
                 <canvas id="osabide-grafika" class="nire-grafika"></canvas>
             </div>
-        <?php $base_path = '../';
-elseif ($aukeratutako_pazientea): ?>
+        <?php elseif ($aukeratutako_pazientea): ?>
             <p class="daturik-ez">Paziente honek ez du neurketarik erregistratuta grafika sortzeko.</p>
-        <?php $base_path = '../';
-else: ?>
+        <?php else: ?>
             <p class="daturik-ez">Mesedez, aukeratu paziente bat goiko zerrendan bere neurketak ikusteko.</p>
-        <?php $base_path = '../';
-endif; ?>
+        <?php endif; ?>
     </main>
 
     <script>
-        const neurketakData = <?php $base_path = '../';
-echo $json_neurketak; ?>;
-        const paziente_id = <?php $base_path = '../';
-echo $aukeratutako_pazientea ? $aukeratutako_pazientea : 'null'; ?>;
+        const neurketakData = <?php echo $json_neurketak; ?>;
+        const paziente_id = <?php echo $aukeratutako_pazientea ? $aukeratutako_pazientea : 'null'; ?>;
         const pdfEndpoint = '../php_laguntzaileak/pdf_sortu.php';
     </script>
-<?php
-$base_path = '../';
-$extra_js = ["grafikak.js"];
+<?php $js_gehigarria = ["grafikak.js"];
 include_once '../php_includeak/mediku_footer.php';
 ?>
 

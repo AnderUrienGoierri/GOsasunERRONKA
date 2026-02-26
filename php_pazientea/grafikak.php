@@ -1,6 +1,5 @@
 <?php
-$base_path = '../';
-session_start();
+$bide_absolutua = '../'; session_start();
 require_once '../php_laguntzaileak/DB_konexioa.php';
 
 if (!isset($_SESSION['rol_id']) || $_SESSION['rol_izena'] !== 'Pazientea') {
@@ -17,11 +16,9 @@ $neurketak = $stmt->fetchAll(PDO::FETCH_ASSOC);
 // Return standard formatting variables
 $json_neurketak = json_encode($neurketak);
 ?>
-<?php
-$base_path = '../';
-$page_title = "Nire Grafikak - GOsasun";
-$current_page = "grafikak";
-$custom_css = "grafikak.css";
+<?php $orri_izenburua = "Nire Grafikak - GOsasun";
+$uneko_orria = "grafikak";
+$css_pertsonalizatua = "grafikak.css";
 
 include_once '../php_includeak/paziente_goiburua.php';
 ?>
@@ -40,37 +37,30 @@ include_once '../php_includeak/paziente_goiburua.php';
                     <option value="glukosa">Glukosa (mg/dl)</option>
                 </select>
                 <button type="button" class="botoia botoi-nagusia" id="btn-deskargatu-pdf">
-                    <img src="../img/file-text.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"> Deskargatu PDF (Txostena)
+                    <img src="../img/file-text.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; iragazkia: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"> Deskargatu PDF (Txostena)
                 </button>
             </div>
         </div>
 
         <div id="alerta-eremua" data-html2canvas-ignore="true"></div>
 
-        <?php $base_path = '../';
-if (count($neurketak) > 0): ?>
+        <?php if (count($neurketak) > 0): ?>
             <div class="grafika-txartela">
                 <canvas id="grafika" class="nire-grafika"></canvas>
             </div>
-        <?php $base_path = '../';
-else: ?>
+        <?php else: ?>
             <p class="daturik-ez">Oraindik ez dago neurketarik erregistratuta grafika sortzeko.</p>
-        <?php $base_path = '../';
-endif; ?>
+        <?php endif; ?>
     </main>
 
     <script>
         // Datuak PStik JSra pasatu
-        const neurketakData = <?php $base_path = '../';
-echo $json_neurketak; ?>;
-        const paziente_id = <?php $base_path = '../';
-echo $erab_id; ?>;
+        const neurketakData = <?php echo $json_neurketak; ?>;
+        const paziente_id = <?php echo $erab_id; ?>;
         const pdfEndpoint = '../php_laguntzaileak/pdf_sortu.php';
     </script>
 
-<?php
-$base_path = '../';
-$extra_js = ["grafikak.js"];
+<?php $js_gehigarria = ["grafikak.js"];
 include_once '../php_includeak/paziente_footer.php';
 ?>
 

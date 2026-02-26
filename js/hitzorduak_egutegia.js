@@ -27,8 +27,8 @@ function openModal(isEdit = false) {
     const modal = document.getElementById('hitzorduModala');
     const title = document.getElementById('modalIzenburua');
     const form = document.getElementById('hitzorduForm');
-    const btnDelete = document.getElementById('btnDelete');
-    const btnSubmit = document.getElementById('btnSubmit');
+    const ezabatu_botoia = document.getElementById('ezabatu_botoia');
+    const bidali_botoia = document.getElementById('bidali_botoia');
 
     modal.style.display = 'block';
     
@@ -36,14 +36,14 @@ function openModal(isEdit = false) {
         title.textContent = 'Hitzordu Berria';
         form.reset();
         document.getElementById('modal_hitzordu_id').value = '';
-        btnDelete.style.display = 'none';
-        btnSubmit.name = 'sortu_hitzordua';
-        btnSubmit.textContent = 'Gorde';
+        ezabatu_botoia.style.display = 'none';
+        bidali_botoia.name = 'sortu_hitzordua';
+        bidali_botoia.textContent = 'Gorde';
     } else {
         title.textContent = 'Hitzordua Editatu';
-        btnDelete.style.display = 'block';
-        btnSubmit.name = 'editatu_hitzordua';
-        btnSubmit.textContent = 'Eguneratu';
+        ezabatu_botoia.style.display = 'block';
+        bidali_botoia.name = 'editatu_hitzordua';
+        bidali_botoia.textContent = 'Eguneratu';
     }
 }
 

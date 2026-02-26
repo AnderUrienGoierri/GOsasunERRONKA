@@ -1,9 +1,8 @@
 <?php
-$base_path = '../';
-require_once '../php_laguntzaileak/DB_konexioa.php';
+$bide_absolutua = '../'; require_once '../php_laguntzaileak/DB_konexioa.php';
 
-$success_msg = '';
-$error_msg = '';
+$arrakasta_mezua = '';
+$errore_mezua = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $izena = $_POST['izena'] ?? '';
@@ -14,18 +13,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         try {
             $stmt = $pdo->prepare("INSERT INTO Kontaktua_Mezuak (izena, email, mezua) VALUES (?, ?, ?)");
             $stmt->execute([$izena, $email, $mezua]);
-            $success_msg = "Zure mezua ondo bidali da. Laster jarriko gara zurekin harremanetan!";
+            $arrakasta_mezua = "Zure mezua ondo bidali da. Laster jarriko gara zurekin harremanetan!";
         } catch (PDOException $e) {
-            $error_msg = "Errorea gertatu da mezua bidaltzean: " . $e->getMessage();
+            $errore_mezua = "Errorea gertatu da mezua bidaltzean: " . $e->getMessage();
         }
     } else {
-        $error_msg = "Mesedez, bete eremu guztiak zuzen (mezua gutxienez 10 karaktere).";
+        $errore_mezua = "Mesedez, bete eremu guztiak zuzen (mezua gutxienez 10 karaktere).";
     }
 }
 ?>
 <?php
-$page_title = "Kontaktua - GOsasun";
-$current_page = "kontaktua";
+$orri_izenburua = "Kontaktua - GOsasun";
+$uneko_orria = "kontaktua";
 
 include '../php_includeak/goiburua.php';
 ?>
@@ -36,13 +35,13 @@ include '../php_includeak/goiburua.php';
             <p>Zalantzaren bat baduzu edo informazio gehiago nahi baduzu, idatzi iezaguzu:</p>
             
             <form id="kontaktuaForm" class="kontaktu-inprimakia" method="POST" action="kontaktua.php">
-                <?php if (!empty($success_msg)): ?>
+                <?php if (!empty($arrakasta_mezua)): ?>
                     <div class="alerta alerta-arrakasta">
-                        <?php echo htmlspecialchars($success_msg); ?>
+                        <?php echo htmlspecialchars($arrakasta_mezua); ?>
                     </div>
-                <?php elseif (!empty($error_msg)): ?>
+                <?php elseif (!empty($errore_mezua)): ?>
                     <div class="alerta alerta-errorea">
-                        <?php echo htmlspecialchars($error_msg); ?>
+                        <?php echo htmlspecialchars($errore_mezua); ?>
                     </div>
                 <?php else: ?>
                     <div id="form-success" class="alerta alerta-arrakasta ezkutatuta" >
@@ -64,7 +63,7 @@ include '../php_includeak/goiburua.php';
 
                 <div class="inprimaki-taldea">
                     <label for="mezua">Mezua:</label>
-                    <textarea id="mezua" name="mezua" class="inprimaki-kontrola" rows="5" placeholder="Idatzi hemen zure mezua..."></textarea>
+                    <textarea id="mezua" name="mezua" class="inprimaki-kontrola" errenkadak="5" placeholder="Idatzi hemen zure mezua..."></textarea>
                     <span class="errore-mezua" id="error-mezua">Mezua ezin da hutsik egon (gutxienez 10 karaktere).</span>
                 </div>
 
@@ -88,7 +87,7 @@ include '../php_includeak/goiburua.php';
     </main>
 
 <?php
-$extra_js = ["kontaktua.js"];
+$js_gehigarria = ["kontaktua.js"];
 include '../php_includeak/footer.php';
 ?>
 

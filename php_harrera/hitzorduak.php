@@ -1,14 +1,13 @@
 <?php
-$base_path = '../';
-session_start();
+$bide_absolutua = '../'; session_start();
 if (!isset($_SESSION['rol_id']) || $_SESSION['rol_izena'] !== 'Harrera') {
     header("Location: ../php_hasiera/login.php");
     exit;
 }
 
 require_once '../php_laguntzaileak/DB_konexioa.php';
-$msg = '';
-$error = '';
+$mezua = '';
+$errorea = '';
 
 // 1. Lortu mediku eta pazienteen zerrendak (dropdown-ak egiteko)
 $medikuak = $pdo->query("SELECT mediku_id, izena, abizenak, espezialitatea FROM Medikuak ORDER BY abizenak ASC")->fetchAll(PDO::FETCH_ASSOC);
@@ -29,47 +28,47 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($p_id && $m_id && $data && $h_ordua && $b_ordua) {
             try {
                 // Egiaztatu gatazkak (medikua okupatuta dagoen)
-                $sqlCheck = "SELECT COUNT(*) FROM Hitzorduak WHERE mediku_id = ? AND data = ? AND 
+                $kontsulta_egiaztatu = "SELECT COUNT(*) FROM Hitzorduak WHERE mediku_id = ? AND data = ? AND 
                              ((hasiera_ordua < ? AND bukaera_ordua > ?) OR (hasiera_ordua < ? AND bukaera_ordua > ?))";
-                $paramsCheck = [$m_id, $data, $b_ordua, $h_ordua, $b_ordua, $h_ordua];
+                $egiaztapen_parametroak = [$m_id, $data, $b_ordua, $h_ordua, $b_ordua, $h_ordua];
                 
                 if ($h_id) {
-                    $sqlCheck .= " AND hitzordu_id != ?";
-                    $paramsCheck[] = $h_id;
+                    $kontsulta_egiaztatu .= " AND hitzordu_id != ?";
+                    $egiaztapen_parametroak[] = $h_id;
                 }
 
-                $stmtCheck = $pdo->prepare($sqlCheck);
-                $stmtCheck->execute($paramsCheck);
+                $stm_egiaztatu = $pdo->prepare($kontsulta_egiaztatu);
+                $stm_egiaztatu->execute($egiaztapen_parametroak);
                 
-                if ($stmtCheck->fetchColumn() == 0) {
+                if ($stm_egiaztatu->fetchColumn() == 0) {
                     if ($h_id) {
                         // UPDATE
                         $stmt = $pdo->prepare("UPDATE Hitzorduak SET paziente_id = ?, mediku_id = ?, data = ?, hasiera_ordua = ?, bukaera_ordua = ?, arrazoia = ?, egoera = ? WHERE hitzordu_id = ?");
                         $stmt->execute([$p_id, $m_id, $data, $h_ordua, $b_ordua, $arrazoia, $egoera, $h_id]);
-                        $msg = "Hitzordua arrakastaz aldatu da.";
+                        $mezua = "Hitzordua arrakastaz aldatu da.";
                     } else {
                         // INSERT
-                        $stmtInsert = $pdo->prepare("INSERT INTO Hitzorduak (paziente_id, mediku_id, data, hasiera_ordua, bukaera_ordua, arrazoia, egoera) VALUES (?, ?, ?, ?, ?, ?, 'Zain')");
-                        $stmtInsert->execute([$p_id, $m_id, $data, $h_ordua, $b_ordua, $arrazoia]);
-                        $msg = "Hitzordua arrakastaz sortu da.";
+                        $stm_sartu = $pdo->prepare("INSERT INTO Hitzorduak (paziente_id, mediku_id, data, hasiera_ordua, bukaera_ordua, arrazoia, egoera) VALUES (?, ?, ?, ?, ?, ?, 'Zain')");
+                        $stm_sartu->execute([$p_id, $m_id, $data, $h_ordua, $b_ordua, $arrazoia]);
+                        $mezua = "Hitzordua arrakastaz sortu da.";
                     }
                 } else {
-                    $error = "Mediku honek badu beste hitzordu bat ordu tarte horretan.";
+                    $errorea = "Mediku honek badu beste hitzordu bat ordu tarte horretan.";
                 }
             } catch (PDOException $e) {
-                $error = "Errorea datu-basean: " . $e->getMessage();
+                $errorea = "Errorea datu-basean: " . $e->getMessage();
             }
         } else {
-            $error = "Mesedez, bete eremu guztiak.";
+            $errorea = "Mesedez, bete eremu guztiak.";
         }
     } elseif (isset($_POST['ezabatu_hitzordua'])) {
         $h_id = $_POST['hitzordu_id_delete'];
         try {
             $stmt = $pdo->prepare("DELETE FROM Hitzorduak WHERE hitzordu_id = ?");
             $stmt->execute([$h_id]);
-            $msg = "Hitzordua ezabatu da.";
+            $mezua = "Hitzordua ezabatu da.";
         } catch (PDOException $e) {
-            $error = "Errorea ezeztatzean: " . $e->getMessage();
+            $errorea = "Errorea ezeztatzean: " . $e->getMessage();
         }
     }
 }
@@ -132,9 +131,9 @@ foreach ($hitzorduak as $h) {
     $hitzorduak_data_arabera[$data_f][] = $h;
 }
 
-$page_title = "Hitzorduak - GOsasun";
-$current_page = "hitzorduak";
-$custom_css = "hitzorduak.css";
+$orri_izenburua = "Hitzorduak - GOsasun";
+$uneko_orria = "hitzorduak";
+$css_pertsonalizatua = "hitzorduak.css";
 
 include_once '../php_includeak/harrera_goiburua.php';
 ?>
@@ -152,26 +151,18 @@ include_once '../php_includeak/harrera_goiburua.php';
 
         <script>
             // JS modalak datuak erraz kudeatzeko
-            const hitzorduakData = <?php $base_path = '../';
-echo json_encode($hitzorduak); ?>;
+            const hitzorduakData = <?php echo json_encode($hitzorduak); ?>;
         </script>
 
-        <?php $base_path = '../';
-if ($msg): ?><div class="alerta alerta-arrakasta"><?php $base_path = '../';
-echo $msg; ?></div><?php $base_path = '../';
-endif; ?>
-        <?php $base_path = '../';
-if ($error): ?><div class="alerta alerta-errorea"><?php $base_path = '../';
-echo $error; ?></div><?php $base_path = '../';
-endif; ?>
+        <?php if ($mezua): ?><div class="alerta alerta-arrakasta"><?php echo $mezua; ?></div><?php endif; ?>
+        <?php if ($errorea): ?><div class="alerta alerta-errorea"><?php echo $errorea; ?></div><?php endif; ?>
 
         <!-- Laburpen Txartelak -->
         <section class="laburpen-txartelak">
             <div class="itxurazko-txartela">
                 <div class="txartel-info">
                     <h4>Hitzordu Guztiak</h4>
-                    <div class="txartel-balioa"><?php $base_path = '../';
-echo count($hitzorduak); ?></div>
+                    <div class="txartel-balioa"><?php echo count($hitzorduak); ?></div>
                 </div>
                 <div class="joera-etiketa joera-igoera">+12%</div>
             </div>
@@ -194,33 +185,19 @@ echo count($hitzorduak); ?></div>
         <section class="egutegia-edukiontzia">
             <div class="egutegia-goiburua">
                 <div class="egutegia-nabigazioa">
-                    <a href="?hilabetea=<?php $base_path = '../';
-echo $aurreko_hilabetea; ?>&urtea=<?php $base_path = '../';
-echo $aurreko_urtea; ?>&filter_mediku_id=<?php $base_path = '../';
-echo $filter_mediku_id; ?>" class="botoia botoi-ertza">&lt;</a>
-                    <div class="egutegia-titulua"><?php $base_path = '../';
-echo $hilabete_izena; ?></div>
-                    <a href="?hilabetea=<?php $base_path = '../';
-echo $hurrengo_hilabetea; ?>&urtea=<?php $base_path = '../';
-echo $hurrengo_urtea; ?>&filter_mediku_id=<?php $base_path = '../';
-echo $filter_mediku_id; ?>" class="botoia botoi-ertza">&gt;</a>
+                    <a href="?hilabetea=<?php echo $aurreko_hilabetea; ?>&urtea=<?php echo $aurreko_urtea; ?>&filter_mediku_id=<?php echo $filter_mediku_id; ?>" class="botoia botoi-ertza">&lt;</a>
+                    <div class="egutegia-titulua"><?php echo $hilabete_izena; ?></div>
+                    <a href="?hilabetea=<?php echo $hurrengo_hilabetea; ?>&urtea=<?php echo $hurrengo_urtea; ?>&filter_mediku_id=<?php echo $filter_mediku_id; ?>" class="botoia botoi-ertza">&gt;</a>
                     <a href="hitzorduak.php" class="bista-botoia" style="margin-left: 10px;">Gaur</a>
                 </div>
                 <div class="bista-hautatzailea">
-                    <a href="?bista=astea&filter_mediku_id=<?php $base_path = '../';
-echo $filter_mediku_id; ?>" class="bista-botoia <?php $base_path = '../';
-echo $bista === 'astea' ? 'aktiboa' : ''; ?>">Astea</a>
-                    <a href="?bista=hilabetea&filter_mediku_id=<?php $base_path = '../';
-echo $filter_mediku_id; ?>" class="bista-botoia <?php $base_path = '../';
-echo $bista === 'hilabetea' ? 'aktiboa' : ''; ?>">Hilabetea</a>
-                    <a href="?bista=eguna&filter_mediku_id=<?php $base_path = '../';
-echo $filter_mediku_id; ?>" class="bista-botoia <?php $base_path = '../';
-echo $bista === 'eguna' ? 'aktiboa' : ''; ?>">Eguna</a>
+                    <a href="?bista=astea&filter_mediku_id=<?php echo $filter_mediku_id; ?>" class="bista-botoia <?php echo $bista === 'astea' ? 'aktiboa' : ''; ?>">Astea</a>
+                    <a href="?bista=hilabetea&filter_mediku_id=<?php echo $filter_mediku_id; ?>" class="bista-botoia <?php echo $bista === 'hilabetea' ? 'aktiboa' : ''; ?>">Hilabetea</a>
+                    <a href="?bista=eguna&filter_mediku_id=<?php echo $filter_mediku_id; ?>" class="bista-botoia <?php echo $bista === 'eguna' ? 'aktiboa' : ''; ?>">Eguna</a>
                 </div>
             </div>
 
-            <div class="grid-egutegia bista-<?php $base_path = '../';
-echo $bista; ?>">
+            <div class="grid-egutegia bista-<?php echo $bista; ?>">
                 <!-- Goiburua: Egunak -->
                 <div class="grid-goiburua">
                     <div class="grid-th">AST</div>
@@ -232,131 +209,86 @@ echo $bista; ?>">
                     <div class="grid-th">IGA</div>
                 </div>
 
-                <?php $base_path = '../';
-if ($bista === 'hilabetea'): ?>
+                <?php if ($bista === 'hilabetea'): ?>
                     <!-- Egun hutsak -->
-                    <?php $base_path = '../';
-for($i=1; $i<$asteko_lehen_eguna; $i++): ?>
+                    <?php for($i=1; $i<$asteko_lehen_eguna; $i++): ?>
                         <div class="egun-gelaxka hutsik"></div>
-                    <?php $base_path = '../';
-endfor; ?>
+                    <?php endfor; ?>
 
                     <!-- Egunak -->
-                    <?php $base_path = '../';
-for($eguna=1; $eguna<=$egun_kopurua; $eguna++): ?>
-                        <?php 
-                            $base_path = '../';
-$d_formatua = sprintf("%04d-%02d-%02d", $urtea, $hilabetea, $eguna);
+                    <?php for($eguna=1; $eguna<=$egun_kopurua; $eguna++): ?>
+                        <?php $d_formatua = sprintf("%04d-%02d-%02d", $urtea, $hilabetea, $eguna);
                             $gaurkoa = ($d_formatua === date('Y-m-d')) ? 'gaurkoa' : '';
                             $eguneko_hitzorduak = $hitzorduak_data_arabera[$d_formatua] ?? [];
                         ?>
-                        <div class="egun-gelaxka <?php $base_path = '../';
-echo $gaurkoa; ?>">
-                            <div class="egun-zenbakia"><?php $base_path = '../';
-echo $eguna; ?></div>
+                        <div class="egun-gelaxka <?php echo $gaurkoa; ?>">
+                            <div class="egun-zenbakia"><?php echo $eguna; ?></div>
                             <div class="eguneko-hitzorduak">
-                                <?php $base_path = '../';
-foreach ($eguneko_hitzorduak as $h): ?>
-                                    <div class="hitzordu-blokea status-<?php $base_path = '../';
-echo strtolower($h['egoera']); ?>" 
-                                         data-hitzordu-id="<?php $base_path = '../';
-echo $h['hitzordu_id']; ?>"
-                                         title="<?php $base_path = '../';
-echo htmlspecialchars($h['p_abizenak'] . ": " . $h['arrazoia']); ?>"
-                                         onclick="viewAppointment(<?php $base_path = '../';
-echo $h['hitzordu_id']; ?>)">
-                                        <span class="bloke-izenik"><?php $base_path = '../';
-echo substr($h['hasiera_ordua'], 0, 5); ?></span>
-                                        <span class="bloke-mota"><?php $base_path = '../';
-echo htmlspecialchars($h['p_izena'][0] . ". " . $h['p_abizenak']); ?></span>
+                                <?php foreach ($eguneko_hitzorduak as $h): ?>
+                                    <div class="hitzordu-blokea status-<?php echo strtolower($h['egoera']); ?>" 
+                                         data-hitzordu-id="<?php echo $h['hitzordu_id']; ?>"
+                                         title="<?php echo htmlspecialchars($h['p_abizenak'] . ": " . $h['arrazoia']); ?>"
+                                         onclick="viewAppointment(<?php echo $h['hitzordu_id']; ?>)">
+                                        <span class="bloke-izenik"><?php echo substr($h['hasiera_ordua'], 0, 5); ?></span>
+                                        <span class="bloke-mota"><?php echo htmlspecialchars($h['p_izena'][0] . ". " . $h['p_abizenak']); ?></span>
                                     </div>
-                                <?php $base_path = '../';
-endforeach; ?>
+                                <?php endforeach; ?>
                             </div>
                         </div>
-                    <?php $base_path = '../';
-endfor; ?>
-                <?php $base_path = '../';
-elseif ($bista === 'astea'): ?>
-                    <?php 
-                        $base_path = '../';
-$hasiera_astea = strtotime('monday this week');
+                    <?php endfor; ?>
+                <?php elseif ($bista === 'astea'): ?>
+                    <?php $hasiera_astea = strtotime('monday this week');
                         for($i=0; $i<7; $i++): 
                             $d_ast = date('Y-m-d', strtotime("+$i days", $hasiera_astea));
                             $gaurkoa = ($d_ast === date('Y-m-d')) ? 'gaurkoa' : '';
                             $eguneko_hitzorduak = $hitzorduak_data_arabera[$d_ast] ?? [];
                     ?>
-                        <div class="egun-gelaxka <?php $base_path = '../';
-echo $gaurkoa; ?>">
-                            <div class="egun-zenbakia"><?php $base_path = '../';
-echo date('d', strtotime($d_ast)); ?></div>
+                        <div class="egun-gelaxka <?php echo $gaurkoa; ?>">
+                            <div class="egun-zenbakia"><?php echo date('d', strtotime($d_ast)); ?></div>
                             <div class="eguneko-hitzorduak">
-                                <?php $base_path = '../';
-foreach ($eguneko_hitzorduak as $h): ?>
-                                    <div class="hitzordu-blokea status-<?php $base_path = '../';
-echo strtolower($h['egoera']); ?>">
-                                        <span class="bloke-izenik"><?php $base_path = '../';
-echo substr($h['hasiera_ordua'], 0, 5); ?></span>
-                                        <span class="bloke-mota"><?php $base_path = '../';
-echo htmlspecialchars($h['p_izena'][0] . ". " . $h['p_abizenak']); ?></span>
+                                <?php foreach ($eguneko_hitzorduak as $h): ?>
+                                    <div class="hitzordu-blokea status-<?php echo strtolower($h['egoera']); ?>">
+                                        <span class="bloke-izenik"><?php echo substr($h['hasiera_ordua'], 0, 5); ?></span>
+                                        <span class="bloke-mota"><?php echo htmlspecialchars($h['p_izena'][0] . ". " . $h['p_abizenak']); ?></span>
                                     </div>
-                                <?php $base_path = '../';
-endforeach; ?>
+                                <?php endforeach; ?>
                             </div>
                         </div>
-                    <?php $base_path = '../';
-endfor; ?>
-                <?php $base_path = '../';
-else: // eguna ?>
-                    <?php 
-                        $base_path = '../';
-for($i=1; $i<=7; $i++): 
+                    <?php endfor; ?>
+                <?php else: // eguna ?>
+                    <?php for($i=1; $i<=7; $i++): 
                             $egun_izena_zenb = date('N', strtotime($gaurko_data));
                             $data_sel = ($i == $egun_izena_zenb) ? $gaurko_data : null;
                             $eguneko_hitzorduak = $data_sel ? ($hitzorduak_data_arabera[$data_sel] ?? []) : [];
                     ?>
-                        <div class="egun-gelaxka <?php $base_path = '../';
-echo $data_sel ? 'gaurkoa' : 'hutsik'; ?>">
-                            <div class="egun-zenbakia"><?php $base_path = '../';
-echo $data_sel ? date('d') : ''; ?></div>
+                        <div class="egun-gelaxka <?php echo $data_sel ? 'gaurkoa' : 'hutsik'; ?>">
+                            <div class="egun-zenbakia"><?php echo $data_sel ? date('d') : ''; ?></div>
                             <div class="eguneko-hitzorduak">
-                                <?php $base_path = '../';
-foreach ($eguneko_hitzorduak as $h): ?>
-                                    <div class="hitzordu-blokea status-<?php $base_path = '../';
-echo strtolower($h['egoera']); ?>">
-                                        <span class="bloke-izenik"><?php $base_path = '../';
-echo substr($h['hasiera_ordua'], 0, 5); ?></span>
-                                        <span class="bloke-mota"><?php $base_path = '../';
-echo htmlspecialchars($h['p_izena'][0] . ". " . $h['p_abizenak']); ?></span>
+                                <?php foreach ($eguneko_hitzorduak as $h): ?>
+                                    <div class="hitzordu-blokea status-<?php echo strtolower($h['egoera']); ?>">
+                                        <span class="bloke-izenik"><?php echo substr($h['hasiera_ordua'], 0, 5); ?></span>
+                                        <span class="bloke-mota"><?php echo htmlspecialchars($h['p_izena'][0] . ". " . $h['p_abizenak']); ?></span>
                                     </div>
-                                <?php $base_path = '../';
-endforeach; ?>
+                                <?php endforeach; ?>
                             </div>
                         </div>
-                    <?php $base_path = '../';
-endfor; ?>
-                <?php $base_path = '../';
-endif; ?>
+                    <?php endfor; ?>
+                <?php endif; ?>
             </div>
         </section>
 
         <!-- Zerrenda orokorra (behean mantentzen dugu segurtasun gisa momentuz) -->
         <section class="hitzordu-zerrenda marjina-goi-30">
             <div class="flex-tartea-15">
-                <h3><img src="../img/list.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"> Hitzordu Guztiak</h3>
+                <h3><img src="../img/list.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; iragazkia: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"> Hitzordu Guztiak</h3>
                 <form method="GET" class="flex-taldea-10">
                     <select name="filter_mediku_id" class="inprimaki-kontrola zabalera-autoa" onchange="this.form.submit()">
                         <option value="">Iragazi medikua...</option>
-                        <?php $base_path = '../';
-foreach ($medikuak as $m): ?>
-                            <option value="<?php $base_path = '../';
-echo $m['mediku_id']; ?>" <?php $base_path = '../';
-echo $filter_mediku_id == $m['mediku_id'] ? 'selected' : ''; ?>>
-                                <?php $base_path = '../';
-echo htmlspecialchars($m['abizenak'] . ", " . $m['izena']); ?>
+                        <?php foreach ($medikuak as $m): ?>
+                            <option value="<?php echo $m['mediku_id']; ?>" <?php echo $filter_mediku_id == $m['mediku_id'] ? 'selected' : ''; ?>>
+                                <?php echo htmlspecialchars($m['abizenak'] . ", " . $m['izena']); ?>
                             </option>
-                        <?php $base_path = '../';
-endforeach; ?>
+                        <?php endforeach; ?>
                     </select>
                 </form>
             </div>
@@ -370,24 +302,16 @@ endforeach; ?>
                             <th>Egoera</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <?php $base_path = '../';
-foreach (array_slice($hitzorduak, 0, 5) as $h): ?>
+                    <taula_gorputza>
+                        <?php foreach (array_slice($hitzorduak, 0, 5) as $h): ?>
                             <tr>
-                                <td><strong><?php $base_path = '../';
-echo date('Y/m/d', strtotime($h['data'])); ?></strong> (<?php $base_path = '../';
-echo substr($h['hasiera_ordua'],0,5); ?>)</td>
-                                <td><?php $base_path = '../';
-echo htmlspecialchars($h['m_abizenak']); ?></td>
-                                <td><?php $base_path = '../';
-echo htmlspecialchars($h['p_abizenak']); ?></td>
-                                <td><span class="egoera-<?php $base_path = '../';
-echo strtolower($h['egoera']); ?>"><?php $base_path = '../';
-echo $h['egoera']; ?></span></td>
+                                <td><strong><?php echo date('Y/m/d', strtotime($h['data'])); ?></strong> (<?php echo substr($h['hasiera_ordua'],0,5); ?>)</td>
+                                <td><?php echo htmlspecialchars($h['m_abizenak']); ?></td>
+                                <td><?php echo htmlspecialchars($h['p_abizenak']); ?></td>
+                                <td><span class="egoera-<?php echo strtolower($h['egoera']); ?>"><?php echo $h['egoera']; ?></span></td>
                             </tr>
-                        <?php $base_path = '../';
-endforeach; ?>
-                    </tbody>
+                        <?php endforeach; ?>
+                    </taula_gorputza>
                 </table>
             </div>
         </section>
@@ -452,14 +376,14 @@ endforeach; ?>
 
                     <div class="inprimaki-taldea">
                         <label for="arrazoia">Arrazoia / Oharrak</label>
-                        <textarea name="arrazoia" id="modal_arrazoia" class="inprimaki-kontrola" rows="3"></textarea>
+                        <textarea name="arrazoia" id="modal_arrazoia" class="inprimaki-kontrola" errenkadak="3"></textarea>
                     </div>
 
                     <div class="flex-tartea-10" style="display:flex; justify-content:space-between; margin-top:20px;">
-                        <button type="button" id="btnDelete" class="botoia botoi-ertza arrisku-kolorea" style="display:none;" onclick="confirmDelete()">Ezabatu</button>
+                        <button type="button" id="ezabatu_botoia" class="botoia botoi-ertza arrisku-kolorea" style="display:none;" onclick="confirmDelete()">Ezabatu</button>
                         <div style="flex-grow:1;"></div>
                         <button type="button" class="botoia botoi-ertza" style="margin-right:10px;" onclick="closeModal()">Utzi</button>
-                        <button type="submit" name="sortu_hitzordua" id="btnSubmit" class="botoia botoi-nagusia">Gorde</button>
+                        <button type="submit" name="sortu_hitzordua" id="bidali_botoia" class="botoia botoi-nagusia">Gorde</button>
                     </div>
                 </form>
 
@@ -472,9 +396,7 @@ endforeach; ?>
     </div>
 
     <script src="../js/hitzorduak_egutegia.js"></script>
-<?php
-$base_path = '../';
-include_once '../php_includeak/harrera_footer.php';
+<?php include_once '../php_includeak/harrera_footer.php';
 ?>
 
 

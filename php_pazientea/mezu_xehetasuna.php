@@ -1,6 +1,5 @@
 <?php
-$base_path = '../';
-session_start();
+$bide_absolutua = '../'; session_start();
 if (!isset($_SESSION['rol_id']) || ($_SESSION['rol_izena'] !== 'Pazientea' && $_SESSION['rol_izena'] !== 'Medikua' && $_SESSION['rol_izena'] !== 'Harrera')) {
     header("Location: ../php_hasiera/login.php");
     exit;
@@ -65,8 +64,8 @@ try {
     die("Errorea: " . $e->getMessage());
 }
 
-$page_title = "Mezu Xehetasuna - GOsasun";
-$current_page = "mezuak";
+$orri_izenburua = "Mezu Xehetasuna - GOsasun";
+$uneko_orria = "mezuak";
 
 // Goiburua aukeratu rolaren arabera (baina fitxategia non dagoen kontutan hartuta)
 // Pazientea bagara, '../' behar dugu agian ez? Ez, mezuak.php php_pazientea/ karpetan badago, include '../php_includeak/paziente_goiburua.php' nahikoa da.
@@ -78,55 +77,44 @@ else include_once '../php_includeak/harrera_goiburua.php';
 <main class="panel-nagusia">
     <div class="orri-goiburua marjina-behe-20">
         <a href="mezuak.php" class="esteka-itzuli">← Itzuli zerrendara</a>
-        <h2 class="izenburu-nagusia marjina-goi-10"><img src="../img/mail.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"> Mezuaren Xehetasuna</h2>
+        <h2 class="izenburu-nagusia marjina-goi-10"><img src="../img/mail.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; iragazkia: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"> Mezuaren Xehetasuna</h2>
     </div>
 
     <div class="kutxa-zuria-itzala">
         <div class="mezu-xehetasuna-goiburua marjina-behe-20" style="border-bottom: 1px solid #eee; padding-bottom: 15px;">
             <div class="flex-tartea-besterik">
-                <h3 class="marjina-behe-0"><?php $base_path = '../';
-echo htmlspecialchars($mezua['gaia']); ?></h3>
-                <span class="testu-gris-txikia"><?php $base_path = '../';
-echo date('Y/m/d H:i', strtotime($mezua['bidalketa_data'])); ?></span>
+                <h3 class="marjina-behe-0"><?php echo htmlspecialchars($mezua['gaia']); ?></h3>
+                <span class="testu-gris-txikia"><?php echo date('Y/m/d H:i', strtotime($mezua['bidalketa_data'])); ?></span>
             </div>
             <div class="marjina-goi-10">
-                <p><strong>Nork:</strong> <?php $base_path = '../';
-echo htmlspecialchars($mezua['bidaltzaile_izena']); ?></p>
-                <p><strong>Nori:</strong> <?php $base_path = '../';
-echo htmlspecialchars($mezua['hartzaile_izena']); ?></p>
+                <p><strong>Nork:</strong> <?php echo htmlspecialchars($mezua['bidaltzaile_izena']); ?></p>
+                <p><strong>Nori:</strong> <?php echo htmlspecialchars($mezua['hartzaile_izena']); ?></p>
             </div>
         </div>
 
         <div class="mezu-edukia marjina-behe-30" style="white-space: pre-wrap; line-height: 1.6; background: #f8f9fa; padding: 20px; border-radius: 8px;">
-            <?php $base_path = '../';
-echo htmlspecialchars($mezua['mezua']); ?>
+            <?php echo htmlspecialchars($mezua['mezua']); ?>
         </div>
 
-        <?php $base_path = '../';
-if ($mezua['hartzaile_id'] == $erabiltzaile_id): ?>
+        <?php if ($mezua['hartzaile_id'] == $erabiltzaile_id): ?>
             <div class="erantzun-atala" style="border-top: 1px solid #eee; padding-top: 20px;">
                 <h4>Erantzun</h4>
                 <form action="mezu_berria.php" method="POST">
-                    <input type="hidden" name="hartzaile_id" value="<?php $base_path = '../';
-echo $mezua['bidaltzaile_id']; ?>">
-                    <input type="hidden" name="gaia" value="RE: <?php $base_path = '../';
-echo $mezua['gaia']; ?>">
+                    <input type="hidden" name="hartzaile_id" value="<?php echo $mezua['bidaltzaile_id']; ?>">
+                    <input type="hidden" name="gaia" value="RE: <?php echo $mezua['gaia']; ?>">
                     <div class="inprimaki-taldea">
-                        <textarea name="mezua" class="inprimaki-kontrola" rows="4" placeholder="Idatzi zure erantzuna hemen..." required></textarea>
+                        <textarea name="mezua" class="inprimaki-kontrola" errenkadak="4" placeholder="Idatzi zure erantzuna hemen..." required></textarea>
                     </div>
                     <div class="flex-bukaera">
                         <button type="submit" class="botoia botoi-nagusia">Bidali Erantzuna</button>
                     </div>
                 </form>
             </div>
-        <?php $base_path = '../';
-endif; ?>
+        <?php endif; ?>
     </div>
 </main>
 
-<?php 
-$base_path = '../';
-if ($_SESSION['rol_izena'] === 'Pazientea') include_once '../php_includeak/paziente_footer.php';
+<?php if ($_SESSION['rol_izena'] === 'Pazientea') include_once '../php_includeak/paziente_footer.php';
 else if ($_SESSION['rol_izena'] === 'Medikua') include_once '../php_includeak/mediku_footer.php';
 else include_once '../php_includeak/harrera_footer.php';
 ?>

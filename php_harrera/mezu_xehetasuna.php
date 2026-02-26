@@ -1,6 +1,5 @@
 <?php
-$base_path = '../';
-session_start();
+$bide_absolutua = '../'; session_start();
 if (!isset($_SESSION['rol_id']) || $_SESSION['rol_izena'] !== 'Harrera') {
     header("Location: ../php_hasiera/login.php");
     exit;
@@ -23,9 +22,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['kanpoko_erantzuna']))
         try {
             $stmt_reply = $pdo->prepare("UPDATE Kontaktua_Mezuak SET erantzuna = ?, erantzun_data = CURRENT_TIMESTAMP WHERE mezu_id = ?");
             $stmt_reply->execute([$erantzuna, $mezu_id]);
-            $success_message = "Mezuari erantzun zaio ondo.";
+            $arrakasta_mezua = "Mezuari erantzun zaio ondo.";
         } catch (PDOException $e) {
-            $error_message = "Errorea erantzutean: " . $e->getMessage();
+            $errore_mezua = "Errorea erantzutean: " . $e->getMessage();
         }
     }
 }
@@ -34,24 +33,24 @@ try {
     if ($mota === 'kanpoko') {
         $stmt = $pdo->prepare("SELECT * FROM Kontaktua_Mezuak WHERE mezu_id = ?");
         $stmt->execute([$mezu_id]);
-        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        $lerroa = $stmt->fetch(PDO::FETCH_ASSOC);
         
-        if (!$row) {
+        if (!$lerroa) {
             die("Ezin duzu mezu hau ikusi edo ez da existitzen.");
         }
         
         $mezua = [
-            'gaia' => 'Webguneko kontsulta: ' . $row['izena'],
-            'bidalketa_data' => $row['bidalketa_data'],
-            'bidaltzaile_izena' => $row['izena'] . ' (' . $row['email'] . ')',
+            'gaia' => 'Webguneko kontsulta: ' . $lerroa['izena'],
+            'bidalketa_data' => $lerroa['bidalketa_data'],
+            'bidaltzaile_izena' => $lerroa['izena'] . ' (' . $lerroa['email'] . ')',
             'hartzaile_izena' => 'Harrera',
-            'mezua' => $row['mezua'],
+            'mezua' => $lerroa['mezua'],
             'hartzaile_id' => $erabiltzaile_id, // Simulate being the recipient to show reply box
-            'erantzuna' => $row['erantzuna'],
-            'erantzun_data' => $row['erantzun_data']
+            'erantzuna' => $lerroa['erantzuna'],
+            'erantzun_data' => $lerroa['erantzun_data']
         ];
         
-        if (!$row['irakurrita']) {
+        if (!$lerroa['irakurrita']) {
             $stmt_mark = $pdo->prepare("UPDATE Kontaktua_Mezuak SET irakurrita = 1 WHERE mezu_id = ?");
             $stmt_mark->execute([$mezu_id]);
         }
@@ -103,80 +102,80 @@ try {
     die("Errorea: " . $e->getMessage());
 }
 
-$page_title = "Mezu Xehetasuna - GOsasun";
-$current_page = $mota === 'kanpoko' ? "kanpoko_mezuak" : "mezuak";
-$custom_css = "mezuak.css";
+$orri_izenburua = "Mezu Xehetasuna - GOsasun";
+$uneko_orria = $mota === 'kanpoko' ? "kanpoko_mezuak" : "mezuak";
+$css_pertsonalizatua = "mezuak.css";
 include_once '../php_includeak/harrera_goiburua.php';
 ?>
 
 <main class="panel-nagusia">
     <div class="orri-goiburua marjina-behe-20">
-        <a href="<?php $base_path = '../'; echo $mota === 'kanpoko' ? 'kanpoko_mezuak.php' : 'mezuak.php'; ?>" class="esteka-itzuli">&larr; Itzuli zerrendara</a>
+        <a href="<?php echo $mota === 'kanpoko' ? 'kanpoko_mezuak.php' : 'mezuak.php'; ?>" class="esteka-itzuli">&larr; Itzuli zerrendara</a>
         <h2 class="izenburu-nagusia marjina-goi-10">&#128231; Mezuaren Xehetasuna</h2>
     </div>
 
-    <?php $base_path = '../'; if (isset($success_message)): ?>
-        <div class="alerta alerta-arrakasta"><?php $base_path = '../'; echo htmlspecialchars($success_message); ?></div>
-    <?php $base_path = '../'; endif; ?>
-    <?php $base_path = '../'; if (isset($error_message)): ?>
-        <div class="alerta alerta-errorea"><?php $base_path = '../'; echo htmlspecialchars($error_message); ?></div>
-    <?php $base_path = '../'; endif; ?>
+    <?php if (isset($arrakasta_mezua)): ?>
+        <div class="alerta alerta-arrakasta"><?php echo htmlspecialchars($arrakasta_mezua); ?></div>
+    <?php endif; ?>
+    <?php if (isset($errore_mezua)): ?>
+        <div class="alerta alerta-errorea"><?php echo htmlspecialchars($errore_mezua); ?></div>
+    <?php endif; ?>
 
     <div class="kutxa-zuria-itzala">
         <div class="mezu-xehetasuna-goiburua marjina-behe-20" style="border-bottom: 1px solid #eee; padding-bottom: 15px;">
             <div class="flex-tartea-besterik">
-                <h3 class="marjina-behe-0"><?php $base_path = '../'; echo htmlspecialchars($mezua['gaia']); ?></h3>
-                <span class="testu-gris-txikia"><?php $base_path = '../'; echo date('Y/m/d H:i', strtotime($mezua['bidalketa_data'])); ?></span>
+                <h3 class="marjina-behe-0"><?php echo htmlspecialchars($mezua['gaia']); ?></h3>
+                <span class="testu-gris-txikia"><?php echo date('Y/m/d H:i', strtotime($mezua['bidalketa_data'])); ?></span>
             </div>
             <div class="marjina-goi-10">
-                <p><strong>Nork:</strong> <?php $base_path = '../'; echo htmlspecialchars($mezua['bidaltzaile_izena']); ?></p>
-                <p><strong>Nori:</strong> <?php $base_path = '../'; echo htmlspecialchars($mezua['hartzaile_izena']); ?></p>
+                <p><strong>Nork:</strong> <?php echo htmlspecialchars($mezua['bidaltzaile_izena']); ?></p>
+                <p><strong>Nori:</strong> <?php echo htmlspecialchars($mezua['hartzaile_izena']); ?></p>
             </div>
         </div>
 
         <div class="mezu-edukia marjina-behe-30" style="white-space: pre-wrap; line-height: 1.6; background: #f8f9fa; padding: 20px; border-radius: 8px;">
-            <?php $base_path = '../'; echo htmlspecialchars($mezua['mezua']); ?>
+            <?php echo htmlspecialchars($mezua['mezua']); ?>
         </div>
 
-        <?php $base_path = '../'; if ($mota === 'kanpoko'): ?>
+        <?php if ($mota === 'kanpoko'): ?>
             <div class="erantzun-atala" style="border-top: 1px solid #eee; padding-top: 20px;">
-                <?php $base_path = '../'; if (!empty($mezua['erantzuna'])): ?>
+                <?php if (!empty($mezua['erantzuna'])): ?>
                     <h4>Zure Erantzuna:</h4>
-                    <span class="testu-gris-txikia marjina-behe-10" style="display:block;"><?php $base_path = '../'; echo date('Y/m/d H:i', strtotime($mezua['erantzun_data'])); ?></span>
+                    <span class="testu-gris-txikia marjina-behe-10" style="display:block;"><?php echo date('Y/m/d H:i', strtotime($mezua['erantzun_data'])); ?></span>
                     <div class="mezu-edukia marjina-behe-30" style="white-space: pre-wrap; line-height: 1.6; background: #e3f2fd; padding: 20px; border-radius: 8px;">
-                        <?php $base_path = '../'; echo htmlspecialchars($mezua['erantzuna']); ?>
+                        <?php echo htmlspecialchars($mezua['erantzuna']); ?>
                     </div>
-                <?php $base_path = '../'; else: ?>
+                <?php else: ?>
                     <h4>Erantzun erabiltzaileari</h4>
                     <form action="" method="POST">
                         <input type="hidden" name="kanpoko_erantzuna" value="1">
                         <div class="inprimaki-taldea">
-                            <textarea name="erantzuna" class="inprimaki-kontrola" rows="4" placeholder="Idatzi zure erantzuna hemen. Erabiltzaileari emailez bidaliko zaio..." required></textarea>
+                            <textarea name="erantzuna" class="inprimaki-kontrola" errenkadak="4" placeholder="Idatzi zure erantzuna hemen. Erabiltzaileari emailez bidaliko zaio..." required></textarea>
                         </div>
                         <div class="flex-bukaera">
                             <button type="submit" class="botoia botoi-nagusia">Bidali Erantzuna</button>
                         </div>
                     </form>
-                <?php $base_path = '../'; endif; ?>
+                <?php endif; ?>
             </div>
-        <?php $base_path = '../'; elseif ($mezua['hartzaile_id'] == $erabiltzaile_id): ?>
+        <?php elseif ($mezua['hartzaile_id'] == $erabiltzaile_id): ?>
             <div class="erantzun-atala" style="border-top: 1px solid #eee; padding-top: 20px;">
                 <h4>Erantzun</h4>
                 <form action="mezu_berria.php" method="POST">
-                    <input type="hidden" name="hartzaile_id" value="<?php $base_path = '../'; echo $mezua['bidaltzaile_id']; ?>">
-                    <input type="hidden" name="gaia" value="RE: <?php $base_path = '../'; echo $mezua['gaia']; ?>">
+                    <input type="hidden" name="hartzaile_id" value="<?php echo $mezua['bidaltzaile_id']; ?>">
+                    <input type="hidden" name="gaia" value="RE: <?php echo $mezua['gaia']; ?>">
                     <div class="inprimaki-taldea">
-                        <textarea name="mezua" class="inprimaki-kontrola" rows="4" placeholder="Idatzi zure erantzuna hemen..." required></textarea>
+                        <textarea name="mezua" class="inprimaki-kontrola" errenkadak="4" placeholder="Idatzi zure erantzuna hemen..." required></textarea>
                     </div>
                     <div class="flex-bukaera">
                         <button type="submit" class="botoia botoi-nagusia">Bidali Erantzuna</button>
                     </div>
                 </form>
             </div>
-        <?php $base_path = '../'; endif; ?>
+        <?php endif; ?>
     </div>
 </main>
 
-<?php $base_path = '../'; include_once '../php_includeak/harrera_footer.php'; ?>
+<?php include_once '../php_includeak/harrera_footer.php'; ?>
 
 

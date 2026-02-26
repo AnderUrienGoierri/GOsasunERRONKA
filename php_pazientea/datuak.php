@@ -1,6 +1,5 @@
 <?php
-$base_path = '../';
-session_start();
+$bide_absolutua = '../'; session_start();
 if (!isset($_SESSION['rol_id']) || $_SESSION['rol_izena'] !== 'Pazientea') {
     header("Location: ../php_hasiera/login.php");
     exit;
@@ -28,16 +27,16 @@ $stmtMedikuak = $pdo->prepare("
 $stmtMedikuak->execute([$paziente_id]);
 $medikuak = $stmtMedikuak->fetchAll(PDO::FETCH_ASSOC);
 
-$page_title = "Nire Datuak - GOsasun";
-$current_page = "datuak";
-$custom_css = "pazienteak.css";
+$orri_izenburua = "Nire Datuak - GOsasun";
+$uneko_orria = "datuak";
+$css_pertsonalizatua = "pazienteak.css";
 
 include_once '../php_includeak/paziente_goiburua.php';
 ?>
 
     <main class="panel-nagusia">
         <div class="orri-goiburua">
-            <h2><img src="../img/user.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"> Nire Informazioa</h2>
+            <h2><img src="../img/user.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; iragazkia: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"> Nire Informazioa</h2>
             <p>Berrikusi zure datu pertsonalak eta egoera klinikoa.</p>
         </div>
 
@@ -47,28 +46,23 @@ include_once '../php_includeak/paziente_goiburua.php';
                 <h3>Datu Pertsonalak</h3>
                 <div class="datu-eremua">
                     <span class="etiketa">Izena:</span>
-                    <span class="balioa"><?php $base_path = '../';
-echo htmlspecialchars($pazientea['izena'] . ' ' . $pazientea['abizenak']); ?></span>
+                    <span class="balioa"><?php echo htmlspecialchars($pazientea['izena'] . ' ' . $pazientea['abizenak']); ?></span>
                 </div>
                 <div class="datu-eremua">
                     <span class="etiketa">NAN:</span>
-                    <span class="balioa"><?php $base_path = '../';
-echo htmlspecialchars($pazientea['nan']); ?></span>
+                    <span class="balioa"><?php echo htmlspecialchars($pazientea['nan']); ?></span>
                 </div>
                 <div class="datu-eremua">
                     <span class="etiketa">Jaiotze Data:</span>
-                    <span class="balioa"><?php $base_path = '../';
-echo htmlspecialchars($pazientea['jaiotze_data']); ?></span>
+                    <span class="balioa"><?php echo htmlspecialchars($pazientea['jaiotze_data']); ?></span>
                 </div>
                 <div class="datu-eremua">
                     <span class="etiketa">Email:</span>
-                    <span class="balioa"><?php $base_path = '../';
-echo htmlspecialchars($pazientea['email']); ?></span>
+                    <span class="balioa"><?php echo htmlspecialchars($pazientea['email']); ?></span>
                 </div>
                 <div class="datu-eremua">
                     <span class="etiketa">Telefonoa:</span>
-                    <span class="balioa"><?php $base_path = '../';
-echo htmlspecialchars($pazientea['telefonoa'] ?? 'Zehaztu gabe'); ?></span>
+                    <span class="balioa"><?php echo htmlspecialchars($pazientea['telefonoa'] ?? 'Zehaztu gabe'); ?></span>
                 </div>
             </section>
 
@@ -77,25 +71,20 @@ echo htmlspecialchars($pazientea['telefonoa'] ?? 'Zehaztu gabe'); ?></span>
                 <h3>Egoera Klinikoa</h3>
                 <div class="datu-eremua">
                     <span class="etiketa">Odol Taldea:</span>
-                    <span class="balioa"><?php $base_path = '../';
-echo htmlspecialchars($pazientea['odol_taldea'] ?? 'Ezezaguna'); ?></span>
+                    <span class="balioa"><?php echo htmlspecialchars($pazientea['odol_taldea'] ?? 'Ezezaguna'); ?></span>
                 </div>
                 <div class="datu-eremua">
                     <span class="etiketa">Azken Altuerra:</span>
-                    <span class="balioa"><?php $base_path = '../';
-echo htmlspecialchars($pazientea['azken_altuera'] ?? '-'); ?> m</span>
+                    <span class="balioa"><?php echo htmlspecialchars($pazientea['azken_altuera'] ?? '-'); ?> m</span>
                 </div>
                 <div class="datu-eremua">
                     <span class="etiketa">Azken Pisua:</span>
-                    <span class="balioa"><?php $base_path = '../';
-echo htmlspecialchars($pazientea['azken_pisua'] ?? '-'); ?> kg</span>
+                    <span class="balioa"><?php echo htmlspecialchars($pazientea['azken_pisua'] ?? '-'); ?> kg</span>
                 </div>
                 <div class="datu-eremua">
                     <span class="etiketa">Egoera:</span>
-                    <span class="egoera-etiketa <?php $base_path = '../';
-echo ($pazientea['egoera_klinikoa'] === 'Alta') ? 'egoera-alta' : 'egoera-baja'; ?>">
-                        <?php $base_path = '../';
-echo htmlspecialchars($pazientea['egoera_klinikoa'] ?? 'Ezezaguna'); ?>
+                    <span class="egoera-etiketa <?php echo ($pazientea['egoera_klinikoa'] === 'Alta') ? 'egoera-alta' : 'egoera-baja'; ?>">
+                        <?php echo htmlspecialchars($pazientea['egoera_klinikoa'] ?? 'Ezezaguna'); ?>
                     </span>
                 </div>
             </section>
@@ -104,33 +93,24 @@ echo htmlspecialchars($pazientea['egoera_klinikoa'] ?? 'Ezezaguna'); ?>
         <!-- Esleitutako Medikuak -->
         <section class="mediku-sekzioa">
             <h3>Nire Medikuak</h3>
-            <?php $base_path = '../';
-if (count($medikuak) > 0): ?>
+            <?php if (count($medikuak) > 0): ?>
                 <div class="mediku-sareta">
-                    <?php $base_path = '../';
-foreach ($medikuak as $m): ?>
+                    <?php foreach ($medikuak as $m): ?>
                         <div class="mediku-txartela">
                             <div class="mediku-info">
-                                <strong>Dr. <?php $base_path = '../';
-echo htmlspecialchars($m['izena'] . ' ' . $m['abizenak']); ?></strong>
-                                <p><?php $base_path = '../';
-echo htmlspecialchars($m['espezialitatea']); ?></p>
+                                <strong>Dr. <?php echo htmlspecialchars($m['izena'] . ' ' . $m['abizenak']); ?></strong>
+                                <p><?php echo htmlspecialchars($m['espezialitatea']); ?></p>
                             </div>
                         </div>
-                    <?php $base_path = '../';
-endforeach; ?>
+                    <?php endforeach; ?>
                 </div>
-            <?php $base_path = '../';
-else: ?>
+            <?php else: ?>
                 <p class="testu-hutsa">Ez duzu medikurik esleituta mementoz.</p>
-            <?php $base_path = '../';
-endif; ?>
+            <?php endif; ?>
         </section>
     </main>
 
-<?php
-$base_path = '../';
-$extra_js = ["datuak.js"];
+<?php $js_gehigarria = ["datuak.js"];
 include_once '../php_includeak/paziente_footer.php';
 ?>
 

@@ -1,13 +1,12 @@
 <?php
-$base_path = '../';
-session_start();
+$bide_absolutua = '../'; session_start();
 if (!isset($_SESSION['rol_id']) || $_SESSION['rol_izena'] !== 'Harrera') {
     header("Location: ../php_hasiera/login.php");
     exit;
 }
 
 require_once '../php_laguntzaileak/DB_konexioa.php';
-$error = '';
+$errorea = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $izena = $_POST['izena'] ?? '';
@@ -24,20 +23,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             $stmtUser = $pdo->prepare("INSERT INTO Erabiltzaileak (email, pasahitza, rol_id, aktibo) VALUES (?, ?, 1, 1)");
             $stmtUser->execute([$email, $pasahitza]);
-            $new_id = $pdo->lastInsertId();
+            $id_berria = $pdo->lastInsertId();
 
             $stmtMediku = $pdo->prepare("INSERT INTO Medikuak (mediku_id, izena, abizenak, elkargokide_zenbakia, espezialitatea, telefonoa) VALUES (?, ?, ?, ?, ?, ?)");
-            $stmtMediku->execute([$new_id, $izena, $abizenak, $elkargokide, $espezialitatea, $telefonoa]);
+            $stmtMediku->execute([$id_berria, $izena, $abizenak, $elkargokide, $espezialitatea, $telefonoa]);
 
             $pdo->commit();
             header("Location: medikuak.php?msg=" . urlencode("Mediku berria sortu da."));
             exit;
         } catch (PDOException $e) {
             $pdo->rollBack();
-            $error = "Errorea: " . $e->getMessage();
+            $errorea = "Errorea: " . $e->getMessage();
         }
     } else {
-        $error = "Bete derrigorrezko eremuak.";
+        $errorea = "Bete derrigorrezko eremuak.";
     }
 }
 ?>
@@ -64,13 +63,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <main class="panel-nagusia">
         <div class="orri-goiburua">
-            <h2><img src="../img/plus-circle.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"> Mediku Berria Sortu</h2>
+            <h2><img src="../img/plus-circle.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; iragazkia: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"> Mediku Berria Sortu</h2>
         </div>
 
-        <?php $base_path = '../';
-if ($error): ?><div class="alerta alerta-errorea"><?php $base_path = '../';
-echo $error; ?></div><?php $base_path = '../';
-endif; ?>
+        <?php if ($errorea): ?><div class="alerta alerta-errorea"><?php echo $errorea; ?></div><?php endif; ?>
 
         <div class="inprimaki-kutxa kutxa-zuria-700" >
             <form method="POST">

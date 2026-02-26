@@ -2,13 +2,13 @@
 $(document).ready(function() {
     $('#kontaktuaForm').submit(function(e) {
         
-        let isValid = true;
+        let baliozkoa_da = true;
         
         // Balidazioa: Izena
         const izena = $('#izena').val().trim();
         if (izena === '') {
             $('#error-izena').show();
-            isValid = false;
+            baliozkoa_da = false;
         } else {
             $('#error-izena').hide();
         }
@@ -18,7 +18,7 @@ $(document).ready(function() {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (email === '' || !emailRegex.test(email)) {
             $('#error-email').show();
-            isValid = false;
+            baliozkoa_da = false;
         } else {
             $('#error-email').hide();
         }
@@ -27,13 +27,13 @@ $(document).ready(function() {
         const mezua = $('#mezua').val().trim();
         if (mezua.length < 10) {
             $('#error-mezua').show();
-            isValid = false;
+            baliozkoa_da = false;
         } else {
             $('#error-mezua').hide();
         }
         
         // Dena ondo badago, utzi bektor berezko API prozesamenduarekin
-        if (!isValid) {
+        if (!baliozkoa_da) {
             e.preventDefault();
         }
     });

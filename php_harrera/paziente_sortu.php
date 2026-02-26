@@ -1,14 +1,13 @@
 <?php
-$base_path = '../';
-session_start();
+$bide_absolutua = '../'; session_start();
 if (!isset($_SESSION['rol_id']) || $_SESSION['rol_izena'] !== 'Harrera') {
     header("Location: ../php_hasiera/login.php");
     exit;
 }
 
 require_once '../php_laguntzaileak/DB_konexioa.php';
-$msg = '';
-$error = '';
+$mezua = '';
+$errorea = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nan = $_POST['nan'] ?? '';
@@ -27,21 +26,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // 1. Erabiltzailea sortu
             $stmtUser = $pdo->prepare("INSERT INTO Erabiltzaileak (email, pasahitza, rol_id, aktibo) VALUES (?, ?, 2, 1)");
             $stmtUser->execute([$email, $pasahitza]);
-            $new_id = $pdo->lastInsertId();
+            $id_berria = $pdo->lastInsertId();
 
             // 2. Pazientearen datuak sortu
             $stmtPaziente = $pdo->prepare("INSERT INTO Pazienteak (paziente_id, nan, izena, abizenak, jaiotze_data, telefonoa, odol_taldea) VALUES (?, ?, ?, ?, ?, ?, ?)");
-            $stmtPaziente->execute([$new_id, $nan, $izena, $abizenak, $jaiotze_data, $telefonoa, $odol_taldea]);
+            $stmtPaziente->execute([$id_berria, $nan, $izena, $abizenak, $jaiotze_data, $telefonoa, $odol_taldea]);
 
             $pdo->commit();
-            header("Location: pazienteak.php?msg=" . urlencode("Paziente berria arrakastaz sortu da. ID: " . $new_id));
+            header("Location: pazienteak.php?msg=" . urlencode("Paziente berria arrakastaz sortu da. ID: " . $id_berria));
             exit;
         } catch (PDOException $e) {
             $pdo->rollBack();
-            $error = "Errorea sortzean (baliteke emaila edo NANa errepikatuta egotea): " . $e->getMessage();
+            $errorea = "Errorea sortzean (baliteke emaila edo NANa errepikatuta egotea): " . $e->getMessage();
         }
     } else {
-        $error = "Mesedez, bete derrigorrezko eremu guztiak.";
+        $errorea = "Mesedez, bete derrigorrezko eremu guztiak.";
     }
 }
 ?>
@@ -72,16 +71,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <main class="panel-nagusia">
         <div class="orri-goiburua">
-            <h2><img src="../img/plus-circle.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"> Paziente Berria Sortu</h2>
+            <h2><img src="../img/plus-circle.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; iragazkia: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"> Paziente Berria Sortu</h2>
             <p>Sartu paziente berriaren datuak sisteman erregistratzeko.</p>
         </div>
 
-        <?php $base_path = '../';
-if ($error): ?>
-            <div class="alerta alerta-errorea"><?php $base_path = '../';
-echo htmlspecialchars($error); ?></div>
-        <?php $base_path = '../';
-endif; ?>
+        <?php if ($errorea): ?>
+            <div class="alerta alerta-errorea"><?php echo htmlspecialchars($errorea); ?></div>
+        <?php endif; ?>
 
         <div class="inprimaki-kutxa">
             <form method="POST">

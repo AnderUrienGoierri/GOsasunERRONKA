@@ -1,6 +1,6 @@
 <?php
 session_start();
-$base_path = '../';
+$bide_absolutua = '../';
 if (!isset($_SESSION['rol_id']) || $_SESSION['rol_izena'] !== 'Pazientea') {
     header("Location: ../php_hasiera/login.php");
     exit;
@@ -13,7 +13,7 @@ $erabiltzaile_id = $_SESSION['erabiltzaile_id'];
 // Lortu pazientearen datuak
 $stmt = $pdo->prepare("SELECT * FROM V_Pazientea WHERE paziente_id = ?");
 $stmt->execute([$erabiltzaile_id]);
-$user_data = $stmt->fetch(PDO::FETCH_ASSOC);
+$erabiltzaile_datuak = $stmt->fetch(PDO::FETCH_ASSOC);
 
 // Azken neurketa lortu
 $stmtNeurketa = $pdo->prepare("SELECT data, tentsio_sistolikoa, tentsio_diastolikoa, glukosa_mg_dl FROM Neurketak WHERE paziente_id = ? ORDER BY data DESC, ordua DESC LIMIT 1");
@@ -32,18 +32,18 @@ $stmtHitzordu = $pdo->prepare("
 $stmtHitzordu->execute([$erabiltzaile_id, $gaur]);
 $hurrengoHitzordua = $stmtHitzordu->fetch(PDO::FETCH_ASSOC);
 
-$page_title = "Hasiera - GOsasun";
-$page_title = "Paziente Panela - GOsasun";
-$current_page = "index";
-$custom_css = "index_pazientea.css";
+$orri_izenburua = "Hasiera - GOsasun";
+$orri_izenburua = "Paziente Panela - GOsasun";
+$uneko_orria = "index";
+$css_pertsonalizatua = "index_pazientea.css";
 
 include_once '../php_includeak/paziente_goiburua.php';
 ?>
     <main class="panel-nagusia">
         <section class="kaixo-atalak flex-zentratua-20" >
-            <img src="../<?php echo htmlspecialchars($user_data['irudia'] ?? 'img/lehenetsia_pazientea.png'); ?>" alt="Zure profila" class="profil-irudia-80">
+            <img src="../<?php echo htmlspecialchars($erabiltzaile_datuak['irudia'] ?? 'img/lehenetsia_pazientea.png'); ?>" alt="Zure profila" class="profil-irudia-80">
             <div>
-                <h1 class="izenburu-nagusia">Zer egin nahi duzu gaur, <?php echo htmlspecialchars($user_data['izena']); ?>?</h1>
+                <h1 class="izenburu-nagusia">Zer egin nahi duzu gaur, <?php echo htmlspecialchars($erabiltzaile_datuak['izena']); ?>?</h1>
                 <p class="azpititulu-grisa">Hemen zure osasunaren laburpena kontsultatu eta ekintza guztiak kudeatu ditzakezu.</p>
             </div>
         </section>
@@ -52,7 +52,7 @@ include_once '../php_includeak/paziente_goiburua.php';
         <div class="panel-sareta flex-tartea-20 marjina-behe-30">
             <!-- Azken Neurketak -->
             <div class="kutxa-zuria-itzala">
-                <h3 class="izenburu-iluna"><img src="../img/line-chart.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"> Azken Bizi-Seinaleak</h3>
+                <h3 class="izenburu-iluna"><img src="../img/line-chart.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; iragazkia: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"> Azken Bizi-Seinaleak</h3>
                 <?php if ($azkenNeurketa): ?>
                     <div class="sareta-bikoa">
                         <div class="informazio-taldea">
@@ -65,7 +65,7 @@ include_once '../php_includeak/paziente_goiburua.php';
                         </div>
                         <div class="informazio-taldea">
                             <label>Pisua</label>
-                            <div class="informazio-balioa"><?php echo htmlspecialchars($user_data['azken_pisua'] ?? '-'); ?> kg</div>
+                            <div class="informazio-balioa"><?php echo htmlspecialchars($erabiltzaile_datuak['azken_pisua'] ?? '-'); ?> kg</div>
                         </div>
                     </div>
                     <p class="testu-gris-txikia marjina-goi-15">Eguneratua: <?php echo date('Y/m/d', strtotime($azkenNeurketa['data'])); ?></p>
@@ -77,7 +77,7 @@ include_once '../php_includeak/paziente_goiburua.php';
 
             <!-- Hurrengo Hitzordua -->
             <div class="kutxa-zuria-itzala">
-                <h3 class="izenburu-iluna"><img src="../img/calendar-days.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"> Hurrengo Hitzordua</h3>
+                <h3 class="izenburu-iluna"><img src="../img/calendar-days.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; iragazkia: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"> Hurrengo Hitzordua</h3>
                 <?php if ($hurrengoHitzordua): ?>
                     <div class="paziente-txartel-zuria marjina-behe-0" style="padding: 15px; background: #f8f9fa;">
                         <div class="testua-erdian" style="background: var(--primary-color); color: white; padding: 10px; border-radius: 8px; min-width: 60px;">
@@ -86,7 +86,7 @@ include_once '../php_includeak/paziente_goiburua.php';
                         </div>
                         <div class="flex-bat">
                             <h4 style="margin: 0; color: var(--dark-text);">Dr. <?php echo htmlspecialchars($hurrengoHitzordua['mediku_izena'] . ' ' . $hurrengoHitzordua['mediku_abizenak']); ?></h4>
-                            <p class="ordua" style="margin: 5px 0 0 0; color: var(--gray);"><img src="../img/clock.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"> <?php echo date('H:i', strtotime($hurrengoHitzordua['hasiera_ordua'])); ?></p>
+                            <p class="ordua" style="margin: 5px 0 0 0; color: var(--gray);"><img src="../img/clock.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; iragazkia: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"> <?php echo date('H:i', strtotime($hurrengoHitzordua['hasiera_ordua'])); ?></p>
                         </div>
                     </div>
                 <?php else: ?>
@@ -96,45 +96,45 @@ include_once '../php_includeak/paziente_goiburua.php';
             </div>
         </div>
 
-        <h2 class="izenburu-nagusia marjina-behe-20"><img src="../img/zap.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"> Ekintza Azkarrak</h2>
+        <h2 class="izenburu-nagusia marjina-behe-20"><img src="../img/zap.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; iragazkia: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"> Ekintza Azkarrak</h2>
         <section class="menu-sareta">
             <a href="datuak.php" class="menu-txartela">
-                <div class="txartel-ikonoa"><img src="../img/user-cog.svg" alt="Nire Datuak" style="width: 48px; height: 48px; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg);"></div>
+                <div class="txartel-ikonoa"><img src="../img/user-cog.svg" alt="Nire Datuak" style="width: 48px; height: 48px; iragazkia: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg);"></div>
                 <h3>Nire Datuak</h3>
                 <p>Ikusi eta eguneratu zure datuak.</p>
             </a>
             <a href="neurketak.php" class="menu-txartela">
-                <div class="txartel-ikonoa"><img src="../img/clipboard-pen.svg" alt="Neurketak" style="width: 48px; height: 48px; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg);"></div>
+                <div class="txartel-ikonoa"><img src="../img/clipboard-pen.svg" alt="Neurketak" style="width: 48px; height: 48px; iragazkia: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg);"></div>
                 <h3>Neurketak</h3>
                 <p>Sartu neurketa eta sintoma berriak.</p>
             </a>
             <a href="grafikak.php" class="menu-txartela">
-                <div class="txartel-ikonoa"><img src="../img/line-chart.svg" alt="Grafikak" style="width: 48px; height: 48px; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg);"></div>
+                <div class="txartel-ikonoa"><img src="../img/line-chart.svg" alt="Grafikak" style="width: 48px; height: 48px; iragazkia: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg);"></div>
                 <h3>Grafikak</h3>
                 <p>Ikusi zure osasun bilakaera 2D grafikoetan.</p>
             </a>
             <a href="errezetak.php" class="menu-txartela">
-                <div class="txartel-ikonoa"><img src="../img/pill.svg" alt="Errezetak" style="width: 48px; height: 48px; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg);"></div>
+                <div class="txartel-ikonoa"><img src="../img/pill.svg" alt="Errezetak" style="width: 48px; height: 48px; iragazkia: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg);"></div>
                 <h3>Errezetak</h3>
                 <p>Ikusi medikuek esleitutako errezetak.</p>
             </a>
             <a href="abisuak.php" class="menu-txartela">
-                <div class="txartel-ikonoa"><img src="../img/bell-ring.svg" alt="Abisuak" style="width: 48px; height: 48px; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg);"></div>
+                <div class="txartel-ikonoa"><img src="../img/bell-ring.svg" alt="Abisuak" style="width: 48px; height: 48px; iragazkia: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg);"></div>
                 <h3>Abisuak</h3>
                 <p>Ikusi zure neurketetan detektatutako oharrak.</p>
             </a>
             <a href="hitzorduak.php" class="menu-txartela">
-                <div class="txartel-ikonoa"><img src="../img/calendar-days.svg" alt="Hitzorduak" style="width: 48px; height: 48px; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg);"></div>
+                <div class="txartel-ikonoa"><img src="../img/calendar-days.svg" alt="Hitzorduak" style="width: 48px; height: 48px; iragazkia: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg);"></div>
                 <h3>Hitzorduak</h3>
                 <p>Ikusi eta kudeatu zure mediku hitzorduak.</p>
             </a>
             <a href="mezuak.php" class="menu-txartela">
-                <div class="txartel-ikonoa"><img src="../img/mail.svg" alt="Mezuak" style="width: 48px; height: 48px; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg);"></div>
+                <div class="txartel-ikonoa"><img src="../img/mail.svg" alt="Mezuak" style="width: 48px; height: 48px; iragazkia: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg);"></div>
                 <h3>Mezuak</h3>
                 <p>Komunikatu medikuekin edo harrerakoekin.</p>
             </a>
             <a href="../php_laguntzaileak/logout.php" class="menu-txartela">
-                <div class="txartel-ikonoa"><img src="../img/log-out.svg" alt="Saioa Itxi" style="width: 48px; height: 48px; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg);"></div>
+                <div class="txartel-ikonoa"><img src="../img/log-out.svg" alt="Saioa Itxi" style="width: 48px; height: 48px; iragazkia: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg);"></div>
                 <h3>Saioa Itxi</h3>
                 <p>Amaitu saioa modu seguruan.</p>
             </a>
@@ -142,7 +142,7 @@ include_once '../php_includeak/paziente_goiburua.php';
             <!-- XML Esportazioa Txartel gisa -->
             <div class="menu-txartela kutxa-osoa">
                 <div class="flex-tartea-15 marjina-behe-10">
-                    <h3 style="margin: 0;"><div class="txartel-ikonoa" style="display: inline-block; font-size: 1.5rem; margin-right: 10px; margin-bottom: 0;"><img src="../img/download.svg" alt="Download" style="width: 24px; height: 24px; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); vertical-align: middle;"></div> Datuen Esportazioa (XML)</h3>
+                    <h3 style="margin: 0;"><div class="txartel-ikonoa" style="display: inline-block; font-size: 1.5rem; margin-right: 10px; margin-bottom: 0;"><img src="../img/download.svg" alt="Download" style="width: 24px; height: 24px; iragazkia: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); vertical-align: middle;"></div> Datuen Esportazioa (XML)</h3>
                 </div>
                 <form id="xmlEsportazioForm" class="flex-tartea-15 flex-bukaera" style="gap: 15px;">
                     <div class="informazio-taldea flex-bat marjina-behe-0">
@@ -191,7 +191,7 @@ include_once '../php_includeak/paziente_goiburua.php';
     </script>
 
 <?php
-$extra_js = ["paziente_menua.js"];
+$js_gehigarria = ["paziente_menua.js"];
 include_once '../php_includeak/paziente_footer.php';
 ?>
 

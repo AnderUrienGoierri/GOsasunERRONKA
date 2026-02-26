@@ -1,7 +1,7 @@
     <footer>
-        <link rel="stylesheet" href="<?php echo $base_path; ?>css/footer.css">
+        <link rel="stylesheet" href="<?php echo $bide_absolutua; ?>css/footer.css">
         <div class="footer-logo-container">
-            <img src="<?php echo $base_path; ?>img/GOsasun_logoa.png" alt="GOsasun Logo" class="footer-logo">
+            <img src="<?php echo $bide_absolutua; ?>img/GOsasun_logoa.png" alt="GOsasun Logo" class="footer-logo">
         </div>
         <div class="orri-oin-nabigazioa">
             <a href="hitzorduak.php">Hitzorduak</a> | 
@@ -9,16 +9,16 @@
             <a href="grafikak.php">Grafikak</a> | 
             <a href="mezuak.php">Mezuak</a> | 
             <a href="abisuak.php">Abisuak</a> | 
-            <a href="<?php echo $base_path; ?>php_laguntzaileak/logout.php">Saioa Itxi</a>
+            <a href="<?php echo $bide_absolutua; ?>php_laguntzaileak/logout.php">Saioa Itxi</a>
         </div>
         <p>&copy; 2026 GOsasun</p>
     </footer>
 
     <!-- JS -->
-    <script src="<?php echo $base_path; ?>js/common.js"></script>
-    <?php if (isset($extra_js)): ?>
-        <?php foreach ($extra_js as $js): ?>
-            <script src="<?php echo $base_path; ?>js/<?php echo $js; ?>"></script>
+    <script src="<?php echo $bide_absolutua; ?>js/common.js"></script>
+    <?php if (isset($js_gehigarria)): ?>
+        <?php foreach ($js_gehigarria as $js): ?>
+            <script src="<?php echo $bide_absolutua; ?>js/<?php echo $js; ?>"></script>
         <?php endforeach; ?>
     <?php endif; ?>
 </body>

@@ -1,0 +1,502 @@
+[
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_pazientea\\abisuak.php",
+    "LineNumber": 40,
+    "Line": "            <h2>🔔 Osasun Abisuak</h2>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_pazientea\\abisuak.php",
+    "LineNumber": 78,
+    "Line": "                        <span class=\"abisu-data\">📅 <?php $base_path = '../';"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_pazientea\\abisuak.php",
+    "LineNumber": 86,
+    "Line": "                    <div class=\"ikono-handia-3\">🎉</div>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_pazientea\\datuak.php",
+    "LineNumber": 40,
+    "Line": "            <h2>👤 Nire Informazioa</h2>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_pazientea\\errezetak.php",
+    "LineNumber": 31,
+    "Line": "            <h2>💊 Nire Errezetak eta Tratamenduak</h2>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_pazientea\\errezetak.php",
+    "LineNumber": 60,
+    "Line": "                            <h4>🩺 <?php echo htmlspecialchars($e['diagnostiko_laburra']); ?></h4>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_pazientea\\errezetak.php",
+    "LineNumber": 77,
+    "Line": "                    <div class=\"ikono-hutsa\">📝</div>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_pazientea\\grafikak.php",
+    "LineNumber": 43,
+    "Line": "                    📄 Deskargatu PDF (Txostena)"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_pazientea\\hitzorduak.php",
+    "LineNumber": 151,
+    "Line": "            <h2>📅 Nire Hitzorduen Agenda</h2>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_pazientea\\hitzorduak.php",
+    "LineNumber": 347,
+    "Line": "            <h3>📋 Xehetasunak Zerrendan</h3>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_pazientea\\hitzorduak.php",
+    "LineNumber": 404,
+    "Line": "                    <div class=\"ikono-hutsa\">📅</div>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_pazientea\\index.php",
+    "LineNumber": 55,
+    "Line": "                <h3 class=\"izenburu-iluna\">📊 Azken Bizi-Seinaleak</h3>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_pazientea\\index.php",
+    "LineNumber": 80,
+    "Line": "                <h3 class=\"izenburu-iluna\">📅 Hurrengo Hitzordua</h3>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_pazientea\\index.php",
+    "LineNumber": 89,
+    "Line": "                            <p class=\"ordua\" style=\"margin: 5px 0 0 0; color: var(--gray);\">🕒 <?php echo date('H:i', strtotime($hurrengoHitzordua['hasiera_ordua'])); ?></p>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_pazientea\\index.php",
+    "LineNumber": 99,
+    "Line": "        <h2 class=\"izenburu-nagusia marjina-behe-20\">🚀 Ekintza Azkarrak</h2>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_pazientea\\mezu_berria.php",
+    "LineNumber": 57,
+    "Line": "        <h2 class=\"izenburu-nagusia\">✍️ Mezu Berria</h2>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_pazientea\\mezu_xehetasuna.php",
+    "LineNumber": 81,
+    "Line": "        <h2 class=\"izenburu-nagusia marjina-goi-10\">📧 Mezuaren Xehetasuna</h2>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_pazientea\\mezuak.php",
+    "LineNumber": 58,
+    "Line": "            <h2 class=\"izenburu-nagusia\">📧 Nire Mezuak</h2>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_pazientea\\mezuak.php",
+    "LineNumber": 65,
+    "Line": "        <button class=\"fitxa-botoia aktiboa\" onclick=\"fitxaAldatu('jasotakoak')\">📩 Jasotakoak</button>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_pazientea\\mezuak.php",
+    "LineNumber": 66,
+    "Line": "        <button class=\"fitxa-botoia\" onclick=\"fitxaAldatu('bidalitakoak')\">📤 Bidalitakoak</button>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_pazientea\\mezuak.php",
+    "LineNumber": 115,
+    "Line": "                <div class=\"ikono-hutsa\">📭</div>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_pazientea\\mezuak.php",
+    "LineNumber": 157,
+    "Line": "                <div class=\"ikono-hutsa\">📤</div>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_pazientea\\neurketak.php",
+    "LineNumber": 49,
+    "Line": "            <h2>📝 Neurketa Berria Gehitu</h2>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_medikua\\abisuak.php",
+    "LineNumber": 38,
+    "Line": "            <h2>🚨 Pazienteen Osasun Abisuak</h2>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_medikua\\abisuak.php",
+    "LineNumber": 92,
+    "Line": "                <div class=\"ikono-handia-4\">🛡️</div>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_medikua\\errezetak.php",
+    "LineNumber": 95,
+    "Line": "            <h2>💊 Errezetak eta Diagnostikoak</h2>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_medikua\\errezetak.php",
+    "LineNumber": 133,
+    "Line": "                            <p class=\"diagnostikoa\">🩺 <?php echo htmlspecialchars($e['diagnostiko_laburra']); ?></p>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_medikua\\errezetak.php",
+    "LineNumber": 152,
+    "Line": "                    <div class=\"ikono-hutsa\">📝</div>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_medikua\\grafikak.php",
+    "LineNumber": 90,
+    "Line": "                        📄 Deskargatu PDF (Txostena)"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_medikua\\hitzorduak.php",
+    "LineNumber": 151,
+    "Line": "            <h2>📅 Agenda eta Hitzorduak</h2>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_medikua\\hitzorduak.php",
+    "LineNumber": 342,
+    "Line": "            <h3>📋 Hitzorduen Zerrenda</h3>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_medikua\\hitzorduak.php",
+    "LineNumber": 393,
+    "Line": "                    <div class=\"ikono-hutsa\">📅</div>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_medikua\\index.php",
+    "LineNumber": 48,
+    "Line": "                <div style=\"font-size: 3rem; margin-bottom: 10px;\">👥</div>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_medikua\\index.php",
+    "LineNumber": 54,
+    "Line": "                <div style=\"font-size: 3rem; margin-bottom: 10px;\">📅</div>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_medikua\\index.php",
+    "LineNumber": 61,
+    "Line": "        <h2 class=\"izenburu-nagusia marjina-behe-20\">🚀 Ekintza Azkarrak</h2>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_medikua\\mezu_berria.php",
+    "LineNumber": 57,
+    "Line": "        <h2 class=\"izenburu-nagusia\">✍️ Mezu Berria</h2>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_medikua\\mezu_xehetasuna.php",
+    "LineNumber": 78,
+    "Line": "        <h2 class=\"izenburu-nagusia marjina-goi-10\">📧 Mezuaren Xehetasuna</h2>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_medikua\\mezuak.php",
+    "LineNumber": 58,
+    "Line": "            <h2 class=\"izenburu-nagusia\">📧 Nire Mezuak</h2>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_medikua\\mezuak.php",
+    "LineNumber": 65,
+    "Line": "        <button class=\"fitxa-botoia aktiboa\" onclick=\"fitxaAldatu('jasotakoak')\">📩 Jasotakoak</button>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_medikua\\mezuak.php",
+    "LineNumber": 66,
+    "Line": "        <button class=\"fitxa-botoia\" onclick=\"fitxaAldatu('bidalitakoak')\">📤 Bidalitakoak</button>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_medikua\\mezuak.php",
+    "LineNumber": 115,
+    "Line": "                <div class=\"ikono-hutsa\">📭</div>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_medikua\\mezuak.php",
+    "LineNumber": 157,
+    "Line": "                <div class=\"ikono-hutsa\">📤</div>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_medikua\\paziente_info.php",
+    "LineNumber": 75,
+    "Line": "            <h4>🏥 Egoera Klinikoa (Harrera)</h4>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_medikua\\paziente_info.php",
+    "LineNumber": 118,
+    "Line": "                <h3>🏥 Datu Klinikoak</h3>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_medikua\\paziente_info.php",
+    "LineNumber": 121,
+    "Line": "                        <span class=\"estatistika-ikonoa\">🩸</span>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_medikua\\paziente_info.php",
+    "LineNumber": 129,
+    "Line": "                        <span class=\"estatistika-ikonoa\">📏</span>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_medikua\\paziente_info.php",
+    "LineNumber": 137,
+    "Line": "                        <span class=\"estatistika-ikonoa\">⚖️</span>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_medikua\\pazienteak.php",
+    "LineNumber": 33,
+    "Line": "                <h2>👥 Nire Pazienteak</h2>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_medikua\\pazienteak.php",
+    "LineNumber": 46,
+    "Line": "                        <th class=\"kurtsore-erakuslea\" onclick=\"ordenatuTaula(1)\">ID ↕️</th>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_medikua\\pazienteak.php",
+    "LineNumber": 47,
+    "Line": "                        <th class=\"kurtsore-erakuslea\" onclick=\"ordenatuTaula(2)\">Izen-abizenak ↕️</th>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_medikua\\pazienteak.php",
+    "LineNumber": 48,
+    "Line": "                        <th class=\"kurtsore-erakuslea\" onclick=\"ordenatuTaula(3)\">NAN ↕️</th>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_medikua\\pazienteak.php",
+    "LineNumber": 80,
+    "Line": "echo $p['paziente_id']; ?>\" class=\"botoi-ikonoa ikusi-botoia\" title=\"Ikusi xehetasunak\">👁️</a>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_harrera\\harrerako_langile_editatu.php",
+    "LineNumber": 77,
+    "Line": "    <a href=\"harrerako_langileak.php\" class=\"atzera-botoia esteka-itzuli\" >⬅️ Itzuli zerrendara</a>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_harrera\\harrerako_langile_editatu.php",
+    "LineNumber": 80,
+    "Line": "        <h2>✏️ Langilea Editatu: <?php $base_path = '../';"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_harrera\\harrerako_langileak.php",
+    "LineNumber": 45,
+    "Line": "            <h2>👥 Harrerako Langileak</h2>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_harrera\\harrerako_langileak.php",
+    "LineNumber": 72,
+    "Line": "                        <th class=\"kurtsore-erakuslea\" onclick=\"ordenatuTaula(1)\">ID ↕️</th>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_harrera\\harrerako_langileak.php",
+    "LineNumber": 73,
+    "Line": "                        <th class=\"kurtsore-erakuslea\" onclick=\"ordenatuTaula(2)\">Izena ↕️</th>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_harrera\\harrerako_langileak.php",
+    "LineNumber": 74,
+    "Line": "                        <th class=\"kurtsore-erakuslea\" onclick=\"ordenatuTaula(3)\">Emaila ↕️</th>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_harrera\\harrerako_langileak.php",
+    "LineNumber": 100,
+    "Line": "echo $l['langile_id']; ?>\" class=\"botoi-ikonoa\" title=\"Editatu\">✏️</a>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_harrera\\harrerako_langileak.php",
+    "LineNumber": 105,
+    "Line": "echo $l['langile_id']; ?>\" class=\"botoi-ikonoa\" onclick=\"return confirm('Ziur ezabatu nahi duzula?');\" title=\"Ezabatu\">🗑️</a>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_harrera\\harrerako_langileak.php",
+    "LineNumber": 108,
+    "Line": "                                            <span class=\"kolorea-grisa\" title=\"Zure burua ezin duzu ezabatu\">🚫</span>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_harrera\\hitzorduak.php",
+    "LineNumber": 346,
+    "Line": "                <h3>📋 Hitzordu Guztiak</h3>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_harrera\\kanpoko_mezuak.php",
+    "LineNumber": 24,
+    "Line": "            <h2>📧 Kanpoko Mezuak</h2>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_harrera\\kanpoko_mezuak.php",
+    "LineNumber": 77,
+    "Line": "                    <div class=\"ikono-hutsa\">📩</div>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_harrera\\mediku_editatu.php",
+    "LineNumber": 50,
+    "Line": "    <header class=\"panel-goiburua\"><div class=\"logoa\"><a href=\"index.php\">🏢 GOsasun - Harrera</a></div></header>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_harrera\\mediku_editatu.php",
+    "LineNumber": 52,
+    "Line": "        <div class=\"orri-goiburua\"><h2>✏️ Editatu Medikua</h2></div>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_harrera\\mediku_fitxa.php",
+    "LineNumber": 47,
+    "Line": "    <a href=\"medikuak.php\" class=\"atzera-botoia\">⬅️ Medikuen zerrendara itzuli</a>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_harrera\\mediku_fitxa.php",
+    "LineNumber": 50,
+    "Line": "        <h2>👨‍⚕️ Medikuaren Fitxa</h2>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_harrera\\mediku_fitxa.php",
+    "LineNumber": 52,
+    "Line": "echo $medikua['mediku_id']; ?>\" class=\"botoia botoi-nagusia\">📅 Ikusi Agenda Osoa</a>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_harrera\\mediku_fitxa.php",
+    "LineNumber": 68,
+    "Line": "                <p><strong>🏥 Elkargokide Zkia:</strong> <span class=\"identifikadorea\"><?php $base_path = '../';"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_harrera\\mediku_fitxa.php",
+    "LineNumber": 70,
+    "Line": "                <p><strong>📧 Email:</strong> <?php $base_path = '../';"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_harrera\\mediku_sortu.php",
+    "LineNumber": 55,
+    "Line": "        <div class=\"logoa\"><a href=\"index.php\">🏢 GOsasun - Harrera</a></div>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_harrera\\mediku_sortu.php",
+    "LineNumber": 67,
+    "Line": "            <h2>➕ Mediku Berria Sortu</h2>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_harrera\\medikuak.php",
+    "LineNumber": 39,
+    "Line": "            <h2>👨‍⚕️ Medikuen Kudeaketa</h2>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_harrera\\medikuak.php",
+    "LineNumber": 66,
+    "Line": "                        <th class=\"kurtsore-erakuslea\" onclick=\"ordenatuTaula(1)\">Izena ↕️</th>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_harrera\\medikuak.php",
+    "LineNumber": 67,
+    "Line": "                        <th class=\"kurtsore-erakuslea\" onclick=\"ordenatuTaula(2)\">Espezialitatea ↕️</th>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_harrera\\medikuak.php",
+    "LineNumber": 68,
+    "Line": "                        <th class=\"kurtsore-erakuslea\" onclick=\"ordenatuTaula(3)\">Elkargokide Zkia. ↕️</th>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_harrera\\medikuak.php",
+    "LineNumber": 95,
+    "Line": "echo $m['mediku_id']; ?>\" class=\"botoi-ikonoa\" title=\"Ikusi Fitxa\">👁️</a>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_harrera\\medikuak.php",
+    "LineNumber": 97,
+    "Line": "echo $m['mediku_id']; ?>\" class=\"botoi-ikonoa hitzordu-botoia\" title=\"Ikusi Agenda\">📅</a>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_harrera\\medikuak.php",
+    "LineNumber": 99,
+    "Line": "echo $m['mediku_id']; ?>\" class=\"botoi-ikonoa editatu-botoia\" title=\"Editatu\">✏️</a>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_harrera\\medikuak.php",
+    "LineNumber": 101,
+    "Line": "echo $m['mediku_id']; ?>\" class=\"botoi-ikonoa ezabatu-botoia\" onclick=\"return confirm('Ziur zaude mediku hau ezabatu nahi duzula?');\" title=\"Ezabatu\">🗑️</a>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_harrera\\mezu_berria.php",
+    "LineNumber": 51,
+    "Line": "        <h2 class=\"izenburu-nagusia\">✍️ Mezu Berria</h2>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_harrera\\mezuak.php",
+    "LineNumber": 159,
+    "Line": "                <div class=\"ikono-hutsa\">📤</div>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_harrera\\paziente_editatu.php",
+    "LineNumber": 56,
+    "Line": "        <div class=\"logoa\"><a href=\"index.php\">🏢 GOsasun - Harrera</a></div>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_harrera\\paziente_editatu.php",
+    "LineNumber": 59,
+    "Line": "        <div class=\"orri-goiburua\"><h2>✏️ Editatu Pazientea</h2></div>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_harrera\\paziente_fitxa.php",
+    "LineNumber": 52,
+    "Line": "    <a href=\"pazienteak.php\" class=\"atzera-botoia\">⬅️ Pazienteen zerrendara itzuli</a>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_harrera\\paziente_fitxa.php",
+    "LineNumber": 55,
+    "Line": "        <h2>👤 Pazientearen Fitxa</h2>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_harrera\\paziente_fitxa.php",
+    "LineNumber": 77,
+    "Line": "                <p><strong>📧 Email:</strong> <?php $base_path = '../';"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_harrera\\paziente_fitxa.php",
+    "LineNumber": 79,
+    "Line": "                <p><strong>📱 Telefonoa:</strong> <?php $base_path = '../';"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_harrera\\paziente_fitxa.php",
+    "LineNumber": 84,
+    "Line": "echo $pazientea['paziente_id']; ?>\" class=\"botoia botoi-ertza marjina-goi-zabalera\">✏️ Editatu Datuak</a>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_harrera\\paziente_sortu.php",
+    "LineNumber": 62,
+    "Line": "            <a href=\"index.php\">🏢 GOsasun - Harrera</a>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_harrera\\paziente_sortu.php",
+    "LineNumber": 75,
+    "Line": "            <h2>➕ Paziente Berria Sortu</h2>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_harrera\\pazienteak.php",
+    "LineNumber": 45,
+    "Line": "            <h2>👤 Pazienteen Kudeaketa</h2>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_harrera\\pazienteak.php",
+    "LineNumber": 72,
+    "Line": "                        <th class=\"kurtsore-erakuslea\" onclick=\"ordenatuTaula(1)\">ID ↕️</th>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_harrera\\pazienteak.php",
+    "LineNumber": 73,
+    "Line": "                        <th class=\"kurtsore-erakuslea\" onclick=\"ordenatuTaula(2)\">Izena ↕️</th>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_harrera\\pazienteak.php",
+    "LineNumber": 74,
+    "Line": "                        <th class=\"kurtsore-erakuslea\" onclick=\"ordenatuTaula(3)\">NAN ↕️</th>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_harrera\\pazienteak.php",
+    "LineNumber": 76,
+    "Line": "                        <th class=\"kurtsore-erakuslea\" onclick=\"ordenatuTaula(5)\">Egoera Klinikoa ↕️</th>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_harrera\\pazienteak.php",
+    "LineNumber": 118,
+    "Line": "echo $p['paziente_id']; ?>\" class=\"botoi-ikonoa\" title=\"Ikusi Fitxa\">👁️</a>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_harrera\\pazienteak.php",
+    "LineNumber": 120,
+    "Line": "echo $p['paziente_id']; ?>\" class=\"botoi-ikonoa editatu-botoia\" title=\"Editatu\">✏️</a>"
+  },
+  {
+    "Path": "C:\\Xampp\\htdocs\\GOsasun\\php_harrera\\pazienteak.php",
+    "LineNumber": 122,
+    "Line": "echo $p['paziente_id']; ?>\" class=\"botoi-ikonoa ezabatu-botoia\" onclick=\"return confirm('Ziur zaude paziente hau eta bere datu guztiak ezabatu nahi dituzula?');\" title=\"Ezabatu\">🗑️</a>"
+  }
+]

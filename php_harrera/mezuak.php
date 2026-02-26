@@ -1,6 +1,5 @@
 <?php
-$base_path = '../';
-session_start();
+$bide_absolutua = '../'; session_start();
 if (!isset($_SESSION['rol_id']) || $_SESSION['rol_izena'] !== 'Harrera') {
     header("Location: ../php_hasiera/login.php");
     exit;
@@ -47,9 +46,9 @@ $stmt_bidalitakoak = $pdo->prepare("
 $stmt_bidalitakoak->execute([$erabiltzaile_id]);
 $bidalitako_mezuak = $stmt_bidalitakoak->fetchAll(PDO::FETCH_ASSOC);
 
-$page_title = "Mezuak - GOsasun";
-$current_page = "mezuak";
-$custom_css = "mezuak.css";
+$orri_izenburua = "Mezuak - GOsasun";
+$uneko_orria = "mezuak";
+$css_pertsonalizatua = "mezuak.css";
 
 include_once '../php_includeak/harrera_goiburua.php';
 ?>
@@ -69,8 +68,7 @@ include_once '../php_includeak/harrera_goiburua.php';
     </div>
 
     <div id="jasotakoak" class="fitxa-edukia aktiboa">
-        <?php $base_path = '../';
-if (count($jasotako_mezuak) > 0): ?>
+        <?php if (count($jasotako_mezuak) > 0): ?>
             <table class="taula-modernoa">
                 <thead>
                     <tr>
@@ -81,50 +79,37 @@ if (count($jasotako_mezuak) > 0): ?>
                         <th>Ekintzak</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <?php $base_path = '../';
-foreach ($jasotako_mezuak as $m): ?>
-                        <tr class="<?php $base_path = '../';
-echo $m['irakurrita'] ? '' : 'mezu-berria'; ?>">
-                            <td><?php $base_path = '../';
-echo date('Y/m/d H:i', strtotime($m['bidalketa_data'])); ?></td>
-                            <td><?php $base_path = '../';
-echo htmlspecialchars($m['bidaltzaile_izena']); ?></td>
-                            <td><strong><?php $base_path = '../';
-echo htmlspecialchars($m['gaia']); ?></strong></td>
+                <taula_gorputza>
+                    <?php foreach ($jasotako_mezuak as $m): ?>
+                        <tr class="<?php echo $m['irakurrita'] ? '' : 'mezu-berria'; ?>">
+                            <td><?php echo date('Y/m/d H:i', strtotime($m['bidalketa_data'])); ?></td>
+                            <td><?php echo htmlspecialchars($m['bidaltzaile_izena']); ?></td>
+                            <td><strong><?php echo htmlspecialchars($m['gaia']); ?></strong></td>
                             <td>
-                                <?php $base_path = '../';
-if ($m['irakurrita']): ?>
+                                <?php if ($m['irakurrita']): ?>
                                     <span class="egoera-etiketa egoera-irakurrita">Irakurrita</span>
-                                <?php $base_path = '../';
-else: ?>
+                                <?php else: ?>
                                     <span class="egoera-etiketa egoera-berria">Berria</span>
-                                <?php $base_path = '../';
-endif; ?>
+                                <?php endif; ?>
                             </td>
                             <td>
-                                <a href="mezu_xehetasuna.php?id=<?php $base_path = '../';
-echo $m['mezu_id']; ?>" class="botoia botoi-informazioa botoi-txikia">Irakurri</a>
+                                <a href="mezu_xehetasuna.php?id=<?php echo $m['mezu_id']; ?>" class="botoia botoi-informazioa botoi-txikia">Irakurri</a>
                             </td>
                         </tr>
-                    <?php $base_path = '../';
-endforeach; ?>
-                </tbody>
+                    <?php endforeach; ?>
+                </taula_gorputza>
             </table>
-        <?php $base_path = '../';
-else: ?>
+        <?php else: ?>
             <div class="egoera-hutsa">
                 <div class="ikono-hutsa"></div>
                 <h3>Ez dago mezurik</h3>
                 <p>Ez duzu mezurik jaso oraindik.</p>
             </div>
-        <?php $base_path = '../';
-endif; ?>
+        <?php endif; ?>
     </div>
 
     <div id="bidalitakoak" class="fitxa-edukia">
-        <?php $base_path = '../';
-if (count($bidalitako_mezuak) > 0): ?>
+        <?php if (count($bidalitako_mezuak) > 0): ?>
             <table class="taula-modernoa">
                 <thead>
                     <tr>
@@ -134,34 +119,26 @@ if (count($bidalitako_mezuak) > 0): ?>
                         <th>Ekintzak</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <?php $base_path = '../';
-foreach ($bidalitako_mezuak as $m): ?>
+                <taula_gorputza>
+                    <?php foreach ($bidalitako_mezuak as $m): ?>
                         <tr>
-                            <td><?php $base_path = '../';
-echo date('Y/m/d H:i', strtotime($m['bidalketa_data'])); ?></td>
-                            <td><?php $base_path = '../';
-echo htmlspecialchars($m['hartzaile_izena']); ?></td>
-                            <td><?php $base_path = '../';
-echo htmlspecialchars($m['gaia']); ?></td>
+                            <td><?php echo date('Y/m/d H:i', strtotime($m['bidalketa_data'])); ?></td>
+                            <td><?php echo htmlspecialchars($m['hartzaile_izena']); ?></td>
+                            <td><?php echo htmlspecialchars($m['gaia']); ?></td>
                             <td>
-                                <a href="mezu_xehetasuna.php?id=<?php $base_path = '../';
-echo $m['mezu_id']; ?>" class="botoia botoi-informazioa botoi-txikia">Ikusi</a>
+                                <a href="mezu_xehetasuna.php?id=<?php echo $m['mezu_id']; ?>" class="botoia botoi-informazioa botoi-txikia">Ikusi</a>
                             </td>
                         </tr>
-                    <?php $base_path = '../';
-endforeach; ?>
-                </tbody>
+                    <?php endforeach; ?>
+                </taula_gorputza>
             </table>
-        <?php $base_path = '../';
-else: ?>
+        <?php else: ?>
             <div class="egoera-hutsa">
                 <div class="ikono-hutsa">📤</div>
                 <h3>Ez dago bidalitako mezurik</h3>
                 <p>Ez duzu mezurik bidali oraindik.</p>
             </div>
-        <?php $base_path = '../';
-endif; ?>
+        <?php endif; ?>
     </div>
 </main>
 
@@ -177,9 +154,7 @@ endif; ?>
 .egoera-etiketa.egoera-irakurrita { background-color: #e9ecef; color: #495057; }
 </style>
 
-<?php 
-$base_path = '../';
-$extra_js = ['harrera_mezuak.js'];
+<?php $js_gehigarria = ['harrera_mezuak.js'];
 include_once '../php_includeak/harrera_footer.php'; 
 ?>
 

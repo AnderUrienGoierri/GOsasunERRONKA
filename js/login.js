@@ -1,13 +1,13 @@
 $(document).ready(function() {
     $('#loginForm').submit(function(e) {
-        let isValid = true;
+        let baliozkoa_da = true;
         
         // Balidazioa: E-posta
         const email = $('#email').val().trim();
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (email === '' || !emailRegex.test(email)) {
             $('#error-login-email').show();
-            isValid = false;
+            baliozkoa_da = false;
         } else {
             $('#error-login-email').hide();
         }
@@ -16,14 +16,14 @@ $(document).ready(function() {
         const pasahitza = $('#pasahitza').val().trim();
         if (pasahitza === '') {
             $('#error-login-pass').show();
-            isValid = false;
+            baliozkoa_da = false;
         } else {
             $('#error-login-pass').hide();
         }
         
         // Ajax ez da beharrezkoa hemen, PHPk egingo duelako redirect-a backend-etik
         // Soilik balidazio errorea baldin badago gelditu egingo da
-        if (!isValid) {
+        if (!baliozkoa_da) {
             e.preventDefault(); 
         }
     });

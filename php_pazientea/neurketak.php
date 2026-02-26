@@ -1,6 +1,5 @@
 <?php
-$base_path = '../';
-session_start();
+$bide_absolutua = '../'; session_start();
 if (!isset($_SESSION['rol_id']) || $_SESSION['rol_izena'] !== 'Pazientea') {
     header("Location: ../php_hasiera/login.php");
     exit;
@@ -8,8 +7,8 @@ if (!isset($_SESSION['rol_id']) || $_SESSION['rol_izena'] !== 'Pazientea') {
 
 require_once '../php_laguntzaileak/DB_konexioa.php';
 $paziente_id = $_SESSION['erabiltzaile_id'];
-$success_msg = '';
-$error_msg = '';
+$arrakasta_mezua = '';
+$errore_mezua = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $data = $_POST['data'] ?? date('Y-m-d');
@@ -27,54 +26,45 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 VALUES (?, ?, ?, ?, ?, ?, ?, ?)
             ");
             $stmt->execute([$paziente_id, $data, $ordua, $glukosa, $sistolikoa, $diastolikoa, $pisua, $sintomak]);
-            $success_msg = "Neurketak ondo erregistratu dira!";
+            $arrakasta_mezua = "Neurketak ondo erregistratu dira!";
         } catch (PDOException $e) {
-            $error_msg = "Errorea gertatu da datuak gordetzean: " . $e->getMessage();
+            $errore_mezua = "Errorea gertatu da datuak gordetzean: " . $e->getMessage();
         }
     } else {
-        $error_msg = "Gutxienez neurketa bat bete behar duzu gordetzeko.";
+        $errore_mezua = "Gutxienez neurketa bat bete behar duzu gordetzeko.";
     }
 }
 
-$page_title = "Neurketa Berria - GOsasun";
-$current_page = "neurketak";
-$custom_css = "pazienteak.css";
+$orri_izenburua = "Neurketa Berria - GOsasun";
+$uneko_orria = "neurketak";
+$css_pertsonalizatua = "pazienteak.css";
 
 include_once '../php_includeak/paziente_goiburua.php';
 ?>
 
-    <main class="panel-nagusia" data-paziente-id="<?php $base_path = '../';
-echo $paziente_id; ?>">
+    <main class="panel-nagusia" data-paziente-id="<?php echo $paziente_id; ?>">
         <div class="orri-goiburua">
-            <h2><img src="../img/clipboard-pen.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"> Neurketa Berria Gehitu</h2>
+            <h2><img src="../img/clipboard-pen.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; iragazkia: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"> Neurketa Berria Gehitu</h2>
             <p>Sartu zure bizi-seinaleak eta sintomak jarraipen klinikorako.</p>
         </div>
 
-        <?php $base_path = '../';
-if ($success_msg): ?>
-            <div class="alerta alerta-arrakasta"><?php $base_path = '../';
-echo htmlspecialchars($success_msg); ?></div>
-        <?php $base_path = '../';
-endif; ?>
-        <?php $base_path = '../';
-if ($error_msg): ?>
-            <div class="alerta alerta-errorea"><?php $base_path = '../';
-echo htmlspecialchars($error_msg); ?></div>
-        <?php $base_path = '../';
-endif; ?>
+        <?php if ($arrakasta_mezua): ?>
+            <div class="alerta alerta-arrakasta"><?php echo htmlspecialchars($arrakasta_mezua); ?></div>
+        <?php endif; ?>
+        <?php if ($errore_mezua): ?>
+            <div class="alerta alerta-errorea"><?php echo htmlspecialchars($errore_mezua); ?></div>
+        <?php endif; ?>
 
         <div class="inprimaki-edukiontzia">
             <form id="neurketaForm" action="neurketak.php" method="POST" class="neurketa-inprimakia">
                 <div class="inprimaki-lerroa data-ordu-lerroa">
                     <div class="inprimaki-taldea">
                         <label for="data">Data:</label>
-                        <input type="date" id="data" name="data" value="<?php $base_path = '../';
-echo date('Y-m-d'); ?>" class="inprimaki-kontrola">
+                        <input type="date" id="data" name="data" value="<?php echo date('Y-m-d'); ?>" class="inprimaki-kontrola">
                     </div>
                     <div class="inprimaki-taldea">
                         <label for="ordua">Ordua:</label>
-                        <input type="time" id="ordua" name="ordua" value="<?php $base_path = '../';
-echo date('H:i'); ?>" class="inprimaki-kontrola">
+                        <input type="time" id="ordua" name="ordua" value="<?php echo date('H:i'); ?>" class="inprimaki-kontrola">
                     </div>
                 </div>
 
@@ -102,7 +92,7 @@ echo date('H:i'); ?>" class="inprimaki-kontrola">
 
                 <div class="inprimaki-taldea">
                     <label for="sintomak">Sintomak / Oharrak:</label>
-                    <textarea id="sintomak" name="sintomak" rows="4" placeholder="Nola sentitzen zara? Zerbait arraroa sumatu duzu?" class="inprimaki-kontrola"></textarea>
+                    <textarea id="sintomak" name="sintomak" errenkadak="4" placeholder="Nola sentitzen zara? Zerbait arraroa sumatu duzu?" class="inprimaki-kontrola"></textarea>
                 </div>
 
                 <div class="inprimaki-ekintzak">
@@ -116,9 +106,7 @@ echo date('H:i'); ?>" class="inprimaki-kontrola">
     <script src="../js/abisuak_logika.js"></script>
     <script src="../js/neurketak.js"></script>
 
-<?php
-$base_path = '../';
-include_once '../php_includeak/paziente_footer.php';
+<?php include_once '../php_includeak/paziente_footer.php';
 ?>
 
 

@@ -1,6 +1,5 @@
 <?php
-$base_path = '../';
-session_start();
+$bide_absolutua = '../'; session_start();
 if (!isset($_SESSION['rol_id']) || $_SESSION['rol_izena'] !== 'Medikua') {
     header("Location: ../php_hasiera/login.php");
     exit;
@@ -23,8 +22,8 @@ $pazienteak = $stmt_pazienteak->fetchAll(PDO::FETCH_ASSOC);
 $stmt_harrera = $pdo->query("SELECT langile_id, izena, abizenak FROM Harrerako_Langileak");
 $harrerakoak = $stmt_harrera->fetchAll(PDO::FETCH_ASSOC);
 
-$error_msg = '';
-$success_msg = '';
+$errore_mezua = '';
+$arrakasta_mezua = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $hartzaile_id = $_POST['hartzaile_id'] ?? '';
@@ -35,20 +34,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         try {
             $stmt = $pdo->prepare("INSERT INTO Mezuak (bidaltzaile_id, hartzaile_id, gaia, mezua) VALUES (?, ?, ?, ?)");
             if ($stmt->execute([$erabiltzaile_id, $hartzaile_id, $gaia, $mezua])) {
-                $success_msg = "Mezua ondo bidali da!";
+                $arrakasta_mezua = "Mezua ondo bidali da!";
             } else {
-                $error_msg = "Errorea mezua bidaltzean.";
+                $errore_mezua = "Errorea mezua bidaltzean.";
             }
         } catch (PDOException $e) {
-            $error_msg = "Datu-base errorea: " . $e->getMessage();
+            $errore_mezua = "Datu-base errorea: " . $e->getMessage();
         }
     } else {
-        $error_msg = "Mesedez, bete eremu guztiak.";
+        $errore_mezua = "Mesedez, bete eremu guztiak.";
     }
 }
 
-$page_title = "Mezu Berria - GOsasun";
-$current_page = "mezuak";
+$orri_izenburua = "Mezu Berria - GOsasun";
+$uneko_orria = "mezuak";
 include_once '../php_includeak/mediku_goiburua.php';
 ?>
 
@@ -59,47 +58,32 @@ include_once '../php_includeak/mediku_goiburua.php';
     </div>
 
     <div class="kutxa-zuria-itzala">
-        <?php $base_path = '../';
-if ($success_msg): ?>
+        <?php if ($arrakasta_mezua): ?>
             <div class="alerta alerta-arrakasta marjina-behe-20">
-                <?php $base_path = '../';
-echo $success_msg; ?>
+                <?php echo $arrakasta_mezua; ?>
                 <div class="marjina-goi-10"><a href="mezuak.php" class="esteka-arrakasta">← Itzuli mezuetara</a></div>
             </div>
-        <?php $base_path = '../';
-endif; ?>
+        <?php endif; ?>
 
-        <?php $base_path = '../';
-if ($error_msg): ?>
-            <div class="alerta alerta-errorea marjina-behe-20"><?php $base_path = '../';
-echo $error_msg; ?></div>
-        <?php $base_path = '../';
-endif; ?>
+        <?php if ($errore_mezua): ?>
+            <div class="alerta alerta-errorea marjina-behe-20"><?php echo $errore_mezua; ?></div>
+        <?php endif; ?>
 
-        <?php $base_path = '../';
-if (!$success_msg): ?>
+        <?php if (!$arrakasta_mezua): ?>
             <form action="mezu_berria.php" method="POST">
                 <div class="inprimaki-taldea">
                     <label for="hartzaile_id">Hartzailea</label>
                     <select id="hartzaile_id" name="hartzaile_id" class="inprimaki-kontrola" required>
                         <option value="">Aukeratu hartzaile bat...</option>
                         <optgroup label="Nire Pazienteak">
-                            <?php $base_path = '../';
-foreach ($pazienteak as $p): ?>
-                                <option value="<?php $base_path = '../';
-echo $p['paziente_id']; ?>"><?php $base_path = '../';
-echo htmlspecialchars($p['izena'] . ' ' . $p['abizenak'] . ' (' . $p['nan'] . ')'); ?></option>
-                            <?php $base_path = '../';
-endforeach; ?>
+                            <?php foreach ($pazienteak as $p): ?>
+                                <option value="<?php echo $p['paziente_id']; ?>"><?php echo htmlspecialchars($p['izena'] . ' ' . $p['abizenak'] . ' (' . $p['nan'] . ')'); ?></option>
+                            <?php endforeach; ?>
                         </optgroup>
                         <optgroup label="Harrera">
-                            <?php $base_path = '../';
-foreach ($harrerakoak as $h): ?>
-                                <option value="<?php $base_path = '../';
-echo $h['langile_id']; ?>">Harrera: <?php $base_path = '../';
-echo htmlspecialchars($h['izena'] . ' ' . $h['abizenak']); ?></option>
-                            <?php $base_path = '../';
-endforeach; ?>
+                            <?php foreach ($harrerakoak as $h): ?>
+                                <option value="<?php echo $h['langile_id']; ?>">Harrera: <?php echo htmlspecialchars($h['izena'] . ' ' . $h['abizenak']); ?></option>
+                            <?php endforeach; ?>
                         </optgroup>
                     </select>
                 </div>
@@ -111,7 +95,7 @@ endforeach; ?>
 
                 <div class="inprimaki-taldea">
                     <label for="mezua">Mezua</label>
-                    <textarea id="mezua" name="mezua" class="inprimaki-kontrola" rows="6" placeholder="Idatzi hemen zure mezua..." required></textarea>
+                    <textarea id="mezua" name="mezua" class="inprimaki-kontrola" errenkadak="6" placeholder="Idatzi hemen zure mezua..." required></textarea>
                 </div>
 
                 <div class="flex-bukaera goiko-tartea-20" style="gap: 10px;">
@@ -119,12 +103,10 @@ endforeach; ?>
                     <button type="submit" class="botoia botoi-nagusia">Bidali Mezua</button>
                 </div>
             </form>
-        <?php $base_path = '../';
-endif; ?>
+        <?php endif; ?>
     </div>
 </main>
 
-<?php $base_path = '../';
-include_once '../php_includeak/mediku_footer.php'; ?>
+<?php include_once '../php_includeak/mediku_footer.php'; ?>
 
 

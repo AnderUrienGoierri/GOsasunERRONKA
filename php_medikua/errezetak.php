@@ -1,6 +1,5 @@
 <?php
-$base_path = '../';
-session_start();
+$bide_absolutua = '../'; session_start();
 if (!isset($_SESSION['rol_id']) || $_SESSION['rol_izena'] !== 'Medikua') {
     header("Location: ../php_hasiera/login.php");
     exit;
@@ -8,8 +7,8 @@ if (!isset($_SESSION['rol_id']) || $_SESSION['rol_izena'] !== 'Medikua') {
 
 require_once '../php_laguntzaileak/DB_konexioa.php';
 $mediku_id = $_SESSION['erabiltzaile_id'];
-$msg = '';
-$error = '';
+$mezua = '';
+$errorea = '';
 
 // 1. Lortu esleitutako pazienteen zerrenda
 $stmtP = $pdo->prepare("SELECT p.paziente_id, p.izena, p.abizenak, p.nan 
@@ -49,26 +48,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 if ($e_id) {
                     $stmt = $pdo->prepare("UPDATE Errezetak SET paziente_id = ?, hitzordu_id = ?, igorpen_data = ?, iraungitze_data = ?, diagnostiko_laburra = ?, aktibo = ? WHERE errezeta_id = ? AND mediku_id = ?");
                     $stmt->execute([$p_id, $h_id, $i_data, $ir_data, $diag, $aktibo, $e_id, $mediku_id]);
-                    $msg = "Errezeta arrakastaz aldatu da.";
+                    $mezua = "Errezeta arrakastaz aldatu da.";
                 } else {
-                    $stmtInsert = $pdo->prepare("INSERT INTO Errezetak (mediku_id, paziente_id, hitzordu_id, igorpen_data, iraungitze_data, diagnostiko_laburra, aktibo) VALUES (?, ?, ?, ?, ?, ?, ?)");
-                    $stmtInsert->execute([$mediku_id, $p_id, $h_id, $i_data, $ir_data, $diag, $aktibo]);
-                    $msg = "Errezeta arrakastaz sortu da.";
+                    $stm_sartu = $pdo->prepare("INSERT INTO Errezetak (mediku_id, paziente_id, hitzordu_id, igorpen_data, iraungitze_data, diagnostiko_laburra, aktibo) VALUES (?, ?, ?, ?, ?, ?, ?)");
+                    $stm_sartu->execute([$mediku_id, $p_id, $h_id, $i_data, $ir_data, $diag, $aktibo]);
+                    $mezua = "Errezeta arrakastaz sortu da.";
                 }
             } catch (PDOException $e) {
-                $error = "Errorea gertatu da: " . $e->getMessage();
+                $errorea = "Errorea gertatu da: " . $e->getMessage();
             }
         } else {
-            $error = "Mesedez, bete ezinbesteko eremu guztiak.";
+            $errorea = "Mesedez, bete ezinbesteko eremu guztiak.";
         }
     } elseif (isset($_POST['ezabatu_errezeta'])) {
         $e_id = $_POST['errezeta_id_delete'];
         try {
             $stmt = $pdo->prepare("DELETE FROM Errezetak WHERE errezeta_id = ? AND mediku_id = ?");
             $stmt->execute([$e_id, $mediku_id]);
-            $msg = "Errezeta ezabatu da.";
+            $mezua = "Errezeta ezabatu da.";
         } catch (PDOException $e) {
-            $error = "Errorea ezabatzean: " . $e->getMessage();
+            $errorea = "Errorea ezabatzean: " . $e->getMessage();
         }
     }
 }
@@ -83,21 +82,21 @@ $stmtErr = $pdo->prepare($sql);
 $stmtErr->execute(['mid' => $mediku_id]);
 $errezetak = $stmtErr->fetchAll(PDO::FETCH_ASSOC);
 
-$page_title = "Errezetak - GOsasun";
-$current_page = "errezetak";
-$custom_css = "medikua_errezetak.css";
+$orri_izenburua = "Errezetak - GOsasun";
+$uneko_orria = "errezetak";
+$css_pertsonalizatua = "medikua_errezetak.css";
 
 include_once '../php_includeak/mediku_goiburua.php';
 ?>
 
     <main class="panel-nagusia">
         <div class="orri-goiburua">
-            <h2><img src="../img/pill.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"> Errezetak eta Diagnostikoak</h2>
+            <h2><img src="../img/pill.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; iragazkia: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"> Errezetak eta Diagnostikoak</h2>
             <button class="botoia botoi-nagusia" onclick="openModal()">+ Errezeta Berria</button>
         </div>
 
-        <?php if ($msg): ?><div class="alerta alerta-arrakasta"><?php echo $msg; ?></div><?php endif; ?>
-        <?php if ($error): ?><div class="alerta alerta-errorea"><?php echo $error; ?></div><?php endif; ?>
+        <?php if ($mezua): ?><div class="alerta alerta-arrakasta"><?php echo $mezua; ?></div><?php endif; ?>
+        <?php if ($errorea): ?><div class="alerta alerta-errorea"><?php echo $errorea; ?></div><?php endif; ?>
 
         <script>
             // JS modalak datuak erraz kudeatzeko
@@ -130,7 +129,7 @@ include_once '../php_includeak/mediku_goiburua.php';
                         </div>
                         <div class="errezeta-xehetasunak">
                             <h4><?php echo htmlspecialchars($e['izena'] . ' ' . $e['abizenak']); ?> (<?php echo htmlspecialchars($e['nan']); ?>)</h4>
-                            <p class="diagnostikoa"><img src="../img/stethoscope.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"> <?php echo htmlspecialchars($e['diagnostiko_laburra']); ?></p>
+                            <p class="diagnostikoa"><img src="../img/stethoscope.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; iragazkia: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"> <?php echo htmlspecialchars($e['diagnostiko_laburra']); ?></p>
                             <?php if ($e['iraungitze_data']): ?>
                                 <p class="iraungitzea">Bukaera: <?php echo date('Y/m/d', strtotime($e['iraungitze_data'])); ?></p>
                             <?php else: ?>
@@ -149,7 +148,7 @@ include_once '../php_includeak/mediku_goiburua.php';
                 <?php endforeach; ?>
             <?php else: ?>
                 <div class="egoera-hutsa">
-                    <div class="ikono-hutsa"><img src="../img/clipboard-pen.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"></div>
+                    <div class="ikono-hutsa"><img src="../img/clipboard-pen.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; iragazkia: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"></div>
                     <h3>Ez dago errezetarik</h3>
                     <p>Oraindik ez duzu errezetarik edo diagnostikorik sortu zure pazienteentzat.</p>
                 </div>
@@ -203,7 +202,7 @@ include_once '../php_includeak/mediku_goiburua.php';
 
                     <div class="inprimaki-taldea">
                         <label for="diagnostiko_laburra">Diagnostiko Laburra / Tratamendua *</label>
-                        <textarea name="diagnostiko_laburra" id="modal_diagnostikoa" class="inprimaki-kontrola" rows="3" required></textarea>
+                        <textarea name="diagnostiko_laburra" id="modal_diagnostikoa" class="inprimaki-kontrola" errenkadak="3" required></textarea>
                     </div>
                     
                     <div class="inprimaki-taldea checkbox-taldea" style="margin-top:10px; margin-bottom: 20px;">
@@ -214,10 +213,10 @@ include_once '../php_includeak/mediku_goiburua.php';
                     </div>
 
                     <div class="flex-tartea-10" style="display:flex; justify-content:space-between; margin-top:20px;">
-                        <button type="button" id="btnDelete" class="botoia botoi-ertza arrisku-kolorea" style="display:none;" onclick="confirmDelete()">Ezabatu</button>
+                        <button type="button" id="ezabatu_botoia" class="botoia botoi-ertza arrisku-kolorea" style="display:none;" onclick="confirmDelete()">Ezabatu</button>
                         <div style="flex-grow:1;"></div>
                         <button type="button" class="botoia botoi-ertza" style="margin-right:10px;" onclick="closeModal()">Utzi</button>
-                        <button type="submit" name="gorde_errezeta" id="btnSubmit" class="botoia botoi-nagusia">Gorde</button>
+                        <button type="submit" name="gorde_errezeta" id="bidali_botoia" class="botoia botoi-nagusia">Gorde</button>
                     </div>
                 </form>
 
@@ -234,8 +233,8 @@ include_once '../php_includeak/mediku_goiburua.php';
             document.getElementById('errezetaModala').style.display = 'block';
             const title = document.getElementById('modalIzenburua');
             const form = document.getElementById('errezetaForm');
-            const btnDelete = document.getElementById('btnDelete');
-            const btnSubmit = document.getElementById('btnSubmit');
+            const ezabatu_botoia = document.getElementById('ezabatu_botoia');
+            const bidali_botoia = document.getElementById('bidali_botoia');
             
             if (!isEdit) {
                 title.textContent = 'Errezeta Berria';
@@ -243,12 +242,12 @@ include_once '../php_includeak/mediku_goiburua.php';
                 document.getElementById('modal_errezeta_id').value = '';
                 document.getElementById('modal_igorpen_data').value = '<?php echo date("Y-m-d"); ?>';
                 document.getElementById('modal_aktibo').checked = true;
-                btnDelete.style.display = 'none';
-                btnSubmit.textContent = 'Gorde';
+                ezabatu_botoia.style.display = 'none';
+                bidali_botoia.textContent = 'Gorde';
             } else {
                 title.textContent = 'Errezeta Editatu';
-                btnDelete.style.display = 'block';
-                btnSubmit.textContent = 'Eguneratu';
+                ezabatu_botoia.style.display = 'block';
+                bidali_botoia.textContent = 'Eguneratu';
             }
         }
 
@@ -286,7 +285,7 @@ include_once '../php_includeak/mediku_goiburua.php';
         }
     </script>
 <?php
-$extra_js = [];
+$js_gehigarria = [];
 include_once '../php_includeak/mediku_footer.php';
 ?>
 

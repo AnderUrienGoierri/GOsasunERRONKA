@@ -1,6 +1,5 @@
 <?php
-$base_path = '../';
-session_start();
+$bide_absolutua = '../'; session_start();
 if (!isset($_SESSION['rol_id']) || $_SESSION['rol_izena'] !== 'Harrera') {
     header("Location: ../php_hasiera/login.php");
     exit;
@@ -8,8 +7,8 @@ if (!isset($_SESSION['rol_id']) || $_SESSION['rol_izena'] !== 'Harrera') {
 
 require_once '../php_laguntzaileak/DB_konexioa.php';
 
-$error = '';
-$msg = '';
+$errorea = '';
+$mezua = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $izena =        $_POST['izena']                ?? '';
@@ -19,9 +18,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $pasahitza2 =   $_POST['pasahitza_errepikatu'] ?? '';
 
     if (empty($izena) || empty($abizenak) || empty($email) || empty($pasahitza) || empty($pasahitza2)) {
-        $error = "Eremu guztiak bete behar dira.";
+        $errorea = "Eremu guztiak bete behar dira.";
     } elseif ($pasahitza !== $pasahitza2) {
-        $error = "Pasahitzak ez datoz bat.";
+        $errorea = "Pasahitzak ez datoz bat.";
     } else {
         try {
             $pdo->beginTransaction();
@@ -43,17 +42,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } catch (PDOException $e) {
             $pdo->rollBack();
             if ($e->getCode() == 23000) {
-                $error = "Helbide elektroniko hori jada erregistratuta dago.";
+                $errorea = "Helbide elektroniko hori jada erregistratuta dago.";
             } else {
-                $error = "Errorea langilea sortzean: " . $e->getMessage();
+                $errorea = "Errorea langilea sortzean: " . $e->getMessage();
             }
         }
     }
 }
 
-$page_title = "Langile Berria - GOsasun";
-$current_page = "harrerako_langileak";
-$custom_css = "harrerako_langileak.css";
+$orri_izenburua = "Langile Berria - GOsasun";
+$uneko_orria = "harrerako_langileak";
+$css_pertsonalizatua = "harrerako_langileak.css";
 include_once '../php_includeak/harrera_goiburua.php';
 ?>
 
@@ -64,30 +63,24 @@ include_once '../php_includeak/harrera_goiburua.php';
         <h2>Harrerako Langile Berria</h2>
     </div>
 
-    <?php $base_path = '../';
-if ($error): ?>
-        <div class="alerta alerta-errorea"><?php $base_path = '../';
-echo htmlspecialchars($error); ?></div>
-    <?php $base_path = '../';
-endif; ?>
+    <?php if ($errorea): ?>
+        <div class="alerta alerta-errorea"><?php echo htmlspecialchars($errorea); ?></div>
+    <?php endif; ?>
 
     <div class="inprimaki-edukiontzia kutxa-zuria-800" >
         <form method="POST" action="">
             <div class="sareta-bikoa">
                 <div class="inprimaki-taldea">
                     <label>Izena</label>
-                    <input type="text" name="izena" class="inprimaki-kontrola" required value="<?php $base_path = '../';
-echo htmlspecialchars($_POST['izena'] ?? ''); ?>">
+                    <input type="text" name="izena" class="inprimaki-kontrola" required value="<?php echo htmlspecialchars($_POST['izena'] ?? ''); ?>">
                 </div>
                 <div class="inprimaki-taldea">
                     <label>Abizenak</label>
-                    <input type="text" name="abizenak" class="inprimaki-kontrola" required value="<?php $base_path = '../';
-echo htmlspecialchars($_POST['abizenak'] ?? ''); ?>">
+                    <input type="text" name="abizenak" class="inprimaki-kontrola" required value="<?php echo htmlspecialchars($_POST['abizenak'] ?? ''); ?>">
                 </div>
                 <div class="inprimaki-taldea zutabe-osoa" >
                     <label>Posta Elektronikoa</label>
-                    <input type="email" name="email" class="inprimaki-kontrola" required value="<?php $base_path = '../';
-echo htmlspecialchars($_POST['email'] ?? ''); ?>">
+                    <input type="email" name="email" class="inprimaki-kontrola" required value="<?php echo htmlspecialchars($_POST['email'] ?? ''); ?>">
                 </div>
                 <div class="inprimaki-taldea">
                     <label>Pasahitza</label>
@@ -106,7 +99,6 @@ echo htmlspecialchars($_POST['email'] ?? ''); ?>">
     </div>
 </main>
 
-<?php $base_path = '../';
-include_once '../php_includeak/harrera_footer.php'; ?>
+<?php include_once '../php_includeak/harrera_footer.php'; ?>
 
 

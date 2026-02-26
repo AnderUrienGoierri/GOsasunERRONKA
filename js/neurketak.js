@@ -2,8 +2,8 @@
 
 $(document).ready(function() {
     $('#neurketaForm').submit(function(e) {
-        let isValid = true;
-        let requiresAtLeastOne = false;
+        let baliozkoa_da = true;
+        let gutxienez_bat_behar_da = false;
         
         const glukosa = $('#glukosa').val();
         const sistolikoa = $('#sistolikoa').val();
@@ -13,10 +13,10 @@ $(document).ready(function() {
         
         // Egiaztatu gutxienez datu bat sartu dela
         if (glukosa !== '' || (sistolikoa !== '' && diastolikoa !== '') || pisua !== '' || sintomak !== '') {
-            requiresAtLeastOne = true;
+            gutxienez_bat_behar_da = true;
         }
 
-        if (!requiresAtLeastOne) {
+        if (!gutxienez_bat_behar_da) {
             e.preventDefault();
             alerta("Gutxienez neurketa edo ohar bat bete behar duzu gordetzeko.");
             return;
@@ -26,7 +26,7 @@ $(document).ready(function() {
         if (glukosa !== '') {
             if (parseInt(glukosa) < 20 || parseInt(glukosa) > 600) {
                 $('#err-glukosa').show();
-                isValid = false;
+                baliozkoa_da = false;
             } else {
                 $('#err-glukosa').hide();
             }
@@ -36,10 +36,10 @@ $(document).ready(function() {
         if (sistolikoa !== '' || diastolikoa !== '') {
             if (sistolikoa === '' || diastolikoa === '') {
                 $('#err-tentsioa').text("Bi balioak (sistolikoa eta diastolikoa) behar dira.").show();
-                isValid = false;
+                baliozkoa_da = false;
             } else if (parseInt(sistolikoa) < 50 || parseInt(diastolikoa) < 30 || parseInt(diastolikoa) >= parseInt(sistolikoa)) {
                 $('#err-tentsioa').text("Balio ezegokiak. Sis > Dia izan behar da (Sis > 50, Dia > 30).").show();
-                isValid = false;
+                baliozkoa_da = false;
             } else {
                 $('#err-tentsioa').hide();
             }
@@ -50,13 +50,13 @@ $(document).ready(function() {
             let numPisua = parseFloat(pisua.replace(',', '.'));
             if (numPisua < 20 || numPisua > 300) {
                 $('#err-pisua').show();
-                isValid = false;
+                baliozkoa_da = false;
             } else {
                 $('#err-pisua').hide();
             }
         }
 
-        if (isValid) {
+        if (baliozkoa_da) {
             // Logika hemen: Formularioa bidali aurretik abisuak egiaztatu ditzakegu
             // Edo formularioa bidali ondoren (AJAX bidez bada hobe)
             // Kasu honetan, PHP-k orria birkargatuko duenez, hobe da submit-aren aurretik egitea

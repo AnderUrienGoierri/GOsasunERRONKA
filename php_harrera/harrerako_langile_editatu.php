@@ -1,6 +1,5 @@
 <?php
-$base_path = '../';
-session_start();
+$bide_absolutua = '../'; session_start();
 if (!isset($_SESSION['rol_id']) || $_SESSION['rol_izena'] !== 'Harrera') {
     header("Location: ../php_hasiera/login.php");
     exit;
@@ -8,8 +7,8 @@ if (!isset($_SESSION['rol_id']) || $_SESSION['rol_izena'] !== 'Harrera') {
 
 require_once '../php_laguntzaileak/DB_konexioa.php';
 
-$error = '';
-$msg = '';
+$errorea = '';
+$mezua = '';
 
 if (!isset($_GET['id']) || empty($_GET['id'])) {
     header("Location: harrerako_langileak.php");
@@ -24,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'] ?? '';
 
     if (empty($izena) || empty($abizenak) || empty($email)) {
-        $error = "Eremu nagusiak bete behar dira.";
+        $errorea = "Eremu nagusiak bete behar dira.";
     } else {
         try {
             $pdo->beginTransaction();
@@ -45,13 +44,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
 
             $pdo->commit();
-            $msg = "Datuak ongi eguneratu dira.";
+            $mezua = "Datuak ongi eguneratu dira.";
         } catch (Exception $e) {
             if($pdo->inTransaction()) $pdo->rollBack();
             if ($e->getCode() == 23000) {
-                $error = "Helbide elektroniko hori jada erregistratuta dago.";
+                $errorea = "Helbide elektroniko hori jada erregistratuta dago.";
             } else {
-                $error = "Errorea: " . $e->getMessage();
+                $errorea = "Errorea: " . $e->getMessage();
             }
         }
     }
@@ -67,54 +66,44 @@ if (!$langilea) {
     exit;
 }
 
-$page_title = "Langilea Editatu - GOsasun";
-$current_page = "harrerako_langileak";
-$custom_css = "harrerako_langileak.css";
+$orri_izenburua = "Langilea Editatu - GOsasun";
+$uneko_orria = "harrerako_langileak";
+$css_pertsonalizatua = "harrerako_langileak.css";
 include_once '../php_includeak/harrera_goiburua.php';
 ?>
 
 <main class="panel-nagusia">
-    <a href="harrerako_langileak.php" class="atzera-botoia esteka-itzuli" ><img src="../img/arrow-left.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"> Itzuli zerrendara</a>
+    <a href="harrerako_langileak.php" class="atzera-botoia esteka-itzuli" ><img src="../img/arrow-left.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; iragazkia: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"> Itzuli zerrendara</a>
 
     <div class="orri-goiburua">
-        <h2><img src="../img/pencil.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"> Langilea Editatu: <?php $base_path = '../';
-            echo htmlspecialchars($langilea['izena']); ?>
+        <h2><img src="../img/pencil.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; iragazkia: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"> Langilea Editatu: <?php echo htmlspecialchars($langilea['izena']); ?>
         </h2>
     </div>
 
-    <?php $base_path = '../';
-        if ($msg): ?>
-            <div class="alerta alerta-arrakasta"><?php $base_path = '../';
-                echo htmlspecialchars($msg); ?>
+    <?php if ($mezua): ?>
+            <div class="alerta alerta-arrakasta"><?php echo htmlspecialchars($mezua); ?>
             </div>
-    <?php $base_path = '../';
-        endif; ?>
+    <?php endif; ?>
 
-    <?php $base_path = '../';
-        if ($error): ?>
-            <div class="alerta alerta-errorea"><?php $base_path = '../';
-                echo htmlspecialchars($error); ?>
+    <?php if ($errorea): ?>
+            <div class="alerta alerta-errorea"><?php echo htmlspecialchars($errorea); ?>
             </div>
-    <?php $base_path = '../';
-        endif; ?>
+    <?php endif; ?>
 
     <div class="inprimaki-edukiontzia kutxa-zuria-800" >
         <form method="POST" action="">
             <div class="sareta-bikoa">
                 <div class="inprimaki-taldea">
                     <label>Izena</label>
-                    <input type="text" name="izena" class="inprimaki-kontrola" required value="<?php $base_path = '../';
-                        echo htmlspecialchars($langilea['izena']); ?>">
+                    <input type="text" name="izena" class="inprimaki-kontrola" required value="<?php echo htmlspecialchars($langilea['izena']); ?>">
                 </div>
                 <div class="inprimaki-taldea">
                     <label>Abizenak</label>
-                    <input type="text" name="abizenak" class="inprimaki-kontrola" required value="<?php $base_path = '../';
-                        echo htmlspecialchars($langilea['abizenak']); ?>">
+                    <input type="text" name="abizenak" class="inprimaki-kontrola" required value="<?php echo htmlspecialchars($langilea['abizenak']); ?>">
                 </div>
                 <div class="inprimaki-taldea zutabe-osoa" >
                     <label>Posta Elektronikoa</label>
-                    <input type="email" name="email" class="inprimaki-kontrola" required value="<?php $base_path = '../';
-                        echo htmlspecialchars($langilea['email']); ?>">
+                    <input type="email" name="email" class="inprimaki-kontrola" required value="<?php echo htmlspecialchars($langilea['email']); ?>">
                 </div>
                 
                 <div class="inprimaki-taldea zutabe-osoa-marjina" >
@@ -139,7 +128,6 @@ include_once '../php_includeak/harrera_goiburua.php';
     </div>
 </main>
 
-<?php $base_path = '../';
-include_once '../php_includeak/harrera_footer.php'; ?>
+<?php include_once '../php_includeak/harrera_footer.php'; ?>
 
 

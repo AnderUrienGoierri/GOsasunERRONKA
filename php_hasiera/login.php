@@ -1,9 +1,9 @@
 <?php
 session_start();
-$base_path = '../';
+$bide_absolutua = '../';
 require_once '../php_laguntzaileak/DB_konexioa.php';
 
-$error_msg = '';
+$errore_mezua = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'] ?? '';
@@ -39,23 +39,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     header("Location: ../php_harrera/index.php");
                     exit;
                 } else {
-                    $error_msg = "Sarbide deuseztatua rol ezezagunagatik.";
+                    $errore_mezua = "Sarbide deuseztatua rol ezezagunagatik.";
                 }
             } else {
-                $error_msg = "Helbide elektronikoa edo pasahitza ez dira zuzenak.";
+                $errore_mezua = "Helbide elektronikoa edo pasahitza ez dira zuzenak.";
             }
 
         } catch (PDOException $e) {
-            $error_msg = "Errorea datu-basean: " . $e->getMessage();
+            $errore_mezua = "Errorea datu-basean: " . $e->getMessage();
         }
     } else {
-        $error_msg = "Mesedez, bete eremu guztiak.";
+        $errore_mezua = "Mesedez, bete eremu guztiak.";
     }
 }
 ?>
 <?php
-$page_title = "Saioa Hasi - GOsasun";
-$current_page = "login";
+$orri_izenburua = "Saioa Hasi - GOsasun";
+$uneko_orria = "login";
 
 include '../php_includeak/goiburua.php';
 ?>
@@ -66,9 +66,9 @@ include '../php_includeak/goiburua.php';
                 <p style="font-size: 1.3rem; font-weight: 600;">Ongi etorri berriro zure atarira</p>
             </div>
             
-            <?php if (!empty($error_msg)): ?>
+            <?php if (!empty($errore_mezua)): ?>
                 <div class="alerta alerta-errorea">
-                    <?php echo htmlspecialchars($error_msg); ?>
+                    <?php echo htmlspecialchars($errore_mezua); ?>
                 </div>
             <?php endif; ?>
 
@@ -95,7 +95,7 @@ include '../php_includeak/goiburua.php';
     </div>
 
 <?php
-$extra_js = ["login.js"];
+$js_gehigarria = ["login.js"];
 include '../php_includeak/footer.php';
 ?>
 

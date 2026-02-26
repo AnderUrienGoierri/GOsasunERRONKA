@@ -1,6 +1,5 @@
 <?php
-$base_path = '../';
-session_start();
+$bide_absolutua = '../'; session_start();
 if (!isset($_SESSION['rol_id']) || $_SESSION['rol_izena'] !== 'Pazientea') {
     header("Location: ../php_hasiera/login.php");
     exit;
@@ -19,16 +18,16 @@ $stmtErr = $pdo->prepare($sql);
 $stmtErr->execute(['pid' => $paziente_id]);
 $errezetak = $stmtErr->fetchAll(PDO::FETCH_ASSOC);
 
-$page_title = "Nire Errezetak - GOsasun";
-$current_page = "errezetak";
-$custom_css = "pazientea_errezetak.css";
+$orri_izenburua = "Nire Errezetak - GOsasun";
+$uneko_orria = "errezetak";
+$css_pertsonalizatua = "pazientea_errezetak.css";
 
 include_once '../php_includeak/paziente_goiburua.php';
 ?>
 
     <main class="panel-nagusia">
         <div class="orri-goiburua">
-            <h2><img src="../img/pill.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"> Nire Errezetak eta Tratamenduak</h2>
+            <h2><img src="../img/pill.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; iragazkia: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"> Nire Errezetak eta Tratamenduak</h2>
             <p class="azpititulu-grisa">Hemen dauzkazu zure osasun-profesionalek esleitutako tratamendu guztiak.</p>
         </div>
 
@@ -57,7 +56,7 @@ include_once '../php_includeak/paziente_goiburua.php';
                             <div class="urtea"><?php echo date('Y', strtotime($e['igorpen_data'])); ?></div>
                         </div>
                         <div class="errezeta-xehetasunak">
-                            <h4><img src="../img/stethoscope.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"> <?php echo htmlspecialchars($e['diagnostiko_laburra']); ?></h4>
+                            <h4><img src="../img/stethoscope.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; iragazkia: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"> <?php echo htmlspecialchars($e['diagnostiko_laburra']); ?></h4>
                             <p class="medikua">Ematen duena: Dr. <?php echo htmlspecialchars($e['izena'] . ' ' . $e['abizenak']); ?></p>
                             <?php if ($e['iraungitze_data']): ?>
                                 <p class="iraungitzea">Noiz arte: <?php echo date('Y/m/d', strtotime($e['iraungitze_data'])); ?></p>
@@ -74,7 +73,7 @@ include_once '../php_includeak/paziente_goiburua.php';
                 <?php endforeach; ?>
             <?php else: ?>
                 <div class="egoera-hutsa">
-                    <div class="ikono-hutsa"><img src="../img/clipboard-pen.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"></div>
+                    <div class="ikono-hutsa"><img src="../img/clipboard-pen.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; iragazkia: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"></div>
                     <h3>Ez daukazu errezetarik</h3>
                     <p>Une honetan ez daukazu ez errezetarik ez tratamendu aktiborik erregistratuta.</p>
                 </div>
@@ -83,7 +82,7 @@ include_once '../php_includeak/paziente_goiburua.php';
     </main>
 
 <?php
-$extra_js = [];
+$js_gehigarria = [];
 include_once '../php_includeak/paziente_footer.php';
 ?>
 

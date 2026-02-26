@@ -16,21 +16,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
     // Noren datuak aterako ditugu?
     // Pazientea bada, bere datuak soilik. Medikua bada, 'paziente_id' POST bidez jaso beharko du.
-    $target_paziente_id = null;
+    $jomuga_paziente_id = null;
     
     if ($rol === 'Pazientea') {
-        $target_paziente_id = $erab_id;
+        $jomuga_paziente_id = $erab_id;
     } else if ($rol === 'Medikua') {
         if (!isset($_POST['paziente_id']) || empty($_POST['paziente_id'])) {
             http_response_code(400);
             echo json_encode(['error' => 'Pazientea aukeratu behar da.']);
             exit;
         }
-        $target_paziente_id = $_POST['paziente_id'];
+        $jomuga_paziente_id = $_POST['paziente_id'];
         
         // Segurtasun egiaztapena: Medikuak paziente hori badu bere zerrendan?
         $baimen_stmt = $pdo->prepare("SELECT 1 FROM Mediku_Paziente WHERE mediku_id = ? AND paziente_id = ?");
-        $baimen_stmt->execute([$erab_id, $target_paziente_id]);
+        $baimen_stmt->execute([$erab_id, $jomuga_paziente_id]);
         if (!$baimen_stmt->fetchColumn()) {
             http_response_code(403);
             echo json_encode(['error' => 'Ez duzu baimenik paziente honen datuak esportatzeko.']);
@@ -52,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
         // Lortu pazientearen datu pertsonalak XML goibururako
         $paz_stmt = $pdo->prepare("SELECT izena, abizenak, nan FROM Pazienteak WHERE paziente_id = ?");
-        $paz_stmt->execute([$target_paziente_id]);
+        $paz_stmt->execute([$jomuga_paziente_id]);
         $paziente_info = $paz_stmt->fetch(PDO::FETCH_ASSOC);
         
         // Lortu neurketak tarte horretan
@@ -62,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             WHERE paziente_id = ? AND data BETWEEN ? AND ?
             ORDER BY data ASC, ordua ASC
         ");
-        $neurketak_stmt->execute([$target_paziente_id, $hasiera_data, $bukaera_data]);
+        $neurketak_stmt->execute([$jomuga_paziente_id, $hasiera_data, $bukaera_data]);
         $neurketak_emaitzak = $neurketak_stmt->fetchAll(PDO::FETCH_ASSOC);
         
         if (count($neurketak_emaitzak) === 0) {
@@ -117,14 +117,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $xmlDir = dirname(__DIR__) . '/xml_exportableak/';
         if (!is_dir($xmlDir)) mkdir($xmlDir, 0777, true);
         
-        $filename = "Neurketak_{$target_paziente_id}_" . date('Ymd_His') . ".xml";
-        $targetPath = $xmlDir . $filename;
+        $fitxategi_izena = "Neurketak_{$jomuga_paziente_id}_" . date('Ymd_His') . ".xml";
+        $jomuga_bidea = $xmlDir . $fitxategi_izena;
         
-        $xml->save($targetPath);
+        $xml->save($jomuga_bidea);
         
         echo json_encode([
             'success' => true,
-            'url' => 'xml_exportableak/' . $filename,
+            'url' => 'xml_exportableak/' . $fitxategi_izena,
             'msg' => 'XML txostena arrastaka gorde da!'
         ]);
         

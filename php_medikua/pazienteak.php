@@ -1,6 +1,5 @@
 <?php
-$base_path = '../';
-session_start();
+$bide_absolutua = '../'; session_start();
 if (!isset($_SESSION['rol_id']) || $_SESSION['rol_izena'] !== 'Medikua') {
     header("Location: ../php_hasiera/login.php");
     exit;
@@ -18,11 +17,9 @@ $stmt = $pdo->prepare("
 $stmt->execute([$mediku_id]);
 $pazienteak = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
-<?php
-$base_path = '../';
-$page_title = "Nire Pazienteak - GOsasun";
-$current_page = "pazienteak";
-$custom_css = "pazienteak.css";
+<?php $orri_izenburua = "Nire Pazienteak - GOsasun";
+$uneko_orria = "pazienteak";
+$css_pertsonalizatua = "pazienteak.css";
 
 include_once '../php_includeak/mediku_goiburua.php';
 ?>
@@ -30,7 +27,7 @@ include_once '../php_includeak/mediku_goiburua.php';
     <main class="panel-nagusia">
         <div class="orri-goiburua">
             <div>
-                <h2><img src="../img/users.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"> Nire Pazienteak</h2>
+                <h2><img src="../img/users.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; iragazkia: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"> Nire Pazienteak</h2>
                 <p>Zuri esleitutako pazienteen zerrenda eta jarraipena.</p>
             </div>
             <div class="bilaketa-barra">
@@ -51,53 +48,39 @@ include_once '../php_includeak/mediku_goiburua.php';
                         <th>Ekintzak</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <?php $base_path = '../';
-if (count($pazienteak) > 0): ?>
-                        <?php $base_path = '../';
-foreach ($pazienteak as $p): ?>
+                <taula_gorputza>
+                    <?php if (count($pazienteak) > 0): ?>
+                        <?php foreach ($pazienteak as $p): ?>
                             <tr>
                                 <td class="zabalera-50">
                                     <img src="../img/lehenetsia_pazientea.png" 
                                          alt="ID" class="irudia-txikia">
                                 </td>
-                                <td class="identifikadorea">#<?php $base_path = '../';
-echo $p['paziente_id']; ?></td>
+                                <td class="identifikadorea">#<?php echo $p['paziente_id']; ?></td>
                                 <td>
-                                    <strong><a href="paziente_info.php?id=<?php $base_path = '../';
-echo $p['paziente_id']; ?>" class="esteka-nagusia"><?php $base_path = '../';
-echo htmlspecialchars($p['abizenak'] . ', ' . $p['izena']); ?></a></strong>
+                                    <strong><a href="paziente_info.php?id=<?php echo $p['paziente_id']; ?>" class="esteka-nagusia"><?php echo htmlspecialchars($p['abizenak'] . ', ' . $p['izena']); ?></a></strong>
                                 </td>
-                                <td><?php $base_path = '../';
-echo htmlspecialchars($p['nan']); ?></td>
-                                <td><?php $base_path = '../';
-echo htmlspecialchars($p['telefonoa'] ?? '-'); ?></td>
-                                <td><span class="badge odol-txapa"><?php $base_path = '../';
-echo htmlspecialchars($p['odol_taldea'] ?? '-'); ?></span></td>
+                                <td><?php echo htmlspecialchars($p['nan']); ?></td>
+                                <td><?php echo htmlspecialchars($p['telefonoa'] ?? '-'); ?></td>
+                                <td><span class="badge odol-txapa"><?php echo htmlspecialchars($p['odol_taldea'] ?? '-'); ?></span></td>
                                 <td>
                                     <div class="taula-ekintzak">
-                                        <a href="paziente_info.php?id=<?php $base_path = '../';
-echo $p['paziente_id']; ?>" class="botoi-ikonoa ikusi-botoia" title="Ikusi xehetasunak"><img src="../img/eye.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"></a>
+                                        <a href="paziente_info.php?id=<?php echo $p['paziente_id']; ?>" class="botoi-ikonoa ikusi-botoia" title="Ikusi xehetasunak"><img src="../img/eye.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; iragazkia: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"></a>
                                     </div>
                                 </td>
                             </tr>
-                        <?php $base_path = '../';
-endforeach; ?>
-                    <?php $base_path = '../';
-else: ?>
+                        <?php endforeach; ?>
+                    <?php else: ?>
                         <tr class="daturik-ez">
                             <td colspan="7">Ez duzu pazienterik esleituta momentuz.</td>
                         </tr>
-                    <?php $base_path = '../';
-endif; ?>
-                </tbody>
+                    <?php endif; ?>
+                </taula_gorputza>
             </table>
         </div>
     </main>
 
-<?php
-$base_path = '../';
-$extra_js = ["harrera_pazienteak.js"];
+<?php $js_gehigarria = ["harrera_pazienteak.js"];
 include_once '../php_includeak/mediku_footer.php';
 ?>
 
