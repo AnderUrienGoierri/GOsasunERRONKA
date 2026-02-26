@@ -78,7 +78,7 @@ else include_once '../php_includeak/harrera_goiburua.php';
 <main class="panel-nagusia">
     <div class="orri-goiburua marjina-behe-20">
         <a href="mezuak.php" class="esteka-itzuli">← Itzuli zerrendara</a>
-        <h2 class="izenburu-nagusia marjina-goi-10">📧 Mezuaren Xehetasuna</h2>
+        <h2 class="izenburu-nagusia marjina-goi-10"><img src="../img/mail.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"> Mezuaren Xehetasuna</h2>
     </div>
 
     <div class="kutxa-zuria-itzala">

@@ -42,7 +42,7 @@ include_once '../php_includeak/harrera_goiburua.php';
 
     <main class="panel-nagusia">
         <div class="orri-goiburua">
-            <h2>👥 Harrerako Langileak</h2>
+            <h2><img src="../img/users.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"> Harrerako Langileak</h2>
             <p>Kudeatu zentroko harrerako lantaldea.</p>
         </div>
 
@@ -97,12 +97,12 @@ echo htmlspecialchars($l['email']); ?></td>
                                 <td>
                                     <div class="taula-ekintzak">
                                         <a href="harrerako_langile_editatu.php?id=<?php $base_path = '../';
-echo $l['langile_id']; ?>" class="botoi-ikonoa" title="Editatu">✏️</a>
+echo $l['langile_id']; ?>" class="botoi-ikonoa" title="Editatu"><img src="../img/pencil.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"></a>
                                         <!-- Administratzaile nagusiak bakarrik ezabatu beharko luke normalean, baina baldintzak onartzen badu gehituko dugu. Uneko saioa bera bada ezin du ezabatu -->
                                         <?php $base_path = '../';
 if($_SESSION['erabiltzaile_id'] != $l['langile_id']): ?>
                                             <a href="harrerako_langile_ezabatu.php?id=<?php $base_path = '../';
-echo $l['langile_id']; ?>" class="botoi-ikonoa" onclick="return confirm('Ziur ezabatu nahi duzula?');" title="Ezabatu">🗑️</a>
+echo $l['langile_id']; ?>" class="botoi-ikonoa" onclick="return confirm('Ziur ezabatu nahi duzula?');" title="Ezabatu"><img src="../img/trash-2.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"></a>
                                         <?php $base_path = '../';
 else: ?>
                                             <span class="kolorea-grisa" title="Zure burua ezin duzu ezabatu">🚫</span>

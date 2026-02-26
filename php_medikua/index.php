@@ -45,20 +45,20 @@ include_once '../php_includeak/mediku_goiburua.php';
         <!-- Estatistika Txartelak (Dashboard) -->
         <div class="panel-sareta flex-tartea-20 marjina-behe-30" style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 30px;">
             <div class="kutxa-zuria-itzala testua-erdian">
-                <div style="font-size: 3rem; margin-bottom: 10px;">👥</div>
+                <div style="font-size: 3rem; margin-bottom: 10px;"><img src="../img/users.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"></div>
                 <h3 style="font-size: 2rem; margin: 0; color: var(--primary-color);"><?php echo $pazienteKopurua; ?></h3>
                 <p class="azpititulu-grisa">Esleitutako Pazienteak</p>
                 <a href="pazienteak.php" class="botoia botoi-ertza marjina-goi-15 zabalera-osoa">Zerrenda Ikusi</a>
             </div>
             <div class="kutxa-zuria-itzala testua-erdian">
-                <div style="font-size: 3rem; margin-bottom: 10px;">📅</div>
+                <div style="font-size: 3rem; margin-bottom: 10px;"><img src="../img/calendar-days.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"></div>
                 <h3 style="font-size: 2rem; margin: 0; color: var(--primary-color);"><?php echo $gaurkoHitzorduak; ?></h3>
                 <p class="azpititulu-grisa">Gaurko Hitzorduak</p>
                 <a href="hitzorduak.php" class="botoia botoi-ertza marjina-goi-15 zabalera-osoa">Agenda Kudeatu</a>
             </div>
         </div>
 
-        <h2 class="izenburu-nagusia marjina-behe-20">🚀 Ekintza Azkarrak</h2>
+        <h2 class="izenburu-nagusia marjina-behe-20"><img src="../img/zap.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"> Ekintza Azkarrak</h2>
         <section class="menu-sareta">
             <a href="pazienteak.php" class="menu-txartela">
                 <div class="txartel-ikonoa"><img src="../img/users.svg" alt="Nire Pazienteak" style="width: 48px; height: 48px; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg);"></div>

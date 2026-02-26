@@ -28,7 +28,7 @@ include_once '../php_includeak/paziente_goiburua.php';
 
     <main class="panel-nagusia">
         <div class="orri-goiburua">
-            <h2>💊 Nire Errezetak eta Tratamenduak</h2>
+            <h2><img src="../img/pill.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"> Nire Errezetak eta Tratamenduak</h2>
             <p class="azpititulu-grisa">Hemen dauzkazu zure osasun-profesionalek esleitutako tratamendu guztiak.</p>
         </div>
 
@@ -57,7 +57,7 @@ include_once '../php_includeak/paziente_goiburua.php';
                             <div class="urtea"><?php echo date('Y', strtotime($e['igorpen_data'])); ?></div>
                         </div>
                         <div class="errezeta-xehetasunak">
-                            <h4>🩺 <?php echo htmlspecialchars($e['diagnostiko_laburra']); ?></h4>
+                            <h4><img src="../img/stethoscope.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"> <?php echo htmlspecialchars($e['diagnostiko_laburra']); ?></h4>
                             <p class="medikua">Ematen duena: Dr. <?php echo htmlspecialchars($e['izena'] . ' ' . $e['abizenak']); ?></p>
                             <?php if ($e['iraungitze_data']): ?>
                                 <p class="iraungitzea">Noiz arte: <?php echo date('Y/m/d', strtotime($e['iraungitze_data'])); ?></p>
@@ -74,7 +74,7 @@ include_once '../php_includeak/paziente_goiburua.php';
                 <?php endforeach; ?>
             <?php else: ?>
                 <div class="egoera-hutsa">
-                    <div class="ikono-hutsa">📝</div>
+                    <div class="ikono-hutsa"><img src="../img/clipboard-pen.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"></div>
                     <h3>Ez daukazu errezetarik</h3>
                     <p>Une honetan ez daukazu ez errezetarik ez tratamendu aktiborik erregistratuta.</p>
                 </div>

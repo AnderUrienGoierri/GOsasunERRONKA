@@ -52,7 +52,7 @@ include_once '../php_includeak/paziente_goiburua.php';
         <div class="panel-sareta flex-tartea-20 marjina-behe-30">
             <!-- Azken Neurketak -->
             <div class="kutxa-zuria-itzala">
-                <h3 class="izenburu-iluna">📊 Azken Bizi-Seinaleak</h3>
+                <h3 class="izenburu-iluna"><img src="../img/line-chart.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"> Azken Bizi-Seinaleak</h3>
                 <?php if ($azkenNeurketa): ?>
                     <div class="sareta-bikoa">
                         <div class="informazio-taldea">
@@ -77,7 +77,7 @@ include_once '../php_includeak/paziente_goiburua.php';
 
             <!-- Hurrengo Hitzordua -->
             <div class="kutxa-zuria-itzala">
-                <h3 class="izenburu-iluna">📅 Hurrengo Hitzordua</h3>
+                <h3 class="izenburu-iluna"><img src="../img/calendar-days.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"> Hurrengo Hitzordua</h3>
                 <?php if ($hurrengoHitzordua): ?>
                     <div class="paziente-txartel-zuria marjina-behe-0" style="padding: 15px; background: #f8f9fa;">
                         <div class="testua-erdian" style="background: var(--primary-color); color: white; padding: 10px; border-radius: 8px; min-width: 60px;">
@@ -86,7 +86,7 @@ include_once '../php_includeak/paziente_goiburua.php';
                         </div>
                         <div class="flex-bat">
                             <h4 style="margin: 0; color: var(--dark-text);">Dr. <?php echo htmlspecialchars($hurrengoHitzordua['mediku_izena'] . ' ' . $hurrengoHitzordua['mediku_abizenak']); ?></h4>
-                            <p class="ordua" style="margin: 5px 0 0 0; color: var(--gray);">🕒 <?php echo date('H:i', strtotime($hurrengoHitzordua['hasiera_ordua'])); ?></p>
+                            <p class="ordua" style="margin: 5px 0 0 0; color: var(--gray);"><img src="../img/clock.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"> <?php echo date('H:i', strtotime($hurrengoHitzordua['hasiera_ordua'])); ?></p>
                         </div>
                     </div>
                 <?php else: ?>
@@ -96,7 +96,7 @@ include_once '../php_includeak/paziente_goiburua.php';
             </div>
         </div>
 
-        <h2 class="izenburu-nagusia marjina-behe-20">🚀 Ekintza Azkarrak</h2>
+        <h2 class="izenburu-nagusia marjina-behe-20"><img src="../img/zap.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"> Ekintza Azkarrak</h2>
         <section class="menu-sareta">
             <a href="datuak.php" class="menu-txartela">
                 <div class="txartel-ikonoa"><img src="../img/user-cog.svg" alt="Nire Datuak" style="width: 48px; height: 48px; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg);"></div>

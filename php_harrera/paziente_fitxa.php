@@ -49,10 +49,10 @@ include_once '../php_includeak/harrera_goiburua.php';
 
 
 <main class="panel-nagusia">
-    <a href="pazienteak.php" class="atzera-botoia">⬅️ Pazienteen zerrendara itzuli</a>
+    <a href="pazienteak.php" class="atzera-botoia"><img src="../img/arrow-left.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"> Pazienteen zerrendara itzuli</a>
     
     <div class="orri-goiburua">
-        <h2>👤 Pazientearen Fitxa</h2>
+        <h2><img src="../img/user.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"> Pazientearen Fitxa</h2>
         <span class="egoera-etiketa <?php $base_path = '../';
 echo $pazientea['egoera_klinikoa'] == 'Alta' ? 'egoera-alta' : 'egoera-baja'; ?>">
             <?php $base_path = '../';
@@ -74,14 +74,14 @@ echo htmlspecialchars($pazientea['nan']); ?></p>
             <hr class="banatzaile-marra">
             
             <div class="testua-ezkerrean">
-                <p><strong>📧 Email:</strong> <?php $base_path = '../';
+                <p><strong><img src="../img/mail.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"> Email:</strong> <?php $base_path = '../';
 echo htmlspecialchars($pazientea['email']); ?></p>
                 <p><strong>📱 Telefonoa:</strong> <?php $base_path = '../';
 echo htmlspecialchars($pazientea['telefonoa'] ?? 'Ez zehaztua'); ?></p>
             </div>
             
             <a href="paziente_editatu.php?id=<?php $base_path = '../';
-echo $pazientea['paziente_id']; ?>" class="botoia botoi-ertza marjina-goi-zabalera">✏️ Editatu Datuak</a>
+echo $pazientea['paziente_id']; ?>" class="botoia botoi-ertza marjina-goi-zabalera"><img src="../img/pencil.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"> Editatu Datuak</a>
         </div>
 
         <!-- Eskuineko zutabea: Neurketak eta Hitzorduak -->

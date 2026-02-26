@@ -343,7 +343,7 @@ endif; ?>
         <!-- Zerrenda orokorra (behean mantentzen dugu segurtasun gisa momentuz) -->
         <section class="hitzordu-zerrenda marjina-goi-30">
             <div class="flex-tartea-15">
-                <h3>📋 Hitzordu Guztiak</h3>
+                <h3><img src="../img/list.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"> Hitzordu Guztiak</h3>
                 <form method="GET" class="flex-taldea-10">
                     <select name="filter_mediku_id" class="inprimaki-kontrola zabalera-autoa" onchange="this.form.submit()">
                         <option value="">Iragazi medikua...</option>

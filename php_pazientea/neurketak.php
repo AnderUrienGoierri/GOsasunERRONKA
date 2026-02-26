@@ -46,7 +46,7 @@ include_once '../php_includeak/paziente_goiburua.php';
     <main class="panel-nagusia" data-paziente-id="<?php $base_path = '../';
 echo $paziente_id; ?>">
         <div class="orri-goiburua">
-            <h2>📝 Neurketa Berria Gehitu</h2>
+            <h2><img src="../img/clipboard-pen.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"> Neurketa Berria Gehitu</h2>
             <p>Sartu zure bizi-seinaleak eta sintomak jarraipen klinikorako.</p>
         </div>
 

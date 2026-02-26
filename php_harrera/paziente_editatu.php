@@ -56,7 +56,7 @@ $p = $stmt->fetch(PDO::FETCH_ASSOC);
         <div class="logoa"><a href="index.php">🏢 GOsasun - Harrera</a></div>
     </header>
     <main class="panel-nagusia">
-        <div class="orri-goiburua"><h2>✏️ Editatu Pazientea</h2></div>
+        <div class="orri-goiburua"><h2><img src="../img/pencil.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"> Editatu Pazientea</h2></div>
         <?php $base_path = '../';
 if ($msg): ?><div class="alerta alerta-arrakasta"><?php $base_path = '../';
 echo $msg; ?></div><?php $base_path = '../';

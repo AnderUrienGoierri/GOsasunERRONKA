@@ -148,7 +148,7 @@ include_once '../php_includeak/paziente_goiburua.php';
 
     <main class="panel-nagusia">
         <div class="orri-goiburua">
-            <h2>📅 Nire Hitzorduen Agenda</h2>
+            <h2><img src="../img/calendar-days.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"> Nire Hitzorduen Agenda</h2>
             <button class="botoia botoi-nagusia" onclick="openModal()">+ Hitzordu Berria</button>
         </div>
 
@@ -344,7 +344,7 @@ endif; ?>
         </section>
 
         <div class="agenda-edukiontzia marjina-goi-30">
-            <h3>📋 Xehetasunak Zerrendan</h3>
+            <h3><img src="../img/list.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"> Xehetasunak Zerrendan</h3>
             <br>
             <?php $base_path = '../';
 if (count($hitzorduak_data_arabera) > 0): ?>
@@ -401,7 +401,7 @@ endforeach; ?>
             <?php $base_path = '../';
 else: ?>
                 <div class="egoera-hutsa">
-                    <div class="ikono-hutsa">📅</div>
+                    <div class="ikono-hutsa"><img src="../img/calendar-days.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"></div>
                     <h3>Ez duzu hitzordurik</h3>
                     <p>Ez daukazu hitzordurik gordeta zure historialean.</p>
                 </div>

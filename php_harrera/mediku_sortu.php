@@ -64,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <main class="panel-nagusia">
         <div class="orri-goiburua">
-            <h2>➕ Mediku Berria Sortu</h2>
+            <h2><img src="../img/plus-circle.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"> Mediku Berria Sortu</h2>
         </div>
 
         <?php $base_path = '../';

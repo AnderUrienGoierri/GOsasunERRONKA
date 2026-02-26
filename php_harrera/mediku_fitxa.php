@@ -44,12 +44,12 @@ include_once '../php_includeak/harrera_goiburua.php';
 
 
 <main class="panel-nagusia">
-    <a href="medikuak.php" class="atzera-botoia">⬅️ Medikuen zerrendara itzuli</a>
+    <a href="medikuak.php" class="atzera-botoia"><img src="../img/arrow-left.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"> Medikuen zerrendara itzuli</a>
     
     <div class="orri-goiburua">
         <h2>👨‍⚕️ Medikuaren Fitxa</h2>
         <a href="hitzorduak.php?filter_mediku_id=<?php $base_path = '../';
-echo $medikua['mediku_id']; ?>" class="botoia botoi-nagusia">📅 Ikusi Agenda Osoa</a>
+echo $medikua['mediku_id']; ?>" class="botoia botoi-nagusia"><img src="../img/calendar-days.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"> Ikusi Agenda Osoa</a>
     </div>
 
     <div class="fitxa-edukiontzia">
@@ -67,7 +67,7 @@ echo htmlspecialchars($medikua['espezialitatea']); ?></div>
             <div class="testua-ezkerrean">
                 <p><strong>🏥 Elkargokide Zkia:</strong> <span class="identifikadorea"><?php $base_path = '../';
 echo htmlspecialchars($medikua['elkargokide_zenbakia']); ?></span></p>
-                <p><strong>📧 Email:</strong> <?php $base_path = '../';
+                <p><strong><img src="../img/mail.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"> Email:</strong> <?php $base_path = '../';
 echo htmlspecialchars($medikua['email'] ?? 'Ez zehaztua'); ?></p>
             </div>
         </div>

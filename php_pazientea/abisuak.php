@@ -37,7 +37,7 @@ include_once '../php_includeak/paziente_goiburua.php';
 
     <main class="panel-nagusia">
         <div class="orri-goiburua">
-            <h2>🔔 Osasun Abisuak</h2>
+            <h2><img src="../img/bell-ring.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"> Osasun Abisuak</h2>
             <p>Zure neurketen araberako abisu automatikoak.</p>
         </div>
 
@@ -75,7 +75,7 @@ endif; ?>
                         </h4>
                         <p><?php $base_path = '../';
 echo htmlspecialchars($a['testua']); ?></p>
-                        <span class="abisu-data">📅 <?php $base_path = '../';
+                        <span class="abisu-data"><img src="../img/calendar-days.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"> <?php $base_path = '../';
 echo date('Y/m/d H:i', strtotime($a['data'])); ?></span>
                     </div>
                 <?php $base_path = '../';
@@ -83,7 +83,7 @@ endforeach; ?>
             <?php $base_path = '../';
 else: ?>
                 <div class="egoera-hutsa kutxa-hutsa-40" >
-                    <div class="ikono-handia-3">🎉</div>
+                    <div class="ikono-handia-3"><img src="../img/smile.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"></div>
                     <h3>Ez duzu abisurik!</h3>
                     <p>Zure neurketa guztiak normaltasunaren barruan daude une honetan.</p>
                 </div>

@@ -30,7 +30,7 @@ include_once '../php_includeak/mediku_goiburua.php';
     <main class="panel-nagusia">
         <div class="orri-goiburua">
             <div>
-                <h2>👥 Nire Pazienteak</h2>
+                <h2><img src="../img/users.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"> Nire Pazienteak</h2>
                 <p>Zuri esleitutako pazienteen zerrenda eta jarraipena.</p>
             </div>
             <div class="bilaketa-barra">
@@ -77,7 +77,7 @@ echo htmlspecialchars($p['odol_taldea'] ?? '-'); ?></span></td>
                                 <td>
                                     <div class="taula-ekintzak">
                                         <a href="paziente_info.php?id=<?php $base_path = '../';
-echo $p['paziente_id']; ?>" class="botoi-ikonoa ikusi-botoia" title="Ikusi xehetasunak">👁️</a>
+echo $p['paziente_id']; ?>" class="botoi-ikonoa ikusi-botoia" title="Ikusi xehetasunak"><img src="../img/eye.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"></a>
                                     </div>
                                 </td>
                             </tr>
