@@ -1,4 +1,4 @@
-/* harrerako_langileak.css - Unified Staff Management Styles */
+/* harrerako_langileak.css - Langile Kudeaketa Estilo Bateratuak */
 
 .orri-goiburua {
     display: flex;
@@ -121,7 +121,7 @@
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
-/* Forms Container */
+/* Inprimakien Edukiontzia */
 .inprimaki-edukiontzia {
     background: white;
     padding: 30px;

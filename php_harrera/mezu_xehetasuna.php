@@ -122,7 +122,7 @@ include_once '../php_includeak/harrera_goiburua.php';
     <?php endif; ?>
 
     <div class="kutxa-zuria-itzala">
-        <div class="mezu-xehetasuna-goiburua marjina-behe-20" style="border-bottom: 1px solid #eee; padding-bottom: 15px;">
+        <div class="mezu-xehetasuna-goiburua marjina-behe-20 ertz-behe-argia padding-behe-15">
             <div class="flex-tartea-besterik">
                 <h3 class="marjina-behe-0"><?php echo htmlspecialchars($mezua['gaia']); ?></h3>
                 <span class="testu-gris-txikia"><?php echo date('Y/m/d H:i', strtotime($mezua['bidalketa_data'])); ?></span>
@@ -133,16 +133,16 @@ include_once '../php_includeak/harrera_goiburua.php';
             </div>
         </div>
 
-        <div class="mezu-edukia marjina-behe-30" style="white-space: pre-wrap; line-height: 1.6; background: #f8f9fa; padding: 20px; border-radius: 8px;">
+        <div class="mezu-edukia marjina-behe-30 mezu-edukia-estiloa">
             <?php echo htmlspecialchars($mezua['mezua']); ?>
         </div>
 
         <?php if ($mota === 'kanpoko'): ?>
-            <div class="erantzun-atala" style="border-top: 1px solid #eee; padding-top: 20px;">
+            <div class="erantzun-atala ertz-goi-argia padding-goi-20">
                 <?php if (!empty($mezua['erantzuna'])): ?>
                     <h4>Zure Erantzuna:</h4>
-                    <span class="testu-gris-txikia marjina-behe-10" style="display:block;"><?php echo date('Y/m/d H:i', strtotime($mezua['erantzun_data'])); ?></span>
-                    <div class="mezu-edukia marjina-behe-30" style="white-space: pre-wrap; line-height: 1.6; background: #e3f2fd; padding: 20px; border-radius: 8px;">
+                    <span class="testu-gris-txikia marjina-behe-10 bloke-bistarapena"><?php echo date('Y/m/d H:i', strtotime($mezua['erantzun_data'])); ?></span>
+                    <div class="mezu-edukia marjina-behe-30 mezu-erantzun-edukia">
                         <?php echo htmlspecialchars($mezua['erantzuna']); ?>
                     </div>
                 <?php else: ?>
@@ -159,7 +159,7 @@ include_once '../php_includeak/harrera_goiburua.php';
                 <?php endif; ?>
             </div>
         <?php elseif ($mezua['hartzaile_id'] == $erabiltzaile_id): ?>
-            <div class="erantzun-atala" style="border-top: 1px solid #eee; padding-top: 20px;">
+            <div class="erantzun-atala ertz-goi-argia padding-goi-20">
                 <h4>Erantzun</h4>
                 <form action="mezu_berria.php" method="POST">
                     <input type="hidden" name="hartzaile_id" value="<?php echo $mezua['bidaltzaile_id']; ?>">

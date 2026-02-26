@@ -62,8 +62,8 @@ include '../php_includeak/goiburua.php';
     <div class="hasiera-edukiontzia">
         <div class="hasiera-txartela">
             <div class="hasiera-goiburua">
-                <img src="../img/GOsasun_logoa.png" alt="GOsasun" class="logo-irudia" style="margin: 0 auto 20px; height: 60px; mix-blend-mode: multiply;">
-                <p style="font-size: 1.3rem; font-weight: 600;">Ongi etorri berriro zure atarira</p>
+                <img src="../img/GOsasun_logoa.png" alt="GOsasun" class="logo-irudia logo-login">
+                <p class="login-azpititulua">Ongi etorri berriro zure atarira</p>
             </div>
             
             <?php if (!empty($errore_mezua)): ?>

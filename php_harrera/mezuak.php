@@ -134,7 +134,7 @@ include_once '../php_includeak/harrera_goiburua.php';
             </table>
         <?php else: ?>
             <div class="egoera-hutsa">
-                <div class="ikono-hutsa"><img src="../img/send.svg" alt="" style="width: 3rem; height: 3rem; opacity: 0.3;"></div>
+                <div class="ikono-hutsa"><img src="../img/send.svg" alt="" class="ikono-3rem-gardena"></div>
                 <h3>Ez dago bidalitako mezurik</h3>
                 <p>Ez duzu mezurik bidali oraindik.</p>
             </div>

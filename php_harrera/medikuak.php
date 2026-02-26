@@ -35,7 +35,7 @@ include_once '../php_includeak/harrera_goiburua.php';
 
     <main class="panel-nagusia">
         <div class="orri-goiburua">
-            <h2><img src="../img/stethoscope.svg" alt="" style="width: 1.25rem; height: 1.25rem; vertical-align: middle; margin-right: 10px; filter: var(--primary-filter);"> Medikuen Kudeaketa</h2>
+            <h2><img src="../img/stethoscope.svg" alt="" class="ikono-1_25rem marjina-esk-10"> Medikuen Kudeaketa</h2>
             <p>Ikusi eta kudeatu zentroko lantalde medikoa.</p>
         </div>
 
@@ -56,9 +56,9 @@ include_once '../php_includeak/harrera_goiburua.php';
                 <thead>
                     <tr>
                         <th>Argazkia</th>
-                        <th class="kurtsore-erakuslea" onclick="ordenatuTaula(1)">Izena <img src="../img/sort.svg" alt="" style="width: 1rem; height: 1rem; vertical-align: middle; opacity: 0.5;"></th>
-                        <th class="kurtsore-erakuslea" onclick="ordenatuTaula(2)">Espezialitatea <img src="../img/sort.svg" alt="" style="width: 1rem; height: 1rem; vertical-align: middle; opacity: 0.5;"></th>
-                        <th class="kurtsore-erakuslea" onclick="ordenatuTaula(3)">Elkargokide Zkia. <img src="../img/sort.svg" alt="" style="width: 1rem; height: 1rem; vertical-align: middle; opacity: 0.5;"></th>
+                        <th class="kurtsore-erakuslea" onclick="ordenatuTaula(1)">Izena <img src="../img/sort.svg" alt="" class="ikono-txikia-gardena"></th>
+                        <th class="kurtsore-erakuslea" onclick="ordenatuTaula(2)">Espezialitatea <img src="../img/sort.svg" alt="" class="ikono-txikia-gardena"></th>
+                        <th class="kurtsore-erakuslea" onclick="ordenatuTaula(3)">Elkargokide Zkia. <img src="../img/sort.svg" alt="" class="ikono-txikia-gardena"></th>
                         <th>Ekintzak</th>
                     </tr>
                 </thead>
@@ -77,10 +77,10 @@ include_once '../php_includeak/harrera_goiburua.php';
                             <td><?php echo htmlspecialchars($m['elkargokide_zenbakia']); ?></td>
                             <td>
                                 <div class="taula-ekintzak">
-                                    <a href="mediku_fitxa.php?id=<?php echo $m['mediku_id']; ?>" class="botoi-ikonoa" title="Ikusi Fitxa"><img src="../img/eye.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"></a>
-                                    <a href="hitzorduak.php?filter_mediku_id=<?php echo $m['mediku_id']; ?>" class="botoi-ikonoa hitzordu-botoia" title="Ikusi Agenda"><img src="../img/calendar-days.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"></a>
-                                    <a href="mediku_editatu.php?id=<?php echo $m['mediku_id']; ?>" class="botoi-ikonoa editatu-botoia" title="Editatu"><img src="../img/pencil.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"></a>
-                                    <a href="medikuak.php?delete_id=<?php echo $m['mediku_id']; ?>" class="botoi-ikonoa ezabatu-botoia" onclick="return confirm('Ziur zaude mediku hau ezabatu nahi duzula?');" title="Ezabatu"><img src="../img/trash-2.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"></a>
+                                    <a href="mediku_fitxa.php?id=<?php echo $m['mediku_id']; ?>" class="botoi-ikonoa" title="Ikusi Fitxa"><img src="../img/eye.svg" alt="" class="ikono-ertaina marjina-esk-5"></a>
+                                    <a href="hitzorduak.php?filter_mediku_id=<?php echo $m['mediku_id']; ?>" class="botoi-ikonoa hitzordu-botoia" title="Ikusi Agenda"><img src="../img/calendar-days.svg" alt="" class="ikono-ertaina marjina-esk-5"></a>
+                                    <a href="mediku_editatu.php?id=<?php echo $m['mediku_id']; ?>" class="botoi-ikonoa editatu-botoia" title="Editatu"><img src="../img/pencil.svg" alt="" class="ikono-ertaina marjina-esk-5"></a>
+                                    <a href="medikuak.php?delete_id=<?php echo $m['mediku_id']; ?>" class="botoi-ikonoa ezabatu-botoia" onclick="return confirm('Ziur zaude mediku hau ezabatu nahi duzula?');" title="Ezabatu"><img src="../img/trash-2.svg" alt="" class="ikono-ertaina marjina-esk-5"></a>
                                 </div>
                             </td>
                         </tr>

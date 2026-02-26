@@ -1,6 +1,6 @@
 /* login.css */
 
-/* From login.css */
+/* login.css-tik dakar */
 .hasiera-orria {
   background-color: var(--light-bg);
   display: flex;
@@ -19,7 +19,7 @@
 }
 
 .hasiera-txartela {
-  background-color: rgba(255, 255, 255, 0.95); /* Semi-transparent to let background icons through */
+  background-color: rgba(255, 255, 255, 0.95); /* Erdi gardena atzeko planoko ikonoak agertzeko */
   padding: 40px;
   border-radius: var(--border-radius);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
@@ -66,7 +66,19 @@
   margin-top: 20px;
 }
 
-/* Base style resets specifically for form elements to override defaults if any */
+/* Inprimaki elementuen oinarrizko estiloen berrarreztea, lehenetsiak gainidazteko */
 .hasiera-txartela .inprimaki-kontrola {
   padding: 12px 15px;
+}
+
+.logo-login {
+  margin: 0 auto 20px;
+  height: 60px;
+  mix-blend-mode: multiply;
+  display: block;
+}
+
+.login-azpititulua {
+  font-size: 1.3rem;
+  font-weight: 600;
 }

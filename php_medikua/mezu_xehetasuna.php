@@ -73,12 +73,12 @@ include_once '../php_includeak/mediku_goiburua.php';
 
 <main class="panel-nagusia">
     <div class="orri-goiburua marjina-behe-20">
-        <a href="mezuak.php" class="esteka-itzuli"><img src="../img/arrow-left.svg" alt="" style="width: 1em; height: 1em; vertical-align: middle; filter: var(--primary-filter); margin-right: 5px;"> Itzuli zerrendara</a>
-        <h2 class="izenburu-nagusia marjina-goi-10"><img src="../img/mail.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: var(--primary-filter); margin-right: 5px;"> Mezuaren Xehetasuna</h2>
+        <a href="mezuak.php" class="esteka-itzuli"><img src="../img/arrow-left.svg" alt="" class="ikono-1em marjina-esk-5"> Itzuli zerrendara</a>
+        <h2 class="izenburu-nagusia marjina-goi-10"><img src="../img/mail.svg" alt="" class="ikono-ertaina marjina-esk-5"> Mezuaren Xehetasuna</h2>
     </div>
 
     <div class="kutxa-zuria-itzala">
-        <div class="mezu-xehetasuna-goiburua marjina-behe-20" style="border-bottom: 1px solid #eee; padding-bottom: 15px;">
+        <div class="mezu-xehetasuna-goiburua marjina-behe-20 ertz-behe-argia padding-behe-15">
             <div class="flex-tartea-besterik">
                 <h3 class="marjina-behe-0"><?php echo htmlspecialchars($mezua['gaia']); ?></h3>
                 <span class="testu-gris-txikia"><?php echo date('Y/m/d H:i', strtotime($mezua['bidalketa_data'])); ?></span>
@@ -89,12 +89,12 @@ include_once '../php_includeak/mediku_goiburua.php';
             </div>
         </div>
 
-        <div class="mezu-edukia marjina-behe-30" style="white-space: pre-wrap; line-height: 1.6; background: #f8f9fa; padding: 20px; border-radius: 8px;">
+        <div class="mezu-edukia marjina-behe-30 mezu-edukia-estiloa">
             <?php echo htmlspecialchars($mezua['mezua']); ?>
         </div>
 
         <?php if ($mezua['hartzaile_id'] == $erabiltzaile_id): ?>
-            <div class="erantzun-atala" style="border-top: 1px solid #eee; padding-top: 20px;">
+            <div class="erantzun-atala ertz-goi-argia padding-goi-20">
                 <h4>Erantzun</h4>
                 <form action="mezu_berria.php" method="POST">
                     <input type="hidden" name="hartzaile_id" value="<?php echo $mezua['bidaltzaile_id']; ?>">

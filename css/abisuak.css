@@ -1,6 +1,6 @@
-/* abisuak.css - Unified Alert Styles */
+/* abisuak.css - Alerta Estilo Bateratuak */
 
-/* Common Table Styles (Doctor View) */
+/* Taula Estilo Komunak (Medikuaren Ikuspegia) */
 .abisu-taula { 
     width: 100%; 
     border-collapse: collapse; 
@@ -37,7 +37,7 @@
     color: var(--primary-color); 
 }
 
-/* Badges and Labels */
+/* Plakak eta Etiketak */
 .irakurrita-badge { 
     padding: 2px 6px; 
     border-radius: 4px; 

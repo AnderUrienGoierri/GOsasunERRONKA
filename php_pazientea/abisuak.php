@@ -34,7 +34,7 @@ include_once '../php_includeak/paziente_goiburua.php';
 
     <main class="panel-nagusia">
         <div class="orri-goiburua">
-            <h2><img src="../img/bell-ring.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: var(--primary-filter); margin-right: 5px;"> Osasun Abisuak</h2>
+            <h2><img src="../img/bell-ring.svg" alt="" class="ikono-ertaina marjina-esk-5"> Osasun Abisuak</h2>
             <p>Zure neurketen araberako abisu automatikoak.</p>
         </div>
 
@@ -59,12 +59,12 @@ include_once '../php_includeak/paziente_goiburua.php';
                             <?php endif; ?>
                         </h4>
                         <p><?php echo htmlspecialchars($a['testua']); ?></p>
-                        <span class="abisu-data"><img src="../img/calendar-days.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: var(--primary-filter); margin-right: 5px;"> <?php echo date('Y/m/d H:i', strtotime($a['data'])); ?></span>
+                        <span class="abisu-data"><img src="../img/calendar-days.svg" alt="" class="ikono-ertaina marjina-esk-5"> <?php echo date('Y/m/d H:i', strtotime($a['data'])); ?></span>
                     </div>
                 <?php endforeach; ?>
             <?php else: ?>
                 <div class="egoera-hutsa kutxa-hutsa-40" >
-                    <div class="ikono-handia-3"><img src="../img/smile.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: var(--primary-filter); margin-right: 5px;"></div>
+                    <div class="ikono-handia-3"><img src="../img/smile.svg" alt="" class="ikono-ertaina marjina-esk-5"></div>
                     <h3>Ez duzu abisurik!</h3>
                     <p>Zure neurketa guztiak normaltasunaren barruan daude une honetan.</p>
                 </div>

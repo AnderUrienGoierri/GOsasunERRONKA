@@ -188,7 +188,7 @@ include_once '../php_includeak/harrera_goiburua.php';
                     <a href="?hilabetea=<?php echo $aurreko_hilabetea; ?>&urtea=<?php echo $aurreko_urtea; ?>&filter_mediku_id=<?php echo $filter_mediku_id; ?>" class="botoia botoi-ertza">&lt;</a>
                     <div class="egutegia-titulua"><?php echo $hilabete_izena; ?></div>
                     <a href="?hilabetea=<?php echo $hurrengo_hilabetea; ?>&urtea=<?php echo $hurrengo_urtea; ?>&filter_mediku_id=<?php echo $filter_mediku_id; ?>" class="botoia botoi-ertza">&gt;</a>
-                    <a href="hitzorduak.php" class="bista-botoia" style="margin-left: 10px;">Gaur</a>
+                    <a href="hitzorduak.php" class="bista-botoia marjina-ezk-10">Gaur</a>
                 </div>
                 <div class="bista-hautatzailea">
                     <a href="?bista=astea&filter_mediku_id=<?php echo $filter_mediku_id; ?>" class="bista-botoia <?php echo $bista === 'astea' ? 'aktiboa' : ''; ?>">Astea</a>
@@ -280,7 +280,7 @@ include_once '../php_includeak/harrera_goiburua.php';
         <!-- Zerrenda orokorra (behean mantentzen dugu segurtasun gisa momentuz) -->
         <section class="hitzordu-zerrenda marjina-goi-30">
             <div class="flex-tartea-15">
-                <h3><img src="../img/list.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"> Hitzordu Guztiak</h3>
+                <h3><img src="../img/list.svg" alt="" class="ikono-ertaina marjina-esk-5"> Hitzordu Guztiak</h3>
                 <form method="GET" class="flex-taldea-10">
                     <select name="filter_mediku_id" class="inprimaki-kontrola zabalera-autoa" onchange="this.form.submit()">
                         <option value="">Iragazi medikua...</option>
@@ -322,9 +322,9 @@ include_once '../php_includeak/harrera_goiburua.php';
         <div class="modala-edukia">
             <div class="modala-goiburua">
                 <h3 id="modalIzenburua">Hitzordu Berria</h3>
-                <span class="itxi-modala" style="cursor:pointer; font-size:1.5rem;" onclick="closeModal()">&times;</span>
+                <span class="itxi-modala kurtsore-erakuslea tamaina-1_5rem" onclick="closeModal()">&times;</span>
             </div>
-            <div style="padding: 20px;">
+            <div class="padding-20">
                 <form method="POST" id="hitzorduForm">
                     <input type="hidden" name="hitzordu_id" id="modal_hitzordu_id">
                     
@@ -348,7 +348,7 @@ include_once '../php_includeak/harrera_goiburua.php';
                         </select>
                     </div>
 
-                    <div class="sareta-bikoa" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                    <div class="sareta-bikoa sareta-bikoa-sareta">
                         <div class="inprimaki-taldea">
                             <label for="data">Data *</label>
                             <input type="date" name="data" id="modal_data" class="inprimaki-kontrola" required>
@@ -363,7 +363,7 @@ include_once '../php_includeak/harrera_goiburua.php';
                         </div>
                     </div>
 
-                    <div class="sareta-bikoa" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                    <div class="sareta-bikoa sareta-bikoa-sareta">
                         <div class="inprimaki-taldea">
                             <label for="hasiera_ordua">Hasiera Ordua *</label>
                             <input type="time" name="hasiera_ordua" id="modal_hasiera_ordua" class="inprimaki-kontrola" required>
@@ -379,15 +379,15 @@ include_once '../php_includeak/harrera_goiburua.php';
                         <textarea name="arrazoia" id="modal_arrazoia" class="inprimaki-kontrola" errenkadak="3"></textarea>
                     </div>
 
-                    <div class="flex-tartea-10" style="display:flex; justify-content:space-between; margin-top:20px;">
-                        <button type="button" id="ezabatu_botoia" class="botoia botoi-ertza arrisku-kolorea" style="display:none;" onclick="confirmDelete()">Ezabatu</button>
-                        <div style="flex-grow:1;"></div>
-                        <button type="button" class="botoia botoi-ertza" style="margin-right:10px;" onclick="closeModal()">Utzi</button>
+                    <div class="flex-tartea-10 flex-tartea-10 marjina-goi-20">
+                        <button type="button" id="ezabatu_botoia" class="botoia botoi-ertza arrisku-kolorea ezkutatu" onclick="confirmDelete()">Ezabatu</button>
+                        <div class="flex-hazkundea-1"></div>
+                        <button type="button" class="botoia botoi-ertza marjina-esk-10" onclick="closeModal()">Utzi</button>
                         <button type="submit" name="sortu_hitzordua" id="bidali_botoia" class="botoia botoi-nagusia">Gorde</button>
                     </div>
                 </form>
 
-                <form id="deleteForm" method="POST" style="display:none;">
+                <form id="deleteForm" method="POST" class="ezkutatu">
                     <input type="hidden" name="hitzordu_id_delete" id="delete_hitzordu_id">
                     <input type="hidden" name="ezabatu_hitzordua" value="1">
                 </form>

@@ -1,6 +1,6 @@
 /* index.css */
 
-/* From index.css - Mobile First Design */
+/* index.css-tik dakar - Diseinua Mugikorra Lehenetsiz */
 .hero-sekzioa {
     display: flex;
     flex-direction: column;
@@ -48,7 +48,7 @@
 
 .ezaugarriak {
     display: grid;
-    grid-template-columns: 1fr; /* Mobile first */
+    grid-template-columns: 1fr; /* Mugikorra lehenetsia */
     gap: 20px;
     padding: 30px 5%;
     max-width: 1200px;
@@ -86,7 +86,7 @@
     color: var(--gray);
 }
 
-/* ================= MEDIA QUERIES (Desktop - min-width) ================= */
+/* ================= EBAZPEN-ARAUAK (Media queries) (Mahaigaina - gutxieneko zabalera) ================= */
 @media (min-width: 768px) {
     .ezaugarriak {
         grid-template-columns: repeat(3, 1fr);

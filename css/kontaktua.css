@@ -1,6 +1,6 @@
 /* kontaktua.css */
 
-/* From kontaktua.css */
+/* kontaktua.css-tik dakar */
 .kontaktu-sekzioa {
     display: flex;
     flex-wrap: wrap;
@@ -76,7 +76,7 @@
     color: rgba(255,255,255,0.8);
 }
 
-/* ================= MEDIA QUERIES ================= */
+/* ================= EBAZPEN-ARAUAK (Media queries) ================= */
 @media (max-width: 768px) {
     .kontaktu-edukiontzia {
         padding: 25px;
@@ -87,3 +87,8 @@
 }
 
 
+
+.mapa-iframe {
+  border: 0;
+  border-radius: 12px;
+}

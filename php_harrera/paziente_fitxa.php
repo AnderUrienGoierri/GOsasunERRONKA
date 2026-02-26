@@ -48,10 +48,10 @@ include_once '../php_includeak/harrera_goiburua.php';
 
 
 <main class="panel-nagusia">
-    <a href="pazienteak.php" class="atzera-botoia"><img src="../img/arrow-left.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: var(--primary-filter); margin-right: 5px;"> Pazienteen zerrendara itzuli</a>
+    <a href="pazienteak.php" class="atzera-botoia"><img src="../img/arrow-left.svg" alt="" class="ikono-ertaina marjina-esk-5"> Pazienteen zerrendara itzuli</a>
     
     <div class="orri-goiburua">
-        <h2><img src="../img/user.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: var(--primary-filter); margin-right: 5px;"> Pazientearen Fitxa</h2>
+        <h2><img src="../img/user.svg" alt="" class="ikono-ertaina marjina-esk-5"> Pazientearen Fitxa</h2>
         <span class="egoera-etiketa <?php echo $pazientea['egoera_klinikoa'] == 'Alta' ? 'egoera-alta' : 'egoera-baja'; ?>">
             <?php echo htmlspecialchars($pazientea['egoera_klinikoa']); ?>
         </span>
@@ -67,11 +67,11 @@ include_once '../php_includeak/harrera_goiburua.php';
             <hr class="banatzaile-marra">
             
             <div class="testua-ezkerrean">
-                <p><strong><img src="../img/mail.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: var(--primary-filter); margin-right: 5px;"> Email:</strong> <?php echo htmlspecialchars($pazientea['email']); ?></p>
-                <p><strong><img src="../img/phone.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: var(--primary-filter); margin-right: 5px;"> Telefonoa:</strong> <?php echo htmlspecialchars($pazientea['telefonoa'] ?? 'Ez zehaztua'); ?></p>
+                <p><strong><img src="../img/mail.svg" alt="" class="ikono-ertaina marjina-esk-5"> Email:</strong> <?php echo htmlspecialchars($pazientea['email']); ?></p>
+                <p><strong><img src="../img/phone.svg" alt="" class="ikono-ertaina marjina-esk-5"> Telefonoa:</strong> <?php echo htmlspecialchars($pazientea['telefonoa'] ?? 'Ez zehaztua'); ?></p>
             </div>
             
-            <a href="paziente_editatu.php?id=<?php echo $pazientea['paziente_id']; ?>" class="botoia botoi-ertza marjina-goi-zabalera"><img src="../img/pencil.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: var(--primary-filter); margin-right: 5px;"> Editatu Datuak</a>
+            <a href="paziente_editatu.php?id=<?php echo $pazientea['paziente_id']; ?>" class="botoia botoi-ertza marjina-goi-zabalera"><img src="../img/pencil.svg" alt="" class="ikono-ertaina marjina-esk-5"> Editatu Datuak</a>
         </div>
 
         <!-- Eskuineko zutabea: Neurketak eta Hitzorduak -->

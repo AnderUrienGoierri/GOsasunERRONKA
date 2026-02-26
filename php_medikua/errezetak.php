@@ -91,7 +91,7 @@ include_once '../php_includeak/mediku_goiburua.php';
 
     <main class="panel-nagusia">
         <div class="orri-goiburua">
-            <h2><img src="../img/pill.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"> Errezetak eta Diagnostikoak</h2>
+            <h2><img src="../img/pill.svg" alt="" class="ikono-ertaina marjina-esk-5"> Errezetak eta Diagnostikoak</h2>
             <button class="botoia botoi-nagusia" onclick="openModal()">+ Errezeta Berria</button>
         </div>
 
@@ -129,7 +129,7 @@ include_once '../php_includeak/mediku_goiburua.php';
                         </div>
                         <div class="errezeta-xehetasunak">
                             <h4><?php echo htmlspecialchars($e['izena'] . ' ' . $e['abizenak']); ?> (<?php echo htmlspecialchars($e['nan']); ?>)</h4>
-                            <p class="diagnostikoa"><img src="../img/stethoscope.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"> <?php echo htmlspecialchars($e['diagnostiko_laburra']); ?></p>
+                            <p class="diagnostikoa"><img src="../img/stethoscope.svg" alt="" class="ikono-ertaina marjina-esk-5"> <?php echo htmlspecialchars($e['diagnostiko_laburra']); ?></p>
                             <?php if ($e['iraungitze_data']): ?>
                                 <p class="iraungitzea">Bukaera: <?php echo date('Y/m/d', strtotime($e['iraungitze_data'])); ?></p>
                             <?php else: ?>
@@ -148,7 +148,7 @@ include_once '../php_includeak/mediku_goiburua.php';
                 <?php endforeach; ?>
             <?php else: ?>
                 <div class="egoera-hutsa">
-                    <div class="ikono-hutsa"><img src="../img/clipboard-pen.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"></div>
+                    <div class="ikono-hutsa"><img src="../img/clipboard-pen.svg" alt="" class="ikono-ertaina marjina-esk-5"></div>
                     <h3>Ez dago errezetarik</h3>
                     <p>Oraindik ez duzu errezetarik edo diagnostikorik sortu zure pazienteentzat.</p>
                 </div>
@@ -161,9 +161,9 @@ include_once '../php_includeak/mediku_goiburua.php';
         <div class="modala-edukia">
             <div class="modala-goiburua">
                 <h3 id="modalIzenburua">Errezeta Berria</h3>
-                <span class="itxi-modala" style="cursor:pointer; font-size:1.5rem;" onclick="closeModal()">&times;</span>
+                <span class="itxi-modala kurtsore-erakuslea tamaina-1_5rem" onclick="closeModal()">&times;</span>
             </div>
-            <div style="padding: 20px;">
+            <div class="padding-20">
                 <form method="POST" id="errezetaForm">
                     <input type="hidden" name="errezeta_id" id="modal_errezeta_id">
                     
@@ -189,7 +189,7 @@ include_once '../php_includeak/mediku_goiburua.php';
                         </select>
                     </div>
 
-                    <div class="sareta-bikoa" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                    <div class="sareta-bikoa sareta-bikoa-sareta">
                         <div class="inprimaki-taldea">
                             <label for="igorpen_data">Igorpen Data *</label>
                             <input type="date" name="igorpen_data" id="modal_igorpen_data" class="inprimaki-kontrola" value="<?php echo date('Y-m-d'); ?>" required>
@@ -205,22 +205,22 @@ include_once '../php_includeak/mediku_goiburua.php';
                         <textarea name="diagnostiko_laburra" id="modal_diagnostikoa" class="inprimaki-kontrola" errenkadak="3" required></textarea>
                     </div>
                     
-                    <div class="inprimaki-taldea checkbox-taldea" style="margin-top:10px; margin-bottom: 20px;">
-                        <label style="display:flex; align-items:center;">
-                            <input type="checkbox" name="aktibo" id="modal_aktibo" value="1" checked style="margin-right:8px;"> 
+                    <div class="inprimaki-taldea checkbox-taldea marjina-bertikal-doikuntza">
+                        <label class="flex-erdian">
+                            <input type="checkbox" name="aktibo" id="modal_aktibo" value="1" checked class="marjina-esk-8"> 
                             <span>Errezeta aktiboa da</span>
                         </label>
                     </div>
 
-                    <div class="flex-tartea-10" style="display:flex; justify-content:space-between; margin-top:20px;">
-                        <button type="button" id="ezabatu_botoia" class="botoia botoi-ertza arrisku-kolorea" style="display:none;" onclick="confirmDelete()">Ezabatu</button>
-                        <div style="flex-grow:1;"></div>
-                        <button type="button" class="botoia botoi-ertza" style="margin-right:10px;" onclick="closeModal()">Utzi</button>
+                    <div class="flex-tartea-10 flex-tartea-10 marjina-goi-20">
+                        <button type="button" id="ezabatu_botoia" class="botoia botoi-ertza arrisku-kolorea ezkutatu" onclick="confirmDelete()">Ezabatu</button>
+                        <div class="flex-hazkundea-1"></div>
+                        <button type="button" class="botoia botoi-ertza marjina-esk-10" onclick="closeModal()">Utzi</button>
                         <button type="submit" name="gorde_errezeta" id="bidali_botoia" class="botoia botoi-nagusia">Gorde</button>
                     </div>
                 </form>
 
-                <form id="deleteForm" method="POST" style="display:none;">
+                <form id="deleteForm" method="POST" class="ezkutatu">
                     <input type="hidden" name="errezeta_id_delete" id="delete_errezeta_id">
                     <input type="hidden" name="ezabatu_errezeta" value="1">
                 </form>

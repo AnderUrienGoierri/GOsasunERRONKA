@@ -13,7 +13,7 @@
     color: var(--gray);
 }
 
-/* Doctor Detail View (Fitxa) */
+/* Medikuaren Xehetasun Ikuspegia (Fitxa) */
 .fitxa-edukiontzia {
     display: grid;
     grid-template-columns: 1fr 2fr;

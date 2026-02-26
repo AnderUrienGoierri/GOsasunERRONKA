@@ -1,4 +1,4 @@
-/* mezuak.css - Styles for external message management */
+/* mezuak.css - Kanpoko mezuak kudeatzeko estiloak */
 
 .mezu-zerrenda-edukiontzia {
     background: white;
@@ -12,12 +12,12 @@
     font-weight: 600;
 }
 
-/* Specific for messages */
+/* Mezuetarako espezifikoa */
 .egoera-berria { background: #e3f2fd; color: #1976d2; }
 .egoera-irakurrita { background: #f5f5f5; color: #616161; }
 .egoera-erantzunda { background: #e8f5e9; color: #388e3c; }
 
-/* Detail page */
+/* Xehetasun orria */
 .mezu-xehetasun-txartela {
     background: white;
     padding: 30px;

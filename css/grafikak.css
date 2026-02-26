@@ -6,7 +6,7 @@
     background-color: transparent;
 }
 
-/* Grouping header elements together */
+/* Goiburuko elementuak taldekatzea */
 .grafika-goiburua {
     display: flex;
     justify-content: space-between;
@@ -27,7 +27,7 @@
     font-weight: 700;
 }
 
-/* Small control panel */
+/* Kontrol panel txikia */
 .grafika-kontrolak {
     display: flex;
     gap: 15px;
@@ -44,7 +44,7 @@
     font-weight: 500;
 }
 
-/* Main card for the chart */
+/* Grafikorako txartel nagusia */
 .grafika-txartela {
     padding: 30px;
     background: white;
@@ -66,7 +66,7 @@
     display: block;
 }
 
-/* Default messages */
+/* Mezu lehenetsiak */
 .daturik-ez {
     text-align: center;
     padding: 50px 20px;
@@ -79,7 +79,7 @@
     margin-top: 20px;
 }
 
-/* Loading HTML message */
+/* HTML kargatzeko mezua */
 .kargatzen-mezua {
     text-align: center;
     color: var(--primary-color);

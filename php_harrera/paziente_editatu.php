@@ -52,10 +52,10 @@ $p = $stmt->fetch(PDO::FETCH_ASSOC);
 </head>
 <body class="panel-gorputza">
     <header class="panel-goiburua">
-        <div class="logoa"><a href="index.php"><img src="../img/building.svg" alt="" style="width: 1em; height: 1em; vertical-align: middle; filter: var(--primary-filter); margin-right: 5px;"> GOsasun - Harrera</a></div>
+        <div class="logoa"><a href="index.php"><img src="../img/building.svg" alt="" class="ikono-1em marjina-esk-5"> GOsasun - Harrera</a></div>
     </header>
     <main class="panel-nagusia">
-        <div class="orri-goiburua"><h2><img src="../img/pencil.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"> Editatu Pazientea</h2></div>
+        <div class="orri-goiburua"><h2><img src="../img/pencil.svg" alt="" class="ikono-ertaina marjina-esk-5"> Editatu Pazientea</h2></div>
         <?php if ($mezua): ?><div class="alerta alerta-arrakasta"><?php echo $mezua; ?></div><?php endif; ?>
         <?php if ($errorea): ?><div class="alerta alerta-errorea"><?php echo $errorea; ?></div><?php endif; ?>
         <div class="inprimaki-kutxa kutxa-zuria-700" >

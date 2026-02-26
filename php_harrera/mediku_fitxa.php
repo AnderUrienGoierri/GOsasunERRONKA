@@ -43,11 +43,11 @@ include_once '../php_includeak/harrera_goiburua.php';
 
 
 <main class="panel-nagusia">
-    <a href="medikuak.php" class="atzera-botoia"><img src="../img/arrow-left.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: var(--primary-filter); margin-right: 5px;"> Medikuen zerrendara itzuli</a>
+    <a href="medikuak.php" class="atzera-botoia"><img src="../img/arrow-left.svg" alt="" class="ikono-ertaina marjina-esk-5"> Medikuen zerrendara itzuli</a>
     
     <div class="orri-goiburua">
-        <h2><img src="../img/stethoscope.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: var(--primary-filter); margin-right: 10px;"> Medikuaren Fitxa</h2>
-        <a href="hitzorduak.php?filter_mediku_id=<?php echo $medikua['mediku_id']; ?>" class="botoia botoi-nagusia"><img src="../img/calendar-days.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: var(--white-filter); margin-right: 5px;"> Ikusi Agenda Osoa</a>
+        <h2><img src="../img/stethoscope.svg" alt="" class="ikono-ertaina marjina-esk-10"> Medikuaren Fitxa</h2>
+        <a href="hitzorduak.php?filter_mediku_id=<?php echo $medikua['mediku_id']; ?>" class="botoia botoi-nagusia"><img src="../img/calendar-days.svg" alt="" class="ikono-ertaina-zuria marjina-esk-5"> Ikusi Agenda Osoa</a>
     </div>
 
     <div class="fitxa-edukiontzia">
@@ -60,11 +60,11 @@ include_once '../php_includeak/harrera_goiburua.php';
             <hr class="banatzaile-marra">
             
             <div class="testua-ezkerrean">
-                <p><strong><img src="../img/stethoscope.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: var(--primary-filter); margin-right: 5px;"> Elkargokide Zkia:</strong> <span class="identifikadorea"><?php echo htmlspecialchars($medikua['elkargokide_zenbakia']); ?></span></p>
-                <p><strong><img src="../img/mail.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: var(--primary-filter); margin-right: 5px;"> Email:</strong> <?php echo htmlspecialchars($medikua['email'] ?? 'Ez zehaztua'); ?></p>
+                <p><strong><img src="../img/stethoscope.svg" alt="" class="ikono-ertaina marjina-esk-5"> Elkargokide Zkia:</strong> <span class="identifikadorea"><?php echo htmlspecialchars($medikua['elkargokide_zenbakia']); ?></span></p>
+                <p><strong><img src="../img/mail.svg" alt="" class="ikono-ertaina marjina-esk-5"> Email:</strong> <?php echo htmlspecialchars($medikua['email'] ?? 'Ez zehaztua'); ?></p>
             </div>
             
-            <a href="mediku_editatu.php?id=<?php echo $medikua['mediku_id']; ?>" class="botoia botoi-ertza marjina-goi-zabalera"><img src="../img/pencil.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: var(--primary-filter); margin-right: 5px;"> Editatu Datuak</a>
+            <a href="mediku_editatu.php?id=<?php echo $medikua['mediku_id']; ?>" class="botoia botoi-ertza marjina-goi-zabalera"><img src="../img/pencil.svg" alt="" class="ikono-ertaina marjina-esk-5"> Editatu Datuak</a>
         </div>
 
         <!-- Eskuineko zutabea: Hitzorduak -->

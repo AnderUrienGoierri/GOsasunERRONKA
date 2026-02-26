@@ -1,4 +1,4 @@
-/* goiburua.css - Header and Navigation Styles */
+/* goiburua.css - Goiburuko eta Nabigazioko Estiloak */
 
 header {
   background-color: var(--white);
@@ -53,7 +53,7 @@ header {
     transform: scale(1.05);
 }
 
-/* Mobile Menu Button */
+/* Mugikorreko Menu Botoia */
 .menu-botoia {
   display: block;
   background: none;
@@ -72,7 +72,7 @@ header {
 
 .nabigazio-estekak {
   list-style: none;
-  display: none; /* Mobile first: hidden by default */
+  display: none; /* Mugikorra lehenetsia: ezkutatuta lehenespenez */
   flex-direction: column;
   width: 100%;
   position: absolute;
@@ -105,7 +105,7 @@ header {
   color: var(--primary-color);
 }
 
-/* Header Specific Buttons */
+/* Goiburuko Botoi Espezifikoak */
 .botoia {
   display: inline-block;
   padding: 10px 20px;
@@ -144,7 +144,7 @@ header {
     color: var(--white) !important;
 }
 
-/* Common Actions in Header area if any */
+/* Common Actions in Goiburuko eremua (baleude) */
 .botoi-sortu {
   background: var(--success-color);
   color: white;
@@ -162,7 +162,7 @@ header {
   transform: translateY(-2px);
 }
 
-/* Panel Header (Dashboard specific sticky headers) */
+/* Panel Goiburua (Dashboard Espezifikoa goiburu itsaskorrak) */
 .panel-goiburua {
     background-color: var(--white);
     padding: 1rem 5%;
@@ -209,7 +209,7 @@ header {
   }
 }
 
-/* Specific responsiveness for small screens */
+/* Espezifikoa responsiveness Pantaila txikietarako */
 @media (max-width: 400px) {
   .logoa a {
     font-size: 1.3rem;
@@ -220,7 +220,7 @@ header {
   }
   .logo-etiketa {
     font-size: 0.9rem;
-    display: none; /* Hide 'Medikua'/'Pazientea' label on very small screens to save space */
+    display: none; /* Hide 'Medikua'/'Pazientea' label on very pantaila txikiak to save space */
   }
   .menu-botoia {
     font-size: 1.6rem;

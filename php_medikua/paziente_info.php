@@ -54,7 +54,7 @@ include_once '../php_includeak/mediku_goiburua.php';
     
 
     <main class="panel-nagusia">
-        <a href="pazienteak.php" class="atzera-esteka"><img src="../img/arrow-left.svg" alt="" style="width: 1em; height: 1em; vertical-align: middle; filter: var(--primary-filter); margin-right: 5px;"> Itzuli zerrendara</a>
+        <a href="pazienteak.php" class="atzera-esteka"><img src="../img/arrow-left.svg" alt="" class="ikono-1em marjina-esk-5"> Itzuli zerrendara</a>
         
         <div class="orri-goiburua">
             <h2>Pazientearen Fitxa Klinikoa</h2>
@@ -66,7 +66,7 @@ include_once '../php_includeak/mediku_goiburua.php';
         <?php endif; ?>
 
         <section class="egoera-kudeaketa">
-            <h4><img src="../img/stethoscope.svg" alt="" style="width: 1.2rem; height: 1.2rem; vertical-align: middle; filter: var(--primary-filter); margin-right: 10px;"> Egoera Klinikoa (Harrera)</h4>
+            <h4><img src="../img/stethoscope.svg" alt="" class="ikono-1_2rem marjina-esk-10"> Egoera Klinikoa (Harrera)</h4>
             <p>Egungo egoera: <span class="egoera-balioa"><?php echo htmlspecialchars($pazientea['egoera_klinikoa'] ?? 'Alta'); ?></span></p>
             <form method="POST" class="flex-goi-15">
                 <button type="submit" name="berria_egoera" value="Alta" class="botoi-egoera botoi-alta">Alta Eman</button>
@@ -99,24 +99,24 @@ include_once '../php_includeak/mediku_goiburua.php';
         </div>
 
             <div class="txartel-klinikoa">
-                <h3><img src="../img/stethoscope.svg" alt="" style="width: 1.5rem; height: 1.5rem; vertical-align: middle; filter: var(--primary-filter); margin-right: 10px;"> Datu Klinikoak</h3>
+                <h3><img src="../img/stethoscope.svg" alt="" class="ikono-1_5rem marjina-esk-10"> Datu Klinikoak</h3>
                 <div class="estatistika-klinikoak">
                     <div class="estatistika-kutxa">
-                        <span class="estatistika-ikonoa"><img src="../img/droplet.svg" alt="" style="width: 1.5rem; height: 1.5rem; filter: var(--primary-filter);"></span>
+                        <span class="estatistika-ikonoa"><img src="../img/droplet.svg" alt="" class="ikono-1_5rem"></span>
                         <div class="estatistika-xehetasunak">
                             <span class="estatistika-etiketa">Odol Taldea</span>
                             <span class="estatistika-balioa"><?php echo htmlspecialchars($pazientea['odol_taldea'] ?? 'Ezezaguna'); ?></span>
                         </div>
                     </div>
                     <div class="estatistika-kutxa">
-                        <span class="estatistika-ikonoa"><img src="../img/ruler.svg" alt="" style="width: 1.5rem; height: 1.5rem; filter: var(--primary-filter);"></span>
+                        <span class="estatistika-ikonoa"><img src="../img/ruler.svg" alt="" class="ikono-1_5rem"></span>
                         <div class="estatistika-xehetasunak">
                             <span class="estatistika-etiketa">Altuera</span>
                             <span class="estatistika-balioa"><?php echo htmlspecialchars($pazientea['azken_altuera'] ?? '-'); ?> m</span>
                         </div>
                     </div>
                     <div class="estatistika-kutxa">
-                        <span class="estatistika-ikonoa"><img src="../img/scale.svg" alt="" style="width: 1.5rem; height: 1.5rem; filter: var(--primary-filter);"></span>
+                        <span class="estatistika-ikonoa"><img src="../img/scale.svg" alt="" class="ikono-1_5rem"></span>
                         <div class="estatistika-xehetasunak">
                             <span class="estatistika-etiketa">Pisua</span>
                             <span class="estatistika-balioa"><?php echo htmlspecialchars($pazientea['azken_pisua'] ?? '-'); ?> kg</span>

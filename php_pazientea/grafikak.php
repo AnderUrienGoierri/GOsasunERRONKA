@@ -37,7 +37,7 @@ include_once '../php_includeak/paziente_goiburua.php';
                     <option value="glukosa">Glukosa (mg/dl)</option>
                 </select>
                 <button type="button" class="botoia botoi-nagusia" id="btn-deskargatu-pdf">
-                    <img src="../img/file-text.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"> Deskargatu PDF (Txostena)
+                    <img src="../img/file-text.svg" alt="" class="ikono-ertaina marjina-esk-5"> Deskargatu PDF (Txostena)
                 </button>
             </div>
         </div>
