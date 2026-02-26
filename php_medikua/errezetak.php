@@ -91,7 +91,7 @@ include_once '../php_includeak/mediku_goiburua.php';
 
     <main class="panel-nagusia">
         <div class="orri-goiburua">
-            <h2><img src="../img/pill.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; iragazkia: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"> Errezetak eta Diagnostikoak</h2>
+            <h2><img src="../img/pill.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"> Errezetak eta Diagnostikoak</h2>
             <button class="botoia botoi-nagusia" onclick="openModal()">+ Errezeta Berria</button>
         </div>
 
@@ -129,7 +129,7 @@ include_once '../php_includeak/mediku_goiburua.php';
                         </div>
                         <div class="errezeta-xehetasunak">
                             <h4><?php echo htmlspecialchars($e['izena'] . ' ' . $e['abizenak']); ?> (<?php echo htmlspecialchars($e['nan']); ?>)</h4>
-                            <p class="diagnostikoa"><img src="../img/stethoscope.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; iragazkia: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"> <?php echo htmlspecialchars($e['diagnostiko_laburra']); ?></p>
+                            <p class="diagnostikoa"><img src="../img/stethoscope.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"> <?php echo htmlspecialchars($e['diagnostiko_laburra']); ?></p>
                             <?php if ($e['iraungitze_data']): ?>
                                 <p class="iraungitzea">Bukaera: <?php echo date('Y/m/d', strtotime($e['iraungitze_data'])); ?></p>
                             <?php else: ?>
@@ -148,7 +148,7 @@ include_once '../php_includeak/mediku_goiburua.php';
                 <?php endforeach; ?>
             <?php else: ?>
                 <div class="egoera-hutsa">
-                    <div class="ikono-hutsa"><img src="../img/clipboard-pen.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; iragazkia: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"></div>
+                    <div class="ikono-hutsa"><img src="../img/clipboard-pen.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"></div>
                     <h3>Ez dago errezetarik</h3>
                     <p>Oraindik ez duzu errezetarik edo diagnostikorik sortu zure pazienteentzat.</p>
                 </div>

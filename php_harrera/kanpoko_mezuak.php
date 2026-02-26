@@ -20,7 +20,7 @@ include_once '../php_includeak/harrera_goiburua.php';
 
     <main class="panel-nagusia">
         <div class="orri-goiburua">
-            <h2><img src="../img/mail.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; iragazkia: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"> Kanpoko Mezuak</h2>
+            <h2><img src="../img/mail.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"> Kanpoko Mezuak</h2>
             <p>Webgune publikoko kontaktua orritik jasotako mezuak.</p>
         </div>
 

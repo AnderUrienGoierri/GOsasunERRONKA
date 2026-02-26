@@ -54,7 +54,7 @@ include_once '../php_includeak/mediku_goiburua.php';
 <main class="panel-nagusia">
     <div class="orri-goiburua flex-tartea-15 marjina-behe-20">
         <div>
-            <h2 class="izenburu-nagusia"><img src="../img/mail.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; iragazkia: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"> Nire Mezuak</h2>
+            <h2 class="izenburu-nagusia"><img src="../img/mail.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"> Nire Mezuak</h2>
             <p class="azpititulu-grisa">Pazienteekin eta harrerako langileekin komunikazioa.</p>
         </div>
         <a href="mezu_berria.php" class="botoia botoi-nagusia">+ Mezu Berria</a>

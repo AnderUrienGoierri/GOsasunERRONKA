@@ -147,7 +147,7 @@ include_once '../php_includeak/paziente_goiburua.php';
 
     <main class="panel-nagusia">
         <div class="orri-goiburua">
-            <h2><img src="../img/calendar-days.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; iragazkia: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"> Nire Hitzorduen Agenda</h2>
+            <h2><img src="../img/calendar-days.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"> Nire Hitzorduen Agenda</h2>
             <button class="botoia botoi-nagusia" onclick="openModal()">+ Hitzordu Berria</button>
         </div>
 
@@ -283,7 +283,7 @@ include_once '../php_includeak/paziente_goiburua.php';
         </section>
 
         <div class="agenda-edukiontzia marjina-goi-30">
-            <h3><img src="../img/list.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; iragazkia: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"> Xehetasunak Zerrendan</h3>
+            <h3><img src="../img/list.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"> Xehetasunak Zerrendan</h3>
             <br>
             <?php if (count($hitzorduak_data_arabera) > 0): ?>
                 <?php foreach ($hitzorduak_data_arabera as $data => $hitz_zerrenda): ?>
@@ -320,7 +320,7 @@ include_once '../php_includeak/paziente_goiburua.php';
                 <?php endforeach; ?>
             <?php else: ?>
                 <div class="egoera-hutsa">
-                    <div class="ikono-hutsa"><img src="../img/calendar-days.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; iragazkia: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"></div>
+                    <div class="ikono-hutsa"><img src="../img/calendar-days.svg" alt="" style="width: 1.2em; height: 1.2em; vertical-align: middle; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg); margin-right: 5px;"></div>
                     <h3>Ez duzu hitzordurik</h3>
                     <p>Ez daukazu hitzordurik gordeta zure historialean.</p>
                 </div>
@@ -333,14 +333,15 @@ include_once '../php_includeak/paziente_goiburua.php';
         <div class="modala-edukia">
             <div class="modala-goiburua">
                 <h3 id="modalIzenburua">Hitzordu Berria</h3>
-                <span class="itxi-modala" onclick="closeModal()">&times;</span>
+                <span class="itxi-modala" style="cursor:pointer; font-size:1.5rem;" onclick="closeModal()">&times;</span>
             </div>
-            <form method="POST" id="hitzorduForm">
+            <div style="padding: 20px;">
+                <form method="POST" id="hitzorduForm">
                 <input type="hidden" name="hitzordu_id" id="modal_hitzordu_id">
                 
-                <div class="inprimaki-taldea">
-                    <label for="mediku_id">Medikua</label>
-                    <select name="mediku_id" id="modal_mediku_id" class="inprimaki-kontrola" required>
+                    <div class="inprimaki-taldea">
+                        <label for="mediku_id">Medikua *</label>
+                        <select name="mediku_id" id="modal_mediku_id" class="inprimaki-kontrola" required>
                         <option value="">Hautatu medikua...</option>
                         <?php foreach ($medikuak as $m): ?>
                             <option value="<?php echo $m['mediku_id']; ?>"><?php echo htmlspecialchars($m['abizenak'] . ", " . $m['izena'] . " - " . $m['espezialitatea']); ?></option>
@@ -348,46 +349,45 @@ include_once '../php_includeak/paziente_goiburua.php';
                     </select>
                 </div>
 
-                <div class="sareta-bikoa">
-                    <div class="inprimaki-taldea">
-                        <label for="data">Data</label>
-                        <input type="date" name="data" id="modal_data" class="inprimaki-kontrola" required>
+                    <div class="sareta-bikoa" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                        <div class="inprimaki-taldea">
+                            <label for="data">Data *</label>
+                            <input type="date" name="data" id="modal_data" class="inprimaki-kontrola" required>
+                        </div>
                     </div>
-                </div>
 
-                <div class="sareta-bikoa">
-                    <div class="inprimaki-taldea">
-                        <label for="hasiera_ordua">Hasiera</label>
-                        <input type="time" name="hasiera_ordua" id="modal_hasiera_ordua" class="inprimaki-kontrola" required>
+                    <div class="sareta-bikoa" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                        <div class="inprimaki-taldea">
+                            <label for="hasiera_ordua">Hasiera Ordua *</label>
+                            <input type="time" name="hasiera_ordua" id="modal_hasiera_ordua" class="inprimaki-kontrola" required>
+                        </div>
+                        <div class="inprimaki-taldea">
+                            <label for="bukaera_ordua">Bukaera Ordua *</label>
+                            <input type="time" name="bukaera_ordua" id="modal_bukaera_ordua" class="inprimaki-kontrola" required>
+                        </div>
                     </div>
+
                     <div class="inprimaki-taldea">
-                        <label for="bukaera_ordua">Bukaera</label>
-                        <input type="time" name="bukaera_ordua" id="modal_bukaera_ordua" class="inprimaki-kontrola" required>
+                        <label for="arrazoia">Arrazoia / Oharrak</label>
+                        <textarea name="arrazoia" id="modal_arrazoia" class="inprimaki-kontrola" errenkadak="3"></textarea>
                     </div>
-                </div>
 
-                <div class="inprimaki-taldea">
-                    <label for="arrazoia">Arrazoia</label>
-                    <textarea name="arrazoia" id="modal_arrazoia" class="inprimaki-kontrola" errenkadak="3"></textarea>
-                </div>
-
-                <div class="flex-tartea-10 marjina-goi-20">
-                    <button type="button" id="ezabatu_botoia" class="botoia botoi-ertza arrisku-kolorea" style="display:none;" onclick="confirmDelete()">Ezeztatu</button>
-                    <div class="flex-bat"></div>
-                    <button type="button" class="botoia botoi-ertza" onclick="closeModal()">Utzi</button>
-                    <button type="submit" name="sortu_hitzordua" id="bidali_botoia" class="botoia botoi-nagusia">Gorde</button>
-                </div>
+                    <div class="flex-tartea-10" style="display:flex; justify-content:space-between; margin-top:20px;">
+                        <button type="button" id="ezabatu_botoia" class="botoia botoi-ertza arrisku-kolorea" style="display:none;" onclick="confirmDelete()">Ezeztatu</button>
+                        <div style="flex-grow:1;"></div>
+                        <button type="button" class="botoia botoi-ertza" style="margin-right:10px;" onclick="closeModal()">Utzi</button>
+                        <button type="submit" name="sortu_hitzordua" id="bidali_botoia" class="botoia botoi-nagusia">Gorde</button>
+                    </div>
             </form>
 
             <form id="deleteForm" method="POST" style="display:none;">
                 <input type="hidden" name="hitzordu_id_delete" id="delete_hitzordu_id">
                 <input type="hidden" name="ezabatu_hitzordua" value="1">
-            </form>
+                </form>
+            </div>
         </div>
     </div>
 
     <script src="../js/hitzorduak_egutegia.js"></script>
 <?php include_once '../php_includeak/paziente_footer.php';
-?>
-
 

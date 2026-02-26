@@ -32,43 +32,43 @@ include_once '../php_includeak/harrera_goiburua.php';
 
         <section class="menu-sareta">
             <a href="pazienteak.php" class="menu-txartela">
-                <div class="txartel-ikonoa"><img src="../img/users.svg" alt="Pazienteak" style="width: 48px; height: 48px; iragazkia: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg);"></div>
+                <div class="txartel-ikonoa"><img src="../img/users.svg" alt="Pazienteak" style="width: 48px; height: 48px; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg);"></div>
                 <h3>Pazienteak</h3>
                 <p>Sortu, editatu edo ezabatu pazienteak eta egiaztatu alta/baja egoera.</p>
             </a>
             
             <a href="medikuak.php" class="menu-txartela">
-                <div class="txartel-ikonoa"><img src="../img/stethoscope.svg" alt="Medikuak" style="width: 48px; height: 48px; iragazkia: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg);"></div>
+                <div class="txartel-ikonoa"><img src="../img/stethoscope.svg" alt="Medikuak" style="width: 48px; height: 48px; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg);"></div>
                 <h3>Medikuak</h3>
                 <p>Zentroko medikuen zerrenda eta kudeaketa orokorra.</p>
             </a>
 
             <a href="hitzorduak.php" class="menu-txartela">
-                <div class="txartel-ikonoa"><img src="../img/calendar-days.svg" alt="Hitzorduak" style="width: 48px; height: 48px; iragazkia: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg);"></div>
+                <div class="txartel-ikonoa"><img src="../img/calendar-days.svg" alt="Hitzorduak" style="width: 48px; height: 48px; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg);"></div>
                 <h3>Hitzorduak</h3>
                 <p>Ikusi medikuen agendak eta erreserbatu hitzordu berriak.</p>
             </a>
 
             <a href="mezuak.php" class="menu-txartela">
-                <div class="txartel-ikonoa"><img src="../img/mail.svg" alt="Mezuak" style="width: 48px; height: 48px; iragazkia: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg);"></div>
+                <div class="txartel-ikonoa"><img src="../img/mail.svg" alt="Mezuak" style="width: 48px; height: 48px; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg);"></div>
                 <h3>Mezuak</h3>
                 <p>Kudeatu webgunetik jasotako mezuak eta herritarren zalantzak.</p>
             </a>
 
             <a href="kanpoko_mezuak.php" class="menu-txartela">
-                <div class="txartel-ikonoa"><img src="../img/globe.svg" alt="Kanpoko Mezuak" style="width: 48px; height: 48px; iragazkia: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg);"></div>
+                <div class="txartel-ikonoa"><img src="../img/globe.svg" alt="Kanpoko Mezuak" style="width: 48px; height: 48px; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg);"></div>
                 <h3>Kanpoko Mezuak</h3>
                 <p>Irakurri eta erantzun webgune publikotik datozen kontsultei.</p>
             </a>
 
             <a href="harrerako_langileak.php" class="menu-txartela">
-                <div class="txartel-ikonoa"><img src="../img/user-cog.svg" alt="Harrerako Langileak" style="width: 48px; height: 48px; iragazkia: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg);"></div>
+                <div class="txartel-ikonoa"><img src="../img/user-cog.svg" alt="Harrerako Langileak" style="width: 48px; height: 48px; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg);"></div>
                 <h3>Harrerako Langileak</h3>
                 <p>Kudeatu harrerako langileen zerrenda eta baimenak.</p>
             </a>
 
             <a href="../php_laguntzaileak/logout.php" class="menu-txartela">
-                <div class="txartel-ikonoa"><img src="../img/log-out.svg" alt="Saioa Itxi" style="width: 48px; height: 48px; iragazkia: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg);"></div>
+                <div class="txartel-ikonoa"><img src="../img/log-out.svg" alt="Saioa Itxi" style="width: 48px; height: 48px; filter: invert(0.3) sepia(1) saturate(5) hue-rotate(200deg);"></div>
                 <h3>Saioa Itxi</h3>
                 <p>Amaitu saioa modu seguruan.</p>
             </a>
