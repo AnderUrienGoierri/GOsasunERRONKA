@@ -1,0 +1,97 @@
+/* pazientea_errezetak.css */
+
+.errezetak-edukiontzia {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.errezeta-txartela {
+    display: flex;
+    align-items: center;
+    padding: 20px 25px;
+    border-bottom: 1px solid #f0f0f0;
+    transition: var(--transition);
+    gap: 20px;
+    background: white;
+    margin-bottom: 10px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+.errezeta-txartela:hover { 
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.data-blokea {
+    min-width: 100px;
+    text-align: center;
+    background: #f8f9fa;
+    padding: 10px;
+    border-radius: 8px;
+    border-left: 4px solid var(--primary-color);
+}
+
+.data-blokea .hilabetea {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--gray);
+    text-transform: uppercase;
+}
+
+.data-blokea .eguna {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--dark-text);
+}
+
+.data-blokea .urtea {
+    font-size: 0.85rem;
+    color: var(--gray);
+}
+
+.errezeta-xehetasunak { flex: 1; }
+.errezeta-xehetasunak h4 { margin: 0 0 5px 0; color: var(--dark-text); font-size: 1.1rem; }
+.errezeta-xehetasunak .medikua { margin: 0 0 5px 0; color: var(--primary-color); font-size: 0.95rem; font-weight: 500; }
+.errezeta-xehetasunak .iraungitzea { margin: 0; color: var(--gray); font-size: 0.85rem; }
+
+.egoera-txapa {
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.egoera-txapa.aktiboa { background: #e6ffed; color: #22863a; }
+.egoera-txapa.iraungita { background: #fff8e1; color: #b7791f; }
+.egoera-txapa.baliogabetuta { background: #ffeef0; color: #cb2431; }
+
+.egoera-hutsa {
+    text-align: center;
+    padding: 40px;
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+.ikono-hutsa {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+@media (max-width: 768px) {
+    .errezeta-txartela {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    .data-blokea {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-left: none;
+        border-top: 4px solid var(--primary-color);
+    }
+}

@@ -1,0 +1,309 @@
+/* hitzorduak.css - Unified Appointment Management Styles */
+
+/* Common Header & Container */
+.orri-goiburua {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.orri-goiburua h2 {
+    color: var(--primary-color);
+    margin: 0;
+    font-size: 1.75rem;
+    font-weight: 700;
+}
+
+.orri-goiburua p {
+    color: var(--gray);
+    margin-top: 5px;
+}
+
+/* Summary Cards */
+.laburpen-txartelak {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.itxurazko-txartela {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: var(--box-shadow);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.txartel-info h4 {
+    color: var(--gray);
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.txartel-balioa {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--dark-text);
+}
+
+.joera-etiketa {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.joera-igoera {
+    background: #e6ffed;
+    color: #22863a;
+}
+
+.joera-beherakada {
+    background: #ffeef0;
+    color: #cb2431;
+}
+
+/* Calendar Container */
+.egutegia-edukiontzia {
+    background: white;
+    border-radius: 15px;
+    box-shadow: var(--box-shadow);
+    padding: 25px;
+    margin-top: 20px;
+}
+
+.egutegia-goiburua {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.egutegia-nabigazioa {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.egutegia-titulua {
+    font-size: 1.5rem;
+    font-weight: 700;
+    min-width: 150px;
+    text-align: center;
+}
+
+.bista-hautatzailea {
+    display: flex;
+    background: #f1f3f4;
+    padding: 4px;
+    border-radius: 8px;
+}
+
+/* Grid Calendar */
+.grid-egutegia {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr) !important;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.grid-goiburua {
+    display: contents;
+}
+
+.grid-th {
+    padding: 15px 10px;
+    background: #f8f9fa;
+    border-bottom: 1px solid #e0e0e0;
+    border-right: 1px solid #e0e0e0;
+    text-align: center;
+    font-weight: 600;
+}
+
+.egun-gelaxka {
+    min-height: 120px;
+    border-bottom: 1px solid #e0e0e0;
+    border-right: 1px solid #e0e0e0;
+    position: relative;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.egun-gelaxka.hutsik {
+    background-color: #fcfcfc;
+}
+
+.egun-gelaxka.gaurkoa {
+    background: rgba(0, 123, 255, 0.03);
+}
+
+.egun-gelaxka .egun-zenbakia {
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--gray);
+}
+
+.egun-gelaxka.gaurkoa .egun-zenbakia {
+    background: var(--primary-color);
+    color: white;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+/* Appointment Blocks (Grid) */
+.eguneko-hitzorduak {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.hitzordu-blokea {
+    background: #e8f0fe;
+    border-left: 4px solid var(--primary-color);
+    padding: 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    margin-bottom: 5px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.hitzordu-blokea:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.hitzordu-blokea.status-bukatuta { border-left-color: var(--success-color); background-color: #e6ffed; }
+.hitzordu-blokea.status-ezeztatuta { border-left-color: var(--danger-color); background-color: #ffeef0; }
+.hitzordu-blokea.status-zain { border-left-color: #ffc107; background-color: #fff8e1; }
+
+.bloke-izenik { font-weight: 700; display: block; margin-bottom: 2px; }
+.bloke-mota { font-size: 0.75rem; color: var(--gray); }
+
+/* List View (Agenda) */
+.agenda-edukiontzia {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.egun-taldea {
+    background-color: var(--white);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    overflow: hidden;
+}
+
+.egun-goiburua {
+    background-color: #f8f9fa;
+    padding: 15px 25px;
+    margin: 0;
+    border-bottom: 1px solid #eee;
+    font-size: 1.1rem;
+    color: var(--dark-text);
+}
+
+.hitzordu-txartela {
+    display: flex;
+    align-items: center;
+    padding: 20px 25px;
+    border-bottom: 1px solid #f0f0f0;
+    transition: var(--transition);
+    gap: 20px;
+}
+
+.hitzordu-txartela:hover { background-color: #fcfcfc; }
+
+.ordu-tartea {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    min-width: 80px;
+}
+
+.hitzordu-xehetasunak { flex: 1; }
+.hitzordu-xehetasunak h4 { margin: 0 0 5px 0; color: var(--dark-text); font-size: 1.1rem; }
+.hitzordu-xehetasunak .arrazoia { margin: 0; color: var(--gray); font-size: 0.9rem; }
+
+.egoera-txapa {
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.egoera-txapa.status-bukatuta { background: #e6ffed; color: #22863a; }
+.egoera-txapa.status-ezeztatuta { background: #ffeef0; color: #cb2431; }
+.egoera-txapa.status-zain { background: #fff8e1; color: #b7791f; }
+
+/* Modals */
+.modala-inguratzailea {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+}
+
+.modala-edukia {
+    background-color: #fff;
+    margin: 5% auto;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 550px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    overflow: hidden;
+}
+
+.modala-goiburua {
+    padding: 20px 25px;
+    background: #f8f9fa;
+    border-bottom: 1px solid #e0e0e0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Management Utilities */
+.erreserba-kutxa {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: var(--box-shadow);
+  margin-bottom: 30px;
+}
+
+.inprimaki-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+@media (max-width: 768px) {
+    .hitzordu-txartela {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+}

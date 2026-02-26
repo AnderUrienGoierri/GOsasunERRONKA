@@ -1,0 +1,72 @@
+/* login.css */
+
+/* From login.css */
+.hasiera-orria {
+  background-color: var(--light-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.hasiera-edukiontzia {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 20px;
+}
+
+.hasiera-txartela {
+  background-color: rgba(255, 255, 255, 0.95); /* Semi-transparent to let background icons through */
+  padding: 40px;
+  border-radius: var(--border-radius);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+}
+
+.hasiera-goiburua {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.hasiera-goiburua h2 {
+  color: var(--primary-color);
+  font-size: 2rem;
+  margin-bottom: 5px;
+}
+
+.hasiera-goiburua p {
+  color: var(--gray);
+}
+
+.hasiera-oina {
+  text-align: center;
+  margin-top: 25px;
+  border-top: 1px solid #eee;
+  padding-top: 15px;
+}
+
+.hasiera-oina a {
+  color: var(--gray);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: var(--transition);
+}
+
+.hasiera-oina a:hover {
+  color: var(--primary-color);
+}
+
+.goiko-tartea-20 {
+  margin-top: 20px;
+}
+
+/* Base style resets specifically for form elements to override defaults if any */
+.hasiera-txartela .inprimaki-kontrola {
+  padding: 12px 15px;
+}

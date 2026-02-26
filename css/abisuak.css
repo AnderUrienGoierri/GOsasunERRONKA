@@ -1,0 +1,113 @@
+/* abisuak.css - Unified Alert Styles */
+
+/* Common Table Styles (Doctor View) */
+.abisu-taula { 
+    width: 100%; 
+    border-collapse: collapse; 
+    background: white; 
+    border-radius: 12px; 
+    overflow: hidden; 
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05); 
+}
+
+.abisu-taula th, .abisu-taula td { 
+    padding: 15px; 
+    text-align: left; 
+    border-bottom: 1px solid #eee; 
+}
+
+.abisu-taula th { 
+    background: #f8f9fa; 
+    color: var(--primary-color); 
+    font-weight: 700; 
+}
+
+.abisu-taula tr:hover { 
+    background: #fcfcfc; 
+}
+
+.paziente-izena { 
+    font-weight: 600; 
+    color: var(--dark-text); 
+    text-decoration: none; 
+}
+
+.paziente-izena:hover { 
+    text-decoration: underline; 
+    color: var(--primary-color); 
+}
+
+/* Badges and Labels */
+.irakurrita-badge { 
+    padding: 2px 6px; 
+    border-radius: 4px; 
+    font-size: 0.7rem; 
+    background: #e8f5e9; 
+    color: #2e7d32; 
+}
+
+.berria-badge { 
+    padding: 2px 6px; 
+    border-radius: 4px; 
+    font-size: 0.7rem; 
+    background: #ffebee; 
+    color: #c62828; 
+    font-weight: 700; 
+}
+
+.mota-etiketa { 
+    padding: 3px 7px; 
+    border-radius: 4px; 
+    font-size: 0.75rem; 
+    font-weight: 600; 
+}
+
+.abisu-txartela.ez-irakurrita {
+    border-left-color: var(--danger-color);
+    background: #fff8f8;
+}
+
+.abisu-mota {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-right: 10px;
+}
+
+.mota-glukosa { background: #e3f2fd; color: #1565c0; }
+.mota-tentsioa { background: #fce4ec; color: #c2185b; }
+.mota-pisua { background: #e8f5e9; color: #2e7d32; }
+
+.abisu-data {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--gray);
+    margin-top: 10px;
+}
+
+.irakurri-botoia {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    font-size: 0.8rem;
+    cursor: pointer;
+    padding: 0;
+    text-decoration: underline;
+}
+
+.irakurri-botoia:hover {
+    color: var(--secondary-color);
+}
+
+.barneko-bistarapena {
+    display: inline;
+}
+
+.testu-arriskua-ezk {
+    color: var(--danger-color);
+    font-weight: 700;
+    margin-left: 5px;
+}

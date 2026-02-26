@@ -1,0 +1,14 @@
+/* index_pazientea.css */
+
+/* Specific patient dashboard tweaks */
+.kaixo-atalak {
+    border-left-color: var(--success-color);
+}
+
+.menu-txartela {
+    border-bottom-color: var(--success-color);
+}
+
+.irteera-txartela {
+    border-bottom-color: var(--danger-color);
+}

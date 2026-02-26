@@ -1,0 +1,14 @@
+/* index_harrera.css */
+
+/* Specific harrera dashboard tweaks */
+.kaixo-atalak {
+    border-left-color: var(--secondary-color);
+}
+
+.menu-txartela {
+    border-bottom: 5px solid var(--secondary-color);
+}
+
+.irteera-txartela {
+    border-bottom-color: var(--danger-color);
+}

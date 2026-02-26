@@ -1,0 +1,210 @@
+/* goiburua.css - Header and Navigation Styles */
+
+header {
+  background-color: var(--white);
+  box-shadow: var(--box-shadow);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.nabigazio-barra {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 5%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.logoa a {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-irudia {
+    height: 60px;
+    width: auto;
+    display: block;
+    object-fit: contain;
+    mix-blend-mode: multiply;
+    transition: var(--transition);
+}
+
+.logo-esteka {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+}
+
+.logo-etiketa {
+    font-size: 1.1rem;
+    color: var(--gray);
+    font-weight: 400;
+}
+
+.logoa a:hover .logo-irudia {
+    transform: scale(1.05);
+}
+
+/* Mobile Menu Button */
+.menu-botoia {
+  display: block;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: var(--primary-color);
+  cursor: pointer;
+  margin-left: auto;
+  transition: var(--transition);
+}
+
+.menu-botoia:hover {
+    transform: scale(1.1);
+    opacity: 0.8;
+}
+
+.nabigazio-estekak {
+  list-style: none;
+  display: none; /* Mobile first: hidden by default */
+  flex-direction: column;
+  width: 100%;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: var(--white);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px 0;
+  text-align: center;
+  z-index: 1001;
+}
+
+.nabigazio-estekak.aktiboa {
+  display: flex;
+}
+
+.nabigazio-estekak li {
+  margin: 10px 0;
+}
+
+.nabigazio-estekak a {
+  text-decoration: none;
+  color: var(--dark-text);
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.nabigazio-estekak a:hover,
+.nabigazio-estekak a.aktiboa {
+  color: var(--primary-color);
+}
+
+/* Header Specific Buttons */
+.botoia {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: var(--border-radius-sm);
+  text-decoration: none;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: var(--transition);
+  text-align: center;
+}
+
+.botoi-nagusia {
+  background-color: var(--primary-color);
+  color: var(--white);
+  box-shadow: 0 4px 14px 0 rgba(67, 97, 238, 0.39);
+}
+
+.botoi-nagusia:hover {
+  background-color: #0056b3;
+}
+
+.botoi-ertza {
+  background-color: transparent;
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
+}
+
+.botoi-ertza:hover {
+  background-color: var(--primary-color);
+  color: var(--white);
+}
+
+.arrisku-kolorea:hover {
+    background-color: var(--danger-color) !important;
+    color: var(--white) !important;
+}
+
+/* Common Actions in Header area if any */
+.botoi-sortu {
+  background: var(--success-color);
+  color: white;
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: var(--border-radius-sm);
+  text-decoration: none;
+  font-weight: 600;
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+}
+
+.botoi-sortu:hover {
+  background: #218838;
+  transform: translateY(-2px);
+}
+
+/* Panel Header (Dashboard specific sticky headers) */
+.panel-goiburua {
+    background-color: var(--white);
+    padding: 1rem 5%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    flex-wrap: wrap;
+}
+
+@media (min-width: 769px) {
+  .menu-botoia {
+    display: none;
+  }
+
+  .nabigazio-barra {
+    padding: 1rem 5%;
+  }
+
+  .nabigazio-estekak {
+    display: flex;
+    flex-direction: row;
+    position: static;
+    width: auto;
+    background: none;
+    box-shadow: none;
+    padding: 0;
+    text-align: left;
+    gap: 20px;
+    padding-left: 2rem;
+  }
+
+  .nabigazio-estekak li {
+    margin: 0;
+  }
+
+  .panel-goiburua {
+    padding: 1rem 5%;
+    gap: 40px;
+  }
+}

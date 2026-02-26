@@ -1,0 +1,55 @@
+/* medikuak.css */
+.espezialitatea-etiketa {
+    background: #e3f2fd;
+    color: #1976d2;
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.elkargokide-zkia {
+    font-weight: 600;
+    color: var(--gray);
+}
+
+/* Doctor Detail View (Fitxa) */
+.fitxa-edukiontzia {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.profil-txartela {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: var(--box-shadow);
+    text-align: center;
+    height: fit-content;
+}
+
+.profil-irudia-handia {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #e3f2fd;
+    margin-bottom: 20px;
+}
+
+.espezialitatea-txapa {
+    background: #e3f2fd;
+    color: #1976d2;
+    padding: 6px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+    .fitxa-edukiontzia { grid-template-columns: 1fr; }
+}

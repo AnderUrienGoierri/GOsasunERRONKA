@@ -1,0 +1,89 @@
+/* kontaktua.css */
+
+/* From kontaktua.css */
+.kontaktu-sekzioa {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    padding: 50px 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.kontaktu-edukiontzia {
+    flex: 2 1 500px;
+    background-color: var(--white);
+    padding: 40px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+.kontaktu-edukiontzia h2 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.kontaktu-edukiontzia p {
+    color: var(--gray);
+    margin-bottom: 30px;
+}
+
+.kontaktu-inprimakia {
+    width: 100%;
+}
+
+.zabalera-100 {
+    width: 100%;
+    padding: 12px;
+    font-size: 1.1rem;
+}
+
+.kontaktu-informazioa {
+    flex: 1 1 300px;
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 40px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    display: flex;
+    flex-direction: column;
+}
+
+.kontaktu-informazioa h3 {
+    margin-bottom: 20px;
+    border-bottom: 2px solid rgba(255,255,255,0.2);
+    padding-bottom: 10px;
+}
+
+.kontaktu-informazioa p {
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.map-placeholder {
+    margin-top: auto;
+    background-color: rgba(0,0,0,0.2);
+    height: 150px;
+    border-radius: var(--border-radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-style: italic;
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.8);
+}
+
+/* ================= MEDIA QUERIES ================= */
+@media (max-width: 768px) {
+    .kontaktu-edukiontzia {
+        padding: 25px;
+    }
+    .kontaktu-sekzioa {
+        flex-direction: column;
+    }
+}
+
+
