@@ -14,8 +14,8 @@ Proiektua logika eta rol ezberdinen arabera antolatu da:
 - php_laguntzaileak/ - Rolik behar ez duten puskak kudeatzeko (Login egiaztapenak, DB Konexioa, Saioa itxi).
 - css/ eta js/ - Estilo grafikoak eta portaera dinamikoa (grafikoak, abisuak).
 - sql/ - Datu-baseko diseinuaren eta eskemaren fitxategiak.
-- pdf_txostenak/ - Sortutako txosten eta errezeta fisikoak gordetzeko karpeta.
-- xml_exportableak/ - Sistemak sortzen dituen XML datuen esportazioak gordetzeko direktorioa.
+- pdf_bezero_txostenak/ - Sortutako txosten eta errezeta fisikoak gordetzeko karpeta.
+- xml_bezero_neurketak/ - Sistemak sortzen dituen XML datuen esportazioak gordetzeko direktorioa.
 
 ### Orri Nagusiak
 
@@ -339,6 +339,6 @@ Dokumentazio hau automatikoki sortu da proiektuko karpeta nagusiak miatuz.
 #### C:/Xampp/htdocs/GOsasun/js/neurketak.js
 - **Aldagai nagusiak:** `baliozkoa_da`, `gutxienez_bat_behar_da`, `glukosa`, `sistolikoa`, `diastolikoa`, `pisua`, `sintomak`, `numPisua`, `pazienteId`, `data`
 
-### 📁 `pdf_txostenak/`
+### 📁 `pdf_bezero_txostenak/`
 
-### 📁 `xml_exportableak/`
+### 📁 `xml_bezero_neurketak/`

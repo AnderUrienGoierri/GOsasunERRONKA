@@ -7,7 +7,7 @@ if (!isset($_SESSION['rol_id'])) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['pdf'])) {
-    $karga_karpeta = dirname(__DIR__) . '/pdf_pdf_txostenak/';
+    $karga_karpeta = dirname(__DIR__) . '/pdf_bezero_txostenak/';
     // Create directory if it doesn't exist
     if (!is_dir($karga_karpeta)) {
         mkdir($karga_karpeta, 0777, true);
@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['pdf'])) {
     if (move_uploaded_file($_FILES['pdf']['tmp_name'], $jomuga_bidea)) {
         echo json_encode([
             'success' => true, 
-            'url' => 'pdf_txostenak/' . $fitxategi_izena,
+            'url' => 'pdf_bezero_txostenak/' . $fitxategi_izena,
             'msg' => 'PDF txostena behar bezala gorde da!',
             'filename' => $fitxategi_izena
         ]);

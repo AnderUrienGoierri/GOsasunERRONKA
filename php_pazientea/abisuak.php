@@ -49,7 +49,7 @@ include_once '../php_includeak/paziente_goiburua.php';
                         <h4>
                             <span>
                                 <span class="abisu-mota mota-<?php echo strtolower($a['mota']); ?>"><?php echo htmlspecialchars($a['mota']); ?></span>
-                                <?php echo $a['irakurrita'] ? '' : '<span class="testu-arriskua-ezk">● Berria</span>'; ?>
+                                <?php echo $a['irakurrita'] ? '' : '<span class="testu-arriskua-ezk"><img src="../img/alert.svg" alt="" class="ikono-14px-erdian"> Berria</span>'; ?>
                             </span>
                             <?php if (!$a['irakurrita']): ?>
                                 <form method="POST" class="barneko-bistarapena">

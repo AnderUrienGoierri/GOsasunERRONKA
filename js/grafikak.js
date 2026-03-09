@@ -146,7 +146,7 @@ $(document).ready(function() {
                     }
                 },
                 error: function(xhr, status, error) {
-                    alerta.html('<div class="alerta alerta-errorea">Errorea PDF-a gordetzean (' + error + '). Egiaztatu pdf_txostenak/ karpeta.</div>');
+                    alerta.html('<div class="alerta alerta-errorea">Errorea PDF-a gordetzean (' + error + '). Egiaztatu pdf_bezero_txostenak/ karpeta.</div>');
                 }
             });
         });

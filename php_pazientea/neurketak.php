@@ -4,6 +4,13 @@ if (!isset($_SESSION['rol_id']) || $_SESSION['rol_izena'] !== 'Pazientea') {
     header("Location: ../php_hasiera/login.php");
     exit;
 }
+?>
+<script>
+    if (sessionStorage.getItem('usb_connected') !== 'true') {
+        window.location.href = 'index.php';
+    }
+</script>
+<?php
 
 require_once '../php_laguntzaileak/DB_konexioa.php';
 $paziente_id = $_SESSION['erabiltzaile_id'];

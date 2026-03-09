@@ -7,7 +7,7 @@ DROP TRIGGER IF EXISTS Eguneratu_Paziente_Datuak;
 DELIMITER //
 
 CREATE TRIGGER Eguneratu_Paziente_Datuak
-AFTER INSERT ON Neurketak
+AFTER INSERT ON Neurketak   -- taula intermedia (historial_neurketak) para guardar las lineas que saltan (se cambian) con el trigger.
 FOR EACH ROW
 BEGIN
     UPDATE Pazienteak

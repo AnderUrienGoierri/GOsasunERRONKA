@@ -1,12 +1,13 @@
     <footer>
         <link rel="stylesheet" href="<?php echo $bide_absolutua; ?>css/footer.css">
+        <link rel="stylesheet" href="<?php echo $bide_absolutua; ?>css/usb_styles.css">
         <div class="footer-logo-container">
             <img src="<?php echo $bide_absolutua; ?>img/GOsasun_logoa.png" alt="GOsasun Logo" class="footer-logo">
         </div>
         <div class="orri-oin-nabigazioa">
             <a href="index.php">Hasiera</a>  
             <a href="datuak.php">Nire Datuak</a> 
-            <a href="neurketak.php">Neurketak</a> 
+            <a href="neurketak.php" class="footer-neurketak-link">Neurketak</a> 
             <a href="grafikak.php">Grafikak</a> 
             <a href="hitzorduak.php">Hitzorduak</a> 
             <a href="errezetak.php">Errezetak</a> 
@@ -19,6 +20,7 @@
 
     <!-- JS -->
     <script src="<?php echo $bide_absolutua; ?>js/orokorrak.js"></script>
+    <script src="<?php echo $bide_absolutua; ?>js/usb_detekzioa.js"></script>
     <?php if (isset($js_gehigarria)): ?>
         <?php foreach ($js_gehigarria as $js): ?>
             <script src="<?php echo $bide_absolutua; ?>js/<?php echo $js; ?>"></script>

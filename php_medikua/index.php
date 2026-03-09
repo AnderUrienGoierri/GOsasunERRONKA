@@ -75,6 +75,11 @@ include_once '../php_includeak/mediku_goiburua.php';
                 <h3>Errezetak</h3>
                 <p>Sortu eta kudeatu pazienteen errezetak.</p>
             </a>
+            <a href="neurketak.php" class="menu-txartela">
+                <div class="txartel-ikonoa"><img src="../img/clipboard-pen.svg" alt="Neurketak" class="ikono-handia-48"></div>
+                <h3>Neurketak</h3>
+                <p>Erregistratu pazienteen bizi-seinaleak.</p>
+            </a>
             <a href="grafikak.php" class="menu-txartela">
                 <div class="txartel-ikonoa"><img src="../img/line-chart.svg" alt="Grafikak" class="ikono-handia-48"></div>
                 <h3>Grafikak</h3>
@@ -89,6 +94,11 @@ include_once '../php_includeak/mediku_goiburua.php';
                 <div class="txartel-ikonoa"><img src="../img/bell-ring.svg" alt="Abisuak" class="ikono-handia-48"></div>
                 <h3>Abisuak</h3>
                 <p>Ikusi pazienteen neurketa-alerta kritikoak.</p>
+            </a>
+            <a href="ezarpenak.php" class="menu-txartela">
+                <div class="txartel-ikonoa"><img src="../img/settings.svg" alt="Ezarpenak" class="ikono-handia-48"></div>
+                <h3>Ezarpenak</h3>
+                <p>Pertsonalizatu webgunearen itxura (hizkuntza, kolorea...).</p>
             </a>
             <a href="../php_laguntzaileak/logout.php" class="menu-txartela">
                 <div class="txartel-ikonoa"><img src="../img/log-out.svg" alt="Saioa Itxi" class="ikono-handia-48"></div>

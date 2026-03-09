@@ -157,3 +157,19 @@
         width: 100%;
     }
 }
+
+/* In-line estiloen ordezkapen berriak (euskarazko izenak) */
+.form-edukiontzi-zuria { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); max-width: 800px; margin: 0 auto; }
+.marjina-behe-20 { margin-bottom: 20px; }
+.marjina-behe-25 { margin-bottom: 25px; }
+.etiketa-lodia { display: block; font-weight: 600; margin-bottom: 8px; color: var(--testu-iluna, var(--dark-text)); }
+.sarrera-handia { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; }
+.sarrera-testu-eremua { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; resize: vertical; }
+.flex-20px-tartea-marjina { display: flex; gap: 20px; margin-bottom: 20px; }
+.flex-20px-tartea { display: flex; gap: 20px; }
+.flex-1 { flex: 1; }
+.neurketa-kutxa-argia { background-color: var(--azentua-argia, #f0f8ff); padding: 20px; border-radius: 10px; margin-bottom: 20px; }
+.marjina-behe-15 { margin-bottom: 15px; }
+.flex-15px-tartea { display: flex; gap: 15px; }
+.botoi-handia-flex { flex: 1; padding: 14px; font-size: 16px; }
+.botoi-handia-padding { padding: 14px 24px; font-size: 16px; }

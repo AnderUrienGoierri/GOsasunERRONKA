@@ -880,3 +880,27 @@ body {
 .ikono-inline-handia { display: inline-block; font-size: 1.5rem; margin-right: 10px; margin-bottom: 0; }
 .ikono-24px-iragazkia { width: 24px; height: 24px; filter: var(--primary-filter); vertical-align: middle; }
 .hutsartea-15 { gap: 15px; }
+
+/* In-line estiloen ordezkapen berriak */
+.ikono-32px-erdian { width: 32px; vertical-align: middle; margin-right: 10px; }
+.ikono-16px-erdian { width: 16px; vertical-align: middle; margin-right: 5px; }
+.ikono-48px { width: 48px; height: 48px; }
+.edukiontzi-ertaina { max-width: 800px; margin: 0 auto; margin-top: 30px; }
+.edukiontzi-ertaina-padding { padding: 40px 5%; max-width: 800px; margin: 0 auto; }
+.ertz-lodi-urdina { border: 2px solid var(--primary-color); }
+.testua-erdian-marjina-behe-20 { text-align: center; margin-bottom: 20px; }
+.testu-grisa { color: var(--gray); }
+.marjina-goi-15 { margin-top: 15px; }
+.sarrera-altuera-50 { height: 50px; padding: 5px; }
+.testua-erdian-marjina-goi-30 { text-align: center; margin-top: 30px; }
+.zabalera-osoa-300px { width: 100%; max-width: 300px; }
+.marjina-esk-10-erdian { vertical-align: middle; margin-right: 10px; }
+.ikono-24px-erdian { width: 24px; vertical-align: middle; margin-right: 10px; }
+.testu-iluna-izenburua { color: var(--dark-text); font-size: 1.5rem; }
+.ikono-14px-erdian { width: 14px; vertical-align: middle; }
+.ikono-24px { width: 24px; }
+.flex-15px-tartea { display: flex; gap: 15px; }
+.checkbox-20px { width: 20px; height: 20px; }
+.marjina-behe-0 { margin-bottom: 0; }
+.errezeta-kutxa-argia { background-color: var(--azentua-argia); padding: 15px; border-radius: 8px; margin-bottom: 15px; }
+.errezeta-izenburu-urdina { margin-top: 0; margin-bottom: 10px; color: var(--primary-color); }

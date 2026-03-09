@@ -227,8 +227,8 @@ include_once '../php_includeak/mediku_goiburua.php';
                         <textarea name="diagnostiko_laburra" id="modal_diagnostikoa" class="inprimaki-kontrola" errenkadak="3" required></textarea>
                     </div>
 
-                    <div style="background-color: var(--azentua-argia); padding: 15px; border-radius: 8px; margin-bottom: 15px;">
-                        <h4 style="margin-top: 0; margin-bottom: 10px; color: var(--lehen-mailako-kolorea);"><img src="../img/pill.svg" alt="" class="ikono-ertaina marjina-esk-5"> Gehitu / Eguneratu Botika</h4>
+                    <div class="errezeta-kutxa-argia">
+                        <h4 class="errezeta-izenburu-urdina"><img src="../img/pill.svg" alt="" class="ikono-ertaina marjina-esk-5"> Gehitu / Eguneratu Botika</h4>
                         <div class="inprimaki-taldea">
                             <label for="botika_id">Botika</label>
                             <select name="botika_id" id="modal_botika_id" class="inprimaki-kontrola">

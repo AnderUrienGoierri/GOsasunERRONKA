@@ -1,0 +1,10 @@
+desktop.ini
+.DS_Store
+Thumbs.db
+*.tmp
+node_modules/
+dist/
+.env
+xml_exportableak/
+pdf_txostenak/
+

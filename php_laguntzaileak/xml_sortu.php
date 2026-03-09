@@ -114,7 +114,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $root->appendChild($neurketak_node);
         
         // Fitxategia Gorde
-        $xmlDir = dirname(__DIR__) . '/xml_exportableak/';
+        $xmlDir = dirname(__DIR__) . '/xml_bezero_neurketak/';
         if (!is_dir($xmlDir)) mkdir($xmlDir, 0777, true);
         
         $fitxategi_izena = "Neurketak_{$jomuga_paziente_id}_" . date('Ymd_His') . ".xml";
@@ -124,7 +124,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
         echo json_encode([
             'success' => true,
-            'url' => 'xml_exportableak/' . $fitxategi_izena,
+            'url' => 'xml_bezero_neurketak/' . $fitxategi_izena,
             'msg' => 'XML txostena arrastaka gorde da!'
         ]);
         

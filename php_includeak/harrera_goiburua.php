@@ -32,7 +32,7 @@ if (!isset($orri_izenburua)) {
                 <span class="logo-etiketa">Harrera</span>
             </a>
         </div>
-        <button class="menu-botoia" aria-label="Ireki menua">☰</button>
+        <button class="menu-botoia" aria-label="Ireki menua"><img src="<?php echo $bide_absolutua; ?>img/list.svg" alt="" class="ikono-24px"></button>
         <ul class="nabigazio-estekak">
             <li><a href="index.php" class="<?php echo ($uneko_orria === 'index') ? 'aktiboa' : ''; ?>">Hasiera</a></li>
             <li><a href="pazienteak.php" class="<?php echo ($uneko_orria === 'pazienteak') ? 'aktiboa' : ''; ?>">Pazienteak</a></li>

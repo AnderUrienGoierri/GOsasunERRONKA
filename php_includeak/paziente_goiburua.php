@@ -35,17 +35,20 @@ if (session_status() === PHP_SESSION_NONE) {
                 <span class="logo-etiketa">Pazientea</span>
             </a>
         </div>
-        <button class="menu-botoia" aria-label="Ireki menua">☰</button>
+        <button class="menu-botoia" aria-label="Ireki menua"><img src="<?php echo $bide_absolutua; ?>img/list.svg" alt="" class="ikono-24px"></button>
         <ul class="nabigazio-estekak">
             <li><a href="index.php" <?php echo (isset($uneko_orria) && $uneko_orria === 'index') ? 'class="aktiboa"' : ''; ?>>Hasiera</a></li>
             <li><a href="datuak.php" <?php echo (isset($uneko_orria) && $uneko_orria === 'datuak') ? 'class="aktiboa"' : ''; ?>>Nire Datuak</a></li>
-            <li><a href="neurketak.php" <?php echo (isset($uneko_orria) && $uneko_orria === 'neurketak') ? 'class="aktiboa"' : ''; ?>>Neurketak</a></li>
+            <li><a href="neurketak.php" id="nav-neurketak" <?php echo (isset($uneko_orria) && $uneko_orria === 'neurketak') ? 'class="aktiboa"' : ''; ?>>Neurketak</a></li>
             <li><a href="grafikak.php" <?php echo (isset($uneko_orria) && $uneko_orria === 'grafikak') ? 'class="aktiboa"' : ''; ?>>Grafikak</a></li>
             <li><a href="hitzorduak.php" <?php echo (isset($uneko_orria) && $uneko_orria === 'hitzorduak') ? 'class="aktiboa"' : ''; ?>>Hitzorduak</a></li>
             <li><a href="errezetak.php" <?php echo (isset($uneko_orria) && $uneko_orria === 'errezetak') ? 'class="aktiboa"' : ''; ?>>Errezetak</a></li>
             <li><a href="mezuak.php" <?php echo (isset($uneko_orria) && $uneko_orria === 'mezuak') ? 'class="aktiboa"' : ''; ?>>Mezuak</a></li>
             <li><a href="abisuak.php" <?php echo (isset($uneko_orria) && $uneko_orria === 'abisuak') ? 'class="aktiboa"' : ''; ?>>Abisuak</a></li>
             <li><a href="<?php echo $bide_absolutua; ?>php_laguntzaileak/logout.php" class="botoia botoi-ertza arrisku-kolorea" >Saioa Itxi</a></li>
+            <li id="usb-status-container" class="usb-disconnected" data-tooltip="Konektatu neurketa gailua">
+                <img src="<?php echo $bide_absolutua; ?>img/usb.svg" alt="USB" class="usb-icon">
+            </li>
         </ul>
     </header>
 

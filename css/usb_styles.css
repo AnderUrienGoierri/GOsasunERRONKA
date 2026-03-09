@@ -1,0 +1,64 @@
+/* usb_styles.css */
+
+#usb-status-container {
+  display: flex;
+  align-items: center;
+  margin-left: 15px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+#usb-status-container:hover {
+  transform: scale(1.1);
+}
+
+.usb-icon {
+  width: 24px;
+  height: 24px;
+  filter: invert(40%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(90%)
+    contrast(90%); /* Default gray */
+  transition: filter 0.3s;
+}
+
+/* Connected State */
+.usb-connected .usb-icon {
+  filter: invert(48%) sepia(79%) saturate(2476%) hue-rotate(86deg)
+    brightness(118%) contrast(119%); /* Success Green */
+}
+
+/* Disconnected State animation/hint */
+.usb-disconnected .usb-icon {
+  filter: invert(21%) sepia(100%) saturate(7414%) hue-rotate(359deg)
+    brightness(94%) contrast(117%); /* Danger Red */
+}
+
+/* Disabled Elements */
+.elementu-desaktibatua {
+  opacity: 0.5 !important;
+  pointer-events: none !important;
+  filter: grayscale(100%);
+  cursor: not-allowed;
+}
+
+/* Tooltip style simple */
+#usb-status-container::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s;
+}
+
+#usb-status-container:hover::after {
+  opacity: 1;
+  visibility: visible;
+}

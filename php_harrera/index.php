@@ -66,6 +66,12 @@ include_once '../php_includeak/harrera_goiburua.php';
                 <h3>Harrerako Langileak</h3>
                 <p>Kudeatu harrerako langileen zerrenda eta baimenak.</p>
             </a>
+            
+            <a href="ezarpenak.php" class="menu-txartela">
+                <div class="txartel-ikonoa"><img src="../img/settings.svg" alt="Ezarpenak" class="ikono-handia-48"></div>
+                <h3>Ezarpenak</h3>
+                <p>Konfiguratu sistemaren izena, hitzordu mugak eta ordutegiak XML bidez.</p>
+            </a>
 
             <a href="../php_laguntzaileak/logout.php" class="menu-txartela">
                 <div class="txartel-ikonoa"><img src="../img/log-out.svg" alt="Saioa Itxi" class="ikono-handia-48"></div>

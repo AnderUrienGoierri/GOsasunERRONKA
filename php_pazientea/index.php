@@ -51,7 +51,7 @@ include_once '../php_includeak/paziente_goiburua.php';
         <!-- Laburpen Txartelak (Dashboard) -->
         <div class="panel-sareta flex-tartea-20 marjina-behe-30">
             <!-- Azken Neurketak -->
-            <div class="kutxa-zuria-itzala">
+            <div id="dash-neurketak-card" class="kutxa-zuria-itzala">
                 <h3 class="izenburu-iluna"><img src="../img/line-chart.svg" alt="" class="ikono-ertaina marjina-esk-5"> Azken Bizi-Seinaleak</h3>
                 <?php if ($azkenNeurketa): ?>
                     <div class="sareta-bikoa">
@@ -72,7 +72,7 @@ include_once '../php_includeak/paziente_goiburua.php';
                 <?php else: ?>
                     <p class="testu-gris-etzana">Ez dago neurketa erregistratutik.</p>
                 <?php endif; ?>
-                <a href="neurketak.php" class="botoia botoi-nagusia marjina-goi-15 zabalera-osoa testua-erdian">Neurketa Berria</a>
+                <a href="neurketak.php" id="dash-neurketak-btn" class="botoia botoi-nagusia marjina-goi-15 zabalera-osoa testua-erdian">Neurketa Berria</a>
             </div>
 
             <!-- Hurrengo Hitzordua -->
@@ -103,7 +103,7 @@ include_once '../php_includeak/paziente_goiburua.php';
                 <h3>Nire Datuak</h3>
                 <p>Ikusi eta eguneratu zure datuak.</p>
             </a>
-            <a href="neurketak.php" class="menu-txartela">
+            <a href="neurketak.php" class="menu-txartela" id="menu-neurketak-card">
                 <div class="txartel-ikonoa"><img src="../img/clipboard-pen.svg" alt="Neurketak" class="ikono-handia-48"></div>
                 <h3>Neurketak</h3>
                 <p>Sartu neurketa eta sintoma berriak.</p>
@@ -132,6 +132,11 @@ include_once '../php_includeak/paziente_goiburua.php';
                 <div class="txartel-ikonoa"><img src="../img/mail.svg" alt="Mezuak" class="ikono-handia-48"></div>
                 <h3>Mezuak</h3>
                 <p>Komunikatu medikuekin edo harrerakoekin.</p>
+            </a>
+            <a href="ezarpenak.php" class="menu-txartela">
+                <div class="txartel-ikonoa"><img src="../img/settings.svg" alt="Ezarpenak" class="ikono-handia-48"></div>
+                <h3>Ezarpenak</h3>
+                <p>Pertsonalizatu webgunearen itxura (hizkuntza, kolorea...).</p>
             </a>
             <a href="../php_laguntzaileak/logout.php" class="menu-txartela">
                 <div class="txartel-ikonoa"><img src="../img/log-out.svg" alt="Saioa Itxi" class="ikono-handia-48"></div>
