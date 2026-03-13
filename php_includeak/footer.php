@@ -1,13 +1,13 @@
     <footer>
         <link rel="stylesheet" href="<?php echo $bide_absolutua; ?>css/footer.css">
-        <div class="orri-oin-nabigazioa">
-            <a href="<?php echo $bide_absolutua; ?>index.php">Hasiera</a> | 
-            <a href="<?php echo $bide_absolutua; ?>php_hasiera/kontaktua.php">Kontaktua</a> | 
-            <a href="<?php echo $bide_absolutua; ?>php_hasiera/login.php">Saioa Hasi</a>
+        <div class="footer-logo-edukiontzia">
+            <img src="<?php echo $bide_absolutua; ?>img/GOsasun_logoa-removebg-preview-white.png" alt="GOsasun Logo" class="footer-logo">
         </div>
 
-        <div class="footer-logo-edukiontzia">
-            <img src="<?php echo $bide_absolutua; ?>img/GOsasun_logoa.png" alt="GOsasun Logo" class="footer-logo">
+        <div class="orri-oin-nabigazioa">
+            <a href="<?php echo $bide_absolutua; ?>index.php">Hasiera</a>
+            <a href="<?php echo $bide_absolutua; ?>php_hasiera/kontaktua.php">Kontaktua</a>
+            <a href="<?php echo $bide_absolutua; ?>php_hasiera/login.php">Saioa Hasi</a>
         </div>
         
         <p>&copy; 2026 GOsasun</p>

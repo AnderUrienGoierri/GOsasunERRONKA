@@ -1,34 +1,68 @@
 /* Oina.css - Oineko Estiloak */
 
 footer {
-  background-color: var(--dark-text);
+  background-color: var(--footer-color, #2b2d42); /* Uses XML color or fallback */
   color: var(--white);
   text-align: center;
-  padding: 20px 0;
+  padding: 40px 20px 20px;
   margin-top: auto;
+  border-top: 4px solid var(--primary-color);
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .orri-oin-nabigazioa {
-  margin-bottom: 10px;
+  margin-left: 25px;
+  margin-bottom: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
 }
 
 .orri-oin-nabigazioa a {
-  color: #ccc;
+  color: rgba(255, 255, 255, 0.8);
   text-decoration: none;
-  margin: 0 10px;
-  transition: color 0.3s ease;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  padding: 5px 10px;
+  border-radius: var(--border-radius-sm);
+  transition: all 0.3s ease;
 }
 
 .orri-oin-nabigazioa a:hover {
   color: var(--white);
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
 }
 
 .footer-logo-edukiontzia {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 }
 
 .footer-logo {
+  height: 100px;
   width: 150px;
-  height: auto;
+  opacity: 0.9;
+  margin-right: 15px;
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
+
+.footer-logo:hover {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+footer p {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.9rem;
+  margin: 0;
+  padding-top: 15px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+

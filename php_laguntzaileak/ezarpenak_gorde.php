@@ -3,7 +3,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $xml_path = "../xml_konfigurazioa/config.xml";
     
     // Lehenetsitako balioak (fitxategia hutsik badoa)
-    $hizk = 'eu'; $kol_nag = '#4361ee'; $big_kol = '#3f37c9'; $gaia = 'argia';
+    $hizk = 'eu'; $kol_nag = '#4361ee'; $big_kol = '#3f37c9'; $foot_kol = '#2b2d42'; $gaia = 'argia';
     $sis_ize = 'GOsasun'; $hitz_muga = '20'; $ordu_ireki = '08:00'; $ordu_itxi = '20:00'; $mant = 'ez';
 
     // Dauden balioak irakurri
@@ -13,6 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $hizk = (string)$xml_conf->hizkuntza ?: $hizk;
             $kol_nag = (string)$xml_conf->kolore_nagusia ?: $kol_nag;
             $big_kol = (string)$xml_conf->bigarren_kolorea ?: $big_kol;
+            $foot_kol = (string)$xml_conf->footer_kolorea ?: $foot_kol;
             $gaia = (string)$xml_conf->gaia ?: $gaia;
             
             if (isset($xml_conf->osasun_zentroa)) {
@@ -31,6 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $hizk = $_POST['hizkuntza'] ?? $hizk;
         $kol_nag = $_POST['kolore_nagusia'] ?? $kol_nag;
         $big_kol = $_POST['bigarren_kolorea'] ?? $big_kol;
+        $foot_kol = $_POST['footer_kolorea'] ?? $foot_kol;
         $gaia = $_POST['gaia'] ?? $gaia;
     } elseif ($form_type === 'osasun_zentroa') {
         $sis_ize = $_POST['sistema_izena'] ?? $sis_ize;
@@ -49,6 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $konfigurazioa->appendChild($xml->createElement("hizkuntza", htmlspecialchars($hizk)));
     $konfigurazioa->appendChild($xml->createElement("kolore_nagusia", htmlspecialchars($kol_nag)));
     $konfigurazioa->appendChild($xml->createElement("bigarren_kolorea", htmlspecialchars($big_kol)));
+    $konfigurazioa->appendChild($xml->createElement("footer_kolorea", htmlspecialchars($foot_kol)));
     $konfigurazioa->appendChild($xml->createElement("gaia", htmlspecialchars($gaia)));
 
     $osasun_ezarpenak = $xml->createElement("osasun_zentroa");

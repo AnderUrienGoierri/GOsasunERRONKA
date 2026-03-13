@@ -88,6 +88,37 @@ include '../php_includeak/goiburua.php';
 
 <?php
 $js_gehigarria = ["kontaktua.js"];
+include '../php_includeak/ezarpenak_modala.php';
 include '../php_includeak/footer.php';
 ?>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var modal = document.getElementById("ezarpenakModala");
+        var btn = document.getElementById("irekiEzarpenakModala");
+        var span = document.getElementsByClassName("itxi-modala")[0];
+
+        if (btn) {
+            btn.onclick = function(e) {
+                e.preventDefault();
+                modal.style.display = "block";
+            }
+        }
+
+        if (span) {
+            span.onclick = function() {
+                modal.style.display = "none";
+            }
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        <?php if (isset($_GET['ezarpenak_gordeta'])): ?>
+        modal.style.display = "block";
+        <?php endif; ?>
+    });
+</script>
 

@@ -63,6 +63,16 @@
     gap: 10px;
 }
 
+.kontaktu-informazioa a {
+    color: var(--white);
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+}
+
+.kontaktu-informazioa a:hover {
+    opacity: 0.8;
+}
+
 .map-placeholder {
     margin-top: auto;
     background-color: rgba(0,0,0,0.2);

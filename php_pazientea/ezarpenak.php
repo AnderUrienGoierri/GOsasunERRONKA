@@ -17,6 +17,7 @@ $xml_path = '../xml_konfigurazioa/config.xml';
 $hizkuntza_def = 'eu';
 $kolore_nagusia_def = '#4361ee';
 $bigarren_kolorea_def = '#3f37c9';
+$footer_kolorea_def = '#2b2d42';
 $gaia_def = 'argia';
 
 if (file_exists($xml_path)) {
@@ -25,6 +26,7 @@ if (file_exists($xml_path)) {
         $hizkuntza_def = (string)$xml_conf->hizkuntza ?: $hizkuntza_def;
         $kolore_nagusia_def = (string)$xml_conf->kolore_nagusia ?: $kolore_nagusia_def;
         $bigarren_kolorea_def = (string)$xml_conf->bigarren_kolorea ?: $bigarren_kolorea_def;
+        $footer_kolorea_def = (string)$xml_conf->footer_kolorea ?: $footer_kolorea_def;
         $gaia_def = (string)$xml_conf->gaia ?: $gaia_def;
     }
 }
@@ -66,6 +68,11 @@ if (file_exists($xml_path)) {
                 <div class="inprimaki-taldea">
                     <label>Bigarren mailako kolorea:</label>
                     <input type="color" name="bigarren_kolorea" value="<?php echo htmlspecialchars($bigarren_kolorea_def); ?>" class="inprimaki-kontrola sarrera-altuera-50">
+                </div>
+
+                <div class="inprimaki-taldea">
+                    <label>Footer kolorea:</label>
+                    <input type="color" name="footer_kolorea" value="<?php echo htmlspecialchars($footer_kolorea_def); ?>" class="inprimaki-kontrola sarrera-altuera-50">
                 </div>
 
                 <div class="inprimaki-taldea">

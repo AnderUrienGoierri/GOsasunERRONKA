@@ -120,12 +120,13 @@ header {
 
 .botoi-nagusia {
   background-color: var(--primary-color);
-  color: var(--white);
-  box-shadow: 0 4px 14px 0 rgba(67, 97, 238, 0.39);
+  color: white;
+  box-shadow: 0 4px 14px 0 rgba(0, 145, 255, 0.39);
 }
 
 .botoi-nagusia:hover {
-  background-color: #0056b3;
+  background-color: #00c3ff;
+  color: white
 }
 
 .botoi-ertza {
@@ -197,6 +198,7 @@ header {
     text-align: left;
     gap: 20px;
     padding-left: 2rem;
+    align-items: center;
   }
 
   .nabigazio-estekak li {

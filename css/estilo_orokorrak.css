@@ -266,6 +266,12 @@ body {
     width: 100%;
 }
 
+.portal-txartela .botoia:hover {
+    background-color: #6b84ff; /* Lighter blue on hover */
+    color: #ffffff; /* White text on hover */
+    border-color: #6b84ff;
+}
+
 .datu-taula, .paziente-taula {
   width: 100%;
   border-collapse: collapse;

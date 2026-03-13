@@ -1,14 +1,14 @@
     <footer>
         <link rel="stylesheet" href="<?php echo $bide_absolutua; ?>css/footer.css">
-        <div class="footer-logo-container">
-            <img src="<?php echo $bide_absolutua; ?>img/GOsasun_logoa.png" alt="GOsasun Logo" class="footer-logo">
+        <div class="footer-logo-edukiontzia">
+            <img src="<?php echo $bide_absolutua; ?>img/GOsasun_logoa-removebg-preview-white.png" alt="GOsasun Logo" class="footer-logo">
         </div>
         <div class="orri-oin-nabigazioa">
-            <a href="hitzorduak.php">Hitzorduak</a> | 
-            <a href="errezetak.php">Errezetak</a> | 
-            <a href="grafikak.php">Grafikak</a> | 
-            <a href="mezuak.php">Mezuak</a> | 
-            <a href="abisuak.php">Abisuak</a> | 
+            <a href="hitzorduak.php">Hitzorduak</a>
+            <a href="errezetak.php">Errezetak</a>
+            <a href="grafikak.php">Grafikak</a>
+            <a href="mezuak.php">Mezuak</a>
+            <a href="abisuak.php">Abisuak</a>
             <a href="<?php echo $bide_absolutua; ?>php_laguntzaileak/logout.php">Saioa Itxi</a>
         </div>
         <p>&copy; 2026 GOsasun</p>

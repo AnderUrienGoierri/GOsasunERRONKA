@@ -87,57 +87,7 @@ include 'php_includeak/goiburua.php';
         </div>
     </section>
 
-    <!-- Ezarpenen Modala -->
-    <div id="ezarpenakModala" class="modal-wrapper">
-        <div class="modal-edukia">
-            <div class="modal-goiburua">
-                <h3><img src="img/settings.svg" alt="" class="ikono-24px-erdian"> Web Aplikazioaren Ezarpenak (XML)</h3>
-                <span class="itxi-modala">&times;</span>
-            </div>
-            <div class="modal-gorputza">
-                <p class="testu-grisa testua-erdian-marjina-behe-20">Hemen web-aren portaera eta itxura XML fitxategian aldatu ditzakezu erakustaldi gisa</p>
-                <?php if (isset($_GET['ezarpenak_gordeta'])): ?>
-                    <div class="alerta alerta-arrakasta marjina-goi-15 testua-erdian-marjina-behe-20">Ezarpenak XML fitxategian gorde dira!</div>
-                <?php endif; ?>
-                
-                <form action="php_laguntzaileak/ezarpenak_gorde.php" method="POST">
-                    <input type="hidden" name="form_type" value="orokorra">
-                    
-                    <div class="inprimaki-taldea">
-                        <label>Defektuzko hizkuntza:</label>
-                        <select name="hizkuntza" class="inprimaki-kontrola">
-                            <option value="eu" <?php echo ($hizkuntza_def === 'eu') ? 'selected' : ''; ?>>Euskara</option>
-                            <option value="es" <?php echo ($hizkuntza_def === 'es') ? 'selected' : ''; ?>>Castellano</option>
-                            <option value="en" <?php echo ($hizkuntza_def === 'en') ? 'selected' : ''; ?>>English</option>
-                        </select>
-                    </div>
-
-                    <div class="inprimaki-taldea">
-                        <label>Kolore nagusia:</label>
-                        <input type="color" name="kolore_nagusia" value="<?php echo htmlspecialchars($kolore_nagusia_def); ?>" class="inprimaki-kontrola sarrera-altuera-50">
-                    </div>
-
-                    <div class="inprimaki-taldea">
-                        <label>Bigarren mailako kolorea:</label>
-                        <input type="color" name="bigarren_kolorea" value="<?php echo htmlspecialchars($bigarren_kolorea_def); ?>" class="inprimaki-kontrola sarrera-altuera-50">
-                    </div>
-
-                    <div class="inprimaki-taldea">
-                        <label>Aplikazioaren Itxura (Gaia):</label>
-                        <select name="gaia" class="inprimaki-kontrola">
-                            <option value="argia" <?php echo ($gaia_def === 'argia') ? 'selected' : ''; ?>>Argia (Mahaigaina klasikoa)</option>
-                            <option value="iluna" <?php echo ($gaia_def === 'iluna') ? 'selected' : ''; ?>>Iluna (Modo oscuro)</option>
-                        </select>
-                    </div>
-
-                    <div class="testua-erdian-marjina-goi-30">
-                        <button type="submit" class="botoia botoi-nagusia zabalera-osoa-300px">Gorde Ezarpenak (XML-an)</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
+<?php include 'php_includeak/ezarpenak_modala.php'; ?>
     <script>
     document.addEventListener('DOMContentLoaded', function() {
         var modal = document.getElementById("ezarpenakModala");
