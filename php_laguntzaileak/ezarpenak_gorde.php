@@ -17,6 +17,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             unlink($xml_path);
         }
         
+        $nondik = $_POST['nondik'] ?? '';
+        if (!empty($nondik)) {
+            $separatzailea = (strpos($nondik, '?') === false) ? '?' : '&';
+            header("Location: " . $nondik . $separatzailea . "ezarpenak_reset=1");
+            exit();
+        }
+
         $itzulera = $_POST['itzulera'] ?? 'orokorra';
         if ($itzulera === 'medikua') {
             header("Location: ../php_medikua/ezarpenak.php?ezarpenak_reset=1");
@@ -54,8 +61,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
-    $form_type = $_POST['form_type'] ?? 'orokorra';
-
     if ($form_type === 'orokorra') {
         $hizk = $_POST['hizkuntza'] ?? $hizk;
         $kol_nag = $_POST['kolore_nagusia'] ?? $kol_nag;
@@ -92,6 +97,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $konfigurazioa->appendChild($osasun_ezarpenak);
 
     $xml->save($xml_path);
+
+    $nondik = $_POST['nondik'] ?? '';
+    if (!empty($nondik)) {
+        $separatzailea = (strpos($nondik, '?') === false) ? '?' : '&';
+        header("Location: " . $nondik . $separatzailea . "ezarpenak_gordeta=1");
+        exit();
+    }
 
     $itzulera = $_POST['itzulera'] ?? 'orokorra';
 

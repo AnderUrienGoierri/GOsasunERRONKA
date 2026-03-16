@@ -10,6 +10,9 @@
                 <?php if (isset($_GET['ezarpenak_gordeta'])): ?>
                     <div class="alerta alerta-arrakasta marjina-goi-15 testua-erdian-marjina-behe-20">Ezarpenak XML fitxategian gorde dira!</div>
                 <?php endif; ?>
+                <?php if (isset($_GET['ezarpenak_reset'])): ?>
+                    <div class="alerta alerta-arrakasta marjina-goi-15 testua-erdian-marjina-behe-20">Hasierako baloreak berreskuratu dira!</div>
+                <?php endif; ?>
                 
                 <form action="<?php echo $bide_absolutua; ?>php_laguntzaileak/ezarpenak_gorde.php" method="POST">
                     <input type="hidden" name="form_type" value="orokorra">
@@ -49,6 +52,15 @@
 
                     <div class="testua-erdian-marjina-goi-30">
                         <button type="submit" class="botoia botoi-nagusia zabalera-osoa-300px">Gorde Ezarpenak (XML-an)</button>
+                    </div>
+                </form>
+
+                <form action="<?php echo $bide_absolutua; ?>php_laguntzaileak/ezarpenak_gorde.php" method="POST" class="marjina-goi-15">
+                    <input type="hidden" name="ekintza" value="reset">
+                    <input type="hidden" name="form_type" value="orokorra">
+                    <input type="hidden" name="nondik" value="<?php echo htmlspecialchars($_SERVER['REQUEST_URI']); ?>">
+                    <div class="testua-erdian">
+                        <button type="submit" class="botoia botoi-itsua-gorria" onclick="return confirm('Ziur zaude hasierako baloreak berreskuratu nahi dituzula?')">Berreskuratu hasierako baloreak</button>
                     </div>
                 </form>
             </div>

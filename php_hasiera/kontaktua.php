@@ -116,7 +116,7 @@ include '../php_includeak/footer.php';
             }
         }
 
-        <?php if (isset($_GET['ezarpenak_gordeta'])): ?>
+        <?php if (isset($_GET['ezarpenak_gordeta']) || isset($_GET['ezarpenak_reset'])): ?>
         modal.style.display = "block";
         <?php endif; ?>
     });

@@ -228,3 +228,73 @@ header {
     font-size: 1.6rem;
   }
 }
+
+/* Modalaren estiloak Ezarpenentzako */
+.modal-wrapper {
+  display: none; 
+  position: fixed;
+  z-index: 2000; /* Header-aren gainetik (1000) */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.6); 
+}
+
+.modal-edukia {
+  background-color: var(--white);
+  margin: 10vh auto;
+  padding: 0;
+  border-radius: var(--border-radius);
+  width: 90%;
+  max-width: 600px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  animation: irekiModala 0.3s ease-out forwards;
+}
+
+@keyframes irekiModala {
+  from {transform: translateY(-50px); opacity: 0;}
+  to {transform: translateY(0); opacity: 1;}
+}
+
+.modal-goiburua {
+  padding: 20px;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-goiburua h3 {
+  margin: 0;
+  color: var(--dark-text);
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.itxi-modala {
+  color: var(--gray);
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.itxi-modala:hover {
+  color: var(--danger-color);
+}
+
+.modal-gorputza {
+  padding: 30px;
+}
+
+/* Modalaren barneko formutik hartutako laguntzaileak (estilo_orokorrak-etik dakar gabe balego) */
+.testu-erdian-marjina-behe-20 { text-align: center; margin-bottom: 20px; }
+.testua-erdian { text-align: center; }
+.marjina-goi-15 { margin-top: 15px; }
+.marjina-goi-30 { margin-top: 30px; }
+.zabalera-osoa-300px { width: 100%; max-width: 300px; }
+.botoi-itsua-gorria { background: none; border: 1px solid var(--danger-color); color: var(--danger-color); padding: 8px 15px; border-radius: 8px; cursor: pointer; transition: all 0.3s; }
+.botoi-itsua-gorria:hover { background: var(--danger-color); color: white; }
