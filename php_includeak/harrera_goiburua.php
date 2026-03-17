@@ -3,23 +3,18 @@ if (!isset($orri_izenburua)) {
     $orri_izenburua = "Harrera - GOsasun";
 }
 
-$hizkuntza_def = "eu";
-$kolore_nagusia_def = "#4361ee";
-$bigarren_kolorea_def = "#3f37c9";
-$footer_kolorea_def = "#2b2d42";
-$gaia_def = "argia";
+require_once __DIR__ . '/konfigurazioa_kargatu.php';
+require_once __DIR__ . '/hizkuntza_kargatu.php';
 
-$xml_path = __DIR__ . '/../xml_konfigurazioa/config.xml';
-if (file_exists($xml_path)) {
-    $xml_conf = simplexml_load_file($xml_path);
-    if ($xml_conf) {
-        $hizkuntza_def = isset($xml_conf->hizkuntza) ? (string)$xml_conf->hizkuntza : $hizkuntza_def;
-        $kolore_nagusia_def = isset($xml_conf->kolore_nagusia) ? (string)$xml_conf->kolore_nagusia : $kolore_nagusia_def;
-        $bigarren_kolorea_def = isset($xml_conf->bigarren_kolorea) ? (string)$xml_conf->bigarren_kolorea : $bigarren_kolorea_def;
-        $footer_kolorea_def = isset($xml_conf->footer_kolorea) ? (string)$xml_conf->footer_kolorea : $footer_kolorea_def;
-        $gaia_def = isset($xml_conf->gaia) ? (string)$xml_conf->gaia : $gaia_def;
-    }
-}
+// Erabiltzailearen konfigurazioa kargatu (pertsonala bada lehenetsi)
+$konf = kargatuKonfigurazioa(false);
+$hizkuntza_def = $konf['hizkuntza'];
+$kolore_nagusia_def = $konf['kolore_nagusia'];
+$bigarren_kolorea_def = $konf['bigarren_kolorea'];
+$footer_kolorea_def = $konf['footer_kolorea'];
+$gaia_def = $konf['gaia'];
+
+$itzulpenak = kargatuItzulpenak($hizkuntza_def);
 ?>
 <!DOCTYPE html>
 <html lang="<?php echo htmlspecialchars($hizkuntza_def); ?>">
@@ -29,6 +24,7 @@ if (file_exists($xml_path)) {
     <title><?php echo $orri_izenburua; ?></title>
     <!-- Google-etik deskargatutako estiloak -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="<?php echo $bide_absolutua; ?>img/GOsasun_logoa.png">
     <!-- CSS -->
     <link rel="stylesheet" href="<?php echo $bide_absolutua; ?>css/estilo_orokorrak.css">
     <link rel="stylesheet" href="<?php echo $bide_absolutua; ?>css/goiburua.css">
@@ -37,10 +33,20 @@ if (file_exists($xml_path)) {
         if (isset($css_pertsonalizatua)) {
             $css_fitxategia = $css_pertsonalizatua;
         } else {
+            // Try [role]_[page].css or [page].css
             $css_fitxategia = "harrera_" . $orri_izena . ".css";
+            if (!file_exists(__DIR__ . "/../css/" . $css_fitxategia)) {
+                $css_fitxategia = $orri_izena . ".css";
+            }
+        }
+
+        // Only print if file exists
+        if (file_exists(__DIR__ . "/../css/" . $css_fitxategia)) {
+            echo '<link rel="stylesheet" href="' . $bide_absolutua . 'css/' . $css_fitxategia . '">';
         }
     ?>
-    <link rel="stylesheet" href="<?php echo $bide_absolutua; ?>css/<?php echo $css_fitxategia; ?>">
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body class="<?php echo $body_class ?? 'panel-gorputza'; ?>">
     <header class="panel-goiburua">
@@ -52,14 +58,14 @@ if (file_exists($xml_path)) {
         </div>
         <button class="menu-botoia" aria-label="Ireki menua"><img src="<?php echo $bide_absolutua; ?>img/list.svg" alt="" class="ikono-24px"></button>
         <ul class="nabigazio-estekak">
-            <li><a href="index.php" class="<?php echo ($uneko_orria === 'index') ? 'aktiboa' : ''; ?>">Hasiera</a></li>
-            <li><a href="pazienteak.php" class="<?php echo ($uneko_orria === 'pazienteak') ? 'aktiboa' : ''; ?>">Pazienteak</a></li>
-            <li><a href="medikuak.php" class="<?php echo ($uneko_orria === 'medikuak') ? 'aktiboa' : ''; ?>">Medikuak</a></li>
-            <li><a href="hitzorduak.php" class="<?php echo ($uneko_orria === 'hitzorduak') ? 'aktiboa' : ''; ?>">Hitzorduak</a></li>
-            <li><a href="mezuak.php" class="<?php echo ($uneko_orria === 'mezuak') ? 'aktiboa' : ''; ?>">Mezuak</a></li>
-            <li><a href="kanpoko_mezuak.php" class="<?php echo ($uneko_orria === 'kanpoko_mezuak') ? 'aktiboa' : ''; ?>">Kanpoko Mezuak</a></li>
-            <li><a href="harrerako_langileak.php" class="<?php echo ($uneko_orria === 'harrerako_langileak') ? 'aktiboa' : ''; ?>">Harrerako Langileak</a></li>
-            <li><a href="<?php echo $bide_absolutua; ?>php_laguntzaileak/logout.php" class="botoia botoi-ertza arrisku-kolorea">Saioa Itxi</a></li>
+            <li><a href="index.php" class="<?php echo ($uneko_orria === 'index') ? 'aktiboa' : ''; ?>"><?php echo $itzulpenak->menua_harrera->hasiera; ?></a></li>
+            <li><a href="pazienteak.php" class="<?php echo ($uneko_orria === 'pazienteak') ? 'aktiboa' : ''; ?>"><?php echo $itzulpenak->menua_harrera->pazienteak; ?></a></li>
+            <li><a href="medikuak.php" class="<?php echo ($uneko_orria === 'medikuak') ? 'aktiboa' : ''; ?>"><?php echo $itzulpenak->menua_harrera->medikuak; ?></a></li>
+            <li><a href="hitzorduak.php" class="<?php echo ($uneko_orria === 'hitzorduak') ? 'aktiboa' : ''; ?>"><?php echo $itzulpenak->menua_harrera->hitzorduak; ?></a></li>
+            <li><a href="mezuak.php" class="<?php echo ($uneko_orria === 'mezuak') ? 'aktiboa' : ''; ?>"><?php echo $itzulpenak->menua_harrera->mezuak; ?></a></li>
+            <li><a href="kanpoko_mezuak.php" class="<?php echo ($uneko_orria === 'kanpoko_mezuak') ? 'aktiboa' : ''; ?>"><?php echo $itzulpenak->menua_harrera->kanpoko_mezuak; ?></a></li>
+            <li><a href="harrerako_langileak.php" class="<?php echo ($uneko_orria === 'harrerako_langileak') ? 'aktiboa' : ''; ?>"><?php echo $itzulpenak->menua_harrera->harrerako_langileak; ?></a></li>
+            <li><a href="<?php echo $bide_absolutua; ?>php_laguntzaileak/logout.php" class="botoia botoi-ertza arrisku-kolorea"><?php echo $itzulpenak->erabiltzaile_panela->saioa_itxi; ?></a></li>
         </ul>
     </header>
 

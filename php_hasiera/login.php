@@ -2,6 +2,11 @@
 session_start();
 $bide_absolutua = '../';
 require_once '../php_laguntzaileak/DB_konexioa.php';
+require_once '../php_includeak/konfigurazioa_kargatu.php';
+require_once '../php_includeak/hizkuntza_kargatu.php';
+
+$konf = kargatuKonfigurazioa(false);
+$itzulpenak = kargatuItzulpenak($konf['hizkuntza']);
 
 $errore_mezua = '';
 
@@ -39,22 +44,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     header("Location: ../php_harrera/index.php");
                     exit;
                 } else {
-                    $errore_mezua = "Sarbide deuseztatua rol ezezagunagatik.";
+                    $errore_mezua = (string)$itzulpenak->login->errore_eremuak;
                 }
             } else {
-                $errore_mezua = "Helbide elektronikoa edo pasahitza ez dira zuzenak.";
+                $errore_mezua = (string)$itzulpenak->login->errore_kredentzialak;
             }
 
         } catch (PDOException $e) {
             $errore_mezua = "Errorea datu-basean: " . $e->getMessage();
         }
     } else {
-        $errore_mezua = "Mesedez, bete eremu guztiak.";
+        $errore_mezua = (string)$itzulpenak->login->errore_eremuak;
     }
 }
-?>
-<?php
-$orri_izenburua = "Saioa Hasi - GOsasun";
+
+$orri_izenburua = $itzulpenak->login->izenburua . " - GOsasun";
 $uneko_orria = "login";
 
 include '../php_includeak/goiburua.php';
@@ -63,7 +67,7 @@ include '../php_includeak/goiburua.php';
         <div class="hasiera-txartela">
             <div class="hasiera-goiburua">
                 <img src="../img/GOsasun_logoa.png" alt="GOsasun" class="logo-irudia logo-login">
-                <p class="login-azpititulua">Ongi etorri berriro zure atarira</p>
+                <p class="login-azpititulua"><?php echo $itzulpenak->login->azpititulua; ?></p>
             </div>
             
             <?php if (!empty($errore_mezua)): ?>
@@ -74,22 +78,22 @@ include '../php_includeak/goiburua.php';
 
             <form id="loginForm" method="POST" action="login.php">
                 <div class="inprimaki-taldea">
-                    <label for="email">E-posta helbidea</label>
-                    <input type="email" id="email" name="email" class="inprimaki-kontrola" placeholder="Zure helbide elektronikoa" required value="<?php echo isset($_POST['email']) ? htmlspecialchars($_POST['email']) : ''; ?>">
+                    <label for="email"><?php echo $itzulpenak->login->email; ?></label>
+                    <input type="email" id="email" name="email" class="inprimaki-kontrola" placeholder="<?php echo $itzulpenak->login->email_placeholder; ?>" required value="<?php echo isset($_POST['email']) ? htmlspecialchars($_POST['email']) : ''; ?>">
                     <span class="errore-mezua" id="error-login-email">Idatzi helbide baliagarri bat.</span>
                 </div>
                 
                 <div class="inprimaki-taldea">
-                    <label for="pasahitza">Pasahitza</label>
+                    <label for="pasahitza"><?php echo $itzulpenak->login->pasahitza; ?></label>
                     <input type="password" id="pasahitza" name="pasahitza" class="inprimaki-kontrola" placeholder="••••••••" required>
                     <span class="errore-mezua" id="error-login-pass">Pasahitza ezin da hutsik egon.</span>
                 </div>
                 
-                <button type="submit" class="botoia botoi-nagusia zabalera-100 goiko-tartea-20">Sartu</button>
+                <button type="submit" class="botoia botoi-nagusia zabalera-100 goiko-tartea-20"><?php echo $itzulpenak->login->sartu; ?></button>
             </form>
             
             <div class="hasiera-oina">
-                <p><a href="../index.php"><img src="../img/arrow-left.svg" alt="" class="ikono-16px-erdian"> Itzuli Hasierara</a></p>
+                <p><a href="../index.php"><img src="../img/arrow-left.svg" alt="" class="ikono-16px-erdian"> <?php echo $itzulpenak->login->itzuli; ?></a></p>
             </div>
         </div>
     </div>

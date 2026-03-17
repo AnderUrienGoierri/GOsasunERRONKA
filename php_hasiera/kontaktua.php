@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 <?php
-$orri_izenburua = "Kontaktua - GOsasun";
+$orri_izenburua = ($itzulpenak->menua->kontaktua ?? 'Kontaktua') . " - GOsasun";
 $uneko_orria = "kontaktua";
 
 include '../php_includeak/goiburua.php';
@@ -31,13 +31,13 @@ include '../php_includeak/goiburua.php';
 
     <main class="kontaktu-sekzioa">
         <div class="kontaktu-edukiontzia">
-            <h2>Jarri gurekin harremanetan</h2>
-            <p>Zalantzaren bat baduzu edo informazio gehiago nahi baduzu, idatzi iezaguzu:</p>
+            <h2><?php echo $itzulpenak->kontaktua->izenburua; ?></h2>
+            <p><?php echo $itzulpenak->kontaktua->azpititulua; ?></p>
             
             <form id="kontaktuaForm" class="kontaktu-inprimakia" method="POST" action="kontaktua.php">
                 <?php if (!empty($arrakasta_mezua)): ?>
                     <div class="alerta alerta-arrakasta">
-                        <?php echo htmlspecialchars($arrakasta_mezua); ?>
+                        <?php echo $itzulpenak->kontaktua->arrakasta; ?>
                     </div>
                 <?php elseif (!empty($errore_mezua)): ?>
                     <div class="alerta alerta-errorea">
@@ -45,34 +45,31 @@ include '../php_includeak/goiburua.php';
                     </div>
                 <?php else: ?>
                     <div id="form-success" class="alerta alerta-arrakasta ezkutatuta" >
-                        Zure mezua ondo bidali da. Laster jarriko gara zurekin harremanetan!
+                        <?php echo $itzulpenak->kontaktua->arrakasta; ?>
                     </div>
                 <?php endif; ?>
 
                 <div class="inprimaki-taldea">
-                    <label for="izena">Izena:</label>
-                    <input type="text" id="izena" name="izena" class="inprimaki-kontrola" placeholder="Idatzi zure izena">
-                    <span class="errore-mezua" id="error-izena">Izena derrigorrezkoa da.</span>
+                    <label for="izena"><?php echo $itzulpenak->kontaktua->izena; ?>:</label>
+                    <input type="text" id="izena" name="izena" class="inprimaki-kontrola">
                 </div>
                 
                 <div class="inprimaki-taldea">
-                    <label for="email">E-posta:</label>
-                    <input type="email" id="email" name="email" class="inprimaki-kontrola" placeholder="adibidea@email.com">
-                    <span class="errore-mezua" id="error-email">E-posta ez da baliozkoa.</span>
+                    <label for="email"><?php echo $itzulpenak->kontaktua->email; ?>:</label>
+                    <input type="email" id="email" name="email" class="inprimaki-kontrola">
                 </div>
-
+                
                 <div class="inprimaki-taldea">
-                    <label for="mezua">Mezua:</label>
-                    <textarea id="mezua" name="mezua" class="inprimaki-kontrola" errenkadak="5" placeholder="Idatzi hemen zure mezua..."></textarea>
-                    <span class="errore-mezua" id="error-mezua">Mezua ezin da hutsik egon (gutxienez 10 karaktere).</span>
+                    <label for="mezua"><?php echo $itzulpenak->kontaktua->mezua; ?>:</label>
+                    <textarea id="mezua" name="mezua" class="inprimaki-kontrola" rows="5"></textarea>
                 </div>
 
-                <button type="submit" class="botoia botoi-nagusia zabalera-100">Bidali Mezua</button>
+                <button type="submit" class="botoia botoi-nagusia zabalera-100"><?php echo $itzulpenak->kontaktua->bidali; ?></button>
             </form>
         </div>
         
         <div class="kontaktu-informazioa">
-            <h3>Gure bulegoak</h3>
+            <h3><?php echo $itzulpenak->kontaktua->bulegoak; ?></h3>
             <p> <a href="https://maps.app.goo.gl/dSYPAQ8F2d5wJ3RX6" target="_blank">Arranomendia, 2, 20240 Ordizia, Gipuzkoa</a></p>
             <p> <a href="tel:+34944123456" >+34 944 123 456</a></p>
             <p> <a href="mailto:info@gosasun.eus">info@gosasun.eus</a></p>

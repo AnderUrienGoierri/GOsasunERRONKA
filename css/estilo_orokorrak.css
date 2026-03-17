@@ -910,3 +910,65 @@ body {
 .marjina-behe-0 { margin-bottom: 0; }
 .errezeta-kutxa-argia { background-color: var(--azentua-argia); padding: 15px; border-radius: 8px; margin-bottom: 15px; }
 .errezeta-izenburu-urdina { margin-top: 0; margin-bottom: 10px; color: var(--primary-color); }
+/* ================= HIZKUNTZA HAUTATZAILEA (Flags) ================= */
+.hizkuntza-hautatzailea {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.hizkuntza-aukera {
+    cursor: pointer;
+    position: relative;
+}
+
+.hizkuntza-aukera input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.hizkuntza-aukera .aukera-edukia {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    border: 2px solid #eee;
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+    background: var(--white);
+    gap: 10px;
+}
+
+.hizkuntza-aukera img {
+    width: 60px !important;
+    height: 60px !important;
+    border-radius: 50% !important;
+    object-fit: cover !important;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1) !important;
+    display: block;
+    margin: 0 auto;
+}
+
+.hizkuntza-aukera span {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--gray);
+}
+
+.hizkuntza-aukera input:checked + .aukera-edukia {
+    border-color: var(--primary-color);
+    background: rgba(67, 97, 238, 0.05);
+    transform: scale(1.02);
+}
+
+.hizkuntza-aukera input:checked + .aukera-edukia span {
+    color: var(--primary-color);
+}
+
+@media (min-width: 480px) {
+    .hizkuntza-hautatzailea {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}

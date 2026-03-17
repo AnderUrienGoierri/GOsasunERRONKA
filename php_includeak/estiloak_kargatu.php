@@ -33,4 +33,11 @@ function lortuEstiloak($konf) {
     $css .= "</style>\n";
     return $css;
 }
+
+/**
+ * Zuzenean inprimatzen ditu estiloak lortuEstiloak erabiliz.
+ */
+function inprimatuEstiloak($konf) {
+    echo lortuEstiloak($konf);
+}
 ?>

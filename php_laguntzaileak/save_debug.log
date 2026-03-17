@@ -1,0 +1,177 @@
+[2026-03-17 00:43:18] POST: {"form_type":"orokorra","nondik":"\/GOsasun_web\/index.php","hizkuntza":"eu","kolore_nagusia":"#4361ee","bigarren_kolorea":"#3f37c9","footer_kolorea":"#2b2d42","gaia":"argia"}
+FINAL VALUES: {"hizk":"eu","path":"..\/xml_konfigurazioa\/konfigurazio_orokorra.xml"}
+SAVED SUCCESSFULLY to C:\Apache24-64\htdocs\GOsasun_web\xml_konfigurazioa\konfigurazio_orokorra.xml
+[2026-03-17 00:43:23] POST: {"form_type":"orokorra","nondik":"\/GOsasun_web\/index.php?ezarpenak_gordeta=1","hizkuntza":"eu","kolore_nagusia":"#4361ee","bigarren_kolorea":"#3f37c9","footer_kolorea":"#2b2d42","gaia":"argia"}
+FINAL VALUES: {"hizk":"eu","path":"..\/xml_konfigurazioa\/konfigurazio_orokorra.xml"}
+SAVED SUCCESSFULLY to C:\Apache24-64\htdocs\GOsasun_web\xml_konfigurazioa\konfigurazio_orokorra.xml
+[2026-03-17 00:43:34] POST: {"form_type":"orokorra","nondik":"\/GOsasun_web\/index.php?ezarpenak_gordeta=1&ezarpenak_gordeta=1","hizkuntza":"es","kolore_nagusia":"#4361ee","bigarren_kolorea":"#3f37c9","footer_kolorea":"#2b2d42","gaia":"argia"}
+FINAL VALUES: {"hizk":"es","path":"..\/xml_konfigurazioa\/konfigurazio_orokorra.xml"}
+SAVED SUCCESSFULLY to C:\Apache24-64\htdocs\GOsasun_web\xml_konfigurazioa\konfigurazio_orokorra.xml
+[2026-03-17 00:43:37] POST: {"form_type":"orokorra","nondik":"\/GOsasun_web\/index.php?ezarpenak_gordeta=1&ezarpenak_gordeta=1&ezarpenak_gordeta=1","hizkuntza":"en","kolore_nagusia":"#4361ee","bigarren_kolorea":"#3f37c9","footer_kolorea":"#2b2d42","gaia":"argia"}
+FINAL VALUES: {"hizk":"en","path":"..\/xml_konfigurazioa\/konfigurazio_orokorra.xml"}
+SAVED SUCCESSFULLY to C:\Apache24-64\htdocs\GOsasun_web\xml_konfigurazioa\konfigurazio_orokorra.xml
+[2026-03-17 00:43:41] POST: {"form_type":"orokorra","nondik":"\/GOsasun_web\/index.php?ezarpenak_gordeta=1&ezarpenak_gordeta=1&ezarpenak_gordeta=1&ezarpenak_gordeta=1","hizkuntza":"nl","kolore_nagusia":"#4361ee","bigarren_kolorea":"#3f37c9","footer_kolorea":"#2b2d42","gaia":"argia"}
+FINAL VALUES: {"hizk":"nl","path":"..\/xml_konfigurazioa\/konfigurazio_orokorra.xml"}
+SAVED SUCCESSFULLY to C:\Apache24-64\htdocs\GOsasun_web\xml_konfigurazioa\konfigurazio_orokorra.xml
+[2026-03-17 00:43:47] POST: {"form_type":"orokorra","nondik":"\/GOsasun_web\/index.php?ezarpenak_gordeta=1&ezarpenak_gordeta=1&ezarpenak_gordeta=1&ezarpenak_gordeta=1&ezarpenak_gordeta=1","hizkuntza":"eu","kolore_nagusia":"#4361ee","bigarren_kolorea":"#3f37c9","footer_kolorea":"#2b2d42","gaia":"argia"}
+FINAL VALUES: {"hizk":"eu","path":"..\/xml_konfigurazioa\/konfigurazio_orokorra.xml"}
+SAVED SUCCESSFULLY to C:\Apache24-64\htdocs\GOsasun_web\xml_konfigurazioa\konfigurazio_orokorra.xml
+[2026-03-17 00:51:34] POST: {"form_type":"orokorra","nondik":"\/GOsasun_web\/index.php","hizkuntza":"eu","kolore_nagusia":"#4361ee","bigarren_kolorea":"#3f37c9","footer_kolorea":"#2b2d42","gaia":"argia"}
+FINAL VALUES: {"hizk":"eu","path":"..\/xml_konfigurazioa\/konfigurazio_orokorra.xml"}
+SAVED SUCCESSFULLY to C:\Apache24-64\htdocs\GOsasun_web\xml_konfigurazioa\konfigurazio_orokorra.xml
+[2026-03-17 00:57:20] POST: {"form_type":"orokorra","nondik":"\/GOsasun_web\/index.php","hizkuntza":"en","kolore_nagusia":"#4361ee","bigarren_kolorea":"#3f37c9","footer_kolorea":"#2b2d42","gaia":"argia"}
+FINAL VALUES: {"hizk":"en","path":"..\/xml_konfigurazioa\/konfigurazio_orokorra.xml"}
+SAVED SUCCESSFULLY to C:\Apache24-64\htdocs\GOsasun_web\xml_konfigurazioa\konfigurazio_orokorra.xml
+[2026-03-17 01:02:33] POST: {"form_type":"orokorra","nondik":"\/GOsasun_web\/index.php","hizkuntza":"eu","kolore_nagusia":"#4361ee","bigarren_kolorea":"#3f37c9","footer_kolorea":"#2b2d42","gaia":"argia"}
+FINAL VALUES: {"hizk":"eu","path":"..\/xml_konfigurazioa\/konfigurazio_orokorra.xml"}
+SAVED SUCCESSFULLY to C:\Apache24-64\htdocs\GOsasun_web\xml_konfigurazioa\konfigurazio_orokorra.xml
+[2026-03-17 01:04:29] POST: {"form_type":"orokorra","nondik":"\/GOsasun_web\/index.php","hizkuntza":"en","kolore_nagusia":"#4361ee","bigarren_kolorea":"#3f37c9","footer_kolorea":"#2b2d42","gaia":"argia"}
+FINAL VALUES: {"hizk":"en","path":"..\/xml_konfigurazioa\/konfigurazio_orokorra.xml"}
+SAVED SUCCESSFULLY to C:\Apache24-64\htdocs\GOsasun_web\xml_konfigurazioa\konfigurazio_orokorra.xml
+[2026-03-17 01:11:17] POST: {"form_type":"orokorra","nondik":"\/GOsasun_web\/index.php","hizkuntza":"es","kolore_nagusia":"#4361ee","bigarren_kolorea":"#3f37c9","footer_kolorea":"#2b2d42","gaia":"argia"}
+FINAL VALUES: {"hizk":"es","path":"..\/xml_konfigurazioa\/konfigurazio_orokorra.xml"}
+SAVED SUCCESSFULLY to C:\Apache24-64\htdocs\GOsasun_web\xml_konfigurazioa\konfigurazio_orokorra.xml
+[2026-03-17 01:13:52] POST: {"form_type":"orokorra","nondik":"\/GOsasun_web\/index.php","hizkuntza":"es","kolore_nagusia":"#4361ee","bigarren_kolorea":"#3f37c9","footer_kolorea":"#2b2d42","gaia":"argia"}
+FINAL VALUES: {"hizk":"es","path":"..\/xml_konfigurazioa\/konfig_erabiltzailea_1.xml"}
+SAVED SUCCESSFULLY to C:\Apache24-64\htdocs\GOsasun_web\xml_konfigurazioa\konfig_erabiltzailea_1.xml
+[2026-03-17 01:15:49] POST: {"form_type":"orokorra","nondik":"\/GOsasun_web\/index.php","hizkuntza":"es","kolore_nagusia":"#4361ee","bigarren_kolorea":"#3f37c9","footer_kolorea":"#2b2d42","gaia":"argia"}
+FINAL VALUES: {"hizk":"es","path":"..\/xml_konfigurazioa\/konfig_erabiltzailea_51.xml"}
+SAVED SUCCESSFULLY to C:\Apache24-64\htdocs\GOsasun_web\xml_konfigurazioa\konfig_erabiltzailea_51.xml
+[2026-03-17 01:17:40] Loading config from: C:\Apache24-64\htdocs\GOsasun_web\php_includeak/../xml_konfigurazioa/konfig_erabiltzailea_51.xml (User ID: 51)
+[2026-03-17 01:18:17] POST: {"form_type":"orokorra","nondik":"\/GOsasun_web\/index.php","hizkuntza":"es","kolore_nagusia":"#4361ee","bigarren_kolorea":"#3f37c9","footer_kolorea":"#2b2d42","gaia":"argia"}
+FINAL VALUES: {"hizk":"es","path":"..\/xml_konfigurazioa\/konfig_erabiltzailea_51.xml"}
+SAVED SUCCESSFULLY to C:\Apache24-64\htdocs\GOsasun_web\xml_konfigurazioa\konfig_erabiltzailea_51.xml
+[2026-03-17 01:18:17] Loading config from: C:\Apache24-64\htdocs\GOsasun_web\php_includeak/../xml_konfigurazioa/konfig_erabiltzailea_51.xml (User ID: 51)
+[2026-03-17 01:19:25] Loading config from: C:\Apache24-64\htdocs\GOsasun_web\php_includeak/../xml_konfigurazioa/konfig_erabiltzailea_1.xml (User ID: 1)
+[2026-03-17 01:31:20] POST: {"form_type":"orokorra","nondik":"\/GOsasun_web\/index.php","hizkuntza":"eu","kolore_nagusia":"#4361ee","bigarren_kolorea":"#3f37c9","footer_kolorea":"#2b2d42","gaia":"argia"}
+FINAL VALUES: {"hizk":"eu","path":"..\/xml_konfigurazioa\/konfigurazio_orokorra.xml"}
+SAVED SUCCESSFULLY to C:\Apache24-64\htdocs\GOsasun_web\xml_konfigurazioa\konfigurazio_orokorra.xml
+[2026-03-17 01:32:06] POST: {"form_type":"orokorra","itzulera":"pazientea","hizkuntza":"eu","kolore_nagusia":"#4361ee","bigarren_kolorea":"#3f37c9","footer_kolorea":"#2b2d42","gaia":"argia"}
+FINAL VALUES: {"hizk":"eu","path":"..\/xml_konfigurazioa\/konfig_erabiltzailea_51.xml"}
+SAVED SUCCESSFULLY to C:\Apache24-64\htdocs\GOsasun_web\xml_konfigurazioa\konfig_erabiltzailea_51.xml
+[2026-03-17 01:33:51] POST: {"form_type":"osasun_zentroa","sistema_izena":"GOsasun","hitzordu_muga":"20","ordutegia_ireki":"08:00","ordutegia_itxi":"20:00","mantenimendua":"bai"}
+FINAL VALUES: {"hizk":"eu","path":"..\/xml_konfigurazioa\/konfigurazio_orokorra.xml"}
+SAVED SUCCESSFULLY to C:\Apache24-64\htdocs\GOsasun_web\xml_konfigurazioa\konfigurazio_orokorra.xml
+[2026-03-17 01:41:07] POST: {"form_type":"orokorra","itzulera":"pazientea","hizkuntza":"nl","kolore_nagusia":"#4361ee","bigarren_kolorea":"#3f37c9","footer_kolorea":"#2b2d42","gaia":"argia"}
+FINAL VALUES: {"hizk":"nl","path":"..\/xml_konfigurazioa\/konfig_erabiltzailea_51.xml"}
+SAVED SUCCESSFULLY to C:\Apache24-64\htdocs\GOsasun_web\xml_konfigurazioa\konfig_erabiltzailea_51.xml
+[2026-03-17 01:43:08] POST: {"form_type":"orokorra","itzulera":"harrera","hizkuntza":"es","gaia":"argia"}
+FINAL VALUES: {"hizk":"es","path":"..\/xml_konfigurazioa\/konfig_erabiltzailea_101.xml"}
+SAVED SUCCESSFULLY to C:\Apache24-64\htdocs\GOsasun_web\xml_konfigurazioa\konfig_erabiltzailea_101.xml
+[2026-03-17 01:46:49] POST: {"form_type":"orokorra","itzulera":"pazientea","hizkuntza":"eu","kolore_nagusia":"#4361ee","bigarren_kolorea":"#3f37c9","footer_kolorea":"#2b2d42","gaia":"argia"}
+FINAL VALUES: {"hizk":"eu","path":"..\/xml_konfigurazioa\/konfig_erabiltzailea_51.xml"}
+SAVED SUCCESSFULLY to C:\Apache24-64\htdocs\GOsasun_web\xml_konfigurazioa\konfig_erabiltzailea_51.xml
+[2026-03-17 01:49:38] POST: {"form_type":"orokorra","itzulera":"medikua","hizkuntza":"eu","kolore_nagusia":"#4361ee","bigarren_kolorea":"#3f37c9","footer_kolorea":"#2b2d42","gaia":"argia"}
+FINAL VALUES: {"hizk":"eu","path":"..\/xml_konfigurazioa\/konfig_erabiltzailea_1.xml"}
+SAVED SUCCESSFULLY to C:\Apache24-64\htdocs\GOsasun_web\xml_konfigurazioa\konfig_erabiltzailea_1.xml
+[2026-03-17 01:52:00] POST: {"form_type":"orokorra","itzulera":"harrera","hizkuntza":"eu","gaia":"argia"}
+FINAL VALUES: {"hizk":"eu","path":"..\/xml_konfigurazioa\/konfig_erabiltzailea_101.xml"}
+SAVED SUCCESSFULLY to C:\Apache24-64\htdocs\GOsasun_web\xml_konfigurazioa\konfig_erabiltzailea_101.xml
+[2026-03-17 01:52:29] POST: {"form_type":"orokorra","itzulera":"harrera","hizkuntza":"es","gaia":"argia"}
+FINAL VALUES: {"hizk":"es","path":"..\/xml_konfigurazioa\/konfig_erabiltzailea_101.xml"}
+SAVED SUCCESSFULLY to C:\Apache24-64\htdocs\GOsasun_web\xml_konfigurazioa\konfig_erabiltzailea_101.xml
+[2026-03-17 01:52:34] POST: {"form_type":"orokorra","nondik":"\/GOsasun_web\/index.php?ezarpenak_gordeta=1","hizkuntza":"eu","kolore_nagusia":"#4361ee","bigarren_kolorea":"#3f37c9","footer_kolorea":"#2b2d42","gaia":"argia"}
+FINAL VALUES: {"hizk":"eu","path":"..\/xml_konfigurazioa\/konfig_erabiltzailea_101.xml"}
+SAVED SUCCESSFULLY to C:\Apache24-64\htdocs\GOsasun_web\xml_konfigurazioa\konfig_erabiltzailea_101.xml
+[2026-03-17 02:00:49] POST: {"form_type":"orokorra","itzulera":"harrera","hizkuntza":"es","gaia":"argia"}
+FINAL VALUES: {"hizk":"es","path":"..\/xml_konfigurazioa\/konfig_erabiltzailea_101.xml"}
+SAVED SUCCESSFULLY to C:\Apache24-64\htdocs\GOsasun_web\xml_konfigurazioa\konfig_erabiltzailea_101.xml
+[2026-03-17 02:00:56] POST: {"form_type":"orokorra","nondik":"\/GOsasun_web\/index.php?ezarpenak_gordeta=1","hizkuntza":"es","kolore_nagusia":"#4361ee","bigarren_kolorea":"#3f37c9","footer_kolorea":"#2b2d42","gaia":"argia"}
+FINAL VALUES: {"hizk":"es","path":"..\/xml_konfigurazioa\/konfig_erabiltzailea_101.xml"}
+SAVED SUCCESSFULLY to C:\Apache24-64\htdocs\GOsasun_web\xml_konfigurazioa\konfig_erabiltzailea_101.xml
+[2026-03-17 02:01:02] POST: {"form_type":"orokorra","nondik":"\/GOsasun_web\/index.php?ezarpenak_gordeta=1&ezarpenak_gordeta=1","hizkuntza":"eu","kolore_nagusia":"#4361ee","bigarren_kolorea":"#3f37c9","footer_kolorea":"#2b2d42","gaia":"argia"}
+FINAL VALUES: {"hizk":"eu","path":"..\/xml_konfigurazioa\/konfig_erabiltzailea_101.xml"}
+SAVED SUCCESSFULLY to C:\Apache24-64\htdocs\GOsasun_web\xml_konfigurazioa\konfig_erabiltzailea_101.xml
+[2026-03-17 02:01:07] POST: {"form_type":"orokorra","nondik":"\/GOsasun_web\/index.php?ezarpenak_gordeta=1&ezarpenak_gordeta=1&ezarpenak_gordeta=1","hizkuntza":"nl","kolore_nagusia":"#4361ee","bigarren_kolorea":"#3f37c9","footer_kolorea":"#2b2d42","gaia":"argia"}
+FINAL VALUES: {"hizk":"nl","path":"..\/xml_konfigurazioa\/konfig_erabiltzailea_101.xml"}
+SAVED SUCCESSFULLY to C:\Apache24-64\htdocs\GOsasun_web\xml_konfigurazioa\konfig_erabiltzailea_101.xml
+[2026-03-17 02:01:58] POST: {"form_type":"orokorra","nondik":"\/GOsasun_web\/index.php?ezarpenak_gordeta=1&ezarpenak_gordeta=1&ezarpenak_gordeta=1&ezarpenak_gordeta=1","hizkuntza":"eu","kolore_nagusia":"#4361ee","bigarren_kolorea":"#3f37c9","footer_kolorea":"#2b2d42","gaia":"argia"}
+FINAL VALUES: {"hizk":"eu","path":"..\/xml_konfigurazioa\/konfig_erabiltzailea_101.xml"}
+SAVED SUCCESSFULLY to C:\Apache24-64\htdocs\GOsasun_web\xml_konfigurazioa\konfig_erabiltzailea_101.xml
+[2026-03-17 02:02:22] POST: {"form_type":"orokorra","itzulera":"medikua","hizkuntza":"es","kolore_nagusia":"#4361ee","bigarren_kolorea":"#3f37c9","footer_kolorea":"#2b2d42","gaia":"argia"}
+FINAL VALUES: {"hizk":"es","path":"..\/xml_konfigurazioa\/konfig_erabiltzailea_1.xml"}
+SAVED SUCCESSFULLY to C:\Apache24-64\htdocs\GOsasun_web\xml_konfigurazioa\konfig_erabiltzailea_1.xml
+[2026-03-17 02:06:09] POST: {"form_type":"orokorra","itzulera":"pazientea","hizkuntza":"en","kolore_nagusia":"#4361ee","bigarren_kolorea":"#3f37c9","footer_kolorea":"#2b2d42","gaia":"argia"}
+FINAL VALUES: {"hizk":"en","path":"..\/xml_konfigurazioa\/konfig_erabiltzailea_51.xml"}
+SAVED SUCCESSFULLY to C:\Apache24-64\htdocs\GOsasun_web\xml_konfigurazioa\konfig_erabiltzailea_51.xml
+[2026-03-17 02:08:08] POST: {"form_type":"orokorra","itzulera":"medikua","hizkuntza":"es","kolore_nagusia":"#4361ee","bigarren_kolorea":"#3f37c9","footer_kolorea":"#2b2d42","gaia":"argia"}
+FINAL VALUES: {"hizk":"es","path":"..\/xml_konfigurazioa\/konfig_erabiltzailea_1.xml"}
+SAVED SUCCESSFULLY to C:\Apache24-64\htdocs\GOsasun_web\xml_konfigurazioa\konfig_erabiltzailea_1.xml
+[2026-03-17 02:08:13] POST: {"form_type":"orokorra","itzulera":"medikua","hizkuntza":"en","kolore_nagusia":"#4361ee","bigarren_kolorea":"#3f37c9","footer_kolorea":"#2b2d42","gaia":"argia"}
+FINAL VALUES: {"hizk":"en","path":"..\/xml_konfigurazioa\/konfig_erabiltzailea_1.xml"}
+SAVED SUCCESSFULLY to C:\Apache24-64\htdocs\GOsasun_web\xml_konfigurazioa\konfig_erabiltzailea_1.xml
+[2026-03-17 02:08:43] POST: {"form_type":"orokorra","itzulera":"medikua","hizkuntza":"eu","kolore_nagusia":"#4361ee","bigarren_kolorea":"#3f37c9","footer_kolorea":"#2b2d42","gaia":"argia"}
+FINAL VALUES: {"hizk":"eu","path":"..\/xml_konfigurazioa\/konfig_erabiltzailea_1.xml"}
+SAVED SUCCESSFULLY to C:\Apache24-64\htdocs\GOsasun_web\xml_konfigurazioa\konfig_erabiltzailea_1.xml
+[2026-03-17 02:08:52] POST: {"form_type":"orokorra","itzulera":"medikua","hizkuntza":"es","kolore_nagusia":"#4361ee","bigarren_kolorea":"#3f37c9","footer_kolorea":"#2b2d42","gaia":"argia"}
+FINAL VALUES: {"hizk":"es","path":"..\/xml_konfigurazioa\/konfig_erabiltzailea_1.xml"}
+SAVED SUCCESSFULLY to C:\Apache24-64\htdocs\GOsasun_web\xml_konfigurazioa\konfig_erabiltzailea_1.xml
+[2026-03-17 02:10:14] POST: {"form_type":"orokorra","nondik":"\/GOsasun_web\/index.php","hizkuntza":"nl","kolore_nagusia":"#4361ee","bigarren_kolorea":"#3f37c9","footer_kolorea":"#2b2d42","gaia":"argia"}
+FINAL VALUES: {"hizk":"nl","path":"..\/xml_konfigurazioa\/konfigurazio_orokorra.xml"}
+SAVED SUCCESSFULLY to C:\Apache24-64\htdocs\GOsasun_web\xml_konfigurazioa\konfigurazio_orokorra.xml
+[2026-03-17 02:10:32] POST: {"form_type":"orokorra","nondik":"\/GOsasun_web\/index.php?ezarpenak_gordeta=1","hizkuntza":"nl","kolore_nagusia":"#4361ee","bigarren_kolorea":"#3f37c9","footer_kolorea":"#2b2d42","gaia":"argia"}
+FINAL VALUES: {"hizk":"nl","path":"..\/xml_konfigurazioa\/konfigurazio_orokorra.xml"}
+SAVED SUCCESSFULLY to C:\Apache24-64\htdocs\GOsasun_web\xml_konfigurazioa\konfigurazio_orokorra.xml
+[2026-03-17 02:10:44] POST: {"form_type":"orokorra","nondik":"\/GOsasun_web\/index.php?ezarpenak_gordeta=1&ezarpenak_gordeta=1","hizkuntza":"en","kolore_nagusia":"#4361ee","bigarren_kolorea":"#3f37c9","footer_kolorea":"#2b2d42","gaia":"argia"}
+FINAL VALUES: {"hizk":"en","path":"..\/xml_konfigurazioa\/konfigurazio_orokorra.xml"}
+SAVED SUCCESSFULLY to C:\Apache24-64\htdocs\GOsasun_web\xml_konfigurazioa\konfigurazio_orokorra.xml
+[2026-03-17 02:10:58] POST: {"form_type":"orokorra","nondik":"\/GOsasun_web\/index.php?ezarpenak_gordeta=1&ezarpenak_gordeta=1&ezarpenak_gordeta=1","hizkuntza":"eu","kolore_nagusia":"#4361ee","bigarren_kolorea":"#3f37c9","footer_kolorea":"#2b2d42","gaia":"argia"}
+FINAL VALUES: {"hizk":"eu","path":"..\/xml_konfigurazioa\/konfigurazio_orokorra.xml"}
+SAVED SUCCESSFULLY to C:\Apache24-64\htdocs\GOsasun_web\xml_konfigurazioa\konfigurazio_orokorra.xml
+[2026-03-17 02:11:04] POST: {"form_type":"orokorra","nondik":"\/GOsasun_web\/index.php?ezarpenak_gordeta=1&ezarpenak_gordeta=1&ezarpenak_gordeta=1&ezarpenak_gordeta=1","hizkuntza":"nl","kolore_nagusia":"#4361ee","bigarren_kolorea":"#3f37c9","footer_kolorea":"#2b2d42","gaia":"argia"}
+FINAL VALUES: {"hizk":"nl","path":"..\/xml_konfigurazioa\/konfigurazio_orokorra.xml"}
+SAVED SUCCESSFULLY to C:\Apache24-64\htdocs\GOsasun_web\xml_konfigurazioa\konfigurazio_orokorra.xml
+[2026-03-17 02:11:11] POST: {"form_type":"orokorra","nondik":"\/GOsasun_web\/index.php?ezarpenak_gordeta=1&ezarpenak_gordeta=1&ezarpenak_gordeta=1&ezarpenak_gordeta=1&ezarpenak_gordeta=1","hizkuntza":"eu","kolore_nagusia":"#4361ee","bigarren_kolorea":"#3f37c9","footer_kolorea":"#2b2d42","gaia":"argia"}
+FINAL VALUES: {"hizk":"eu","path":"..\/xml_konfigurazioa\/konfigurazio_orokorra.xml"}
+SAVED SUCCESSFULLY to C:\Apache24-64\htdocs\GOsasun_web\xml_konfigurazioa\konfigurazio_orokorra.xml
+[2026-03-17 02:11:57] POST: {"form_type":"orokorra","itzulera":"medikua","hizkuntza":"en","kolore_nagusia":"#4361ee","bigarren_kolorea":"#3f37c9","footer_kolorea":"#2b2d42","gaia":"argia"}
+FINAL VALUES: {"hizk":"en","path":"..\/xml_konfigurazioa\/konfig_erabiltzailea_1.xml"}
+SAVED SUCCESSFULLY to C:\Apache24-64\htdocs\GOsasun_web\xml_konfigurazioa\konfig_erabiltzailea_1.xml
+[2026-03-17 02:16:03] POST: {"form_type":"orokorra","nondik":"\/GOsasun_web\/index.php","hizkuntza":"eu","kolore_nagusia":"#4361ee","bigarren_kolorea":"#3f37c9","footer_kolorea":"#2b2d42","gaia":"argia"}
+FINAL VALUES: {"hizk":"eu","path":"..\/xml_konfigurazioa\/konfig_erabiltzailea_51.xml"}
+SAVED SUCCESSFULLY to C:\Apache24-64\htdocs\GOsasun_web\xml_konfigurazioa\konfig_erabiltzailea_51.xml
+[2026-03-17 02:16:37] POST: {"form_type":"orokorra","nondik":"\/GOsasun_web\/index.php?ezarpenak_gordeta=1","hizkuntza":"es","kolore_nagusia":"#4361ee","bigarren_kolorea":"#3f37c9","footer_kolorea":"#2b2d42","gaia":"argia"}
+FINAL VALUES: {"hizk":"es","path":"..\/xml_konfigurazioa\/konfig_erabiltzailea_51.xml"}
+SAVED SUCCESSFULLY to C:\Apache24-64\htdocs\GOsasun_web\xml_konfigurazioa\konfig_erabiltzailea_51.xml
+[2026-03-17 02:16:56] POST: {"form_type":"orokorra","nondik":"\/GOsasun_web\/index.php?ezarpenak_gordeta=1&ezarpenak_gordeta=1","hizkuntza":"en","kolore_nagusia":"#4361ee","bigarren_kolorea":"#3f37c9","footer_kolorea":"#2b2d42","gaia":"argia"}
+FINAL VALUES: {"hizk":"en","path":"..\/xml_konfigurazioa\/konfig_erabiltzailea_51.xml"}
+SAVED SUCCESSFULLY to C:\Apache24-64\htdocs\GOsasun_web\xml_konfigurazioa\konfig_erabiltzailea_51.xml
+[2026-03-17 02:17:05] POST: {"form_type":"orokorra","nondik":"\/GOsasun_web\/index.php?ezarpenak_gordeta=1&ezarpenak_gordeta=1&ezarpenak_gordeta=1","hizkuntza":"nl","kolore_nagusia":"#4361ee","bigarren_kolorea":"#3f37c9","footer_kolorea":"#2b2d42","gaia":"argia"}
+FINAL VALUES: {"hizk":"nl","path":"..\/xml_konfigurazioa\/konfig_erabiltzailea_51.xml"}
+SAVED SUCCESSFULLY to C:\Apache24-64\htdocs\GOsasun_web\xml_konfigurazioa\konfig_erabiltzailea_51.xml
+[2026-03-17 02:17:19] POST: {"form_type":"orokorra","nondik":"\/GOsasun_web\/index.php?ezarpenak_gordeta=1&ezarpenak_gordeta=1&ezarpenak_gordeta=1&ezarpenak_gordeta=1","hizkuntza":"en","kolore_nagusia":"#4361ee","bigarren_kolorea":"#3f37c9","footer_kolorea":"#2b2d42","gaia":"argia"}
+FINAL VALUES: {"hizk":"en","path":"..\/xml_konfigurazioa\/konfig_erabiltzailea_51.xml"}
+SAVED SUCCESSFULLY to C:\Apache24-64\htdocs\GOsasun_web\xml_konfigurazioa\konfig_erabiltzailea_51.xml
+[2026-03-17 02:18:54] POST: {"form_type":"orokorra","nondik":"\/GOsasun_web\/index.php","hizkuntza":"eu","kolore_nagusia":"#4361ee","bigarren_kolorea":"#3f37c9","footer_kolorea":"#2b2d42","gaia":"argia"}
+FINAL VALUES: {"hizk":"eu","path":"..\/xml_konfigurazioa\/konfig_erabiltzailea_51.xml"}
+SAVED SUCCESSFULLY to C:\Apache24-64\htdocs\GOsasun_web\xml_konfigurazioa\konfig_erabiltzailea_51.xml
+[2026-03-17 02:19:32] POST: {"form_type":"orokorra","nondik":"\/GOsasun_web\/index.php?ezarpenak_gordeta=1","hizkuntza":"en","kolore_nagusia":"#4361ee","bigarren_kolorea":"#3f37c9","footer_kolorea":"#2b2d42","gaia":"argia"}
+FINAL VALUES: {"hizk":"en","path":"..\/xml_konfigurazioa\/konfig_erabiltzailea_51.xml"}
+SAVED SUCCESSFULLY to C:\Apache24-64\htdocs\GOsasun_web\xml_konfigurazioa\konfig_erabiltzailea_51.xml
+[2026-03-17 02:20:36] POST: {"form_type":"orokorra","itzulera":"medikua","hizkuntza":"es","kolore_nagusia":"#4361ee","bigarren_kolorea":"#3f37c9","footer_kolorea":"#2b2d42","gaia":"argia"}
+FINAL VALUES: {"hizk":"es","path":"..\/xml_konfigurazioa\/konfig_erabiltzailea_1.xml"}
+SAVED SUCCESSFULLY to C:\Apache24-64\htdocs\GOsasun_web\xml_konfigurazioa\konfig_erabiltzailea_1.xml
+[2026-03-17 02:20:53] POST: {"form_type":"orokorra","nondik":"\/GOsasun_web\/","hizkuntza":"es","kolore_nagusia":"#4361ee","bigarren_kolorea":"#3f37c9","footer_kolorea":"#2b2d42","gaia":"argia"}
+FINAL VALUES: {"hizk":"es","path":"..\/xml_konfigurazioa\/konfigurazio_orokorra.xml"}
+SAVED SUCCESSFULLY to C:\Apache24-64\htdocs\GOsasun_web\xml_konfigurazioa\konfigurazio_orokorra.xml
+[2026-03-17 02:20:57] POST: {"form_type":"orokorra","nondik":"\/GOsasun_web\/?ezarpenak_gordeta=1","hizkuntza":"en","kolore_nagusia":"#4361ee","bigarren_kolorea":"#3f37c9","footer_kolorea":"#2b2d42","gaia":"argia"}
+FINAL VALUES: {"hizk":"en","path":"..\/xml_konfigurazioa\/konfigurazio_orokorra.xml"}
+SAVED SUCCESSFULLY to C:\Apache24-64\htdocs\GOsasun_web\xml_konfigurazioa\konfigurazio_orokorra.xml
+[2026-03-17 02:21:00] POST: {"form_type":"orokorra","nondik":"\/GOsasun_web\/?ezarpenak_gordeta=1&ezarpenak_gordeta=1","hizkuntza":"nl","kolore_nagusia":"#4361ee","bigarren_kolorea":"#3f37c9","footer_kolorea":"#2b2d42","gaia":"argia"}
+FINAL VALUES: {"hizk":"nl","path":"..\/xml_konfigurazioa\/konfigurazio_orokorra.xml"}
+SAVED SUCCESSFULLY to C:\Apache24-64\htdocs\GOsasun_web\xml_konfigurazioa\konfigurazio_orokorra.xml
+[2026-03-17 02:21:03] POST: {"form_type":"orokorra","nondik":"\/GOsasun_web\/?ezarpenak_gordeta=1&ezarpenak_gordeta=1&ezarpenak_gordeta=1","hizkuntza":"eu","kolore_nagusia":"#4361ee","bigarren_kolorea":"#3f37c9","footer_kolorea":"#2b2d42","gaia":"argia"}
+FINAL VALUES: {"hizk":"eu","path":"..\/xml_konfigurazioa\/konfigurazio_orokorra.xml"}
+SAVED SUCCESSFULLY to C:\Apache24-64\htdocs\GOsasun_web\xml_konfigurazioa\konfigurazio_orokorra.xml
+[2026-03-17 02:21:35] POST: {"form_type":"orokorra","itzulera":"pazientea","hizkuntza":"eu","kolore_nagusia":"#4361ee","bigarren_kolorea":"#3f37c9","footer_kolorea":"#2b2d42","gaia":"argia"}
+FINAL VALUES: {"hizk":"eu","path":"..\/xml_konfigurazioa\/konfig_erabiltzailea_51.xml"}
+SAVED SUCCESSFULLY to C:\Apache24-64\htdocs\GOsasun_web\xml_konfigurazioa\konfig_erabiltzailea_51.xml
+[2026-03-17 02:21:48] POST: {"form_type":"orokorra","itzulera":"pazientea","hizkuntza":"es","kolore_nagusia":"#4361ee","bigarren_kolorea":"#3f37c9","footer_kolorea":"#2b2d42","gaia":"argia"}
+FINAL VALUES: {"hizk":"es","path":"..\/xml_konfigurazioa\/konfig_erabiltzailea_51.xml"}
+SAVED SUCCESSFULLY to C:\Apache24-64\htdocs\GOsasun_web\xml_konfigurazioa\konfig_erabiltzailea_51.xml
+[2026-03-17 02:27:52] POST: {"form_type":"orokorra","itzulera":"pazientea","hizkuntza":"eu","kolore_nagusia":"#4361ee","bigarren_kolorea":"#3f37c9","footer_kolorea":"#2b2d42","gaia":"argia"}
+FINAL VALUES: {"hizk":"eu","path":"..\/xml_konfigurazioa\/konfig_erabiltzailea_51.xml"}
+SAVED SUCCESSFULLY to C:\Apache24-64\htdocs\GOsasun_web\xml_konfigurazioa\konfig_erabiltzailea_51.xml
+[2026-03-17 02:28:01] POST: {"form_type":"orokorra","itzulera":"pazientea","hizkuntza":"es","kolore_nagusia":"#4361ee","bigarren_kolorea":"#3f37c9","footer_kolorea":"#2b2d42","gaia":"argia"}
+FINAL VALUES: {"hizk":"es","path":"..\/xml_konfigurazioa\/konfig_erabiltzailea_51.xml"}
+SAVED SUCCESSFULLY to C:\Apache24-64\htdocs\GOsasun_web\xml_konfigurazioa\konfig_erabiltzailea_51.xml
