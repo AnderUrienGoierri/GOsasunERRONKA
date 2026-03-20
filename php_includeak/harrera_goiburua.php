@@ -68,7 +68,7 @@ $itzulpenak = kargatuItzulpenak($hizkuntza_def);
             <li><a href="mezuak.php" class="<?php echo ($uneko_orria === 'mezuak') ? 'aktiboa' : ''; ?>"><?php echo $itzulpenak->menua_harrera->mezuak; ?></a></li>
             <li><a href="kanpoko_mezuak.php" class="<?php echo ($uneko_orria === 'kanpoko_mezuak') ? 'aktiboa' : ''; ?>"><?php echo $itzulpenak->menua_harrera->kanpoko_mezuak; ?></a></li>
             <li><a href="harrerako_langileak.php" class="<?php echo ($uneko_orria === 'harrerako_langileak') ? 'aktiboa' : ''; ?>"><?php echo $itzulpenak->menua_harrera->harrerako_langileak; ?></a></li>
-            <li><a href="ezarpenak.php" class="<?php echo ($uneko_orria === 'ezarpenak') ? 'aktiboa' : ''; ?>"><img src="<?php echo $bide_absolutua; ?>img/svg/settings.svg" alt=""> <?php echo $itzulpenak->menua->ezarpenak; ?></a></li>
+            <li><a href="ezarpenak.php" class="<?php echo ($uneko_orria === 'ezarpenak') ? 'aktiboa' : ''; ?>"><?php echo $itzulpenak->menua->ezarpenak; ?></a></li>
             <li><a href="<?php echo $bide_absolutua; ?>php_laguntzaileak/logout.php" class="botoia botoi-ertza arrisku-kolorea"><?php echo $itzulpenak->erabiltzaile_panela->saioa_itxi; ?></a></li>
         </ul>
     </header>
