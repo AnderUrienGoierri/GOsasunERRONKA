@@ -41,7 +41,7 @@ include_once '../php_includeak/paziente_goiburua.php';
 ?>
     <main class="panel-nagusia">
         <section class="kaixo-atalak flex-zentratua-20" >
-            <img src="../<?php echo htmlspecialchars($erabiltzaile_datuak['irudia'] ?? 'img/lehenetsia_pazientea.png'); ?>" alt="Zure profila" class="profil-irudia-80">
+            <img src="../<?php echo str_replace('img/', 'img/png/', htmlspecialchars($erabiltzaile_datuak['irudia'] ?? 'img/lehenetsia_pazientea.png')); ?>" alt="Zure profila" class="profil-irudia-80">
             <div>
                 <h1 class="izenburu-nagusia"><?php echo $itzulpenak->erabiltzaile_panela->kaixo; ?>, <?php echo htmlspecialchars($erabiltzaile_datuak['izena']); ?>?</h1>
                 <p class="azpititulu-grisa"><?php echo $itzulpenak->erabiltzaile_panela->laburpena; ?></p>
@@ -52,7 +52,7 @@ include_once '../php_includeak/paziente_goiburua.php';
         <div class="panel-sareta flex-tartea-20 marjina-behe-30">
             <!-- Azken Neurketak -->
             <div id="dash-neurketak-card" class="kutxa-zuria-itzala">
-                <h3 class="izenburu-iluna"><img src="../img/line-chart.svg" alt="" class="ikono-ertaina marjina-esk-5"> <?php echo $itzulpenak->dashboard_pazientea->azken_neurketak; ?></h3>
+                <h3 class="izenburu-iluna"><img src="../img/svg/line-chart.svg" alt="" class="ikono-ertaina marjina-esk-5"> <?php echo $itzulpenak->dashboard_pazientea->azken_neurketak; ?></h3>
                 <?php if ($azkenNeurketa): ?>
                     <div class="sareta-bikoa">
                         <div class="informazio-taldea">
@@ -77,7 +77,7 @@ include_once '../php_includeak/paziente_goiburua.php';
 
             <!-- Hurrengo Hitzordua -->
             <div class="kutxa-zuria-itzala">
-                <h3 class="izenburu-iluna"><img src="../img/calendar-days.svg" alt="" class="ikono-ertaina marjina-esk-5"> <?php echo $itzulpenak->dashboard_pazientea->hurrengo_hitzordua; ?></h3>
+                <h3 class="izenburu-iluna"><img src="../img/svg/calendar-days.svg" alt="" class="ikono-ertaina marjina-esk-5"> <?php echo $itzulpenak->dashboard_pazientea->hurrengo_hitzordua; ?></h3>
                 <?php if ($hurrengoHitzordua): ?>
                     <div class="paziente-txartel-zuria marjina-behe-0 txartel-zuri-argia">
                         <div class="testua-erdian data-kutxa">
@@ -86,7 +86,7 @@ include_once '../php_includeak/paziente_goiburua.php';
                         </div>
                         <div class="flex-bat">
                             <h4 class="izenburu-marjina-gabea">Dr. <?php echo htmlspecialchars($hurrengoHitzordua['mediku_izena'] . ' ' . $hurrengoHitzordua['mediku_abizenak']); ?></h4>
-                            <p class="ordua ordua-marjina-doitua"><img src="../img/clock.svg" alt="" class="ikono-ertaina marjina-esk-5"> <?php echo date('H:i', strtotime($hurrengoHitzordua['hasiera_ordua'])); ?></p>
+                            <p class="ordua ordua-marjina-doitua"><img src="../img/svg/clock.svg" alt="" class="ikono-ertaina marjina-esk-5"> <?php echo date('H:i', strtotime($hurrengoHitzordua['hasiera_ordua'])); ?></p>
                         </div>
                     </div>
                 <?php else: ?>
@@ -96,57 +96,57 @@ include_once '../php_includeak/paziente_goiburua.php';
             </div>
         </div>
 
-        <h2 class="izenburu-nagusia marjina-behe-20"><img src="../img/zap.svg" alt="" class="ikono-ertaina marjina-esk-5"> <?php echo $itzulpenak->erabiltzaile_panela->ekintza_azkarrak; ?></h2>
+        <h2 class="izenburu-nagusia marjina-behe-20"><img src="../img/svg/zap.svg" alt="" class="ikono-ertaina marjina-esk-5"> <?php echo $itzulpenak->erabiltzaile_panela->ekintza_azkarrak; ?></h2>
         <section class="menu-sareta">
             <a href="datuak.php" class="menu-txartela">
-                <div class="txartel-ikonoa"><img src="../img/user-cog.svg" alt="Nire Datuak" class="ikono-handia-48"></div>
+                <div class="txartel-ikonoa"><img src="../img/svg/user-cog.svg" alt="Nire Datuak" class="ikono-handia-48"></div>
                 <h3><?php echo $itzulpenak->menua_pazientea->datuak; ?></h3>
                 <p><?php echo $itzulpenak->menua_pazientea->datuak_testua; ?></p>
             </a>
             <a href="neurketak.php" class="menu-txartela" id="menu-neurketak-card">
-                <div class="txartel-ikonoa"><img src="../img/clipboard-pen.svg" alt="Neurketak" class="ikono-handia-48"></div>
+                <div class="txartel-ikonoa"><img src="../img/svg/clipboard-pen.svg" alt="Neurketak" class="ikono-handia-48"></div>
                 <h3><?php echo $itzulpenak->menua_pazientea->neurketak; ?></h3>
                 <p><?php echo $itzulpenak->menua_pazientea->neurketak_testua; ?></p>
             </a>
             <a href="grafikak.php" class="menu-txartela">
-                <div class="txartel-ikonoa"><img src="../img/line-chart.svg" alt="Grafikak" class="ikono-handia-48"></div>
+                <div class="txartel-ikonoa"><img src="../img/svg/line-chart.svg" alt="Grafikak" class="ikono-handia-48"></div>
                 <h3><?php echo $itzulpenak->menua_pazientea->grafikak; ?></h3>
                 <p><?php echo $itzulpenak->menua_pazientea->grafikak_testua; ?></p>
             </a>
             <a href="errezetak.php" class="menu-txartela">
-                <div class="txartel-ikonoa"><img src="../img/pill.svg" alt="Errezetak" class="ikono-handia-48"></div>
+                <div class="txartel-ikonoa"><img src="../img/svg/pill.svg" alt="Errezetak" class="ikono-handia-48"></div>
                 <h3><?php echo $itzulpenak->menua_pazientea->errezetak; ?></h3>
                 <p><?php echo $itzulpenak->menua_pazientea->errezetak_testua; ?></p>
             </a>
             <a href="abisuak.php" class="menu-txartela">
-                <div class="txartel-ikonoa"><img src="../img/bell-ring.svg" alt="Abisuak" class="ikono-handia-48"></div>
+                <div class="txartel-ikonoa"><img src="../img/svg/bell-ring.svg" alt="Abisuak" class="ikono-handia-48"></div>
                 <h3><?php echo $itzulpenak->menua_pazientea->abisuak; ?></h3>
                 <p><?php echo $itzulpenak->menua_pazientea->abisuak_testua; ?></p>
             </a>
             <a href="hitzorduak.php" class="menu-txartela">
-                <div class="txartel-ikonoa"><img src="../img/calendar-days.svg" alt="Hitzorduak" class="ikono-handia-48"></div>
+                <div class="txartel-ikonoa"><img src="../img/svg/calendar-days.svg" alt="Hitzorduak" class="ikono-handia-48"></div>
                 <h3><?php echo $itzulpenak->menua_pazientea->hitzorduak; ?></h3>
                 <p><?php echo $itzulpenak->menua_pazientea->hitzorduak_testua; ?></p>
             </a>
             <a href="mezuak.php" class="menu-txartela">
-                <div class="txartel-ikonoa"><img src="../img/mail.svg" alt="Mezuak" class="ikono-handia-48"></div>
+                <div class="txartel-ikonoa"><img src="../img/svg/mail.svg" alt="Mezuak" class="ikono-handia-48"></div>
                 <h3><?php echo $itzulpenak->menua_pazientea->mezuak; ?></h3>
                 <p><?php echo $itzulpenak->menua_pazientea->mezuak_testua; ?></p>
             </a>
             <a href="ezarpenak.php" class="menu-txartela">
-                <div class="txartel-ikonoa"><img src="../img/settings.svg" alt="Ezarpenak" class="ikono-handia-48"></div>
+                <div class="txartel-ikonoa"><img src="../img/svg/settings.svg" alt="Ezarpenak" class="ikono-handia-48"></div>
                 <h3><?php echo $itzulpenak->menua_pazientea->ezarpenak; ?></h3>
                 <p><?php echo $itzulpenak->menua_pazientea->ezarpenak_testua; ?></p>
             </a>
             <a href="../php_laguntzaileak/logout.php" class="menu-txartela">
-                <div class="txartel-ikonoa"><img src="../img/log-out.svg" alt="Saioa Itxi" class="ikono-handia-48"></div>
+                <div class="txartel-ikonoa"><img src="../img/svg/log-out.svg" alt="Saioa Itxi" class="ikono-handia-48"></div>
                 <h3><?php echo $itzulpenak->erabiltzaile_panela->saioa_itxi; ?></h3>
                 <p><?php echo $itzulpenak->erabiltzaile_panela->saioa_itxi_testua; ?></p>
             </a>
 
             <div class="menu-txartela kutxa-osoa">
                 <div class="flex-tartea-15 marjina-behe-10">
-                    <h3 class="izenburu-marjina-gabea"><div class="txartel-ikonoa ikono-inline-handia"><img src="../img/download.svg" alt="Download" class="ikono-24px-iragazkia"></div> <?php echo $itzulpenak->dashboard_pazientea->esportatu_xml; ?></h3>
+                    <h3 class="izenburu-marjina-gabea"><div class="txartel-ikonoa ikono-inline-handia"><img src="../img/svg/download.svg" alt="Download" class="ikono-24px-iragazkia"></div> <?php echo $itzulpenak->dashboard_pazientea->esportatu_xml; ?></h3>
                 </div>
                 <form id="xmlEsportazioForm" class="flex-tartea-15 flex-bukaera hutsartea-15">
                     <div class="informazio-taldea flex-bat marjina-behe-0">
