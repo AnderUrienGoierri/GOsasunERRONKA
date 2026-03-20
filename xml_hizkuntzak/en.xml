@@ -135,5 +135,9 @@
         <gorde_botoia>Save Settings (in XML)</gorde_botoia>
         <reset_botoia>Restore initial values</reset_botoia>
         <reset_konfirmazioa>Are you sure you want to restore initial values?</reset_konfirmazioa>
+        <hizkuntza_eu>Basque</hizkuntza_eu>
+        <hizkuntza_es>Spanish</hizkuntza_es>
+        <hizkuntza_en>English</hizkuntza_en>
+        <hizkuntza_nl>Dutch</hizkuntza_nl>
     </ezarpenak>
 </hizkuntza>

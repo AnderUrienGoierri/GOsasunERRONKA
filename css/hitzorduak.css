@@ -117,6 +117,7 @@
     border: 1px solid #e0e0e0;
     border-radius: 8px;
     overflow: hidden;
+    min-width: 700px; /* Horizontal scroll bermatzeko pantailetan */
 }
 
 .grid-goiburua {
@@ -307,5 +308,80 @@
         flex-direction: column;
         align-items: flex-start;
         gap: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .egutegia-edukiontzia {
+        padding: 10px;
+        margin-top: 15px;
+    }
+    
+    .egutegia-goiburua {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .egutegia-nabigazioa {
+        justify-content: space-between;
+    }
+    
+    .bista-hautatzailea {
+        justify-content: space-between;
+        margin-top: 10px;
+    }
+
+    .grid-th {
+        padding: 10px 2px;
+        font-size: 0.75rem;
+    }
+    
+    .egun-gelaxka {
+        padding: 4px;
+        min-height: 80px;
+    }
+
+    .egun-gelaxka.gaurkoa .egun-zenbakia {
+        width: 24px;
+        height: 24px;
+        font-size: 0.8rem;
+    }
+    
+    .hitzordu-blokea {
+        padding: 4px;
+        border-left-width: 3px;
+    }
+    
+    .bloke-izenik {
+        font-size: 0.7rem;
+    }
+    
+    .bloke-mota {
+        font-size: 0.65rem;
+        display: block;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 350px) {
+    .grid-th {
+        font-size: 0.6rem;
+        padding: 8px 1px;
+    }
+    
+    .bista-hautatzailea {
+        gap: 5px;
+    }
+    
+    .bista-botoia {
+        font-size: 0.8rem;
+        padding: 4px;
+    }
+    
+    .egun-gelaxka {
+        padding: 2px;
     }
 }

@@ -135,5 +135,9 @@
         <gorde_botoia>Instellingen opslaan (in XML)</gorde_botoia>
         <reset_botoia>Oorspronkelijke waarden herstellen</reset_botoia>
         <reset_konfirmazioa>Weet u zeker dat u de oorspronkelijke waarden wilt herstellen?</reset_konfirmazioa>
+        <hizkuntza_eu>Baskisch</hizkuntza_eu>
+        <hizkuntza_es>Spaans</hizkuntza_es>
+        <hizkuntza_en>Engels</hizkuntza_en>
+        <hizkuntza_nl>Nederlands</hizkuntza_nl>
     </ezarpenak>
 </hizkuntza>

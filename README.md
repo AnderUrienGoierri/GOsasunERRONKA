@@ -58,7 +58,7 @@ Kontsultak arintzeko eta segurtasuna indartzeko, hainbat bista programatu dira d
 - V_Pazientea, V_Medikua, V_Harrera: Erabiltzaileen taula orokorra euren berezko taularekin lotzen duen ikuspegi bateratua.
 - V_Mediku_Pazienteak: Mediku zehatz baten pazienteen zerrenda azkar bat ateratzeko lotura grafikoa.
 - V_Hitzorduak_Osoa: Hitzorudak mediku eta paziente izenekin osatuta dakarren bista, gurutzeak saihesteko.
-- V_Kanpoko_Mezuak eta V_Abisuak_Osoa: Panelen taulentzako bereziki egokitutako bistak.
+- V_Abisuak_Osoa: Panelen taulentzako bereziko egokitutako bista.
 
 ### 3. Triggerak
 

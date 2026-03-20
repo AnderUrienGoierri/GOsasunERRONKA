@@ -1,4 +1,4 @@
--- GOsasun_DB_data.sql
+﻿-- GOsasun_DB_data.sql
 USE GOsasun_DB;
 -- Disable constraint checks temporarily for bulk inserts if needed (optional)
 SET FOREIGN_KEY_CHECKS = 0;
@@ -144,7 +144,7 @@ VALUES (
         'MED-001',
         'Kardiologia',
         '600111222',
-        'img/medikua_1.png'
+        'img/png/medikua_1.png'
     ),
     (
         2,
@@ -154,7 +154,7 @@ VALUES (
         'MED-002',
         'Neurologia',
         '600222333',
-        'img/medikua_2.png'
+        'img/png/medikua_2.png'
     ),
     (
         3,
@@ -164,7 +164,7 @@ VALUES (
         'MED-003',
         'Pediatria',
         '600333444',
-        'img/medikua_3.png'
+        'img/png/medikua_3.png'
     ),
     (
         4,
@@ -174,7 +174,7 @@ VALUES (
         'MED-004',
         'Traumatologia',
         '600444555',
-        'img/medikua_4.png'
+        'img/png/medikua_4.png'
     ),
     (
         5,
@@ -184,7 +184,7 @@ VALUES (
         'MED-005',
         'Dermatologia',
         '600555666',
-        'img/medikua_5.png'
+        'img/png/medikua_5.png'
     ),
     (
         6,
@@ -194,7 +194,7 @@ VALUES (
         'MED-006',
         'Psikiatria',
         '600666777',
-        'img/medikua_6.png'
+        'img/png/medikua_6.png'
     ),
     (
         7,
@@ -204,7 +204,7 @@ VALUES (
         'MED-007',
         'Ginekologia',
         '600777888',
-        'img/medikua_7.png'
+        'img/png/medikua_7.png'
     ),
     (
         8,
@@ -214,7 +214,7 @@ VALUES (
         'MED-008',
         'Oftalmologia',
         '600888999',
-        'img/medikua_8.png'
+        'img/png/medikua_8.png'
     ),
     (
         9,
@@ -224,7 +224,7 @@ VALUES (
         'MED-009',
         'Otorrinolaringologia',
         '600999000',
-        'img/medikua_9.png'
+        'img/png/medikua_9.png'
     ),
     (
         10,
@@ -234,7 +234,7 @@ VALUES (
         'MED-010',
         'Urologia',
         '611000111',
-        'img/medikua_10.png'
+        'img/png/medikua_10.png'
     ),
     (
         11,
@@ -244,7 +244,7 @@ VALUES (
         'MED-011',
         'Onkologia',
         '611111222',
-        'img/medikua_11.png'
+        'img/png/medikua_11.png'
     ),
     (
         12,
@@ -254,7 +254,7 @@ VALUES (
         'MED-012',
         'Endokrinologia',
         '611222333',
-        'img/medikua_12.png'
+        'img/png/medikua_12.png'
     ),
     (
         13,
@@ -264,7 +264,7 @@ VALUES (
         'MED-013',
         'Erreumatologia',
         '611333444',
-        'img/medikua_13.png'
+        'img/png/medikua_13.png'
     ),
     (
         14,
@@ -274,7 +274,7 @@ VALUES (
         'MED-014',
         'Digestiboa',
         '611444555',
-        'img/medikua_14.png'
+        'img/png/medikua_14.png'
     ),
     (
         15,
@@ -284,7 +284,7 @@ VALUES (
         'MED-015',
         'Pneumologia',
         '611555666',
-        'img/medikua_15.png'
+        'img/png/medikua_15.png'
     ),
     (
         16,
@@ -294,7 +294,7 @@ VALUES (
         'MED-016',
         'Nefrologia',
         '611666777',
-        'img/medikua_16.png'
+        'img/png/medikua_16.png'
     ),
     (
         17,
@@ -304,7 +304,7 @@ VALUES (
         'MED-017',
         'Kardiologia',
         '611777888',
-        'img/medikua_17.png'
+        'img/png/medikua_17.png'
     ),
     (
         18,
@@ -314,7 +314,7 @@ VALUES (
         'MED-018',
         'Pediatria',
         '611888999',
-        'img/medikua_18.png'
+        'img/png/medikua_18.png'
     ),
     (
         19,
@@ -324,7 +324,7 @@ VALUES (
         'MED-019',
         'Neurologia',
         '611999000',
-        'img/medikua_19.png'
+        'img/png/medikua_19.png'
     ),
     (
         20,
@@ -334,7 +334,7 @@ VALUES (
         'MED-020',
         'Dermatologia',
         '622000111',
-        'img/medikua_20.png'
+        'img/png/medikua_20.png'
     ),
     (
         21,
@@ -344,7 +344,7 @@ VALUES (
         'MED-021',
         'Traumatologia',
         '622111222',
-        'img/medikua_21.png'
+        'img/png/medikua_21.png'
     ),
     (
         22,
@@ -354,7 +354,7 @@ VALUES (
         'MED-022',
         'Psikiatria',
         '622222333',
-        'img/medikua_22.png'
+        'img/png/medikua_22.png'
     ),
     (
         23,
@@ -364,7 +364,7 @@ VALUES (
         'MED-023',
         'Ginekologia',
         '622333444',
-        'img/medikua_23.png'
+        'img/png/medikua_23.png'
     ),
     (
         24,
@@ -374,7 +374,7 @@ VALUES (
         'MED-024',
         'Oftalmologia',
         '622444555',
-        'img/medikua_24.png'
+        'img/png/medikua_24.png'
     ),
     (
         25,
@@ -384,7 +384,7 @@ VALUES (
         'MED-025',
         'Otorrinolaringologia',
         '622555666',
-        'img/medikua_25.png'
+        'img/png/medikua_25.png'
     ),
     (
         26,
@@ -394,7 +394,7 @@ VALUES (
         'MED-026',
         'Urologia',
         '622666777',
-        'img/medikua_26.png'
+        'img/png/medikua_26.png'
     ),
     (
         27,
@@ -404,7 +404,7 @@ VALUES (
         'MED-027',
         'Onkologia',
         '622777888',
-        'img/medikua_27.png'
+        'img/png/medikua_27.png'
     ),
     (
         28,
@@ -414,7 +414,7 @@ VALUES (
         'MED-028',
         'Endokrinologia',
         '622888999',
-        'img/medikua_28.png'
+        'img/png/medikua_28.png'
     ),
     (
         29,
@@ -424,7 +424,7 @@ VALUES (
         'MED-029',
         'Erreumatologia',
         '622999000',
-        'img/medikua_29.png'
+        'img/png/medikua_29.png'
     ),
     (
         30,
@@ -434,7 +434,7 @@ VALUES (
         'MED-030',
         'Digestiboa',
         '633000111',
-        'img/medikua_30.png'
+        'img/png/medikua_30.png'
     ),
     (
         31,
@@ -444,7 +444,7 @@ VALUES (
         'MED-031',
         'Pneumologia',
         '633111222',
-        'img/medikua_31.png'
+        'img/png/medikua_31.png'
     ),
     (
         32,
@@ -454,7 +454,7 @@ VALUES (
         'MED-032',
         'Nefrologia',
         '633222333',
-        'img/medikua_32.png'
+        'img/png/medikua_32.png'
     ),
     (
         33,
@@ -464,7 +464,7 @@ VALUES (
         'MED-033',
         'Kardiologia',
         '633333444',
-        'img/medikua_33.png'
+        'img/png/medikua_33.png'
     ),
     (
         34,
@@ -474,7 +474,7 @@ VALUES (
         'MED-034',
         'Pediatria',
         '633444555',
-        'img/medikua_34.png'
+        'img/png/medikua_34.png'
     ),
     (
         35,
@@ -484,7 +484,7 @@ VALUES (
         'MED-035',
         'Neurologia',
         '633555666',
-        'img/medikua_35.png'
+        'img/png/medikua_35.png'
     ),
     (
         36,
@@ -494,7 +494,7 @@ VALUES (
         'MED-036',
         'Dermatologia',
         '633666777',
-        'img/medikua_36.png'
+        'img/png/medikua_36.png'
     ),
     (
         37,
@@ -504,7 +504,7 @@ VALUES (
         'MED-037',
         'Traumatologia',
         '633777888',
-        'img/medikua_37.png'
+        'img/png/medikua_37.png'
     ),
     (
         38,
@@ -514,7 +514,7 @@ VALUES (
         'MED-038',
         'Psikiatria',
         '633888999',
-        'img/medikua_38.png'
+        'img/png/medikua_38.png'
     ),
     (
         39,
@@ -524,7 +524,7 @@ VALUES (
         'MED-039',
         'Ginekologia',
         '633999000',
-        'img/medikua_39.png'
+        'img/png/medikua_39.png'
     ),
     (
         40,
@@ -534,7 +534,7 @@ VALUES (
         'MED-040',
         'Oftalmologia',
         '644000111',
-        'img/medikua_40.png'
+        'img/png/medikua_40.png'
     ),
     (
         41,
@@ -544,7 +544,7 @@ VALUES (
         'MED-041',
         'Otorrinolaringologia',
         '644111222',
-        'img/medikua_41.png'
+        'img/png/medikua_41.png'
     ),
     (
         42,
@@ -554,7 +554,7 @@ VALUES (
         'MED-042',
         'Urologia',
         '644222333',
-        'img/medikua_42.png'
+        'img/png/medikua_42.png'
     ),
     (
         43,
@@ -564,7 +564,7 @@ VALUES (
         'MED-043',
         'Onkologia',
         '644333444',
-        'img/medikua_43.png'
+        'img/png/medikua_43.png'
     ),
     (
         44,
@@ -574,7 +574,7 @@ VALUES (
         'MED-044',
         'Endokrinologia',
         '644444555',
-        'img/medikua_44.png'
+        'img/png/medikua_44.png'
     ),
     (
         45,
@@ -584,7 +584,7 @@ VALUES (
         'MED-045',
         'Erreumatologia',
         '644555666',
-        'img/medikua_45.png'
+        'img/png/medikua_45.png'
     ),
     (
         46,
@@ -594,7 +594,7 @@ VALUES (
         'MED-046',
         'Digestiboa',
         '644666777',
-        'img/medikua_46.png'
+        'img/png/medikua_46.png'
     ),
     (
         47,
@@ -604,7 +604,7 @@ VALUES (
         'MED-047',
         'Pneumologia',
         '644777888',
-        'img/medikua_47.png'
+        'img/png/medikua_47.png'
     ),
     (
         48,
@@ -614,7 +614,7 @@ VALUES (
         'MED-048',
         'Nefrologia',
         '644888999',
-        'img/medikua_48.png'
+        'img/png/medikua_48.png'
     ),
     (
         49,
@@ -624,7 +624,7 @@ VALUES (
         'MED-049',
         'Kardiologia',
         '644999000',
-        'img/medikua_49.png'
+        'img/png/medikua_49.png'
     ),
     (
         50,
@@ -634,7 +634,7 @@ VALUES (
         'MED-050',
         'Pediatria',
         '655000111',
-        'img/medikua_50.png'
+        'img/png/medikua_50.png'
     );
 -- 4. Harrerako Langileak
 INSERT INTO Harrerako_Langileak (langile_id, izena, abizenak)
@@ -37882,10 +37882,10 @@ SELECT paziente_id, DATE(erregistro_data),
 FROM Neurketak
 WHERE pisua_kg < 45;
 UPDATE Pazienteak
-SET irudia = CONCAT('img/pazientea_', paziente_id, '.png')
+SET irudia = CONCAT('img/png/pazientea_', paziente_id, '.png')
 WHERE paziente_id IN (51, 52, 53, 54, 55, 56);
 UPDATE Harrerako_Langileak
-SET irudia = CONCAT('img/harrera_', langile_id, '.png')
+SET irudia = CONCAT('img/png/harrera_', langile_id, '.png')
 WHERE langile_id = 101;
 -- 14. Botikak (50 erabilienak)
 INSERT INTO Botikak (
