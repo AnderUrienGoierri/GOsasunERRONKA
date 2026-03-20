@@ -2,10 +2,11 @@
     <div id="ezarpenakModala" class="modal-wrapper">
         <div class="modal-edukia">
             <div class="modal-goiburua">
-                <h3><img src="<?php echo $bide_absolutua; ?>img/settings.svg" alt="" class="ikono-24px-erdian"> <?php echo $itzulpenak->ezarpenak->izenburua; ?></h3>
+                <h3><img src="<?php echo $bide_absolutua; ?>img/svg/settings.svg" alt="" class="ikono-24px-erdian"> <?php echo $itzulpenak->ezarpenak->izenburua; ?></h3>
                 <span class="itxi-modala">&times;</span>
             </div>
             <div class="modal-gorputza">
+                
                 <p class="testu-grisa testua-erdian-marjina-behe-20"><?php echo $itzulpenak->ezarpenak->laguntza; ?></p>
                 <?php if (isset($_GET['ezarpenak_gordeta'])): ?>
                     <div class="alerta alerta-arrakasta marjina-goi-15 testua-erdian-marjina-behe-20"><?php echo $itzulpenak->ezarpenak->gordeta; ?></div>
@@ -24,28 +25,28 @@
                             <div class="hizkuntza-aukera">
                                 <input type="radio" name="hizkuntza" id="lang-eu" value="eu" <?php echo ($hizkuntza_def === 'eu') ? 'checked' : ''; ?>>
                                 <label for="lang-eu" class="aukera-edukia">
-                                    <img src="<?php echo $bide_absolutua; ?>img/hizkunta_ikonoak/eu.png" alt="Euskara" style="width:60px !important; height:60px !important; border-radius:50%; object-fit:cover;">
+                                    <img src="<?php echo $bide_absolutua; ?>img/png/hizkunta_ikonoak/eu.png" alt="Euskara" style="width:60px !important; height:60px !important; border-radius:50%; object-fit:cover;">
                                     <span><?php echo $itzulpenak->ezarpenak->hizkuntza_eu; ?></span>
                                 </label>
                             </div>
                             <div class="hizkuntza-aukera">
                                 <input type="radio" name="hizkuntza" id="lang-es" value="es" <?php echo ($hizkuntza_def === 'es') ? 'checked' : ''; ?>>
                                 <label for="lang-es" class="aukera-edukia">
-                                    <img src="<?php echo $bide_absolutua; ?>img/hizkunta_ikonoak/es.png" alt="Castellano" style="width:60px !important; height:60px !important; border-radius:50%; object-fit:cover;">
+                                    <img src="<?php echo $bide_absolutua; ?>img/png/hizkunta_ikonoak/es.png" alt="Castellano" style="width:60px !important; height:60px !important; border-radius:50%; object-fit:cover;">
                                     <span><?php echo $itzulpenak->ezarpenak->hizkuntza_es; ?></span>
                                 </label>
                             </div>
                             <div class="hizkuntza-aukera">
                                 <input type="radio" name="hizkuntza" id="lang-en" value="en" <?php echo ($hizkuntza_def === 'en') ? 'checked' : ''; ?>>
                                 <label for="lang-en" class="aukera-edukia">
-                                    <img src="<?php echo $bide_absolutua; ?>img/hizkunta_ikonoak/en.png" alt="English" style="width:60px !important; height:60px !important; border-radius:50%; object-fit:cover;">
+                                    <img src="<?php echo $bide_absolutua; ?>img/png/hizkunta_ikonoak/en.png" alt="English" style="width:60px !important; height:60px !important; border-radius:50%; object-fit:cover;">
                                     <span><?php echo $itzulpenak->ezarpenak->hizkuntza_en; ?></span>
                                 </label>
                             </div>
                             <div class="hizkuntza-aukera">
                                 <input type="radio" name="hizkuntza" id="lang-nl" value="nl" <?php echo ($hizkuntza_def === 'nl') ? 'checked' : ''; ?>>
                                 <label for="lang-nl" class="aukera-edukia">
-                                    <img src="<?php echo $bide_absolutua; ?>img/hizkunta_ikonoak/nl.png" alt="Nederlands" style="width:60px !important; height:60px !important; border-radius:50%; object-fit:cover;">
+                                    <img src="<?php echo $bide_absolutua; ?>img/png/hizkunta_ikonoak/nl.png" alt="Nederlands" style="width:60px !important; height:60px !important; border-radius:50%; object-fit:cover;">
                                     <span><?php echo $itzulpenak->ezarpenak->hizkuntza_nl; ?></span>
                                 </label>
                             </div>

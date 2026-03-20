@@ -25,7 +25,7 @@ $itzulpenak = kargatuItzulpenak($hizkuntza_def);
     <title><?php echo $orri_izenburua ?? 'GOsasun'; ?></title>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="shortcut icon" href="<?php echo $bide_absolutua; ?>img/GOsasun_logoa.png">
+    <link rel="shortcut icon" href="<?php echo $bide_absolutua; ?>img/png/GOsasun_logoa.png">
     <!-- CSS -->
     <link rel="stylesheet" href="<?php echo $bide_absolutua; ?>css/estilo_orokorrak.css">
     <link rel="stylesheet" href="<?php echo $bide_absolutua; ?>css/goiburua.css">
@@ -53,11 +53,14 @@ $itzulpenak = kargatuItzulpenak($hizkuntza_def);
     <header class="panel-goiburua">
         <div class="logoa">
             <a href="index.php" class="logo-esteka">
-                <img src="<?php echo $bide_absolutua; ?>img/GOsasun_logoa.png" alt="GOsasun" class="logo-irudia">
+                <img src="<?php echo $bide_absolutua; ?>img/png/GOsasun_logoa.png" alt="GOsasun" class="logo-irudia">
                 <span class="logo-etiketa">Pazientea</span>
             </a>
         </div>
-        <button class="menu-botoia" aria-label="Ireki menua"><img src="<?php echo $bide_absolutua; ?>img/list.svg" alt="" class="ikono-24px"></button>
+        <div class="mugikorreko-ikonoak">
+            <a href="ezarpenak.php" class="ezarpenak-botoia-mugikorra" aria-label="Ireki ezarpenak"><img src="<?php echo $bide_absolutua; ?>img/svg/settings.svg" alt=""></a>
+            <button class="menu-botoia" aria-label="Ireki menua"><img src="<?php echo $bide_absolutua; ?>img/svg/list.svg" alt=""></button>
+        </div>
         <ul class="nabigazio-estekak">
             <li><a href="index.php" <?php echo (isset($uneko_orria) && $uneko_orria === 'index') ? 'class="aktiboa"' : ''; ?>><?php echo $itzulpenak->menua_pazientea->hasiera; ?></a></li>
             <li><a href="datuak.php" <?php echo (isset($uneko_orria) && $uneko_orria === 'datuak') ? 'class="aktiboa"' : ''; ?>><?php echo $itzulpenak->menua_pazientea->datuak; ?></a></li>
@@ -67,9 +70,10 @@ $itzulpenak = kargatuItzulpenak($hizkuntza_def);
             <li><a href="errezetak.php" <?php echo (isset($uneko_orria) && $uneko_orria === 'errezetak') ? 'class="aktiboa"' : ''; ?>><?php echo $itzulpenak->menua_pazientea->errezetak; ?></a></li>
             <li><a href="mezuak.php" <?php echo (isset($uneko_orria) && $uneko_orria === 'mezuak') ? 'class="aktiboa"' : ''; ?>><?php echo $itzulpenak->menua_pazientea->mezuak; ?></a></li>
             <li><a href="abisuak.php" <?php echo (isset($uneko_orria) && $uneko_orria === 'abisuak') ? 'class="aktiboa"' : ''; ?>><?php echo $itzulpenak->menua_pazientea->abisuak; ?></a></li>
+            <li><a href="ezarpenak.php" <?php echo (isset($uneko_orria) && $uneko_orria === 'ezarpenak') ? 'class="aktiboa"' : ''; ?>><img src="<?php echo $bide_absolutua; ?>img/svg/settings.svg" alt=""> <?php echo $itzulpenak->menua->ezarpenak; ?></a></li>
             <li><a href="<?php echo $bide_absolutua; ?>php_laguntzaileak/logout.php" class="botoia botoi-ertza arrisku-kolorea" ><?php echo $itzulpenak->erabiltzaile_panela->saioa_itxi; ?></a></li>
             <li id="usb-status-container" class="usb-disconnected" data-tooltip="Konektatu neurketa gailua">
-                <img src="<?php echo $bide_absolutua; ?>img/usb.svg" alt="USB" class="usb-icon">
+                <img src="<?php echo $bide_absolutua; ?>img/svg/usb.svg" alt="USB" class="usb-icon">
             </li>
         </ul>
     </header>
