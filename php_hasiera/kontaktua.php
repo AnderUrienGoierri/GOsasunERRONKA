@@ -91,15 +91,15 @@ include '../php_includeak/footer.php';
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         var modal = document.getElementById("ezarpenakModala");
-        var btn = document.getElementById("irekiEzarpenakModala");
+        var btns = document.querySelectorAll("#irekiEzarpenakModala, #irekiEzarpenakModalaMugikorra");
         var span = document.getElementsByClassName("itxi-modala")[0];
 
-        if (btn) {
+        btns.forEach(function(btn) {
             btn.onclick = function(e) {
                 e.preventDefault();
                 modal.style.display = "block";
             }
-        }
+        });
 
         if (span) {
             span.onclick = function() {

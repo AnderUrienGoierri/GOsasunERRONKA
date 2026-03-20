@@ -24,7 +24,7 @@ $orri_izenburua = "GOsasun - Zure Osasun Ataria";
     <title><?php echo $orri_izenburua ?? 'GOsasun'; ?></title>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="shortcut icon" href="<?php echo $bide_absolutua; ?>img/GOsasun_logoa.png">
+    <link rel="shortcut icon" href="<?php echo $bide_absolutua; ?>img/png/GOsasun_logoa.png">
     <!-- CSS -->
     <link rel="stylesheet" href="<?php echo $bide_absolutua; ?>css/estilo_orokorrak.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="<?php echo $bide_absolutua; ?>css/goiburua.css">
@@ -43,15 +43,20 @@ $orri_izenburua = "GOsasun - Zure Osasun Ataria";
         <nav class="nabigazio-barra">
             <div class="logoa">
                 <a href="<?php echo $bide_absolutua; ?>index.php">
-                    <img src="<?php echo $bide_absolutua; ?>img/GOsasun_logoa.png" alt="GOsasun" class="logo-irudia">
+                    <img src="<?php echo $bide_absolutua; ?>img/png/GOsasun_logoa.png" alt="GOsasun" class="logo-irudia">
                 </a>
             </div>
-            <button class="menu-botoia" aria-label="Ireki menua"><img src="<?php echo $bide_absolutua; ?>img/list.svg" alt="" class="ikono-24px"></button>
+            <div class="mugikorreko-ikonoak">
+                <?php if (isset($uneko_orria) && ($uneko_orria === 'index' || $uneko_orria === 'kontaktua')): ?>
+                <button class="ezarpenak-botoia-mugikorra" aria-label="Ireki ezarpenak" id="irekiEzarpenakModalaMugikorra"><img src="<?php echo $bide_absolutua; ?>img/svg/settings.svg" alt=""></button>
+                <?php endif; ?>
+                <button class="menu-botoia" aria-label="Ireki menua"><img src="<?php echo $bide_absolutua; ?>img/svg/list.svg" alt=""></button>
+            </div>
             <ul class="nabigazio-estekak">
                 <li><a href="<?php echo $bide_absolutua; ?>index.php" <?php echo (isset($uneko_orria) && $uneko_orria === 'index') ? 'class="aktiboa"' : ''; ?>><?php echo $itzulpenak->menua->hasiera; ?></a></li>
                 <li><a href="<?php echo $bide_absolutua; ?>php_hasiera/kontaktua.php" <?php echo (isset($uneko_orria) && $uneko_orria === 'kontaktua') ? 'class="aktiboa"' : ''; ?>><?php echo $itzulpenak->menua->kontaktua; ?></a></li>
                 <?php if (isset($uneko_orria) && ($uneko_orria === 'index' || $uneko_orria === 'kontaktua')): ?>
-                <li><a href="#" id="irekiEzarpenakModala"><img src="<?php echo $bide_absolutua; ?>img/settings.svg" alt="" class="ikono-24px-erdian"> <?php echo $itzulpenak->menua->ezarpenak; ?></a></li>
+                <li><a href="#" id="irekiEzarpenakModala"><img src="<?php echo $bide_absolutua; ?>img/svg/settings.svg" alt=""> <?php echo $itzulpenak->menua->ezarpenak; ?></a></li>
                 <?php endif; ?>
                 <li><a href="<?php echo $bide_absolutua; ?>php_hasiera/login.php" class="botoia botoi-nagusia"><?php echo $itzulpenak->menua->saioa_hasi; ?></a></li>
             </ul>

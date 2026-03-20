@@ -53,19 +53,29 @@ header {
     transform: scale(1.05);
 }
 
-/* Mugikorreko Menu Botoia */
-.menu-botoia {
+/* Mugikorreko Ikonoen Edukiontzia */
+.mugikorreko-ikonoak {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-left: auto;
+}
+
+/* Mugikorreko Menu eta Ezarpen Botoiak */
+.menu-botoia,
+.ezarpenak-botoia-mugikorra {
   display: block;
   background: none;
   border: none;
   font-size: 2rem;
   color: var(--primary-color);
   cursor: pointer;
-  margin-left: auto;
   transition: var(--transition);
+  padding: 0;
 }
 
-.menu-botoia:hover {
+.menu-botoia:hover,
+.ezarpenak-botoia-mugikorra:hover {
     transform: scale(1.1);
     opacity: 0.8;
 }
@@ -179,7 +189,7 @@ header {
 }
 
 @media (min-width: 769px) {
-  .menu-botoia {
+  .mugikorreko-ikonoak {
     display: none;
   }
 
@@ -222,7 +232,7 @@ header {
   }
   .logo-etiketa {
     font-size: 0.9rem;
-    display: none; /* Hide 'Medikua'/'Pazientea' label on very pantaila txikiak to save space */
+    display: block; /* Erakutsi 'Medikua'/'Pazientea' label on very pantaila txikiak as requested */
   }
   .menu-botoia {
     font-size: 1.6rem;

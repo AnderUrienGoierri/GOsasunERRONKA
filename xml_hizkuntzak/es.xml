@@ -139,5 +139,9 @@
         <gorde_botoia>Guardar Configuración (en XML)</gorde_botoia>
         <reset_botoia>Restaurar valores iniciales</reset_botoia>
         <reset_konfirmazioa>¿Estás seguro de que deseas restaurar los valores iniciales?</reset_konfirmazioa>
+        <hizkuntza_eu>Vasco</hizkuntza_eu>
+        <hizkuntza_es>Castellano</hizkuntza_es>
+        <hizkuntza_en>Inglés</hizkuntza_en>
+        <hizkuntza_nl>Holandés</hizkuntza_nl>
     </ezarpenak>
 </hizkuntza>

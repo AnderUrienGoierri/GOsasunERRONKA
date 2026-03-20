@@ -23,7 +23,7 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('../img/background_medical.png');
+    background-image: url('../img/png/background_medical.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -740,7 +740,7 @@ body {
 }
 
 
-  /* Mugikorra lehenesteko hurbilketa panel nagusirako (above 768px handled below) */
+  /* Mugikorra lehenesteko hurbilketa panel nagusirako */
   .panel-nagusia {
     padding: 20px 15px; 
     width: 100%;
@@ -749,16 +749,22 @@ body {
   
   .kaixo-atalak {
     padding: 20px 15px; 
-    align-items: flex-start;
   }
 
   .kaixo-atalak h1 {
     font-size: 2rem;
   }
 
-  .flex-zentratua-20 {
-    flex-direction: row;
-    text-align: left;
+  /* 480px-tik gora, row diseinua eta lerrokadorea aldatu */
+  @media (min-width: 480px) {
+    .kaixo-atalak {
+      align-items: center; 
+    }
+
+    .flex-zentratua-20 {
+      flex-direction: row;
+      text-align: left;
+    }
   }
 
   .menu-sareta {
@@ -904,7 +910,7 @@ body {
 .ikono-24px-erdian { width: 24px; vertical-align: middle; margin-right: 10px; }
 .testu-iluna-izenburua { color: var(--dark-text); font-size: 1.5rem; }
 .ikono-14px-erdian { width: 14px; vertical-align: middle; }
-.ikono-24px { width: 24px; }
+
 .flex-15px-tartea { display: flex; gap: 15px; }
 .checkbox-20px { width: 20px; height: 20px; }
 .marjina-behe-0 { margin-bottom: 0; }

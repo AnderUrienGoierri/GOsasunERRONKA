@@ -24,7 +24,7 @@ $itzulpenak = kargatuItzulpenak($hizkuntza_def);
     <title><?php echo $orri_izenburua; ?></title>
     <!-- Google-etik deskargatutako estiloak -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="shortcut icon" href="<?php echo $bide_absolutua; ?>img/GOsasun_logoa.png">
+    <link rel="shortcut icon" href="<?php echo $bide_absolutua; ?>img/png/GOsasun_logoa.png">
     <!-- CSS -->
     <link rel="stylesheet" href="<?php echo $bide_absolutua; ?>css/estilo_orokorrak.css">
     <link rel="stylesheet" href="<?php echo $bide_absolutua; ?>css/goiburua.css">
@@ -52,11 +52,14 @@ $itzulpenak = kargatuItzulpenak($hizkuntza_def);
     <header class="panel-goiburua">
         <div class="logoa">
             <a href="index.php" class="logo-esteka">
-                <img src="<?php echo $bide_absolutua; ?>img/GOsasun_logoa.png" alt="GOsasun" class="logo-irudia">
+                <img src="<?php echo $bide_absolutua; ?>img/png/GOsasun_logoa.png" alt="GOsasun" class="logo-irudia">
                 <span class="logo-etiketa">Harrera</span>
             </a>
         </div>
-        <button class="menu-botoia" aria-label="Ireki menua"><img src="<?php echo $bide_absolutua; ?>img/list.svg" alt="" class="ikono-24px"></button>
+        <div class="mugikorreko-ikonoak">
+            <a href="ezarpenak.php" class="ezarpenak-botoia-mugikorra" aria-label="Ireki ezarpenak"><img src="<?php echo $bide_absolutua; ?>img/svg/settings.svg" alt=""></a>
+            <button class="menu-botoia" aria-label="Ireki menua"><img src="<?php echo $bide_absolutua; ?>img/svg/list.svg" alt=""></button>
+        </div>
         <ul class="nabigazio-estekak">
             <li><a href="index.php" class="<?php echo ($uneko_orria === 'index') ? 'aktiboa' : ''; ?>"><?php echo $itzulpenak->menua_harrera->hasiera; ?></a></li>
             <li><a href="pazienteak.php" class="<?php echo ($uneko_orria === 'pazienteak') ? 'aktiboa' : ''; ?>"><?php echo $itzulpenak->menua_harrera->pazienteak; ?></a></li>
@@ -65,6 +68,7 @@ $itzulpenak = kargatuItzulpenak($hizkuntza_def);
             <li><a href="mezuak.php" class="<?php echo ($uneko_orria === 'mezuak') ? 'aktiboa' : ''; ?>"><?php echo $itzulpenak->menua_harrera->mezuak; ?></a></li>
             <li><a href="kanpoko_mezuak.php" class="<?php echo ($uneko_orria === 'kanpoko_mezuak') ? 'aktiboa' : ''; ?>"><?php echo $itzulpenak->menua_harrera->kanpoko_mezuak; ?></a></li>
             <li><a href="harrerako_langileak.php" class="<?php echo ($uneko_orria === 'harrerako_langileak') ? 'aktiboa' : ''; ?>"><?php echo $itzulpenak->menua_harrera->harrerako_langileak; ?></a></li>
+            <li><a href="ezarpenak.php" class="<?php echo ($uneko_orria === 'ezarpenak') ? 'aktiboa' : ''; ?>"><img src="<?php echo $bide_absolutua; ?>img/svg/settings.svg" alt=""> <?php echo $itzulpenak->menua->ezarpenak; ?></a></li>
             <li><a href="<?php echo $bide_absolutua; ?>php_laguntzaileak/logout.php" class="botoia botoi-ertza arrisku-kolorea"><?php echo $itzulpenak->erabiltzaile_panela->saioa_itxi; ?></a></li>
         </ul>
     </header>

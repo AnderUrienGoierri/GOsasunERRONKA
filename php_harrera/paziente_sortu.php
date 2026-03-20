@@ -43,31 +43,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $errorea = "Mesedez, bete derrigorrezko eremu guztiak.";
     }
 }
+
+$orri_izenburua = "Paziente Berria - GOsasun";
+$uneko_orria = "pazienteak";
+include_once '../php_includeak/harrera_goiburua.php';
 ?>
-<!DOCTYPE html>
-<html lang="eu">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paziente Berria - GOsasun</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/estilo_orokorrak.css">
-    <link rel="stylesheet" href="../css/pazienteak.css">
-    
-</head>
-<body class="panel-gorputza">
-    <header class="panel-goiburua">
-        <div class="logoa">
-            <a href="index.php"><img src="../img/building.svg" alt="" class="ikono-1em marjina-esk-5"> GOsasun - Harrera</a>
-        </div>
-        <ul class="nabigazio-estekak">
-            <li><a href="index.php">Hasiera</a></li>
-            <li><a href="pazienteak.php" class="aktiboa">Pazienteak</a></li>
-            <li><a href="medikuak.php">Medikuak</a></li>
-            <li><a href="hitzorduak.php">Hitzorduak</a></li>
-            <li><a href="../logout.php" class="botoia botoi-ertza">Irten</a></li>
-        </ul>
-    </header>
 
     <main class="panel-nagusia">
         <div class="orri-goiburua">
@@ -134,7 +114,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </main>
 
-</body>
-</html>
+<?php include_once '../php_includeak/harrera_footer.php'; ?>
 
 
