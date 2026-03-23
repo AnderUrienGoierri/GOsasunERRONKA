@@ -56,9 +56,13 @@
         <ezarpenak_testua>Customize web appearance.</ezarpenak_testua>
     </menua_pazientea>
     <dashboard_pazientea>
+        <data_taula>Date</data_taula>
+        <oharrak>Notes</oharrak>
         <azken_neurketak>Latest Vital Signs</azken_neurketak>
         <tentsioa>Pressure</tentsioa>
+        <pultsua>Pulse</pultsua>
         <glukosa>Glucose</glukosa>
+        <altuera>Height</altuera>
         <pisua>Weight</pisua>
         <eguneratua>Updated</eguneratua>
         <ez_dago_neurketarik>No registered measurements found.</ez_dago_neurketarik>

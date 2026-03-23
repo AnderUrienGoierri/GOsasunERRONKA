@@ -56,9 +56,13 @@
         <ezarpenak_testua>Pertsonalizatu webgunearen itxura.</ezarpenak_testua>
     </menua_pazientea>
     <dashboard_pazientea>
+        <data_taula>Data</data_taula>
+        <oharrak>Oharrak</oharrak>
         <azken_neurketak>Azken Bizi-Seinaleak</azken_neurketak>
         <tentsioa>Tentsioa</tentsioa>
+        <pultsua>Pultsua</pultsua>
         <glukosa>Glukosa</glukosa>
+        <oxigenoa>Oxigenoa</oxigenoa>
         <pisua>Pisua</pisua>
         <eguneratua>Eguneratua</eguneratua>
         <ez_dago_neurketarik>Ez dago neurketa erregistratutik.</ez_dago_neurketarik>

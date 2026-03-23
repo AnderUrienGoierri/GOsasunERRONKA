@@ -56,9 +56,13 @@
         <ezarpenak_testua>Personalice la apariencia de la web.</ezarpenak_testua>
     </menua_pazientea>
     <dashboard_pazientea>
+        <data_taula>Fecha</data_taula>
+        <oharrak>Notas</oharrak>
         <azken_neurketak>Últimas Constantes Vitales</azken_neurketak>
         <tentsioa>Tensión</tentsioa>
+        <pultsua>Pulso</pultsua>
         <glukosa>Glucosa</glukosa>
+        <altuera>Altura</altuera>
         <pisua>Peso</pisua>
         <eguneratua>Actualizado</eguneratua>
         <ez_dago_neurketarik>No hay mediciones registradas.</ez_dago_neurketarik>

@@ -39,7 +39,7 @@ $stmt->execute([$paziente_id]);
 $pazientea = $stmt->fetch(PDO::FETCH_ASSOC);
 
 // Azken neurketak
-$stmtNeurketak = $pdo->prepare("SELECT erregistro_data, glukosa_mg_dl, tentsio_sistolikoa, tentsio_diastolikoa, pisua_kg, sintomak FROM Neurketak WHERE paziente_id = ? ORDER BY erregistro_data DESC LIMIT 10");
+$stmtNeurketak = $pdo->prepare("SELECT erregistro_data, glukosa_mg_dl, tentsio_sistolikoa, tentsio_diastolikoa, pisua_kg, altuera, pultsua_ppm, sintomak FROM Neurketak WHERE paziente_id = ? ORDER BY erregistro_data DESC LIMIT 10");
 $stmtNeurketak->execute([$paziente_id]);
 $neurketak = $stmtNeurketak->fetchAll(PDO::FETCH_ASSOC);
 
@@ -130,24 +130,28 @@ include_once '../php_includeak/mediku_goiburua.php';
                         <table class="neurketa-taula">
                             <thead>
                                 <tr>
-                                    <th>Data</th>
-                                    <th>Glukosa</th>
-                                    <th>Tentsioa</th>
-                                    <th>Pisua</th>
-                                    <th>Oharrak</th>
+                                    <th><?php echo $itzulpenak->dashboard_pazientea->data_taula; ?></th>
+                                    <th><?php echo $itzulpenak->dashboard_pazientea->glukosa; ?></th>
+                                    <th><?php echo $itzulpenak->dashboard_pazientea->tentsioa; ?></th>
+                                    <th><?php echo $itzulpenak->dashboard_pazientea->pultsua; ?></th>
+                                    <th><?php echo $itzulpenak->dashboard_pazientea->altuera; ?></th>
+                                    <th><?php echo $itzulpenak->dashboard_pazientea->pisua; ?></th>
+                                    <th><?php echo $itzulpenak->dashboard_pazientea->oharrak; ?></th>
                                 </tr>
                             </thead>
-                            <taula_gorputza>
+                            <tbody>
                                 <?php foreach ($neurketak as $n): ?>
                                     <tr>
                                         <td><?php echo date('Y/m/d H:i', strtotime($n['erregistro_data'])); ?></td>
-                                        <td><?php echo $n['glukosa_mg_dl']; ?> mg/dL</td>
-                                        <td><?php echo $n['tentsio_sistolikoa'] . '/' . $n['tentsio_diastolikoa']; ?></td>
-                                        <td><?php echo $n['pisua_kg']; ?> kg</td>
-                                        <td class="testu-gris-iluna"><?php echo htmlspecialchars($n['oharrak'] ?? '-'); ?></td>
+                                        <td><?php echo $n['glukosa_mg_dl'] ? $n['glukosa_mg_dl'] . ' mg/dL' : '-'; ?></td>
+                                        <td><?php echo ($n['tentsio_sistolikoa'] && $n['tentsio_diastolikoa']) ? $n['tentsio_sistolikoa'] . '/' . $n['tentsio_diastolikoa'] : '-'; ?></td>
+                                        <td><?php echo $n['pultsua_ppm'] ? $n['pultsua_ppm'] . ' ppm' : '-'; ?></td>
+                                        <td><?php echo $n['altuera'] ? $n['altuera'] . ' cm' : '-'; ?></td>
+                                        <td><?php echo $n['pisua_kg'] ? $n['pisua_kg'] . ' kg' : '-'; ?></td>
+                                        <td class="testu-gris-iluna"><?php echo htmlspecialchars($n['sintomak'] ?? '-'); ?></td>
                                     </tr>
                                 <?php endforeach; ?>
-                            </taula_gorputza>
+                            </tbody>
                         </table>
                     </div>
                 <?php else: ?>

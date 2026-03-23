@@ -56,9 +56,13 @@
         <ezarpenak_testua>Pas het uiterlijk van de website aan.</ezarpenak_testua>
     </menua_pazientea>
     <dashboard_pazientea>
+        <data_taula>Datum</data_taula>
+        <oharrak>Notities</oharrak>
         <azken_neurketak>Laatste Vitale Functies</azken_neurketak>
         <tentsioa>Druk</tentsioa>
+        <pultsua>Hartslag</pultsua>
         <glukosa>Glucose</glukosa>
+        <altuera>Lengte</altuera>
         <pisua>Gewicht</pisua>
         <eguneratua>Bijgewerkt</eguneratua>
         <ez_dago_neurketarik>Geen geregistreerde metingen gevonden.</ez_dago_neurketarik>
