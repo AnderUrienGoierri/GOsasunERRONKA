@@ -147,7 +147,7 @@ include_once '../php_includeak/paziente_goiburua.php';
 
     <main class="panel-nagusia">
         <div class="orri-goiburua">
-            <h2><img src="../img/calendar-days.svg" alt="" class="ikono-ertaina marjina-esk-5"> Nire Hitzorduen Agenda</h2>
+            <h2><img src="../img/svg/calendar-days.svg" alt="" class="ikono-ertaina marjina-esk-5"> Nire Hitzorduen Agenda</h2>
             <button class="botoia botoi-nagusia" onclick="openModal()">+ Hitzordu Berria</button>
         </div>
 
@@ -283,7 +283,7 @@ include_once '../php_includeak/paziente_goiburua.php';
         </section>
 
         <div class="agenda-edukiontzia marjina-goi-30">
-            <h3><img src="../img/list.svg" alt="" class="ikono-ertaina marjina-esk-5"> Xehetasunak Zerrendan</h3>
+            <h3><img src="../img/svg/list.svg" alt="" class="ikono-ertaina marjina-esk-5"> Xehetasunak Zerrendan</h3>
             <br>
             <?php if (count($hitzorduak_data_arabera) > 0): ?>
                 <?php foreach ($hitzorduak_data_arabera as $data => $hitz_zerrenda): ?>
@@ -320,7 +320,7 @@ include_once '../php_includeak/paziente_goiburua.php';
                 <?php endforeach; ?>
             <?php else: ?>
                 <div class="egoera-hutsa">
-                    <div class="ikono-hutsa"><img src="../img/calendar-days.svg" alt="" class="ikono-ertaina marjina-esk-5"></div>
+                    <div class="ikono-hutsa"><img src="../img/svg/calendar-days.svg" alt="" class="ikono-ertaina marjina-esk-5"></div>
                     <h3>Ez duzu hitzordurik</h3>
                     <p>Ez daukazu hitzordurik gordeta zure historialean.</p>
                 </div>

@@ -97,7 +97,7 @@ include_once '../php_includeak/mediku_goiburua.php';
 
     <main class="panel-nagusia">
         <div class="orri-goiburua">
-            <h2><img src="../img/calendar-days.svg" alt="" class="ikono-ertaina marjina-esk-5"> Agenda eta Hitzorduak</h2>
+            <h2><img src="../img/svg/calendar-days.svg" alt="" class="ikono-ertaina marjina-esk-5"> Agenda eta Hitzorduak</h2>
             <!-- (+ Hitzordu Berria) Botoia ezabatuta medikuentzat -->
         </div>
 
@@ -229,7 +229,7 @@ include_once '../php_includeak/mediku_goiburua.php';
         </section>
 
         <div class="agenda-edukiontzia marjina-goi-30">
-            <h3><img src="../img/list.svg" alt="" class="ikono-ertaina marjina-esk-5"> Hitzorduen Zerrenda</h3>
+            <h3><img src="../img/svg/list.svg" alt="" class="ikono-ertaina marjina-esk-5"> Hitzorduen Zerrenda</h3>
             <br>
             <?php if (count($hitzorduak_data_arabera) > 0): ?>
                 <?php foreach ($hitzorduak_data_arabera as $data => $hitz_zerrenda): ?>
@@ -263,7 +263,7 @@ include_once '../php_includeak/mediku_goiburua.php';
                 <?php endforeach; ?>
             <?php else: ?>
                 <div class="egoera-hutsa">
-                    <div class="ikono-hutsa"><img src="../img/calendar-days.svg" alt="" class="ikono-ertaina marjina-esk-5"></div>
+                    <div class="ikono-hutsa"><img src="../img/svg/calendar-days.svg" alt="" class="ikono-ertaina marjina-esk-5"></div>
                     <h3>Ez duzu hitzordurik</h3>
                     <p>Une honetan ez daukazu hitzordurik programatuta.</p>
                 </div>

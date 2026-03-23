@@ -32,7 +32,7 @@ include_once '../php_includeak/mediku_goiburua.php';
 
     <main class="panel-nagusia">
         <div class="orri-goiburua">
-            <h2><img src="../img/alert.svg" alt="" class="ikono-1_25rem marjina-esk-10"> Pazienteen Osasun Abisuak</h2>
+            <h2><img src="../img/svg/alert.svg" alt="" class="ikono-1_25rem marjina-esk-10"> Pazienteen Osasun Abisuak</h2>
             <p>Zure pazienteen neurketetan detektatutako anomalia guztiak.</p>
         </div>
 
@@ -73,7 +73,7 @@ include_once '../php_includeak/mediku_goiburua.php';
             </div>
         <?php else: ?>
             <div class="egoera-hutsa kutxa-zuria-hutsa" >
-                <div class="ikono-handia-4"><img src="../img/shield.svg" alt="" class="ikono-3rem-gardena"></div>
+                <div class="ikono-handia-4"><img src="../img/svg/shield.svg" alt="" class="ikono-3rem-gardena"></div>
                 <h3>Ez dago abisurik aktibo</h3>
                 <p>Zure paziente guztien neurketak normaltasunaren barruan daude momentuz.</p>
             </div>

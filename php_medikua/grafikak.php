@@ -79,7 +79,7 @@ include_once '../php_includeak/mediku_goiburua.php';
                         <option value="pultsua">Pultsua (ppm)</option>
                     </select>
                     <button type="button" class="botoia botoi-nagusia" id="btn-deskargatu-pdf">
-                        <img src="../img/file-text.svg" alt="" class="ikono-ertaina marjina-esk-5"> Deskargatu PDF (Txostena)
+                        <img src="../img/svg/file-text.svg" alt="" class="ikono-ertaina marjina-esk-5"> Deskargatu PDF (Txostena)
                     </button>
                 </div>
             </div>

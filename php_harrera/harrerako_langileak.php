@@ -84,7 +84,9 @@ include_once '../php_includeak/harrera_goiburua.php';
                                 </td>
                                 <td>#<?php echo $l['langile_id']; ?></td>
                                 <td>
-                                    <strong><?php echo htmlspecialchars($l['abizenak'] . ', ' . $l['izena']); ?></strong>
+                                    <a href="harrerako_langile_fitxa.php?id=<?php echo $l['langile_id']; ?>" class="esteka-langilea">
+                                        <strong><?php echo htmlspecialchars($l['abizenak'] . ', ' . $l['izena']); ?></strong>
+                                    </a>
                                 </td>
                                 <td><?php echo htmlspecialchars($l['email']); ?></td>
                                 <td>

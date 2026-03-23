@@ -51,7 +51,7 @@ include_once '../php_includeak/harrera_goiburua.php';
 
     <main class="panel-nagusia">
         <div class="orri-goiburua">
-            <h2><img src="../img/plus-circle.svg" alt="" class="ikono-ertaina marjina-esk-5"> Paziente Berria Sortu</h2>
+            <h2><img src="../img/svg/plus-circle.svg" alt="" class="ikono-ertaina marjina-esk-5"> Paziente Berria Sortu</h2>
             <p>Sartu paziente berriaren datuak sisteman erregistratzeko.</p>
         </div>
 

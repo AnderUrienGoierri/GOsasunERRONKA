@@ -110,7 +110,7 @@ include_once '../php_includeak/mediku_goiburua.php';
 
     <main class="panel-nagusia">
         <div class="orri-goiburua">
-            <h2><img src="../img/pill.svg" alt="" class="ikono-ertaina marjina-esk-5"> Errezetak eta Diagnostikoak</h2>
+            <h2><img src="../img/svg/pill.svg" alt="" class="ikono-ertaina marjina-esk-5"> Errezetak eta Diagnostikoak</h2>
             <button class="botoia botoi-nagusia" onclick="openModal()">+ Errezeta Berria</button>
         </div>
 
@@ -148,9 +148,9 @@ include_once '../php_includeak/mediku_goiburua.php';
                         </div>
                         <div class="errezeta-xehetasunak">
                             <h4><?php echo htmlspecialchars($e['izena'] . ' ' . $e['abizenak']); ?> (<?php echo htmlspecialchars($e['nan']); ?>)</h4>
-                            <p class="diagnostikoa"><img src="../img/stethoscope.svg" alt="" class="ikono-ertaina marjina-esk-5"> <?php echo htmlspecialchars($e['diagnostiko_laburra']); ?></p>
+                            <p class="diagnostikoa"><img src="../img/svg/stethoscope.svg" alt="" class="ikono-ertaina marjina-esk-5"> <?php echo htmlspecialchars($e['diagnostiko_laburra']); ?></p>
                             <?php if (!empty($e['botikak_info'])): ?>
-                                <p class="botikak-info"><img src="../img/pill.svg" alt="" class="ikono-ertaina marjina-esk-5"> <strong>Botikak:</strong> <?php echo htmlspecialchars($e['botikak_info']); ?></p>
+                                <p class="botikak-info"><img src="../img/svg/pill.svg" alt="" class="ikono-ertaina marjina-esk-5"> <strong>Botikak:</strong> <?php echo htmlspecialchars($e['botikak_info']); ?></p>
                             <?php endif; ?>
                             <?php if ($e['iraungitze_data']): ?>
                                 <p class="iraungitzea">Bukaera: <?php echo date('Y/m/d', strtotime($e['iraungitze_data'])); ?></p>
@@ -170,7 +170,7 @@ include_once '../php_includeak/mediku_goiburua.php';
                 <?php endforeach; ?>
             <?php else: ?>
                 <div class="egoera-hutsa">
-                    <div class="ikono-hutsa"><img src="../img/clipboard-pen.svg" alt="" class="ikono-ertaina marjina-esk-5"></div>
+                    <div class="ikono-hutsa"><img src="../img/svg/clipboard-pen.svg" alt="" class="ikono-ertaina marjina-esk-5"></div>
                     <h3>Ez dago errezetarik</h3>
                     <p>Oraindik ez duzu errezetarik edo diagnostikorik sortu zure pazienteentzat.</p>
                 </div>
@@ -228,7 +228,7 @@ include_once '../php_includeak/mediku_goiburua.php';
                     </div>
 
                     <div class="errezeta-kutxa-argia">
-                        <h4 class="errezeta-izenburu-urdina"><img src="../img/pill.svg" alt="" class="ikono-ertaina marjina-esk-5"> Gehitu / Eguneratu Botika</h4>
+                        <h4 class="errezeta-izenburu-urdina"><img src="../img/svg/pill.svg" alt="" class="ikono-ertaina marjina-esk-5"> Gehitu / Eguneratu Botika</h4>
                         <div class="inprimaki-taldea">
                             <label for="botika_id">Botika</label>
                             <select name="botika_id" id="modal_botika_id" class="inprimaki-kontrola">

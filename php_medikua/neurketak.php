@@ -49,7 +49,7 @@ include_once '../php_includeak/mediku_goiburua.php';
 
     <main class="panel-nagusia">
         <div class="orri-goiburua">
-            <h2><img src="../img/clipboard-pen.svg" alt="" class="ikono-ertaina marjina-esk-5"> Pazienteen Neurketen Historia</h2>
+            <h2><img src="../img/svg/clipboard-pen.svg" alt="" class="ikono-ertaina marjina-esk-5"> Pazienteen Neurketen Historia</h2>
             <p>Hautatu paziente bat bere bizi-seinaleen eta sintomen historiala ikusteko. Neurketak C# aplikazioaren bidez kudeatzen dira.</p>
         </div>
 
