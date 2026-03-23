@@ -77,7 +77,7 @@ else include_once '../php_includeak/harrera_goiburua.php';
 <main class="panel-nagusia">
     <div class="orri-goiburua marjina-behe-20">
         <a href="mezuak.php" class="esteka-itzuli"><img src="../img/svg/arrow-left.svg" alt="" class="ikono-1em marjina-esk-5"> Itzuli zerrendara</a>
-        <h2 class="izenburu-nagusia marjina-goi-10"><img src="../img/mail.svg" alt="" class="ikono-ertaina marjina-esk-5"> Mezuaren Xehetasuna</h2>
+        <h2 class="izenburu-nagusia marjina-goi-10"><img src="../img/svg/mail.svg" alt="" class="ikono-ertaina marjina-esk-5"> Mezuaren Xehetasuna</h2>
     </div>
 
     <div class="kutxa-zuria-itzala">

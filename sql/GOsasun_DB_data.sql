@@ -120,6 +120,34 @@ VALUES -- Medikuak (1 - 50)
     (98, 'bego.i@paziente.eus', '1234', 3, 1),
     (99, 'kepas.a@paziente.eus', '1234', 3, 1),
     (100, 'edurne.m@paziente.eus', '1234', 3, 1),
+    -- Patient Image Updates
+    UPDATE pazienteak SET irudia = 'img/pazientea_1.png' WHERE paziente_id = 1;
+    UPDATE pazienteak SET irudia = 'img/pazientea_2.png' WHERE paziente_id = 2;
+    UPDATE pazienteak SET irudia = 'img/pazientea_3.png' WHERE paziente_id = 3;
+    UPDATE pazienteak SET irudia = 'img/pazientea_4.png' WHERE paziente_id = 4;
+    UPDATE pazienteak SET irudia = 'img/pazientea_5.png' WHERE paziente_id = 5;
+    UPDATE pazienteak SET irudia = 'img/pazientea_6.png' WHERE paziente_id = 6;
+    UPDATE pazienteak SET irudia = 'img/pazientea_7.png' WHERE paziente_id = 7;
+    UPDATE pazienteak SET irudia = 'img/pazientea_8.png' WHERE paziente_id = 8;
+    UPDATE pazienteak SET irudia = 'img/pazientea_9.png' WHERE paziente_id = 9;
+    UPDATE pazienteak SET irudia = 'img/pazientea_10.png' WHERE paziente_id = 10;
+    UPDATE pazienteak SET irudia = 'img/pazientea_11.png' WHERE paziente_id = 11;
+    UPDATE pazienteak SET irudia = 'img/pazientea_12.png' WHERE paziente_id = 12;
+    UPDATE pazienteak SET irudia = 'img/pazientea_13.png' WHERE paziente_id = 13;
+    UPDATE pazienteak SET irudia = 'img/pazientea_14.png' WHERE paziente_id = 14;
+    UPDATE pazienteak SET irudia = 'img/pazientea_15.png' WHERE paziente_id = 15;
+    UPDATE pazienteak SET irudia = 'img/pazientea_16.png' WHERE paziente_id = 16;
+    UPDATE pazienteak SET irudia = 'img/pazientea_17.png' WHERE paziente_id = 17;
+    UPDATE pazienteak SET irudia = 'img/pazientea_18.png' WHERE paziente_id = 18;
+    UPDATE pazienteak SET irudia = 'img/pazientea_19.png' WHERE paziente_id = 19;
+    UPDATE pazienteak SET irudia = 'img/pazientea_20.png' WHERE paziente_id = 20;
+    UPDATE pazienteak SET irudia = 'img/pazientea_51.png' WHERE paziente_id = 51;
+    UPDATE pazienteak SET irudia = 'img/pazientea_52.png' WHERE paziente_id = 52;
+    UPDATE pazienteak SET irudia = 'img/pazientea_53.png' WHERE paziente_id = 53;
+    UPDATE pazienteak SET irudia = 'img/pazientea_54.png' WHERE paziente_id = 54;
+    UPDATE pazienteak SET irudia = 'img/pazientea_55.png' WHERE paziente_id = 55;
+    UPDATE pazienteak SET irudia = 'img/pazientea_56.png' WHERE paziente_id = 56;
+
     -- Harrerako Langileak
     (101, 'harrera@gosasun.eus', '1234', 4, 1),
     (102, 'ane.harrera@gosasun.eus', '1234', 4, 1),

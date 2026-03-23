@@ -53,7 +53,13 @@ include_once '../php_includeak/mediku_goiburua.php';
                         <?php foreach ($pazienteak as $p): ?>
                             <tr>
                                 <td class="zabalera-50">
-                                    <img src="../img/png/lehenetsia_pazientea.png" 
+                                    <?php 
+                                    $irudia_bide = htmlspecialchars($p['irudia'] ?? 'img/lehenetsia_pazientea.png');
+                                    if (strpos($irudia_bide, 'img/') === 0 && strpos($irudia_bide, 'img/png/') === false && strpos($irudia_bide, 'img/svg/') === false) {
+                                        $irudia_bide = str_replace('img/', 'img/png/', $irudia_bide);
+                                    }
+                                    ?>
+                                    <img src="../<?php echo $irudia_bide; ?>" 
                                          alt="ID" class="irudia-txikia">
                                 </td>
                                 <td class="identifikadorea">#<?php echo $p['paziente_id']; ?></td>

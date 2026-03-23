@@ -132,7 +132,7 @@ include_once '../php_includeak/paziente_goiburua.php';
             </table>
         <?php else: ?>
             <div class="egoera-hutsa">
-                <div class="ikono-hutsa"><img src="../img/send.svg" alt="" class="ikono-3rem-gardena"></div>
+                <div class="ikono-hutsa"><img src="../img/svg/send.svg" alt="" class="ikono-3rem-gardena"></div>
                 <h3>Ez dago bidalitako mezurik</h3>
                 <p>Ez duzu mezurik bidali oraindik.</p>
             </div>

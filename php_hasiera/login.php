@@ -66,7 +66,7 @@ include '../php_includeak/goiburua.php';
     <div class="hasiera-edukiontzia">
         <div class="hasiera-txartela">
             <div class="hasiera-goiburua">
-                <img src="../img/GOsasun_logoa.png" alt="GOsasun" class="logo-irudia logo-login">
+                <img src="../img/png/GOsasun_logoa.png" alt="GOsasun" class="logo-irudia logo-login">
                 <p class="login-azpititulua"><?php echo $itzulpenak->login->azpititulua; ?></p>
             </div>
             

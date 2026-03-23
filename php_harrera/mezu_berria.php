@@ -47,7 +47,7 @@ include_once '../php_includeak/harrera_goiburua.php';
 
 <main class="panel-nagusia">
     <div class="orri-goiburua marjina-behe-20">
-        <h2 class="izenburu-nagusia"><img src="../img/clipboard-pen.svg" alt="" class="ikono-1_25rem marjina-esk-10"> Mezu Berria</h2>
+        <h2 class="izenburu-nagusia"><img src="../img/svg/clipboard-pen.svg" alt="" class="ikono-1_25rem marjina-esk-10"> Mezu Berria</h2>
         <p class="azpititulu-grisa">Sistemako edozein erabiltzaileri mezua bidali.</p>
     </div>
 
