@@ -120,33 +120,6 @@ VALUES -- Medikuak (1 - 50)
     (98, 'bego.i@paziente.eus', '1234', 3, 1),
     (99, 'kepas.a@paziente.eus', '1234', 3, 1),
     (100, 'edurne.m@paziente.eus', '1234', 3, 1),
-    -- Patient Image Updates
-    UPDATE pazienteak SET irudia = 'img/pazientea_1.png' WHERE paziente_id = 1;
-    UPDATE pazienteak SET irudia = 'img/pazientea_2.png' WHERE paziente_id = 2;
-    UPDATE pazienteak SET irudia = 'img/pazientea_3.png' WHERE paziente_id = 3;
-    UPDATE pazienteak SET irudia = 'img/pazientea_4.png' WHERE paziente_id = 4;
-    UPDATE pazienteak SET irudia = 'img/pazientea_5.png' WHERE paziente_id = 5;
-    UPDATE pazienteak SET irudia = 'img/pazientea_6.png' WHERE paziente_id = 6;
-    UPDATE pazienteak SET irudia = 'img/pazientea_7.png' WHERE paziente_id = 7;
-    UPDATE pazienteak SET irudia = 'img/pazientea_8.png' WHERE paziente_id = 8;
-    UPDATE pazienteak SET irudia = 'img/pazientea_9.png' WHERE paziente_id = 9;
-    UPDATE pazienteak SET irudia = 'img/pazientea_10.png' WHERE paziente_id = 10;
-    UPDATE pazienteak SET irudia = 'img/pazientea_11.png' WHERE paziente_id = 11;
-    UPDATE pazienteak SET irudia = 'img/pazientea_12.png' WHERE paziente_id = 12;
-    UPDATE pazienteak SET irudia = 'img/pazientea_13.png' WHERE paziente_id = 13;
-    UPDATE pazienteak SET irudia = 'img/pazientea_14.png' WHERE paziente_id = 14;
-    UPDATE pazienteak SET irudia = 'img/pazientea_15.png' WHERE paziente_id = 15;
-    UPDATE pazienteak SET irudia = 'img/pazientea_16.png' WHERE paziente_id = 16;
-    UPDATE pazienteak SET irudia = 'img/pazientea_17.png' WHERE paziente_id = 17;
-    UPDATE pazienteak SET irudia = 'img/pazientea_18.png' WHERE paziente_id = 18;
-    UPDATE pazienteak SET irudia = 'img/pazientea_19.png' WHERE paziente_id = 19;
-    UPDATE pazienteak SET irudia = 'img/pazientea_20.png' WHERE paziente_id = 20;
-    UPDATE pazienteak SET irudia = 'img/pazientea_51.png' WHERE paziente_id = 51;
-    UPDATE pazienteak SET irudia = 'img/pazientea_52.png' WHERE paziente_id = 52;
-    UPDATE pazienteak SET irudia = 'img/pazientea_53.png' WHERE paziente_id = 53;
-    UPDATE pazienteak SET irudia = 'img/pazientea_54.png' WHERE paziente_id = 54;
-    UPDATE pazienteak SET irudia = 'img/pazientea_55.png' WHERE paziente_id = 55;
-    UPDATE pazienteak SET irudia = 'img/pazientea_56.png' WHERE paziente_id = 56;
 
     -- Harrerako Langileak
     (101, 'harrera@gosasun.eus', '1234', 4, 1),
@@ -665,12 +638,11 @@ VALUES (
         'img/png/medikua_50.png'
     );
 -- 4. Harrerako Langileak
-INSERT INTO Harrerako_Langileak (langile_id, izena, abizenak)
-VALUES (101, 'Ane', 'Martinez Mendizabal');
-INSERT INTO Harrerako_Langileak (langile_id, izena, abizenak)
-VALUES (102, 'Ane', 'Garcia'),
-    (103, 'Mikel', 'Lopez'),
-    (104, 'Leire', 'Fernandez');
+INSERT INTO Harrerako_Langileak (langile_id, izena, abizenak, irudia)
+VALUES (101, 'Ane', 'Martinez Mendizabal', 'img/png/harrera_101.png'),
+    (102, 'Ane', 'Garcia', 'img/png/harrera_102.png'),
+    (103, 'Mikel', 'Lopez', 'img/png/harrera_103.png'),
+    (104, 'Leire', 'Fernandez', 'img/png/harrera_104.png');
 -- 6. Mediku-Paziente Loturak
 -- 5. Pazienteak (50)
 INSERT INTO Pazienteak (
@@ -682,7 +654,8 @@ INSERT INTO Pazienteak (
         telefonoa,
         odol_taldea,
         azken_altuera,
-        azken_pisua
+        azken_pisua,
+        irudia
     )
 VALUES (
         51,
@@ -693,7 +666,8 @@ VALUES (
         '655111222',
         'O+',
         1.75,
-        64.7
+        64.7,
+        'img/png/pazientea_51.png'
     ),
     (
         52,
@@ -704,7 +678,8 @@ VALUES (
         '655222333',
         'A-',
         1.62,
-        65.0
+        65.0,
+        'img/png/pazientea_52.png'
     ),
     (
         53,
@@ -715,7 +690,8 @@ VALUES (
         '655333444',
         'B+',
         1.80,
-        82.3
+        82.3,
+        'img/png/pazientea_53.png'
     ),
     (
         54,
@@ -726,7 +702,8 @@ VALUES (
         '655444555',
         'O-',
         1.68,
-        59.8
+        59.8,
+        'img/png/pazientea_54.png'
     ),
     (
         55,
@@ -737,7 +714,8 @@ VALUES (
         '655555666',
         'AB+',
         1.78,
-        85.1
+        85.1,
+        'img/png/pazientea_55.png'
     ),
     (
         56,
@@ -748,7 +726,8 @@ VALUES (
         '655666777',
         'A+',
         1.55,
-        62.4
+        62.4,
+        'img/png/pazientea_56.png'
     ),
     (
         57,
@@ -759,7 +738,8 @@ VALUES (
         '655777888',
         'O+',
         1.85,
-        90.0
+        90.0,
+        'img/png/pazientea_57.png'
     ),
     (
         58,
@@ -770,7 +750,8 @@ VALUES (
         '655888999',
         'B-',
         1.60,
-        55.2
+        55.2,
+        'img/png/pazientea_58.png'
     ),
     (
         59,
@@ -781,7 +762,8 @@ VALUES (
         '655999000',
         'A-',
         1.72,
-        76.8
+        76.8,
+        'img/png/pazientea_59.png'
     ),
     (
         60,
@@ -792,7 +774,8 @@ VALUES (
         '666000111',
         'O+',
         1.65,
-        61.5
+        61.5,
+        'img/png/pazientea_60.png'
     ),
     (
         61,
@@ -803,7 +786,8 @@ VALUES (
         '666111222',
         'AB-',
         1.79,
-        81.0
+        81.0,
+        'img/png/pazientea_61.png'
     ),
     (
         62,
@@ -814,7 +798,8 @@ VALUES (
         '666222333',
         'O-',
         1.58,
-        58.7
+        58.7,
+        'img/png/pazientea_62.png'
     ),
     (
         63,
@@ -825,7 +810,8 @@ VALUES (
         '666333444',
         'B+',
         1.70,
-        79.2
+        79.2,
+        'img/png/pazientea_63.png'
     ),
     (
         64,
@@ -836,7 +822,8 @@ VALUES (
         '666444555',
         'A+',
         1.64,
-        63.1
+        63.1,
+        'img/png/pazientea_64.png'
     ),
     (
         65,
@@ -847,7 +834,8 @@ VALUES (
         '666555666',
         'O+',
         1.82,
-        88.5
+        88.5,
+        'img/png/pazientea_65.png'
     ),
     (
         66,
@@ -858,7 +846,8 @@ VALUES (
         '666666777',
         'A-',
         1.67,
-        66.3
+        66.3,
+        'img/png/pazientea_66.png'
     ),
     (
         67,
@@ -869,7 +858,8 @@ VALUES (
         '666777888',
         'B-',
         1.75,
-        75.6
+        75.6,
+        'img/png/pazientea_67.png'
     ),
     (
         68,
@@ -880,7 +870,8 @@ VALUES (
         '666888999',
         'O-',
         1.61,
-        60.9
+        60.9,
+        'img/png/pazientea_68.png'
     ),
     (
         69,
@@ -891,7 +882,8 @@ VALUES (
         '666999000',
         'AB+',
         1.69,
-        74.4
+        74.4,
+        'img/png/pazientea_69.png'
     ),
     (
         70,
@@ -902,7 +894,8 @@ VALUES (
         '677000111',
         'O+',
         1.71,
-        68.2
+        68.2,
+        'img/png/pazientea_70.png'
     ),
     (
         71,
@@ -913,7 +906,8 @@ VALUES (
         '677111222',
         'A+',
         1.76,
-        80.5
+        80.5,
+        'img/png/pazientea_71.png'
     ),
     (
         72,
@@ -924,7 +918,8 @@ VALUES (
         '677222333',
         'B+',
         1.63,
-        62.8
+        62.8,
+        'img/png/pazientea_72.png'
     ),
     (
         73,
@@ -935,7 +930,8 @@ VALUES (
         '677333444',
         'O-',
         1.74,
-        77.1
+        77.1,
+        'img/png/pazientea_73.png'
     ),
     (
         74,
@@ -946,7 +942,8 @@ VALUES (
         '677444555',
         'A-',
         1.66,
-        64.6
+        64.6,
+        'img/png/pazientea_74.png'
     ),
     (
         75,
@@ -957,7 +954,8 @@ VALUES (
         '677555666',
         'AB-',
         1.68,
-        72.9
+        72.9,
+        'img/png/pazientea_75.png'
     ),
     (
         76,
@@ -968,7 +966,8 @@ VALUES (
         '677666777',
         'O+',
         1.59,
-        56.4
+        56.4,
+        'img/png/pazientea_76.png'
     ),
     (
         77,
@@ -979,7 +978,8 @@ VALUES (
         '677777888',
         'B-',
         1.81,
-        86.7
+        86.7,
+        'img/png/pazientea_77.png'
     ),
     (
         78,
@@ -990,7 +990,8 @@ VALUES (
         '677888999',
         'A+',
         1.62,
-        61.1
+        61.1,
+        'img/png/pazientea_78.png'
     ),
     (
         79,
@@ -1001,7 +1002,8 @@ VALUES (
         '677999000',
         'O-',
         1.77,
-        83.4
+        83.4,
+        'img/png/pazientea_79.png'
     ),
     (
         80,
@@ -1012,7 +1014,8 @@ VALUES (
         '688000111',
         'AB+',
         1.65,
-        65.5
+        65.5,
+        'img/png/pazientea_80.png'
     ),
     (
         81,
@@ -1023,7 +1026,8 @@ VALUES (
         '688111222',
         'O+',
         1.73,
-        78.8
+        78.8,
+        'img/png/pazientea_81.png'
     ),
     (
         82,
@@ -1034,7 +1038,8 @@ VALUES (
         '688222333',
         'A-',
         1.60,
-        59.2
+        59.2,
+        'img/png/pazientea_82.png'
     ),
     (
         83,
@@ -1045,7 +1050,8 @@ VALUES (
         '688333444',
         'B+',
         1.79,
-        84.6
+        84.6,
+        'img/png/pazientea_83.png'
     ),
     (
         84,
@@ -1056,7 +1062,8 @@ VALUES (
         '688444555',
         'O-',
         1.67,
-        67.3
+        67.3,
+        'img/png/pazientea_84.png'
     ),
     (
         85,
@@ -1067,7 +1074,8 @@ VALUES (
         '688555666',
         'A+',
         1.71,
-        75.9
+        75.9,
+        'img/png/pazientea_85.png'
     ),
     (
         86,
@@ -1078,7 +1086,8 @@ VALUES (
         '688666777',
         'AB-',
         1.64,
-        63.7
+        63.7,
+        'img/png/pazientea_86.png'
     ),
     (
         87,
@@ -1089,7 +1098,8 @@ VALUES (
         '688777888',
         'O+',
         1.83,
-        89.1
+        89.1,
+        'img/png/pazientea_87.png'
     ),
     (
         88,
@@ -1100,7 +1110,8 @@ VALUES (
         '688888999',
         'B-',
         1.57,
-        57.5
+        57.5,
+        'img/png/pazientea_88.png'
     ),
     (
         89,
@@ -1111,7 +1122,8 @@ VALUES (
         '688999000',
         'A-',
         1.68,
-        73.2
+        73.2,
+        'img/png/pazientea_89.png'
     ),
     (
         90,
@@ -1122,7 +1134,8 @@ VALUES (
         '699000111',
         'O-',
         1.69,
-        69.4
+        69.4,
+        'img/png/pazientea_90.png'
     ),
     (
         91,
@@ -1133,7 +1146,8 @@ VALUES (
         '699111222',
         'AB+',
         1.74,
-        80.8
+        80.8,
+        'img/png/pazientea_91.png'
     ),
     (
         92,
@@ -1144,7 +1158,8 @@ VALUES (
         '699222333',
         'O+',
         1.61,
-        60.3
+        60.3,
+        'img/png/pazientea_92.png'
     ),
     (
         93,
@@ -1155,7 +1170,8 @@ VALUES (
         '699333444',
         'A+',
         1.66,
-        68.6
+        68.6,
+        'img/png/pazientea_93.png'
     ),
     (
         94,
@@ -1166,7 +1182,8 @@ VALUES (
         '699444555',
         'B+',
         1.63,
-        64.9
+        64.9,
+        'img/png/pazientea_94.png'
     ),
     (
         95,
@@ -1177,7 +1194,8 @@ VALUES (
         '699555666',
         'O-',
         1.76,
-        82.5
+        82.5,
+        'img/png/pazientea_95.png'
     ),
     (
         96,
@@ -1188,7 +1206,8 @@ VALUES (
         '699666777',
         'A-',
         1.58,
-        58.1
+        58.1,
+        'img/png/pazientea_96.png'
     ),
     (
         97,
@@ -1199,7 +1218,8 @@ VALUES (
         '699777888',
         'AB-',
         1.80,
-        85.4
+        85.4,
+        'img/png/pazientea_97.png'
     ),
     (
         98,
@@ -1210,7 +1230,8 @@ VALUES (
         '699888999',
         'O+',
         1.62,
-        62.7
+        62.7,
+        'img/png/pazientea_98.png'
     ),
     (
         99,
@@ -1221,7 +1242,8 @@ VALUES (
         '699999000',
         'B-',
         1.78,
-        83.9
+        83.9,
+        'img/png/pazientea_99.png'
     ),
     (
         100,
@@ -1232,7 +1254,8 @@ VALUES (
         '600000111',
         'A+',
         1.65,
-        66.8
+        66.8,
+        'img/png/pazientea_100.png'
     );
 -- 5. Mediku_Paziente Loturak (Hainbat pazientek mediku bat baino gehiago eduki dezakete, eta medikuek hainbat paziente)
 -- Paziente bakoitzari 1 edo 2 mediku esleituko dizkiogu
