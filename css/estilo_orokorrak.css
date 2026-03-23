@@ -320,6 +320,36 @@ body {
 .botoi-ikonoa { text-decoration: none; font-size: 1.2rem; transition: transform 0.2s ease; }
 .botoi-ikonoa:hover { transform: scale(1.2); }
 
+/* Neurketa Taulak (Bordedun diseinua) */
+.neurketa-taula {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: var(--white);
+    border: 1px solid #dee2e6;
+    border-radius: var(--border-radius-sm);
+}
+
+.neurketa-taula th, 
+.neurketa-taula td {
+    padding: 12px 15px;
+    border: 1px solid #dee2e6;
+    text-align: left;
+}
+
+.neurketa-taula th {
+    background-color: #f8f9fa;
+    font-weight: 600;
+    color: var(--dark-text);
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+}
+
+.neurketa-taula tbody tr:hover {
+    background-color: rgba(67, 97, 238, 0.04);
+}
+
 
 .orri-goiburua {
     display: flex;
