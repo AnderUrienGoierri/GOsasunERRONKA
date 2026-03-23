@@ -1,6 +1,5 @@
     <footer>
         <link rel="stylesheet" href="<?php echo $bide_absolutua; ?>css/footer.css">
-        <link rel="stylesheet" href="<?php echo $bide_absolutua; ?>css/usb_styles.css">
         <div class="footer-logo-edukiontzia">
             <img src="<?php echo $bide_absolutua; ?>img/png/GOsasun_logoa-removebg-preview-white.png" alt="GOsasun Logo" class="footer-logo">
         </div>
@@ -20,7 +19,6 @@
 
     <!-- JS -->
     <script src="<?php echo $bide_absolutua; ?>js/orokorrak.js"></script>
-    <script src="<?php echo $bide_absolutua; ?>js/usb_detekzioa.js"></script>
     <?php if (isset($js_gehigarria)): ?>
         <?php foreach ($js_gehigarria as $js): ?>
             <script src="<?php echo $bide_absolutua; ?>js/<?php echo $js; ?>"></script>

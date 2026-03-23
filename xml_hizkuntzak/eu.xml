@@ -41,7 +41,7 @@
         <datuak>Nire Datuak</datuak>
         <datuak_testua>Ikusi eta eguneratu zure datuak.</datuak_testua>
         <neurketak>Neurketak</neurketak>
-        <neurketak_testua>Sartu neurketa eta sintoma berriak.</neurketak_testua>
+        <neurketak_testua>Ikusi zure neurketen historiala.</neurketak_testua>
         <grafikak>Grafikak</grafikak>
         <grafikak_testua>Ikusi zure osasun bilakaera.</grafikak_testua>
         <errezetak>Errezetak</errezetak>
@@ -62,7 +62,7 @@
         <pisua>Pisua</pisua>
         <eguneratua>Eguneratua</eguneratua>
         <ez_dago_neurketarik>Ez dago neurketa erregistratutik.</ez_dago_neurketarik>
-        <neurketa_berria>Neurketa Berria</neurketa_berria>
+        <neurketa_berria>Nire Neurketak</neurketa_berria>
         <hurrengo_hitzordua>Hurrengo Hitzordua</hurrengo_hitzordua>
         <ez_hitzordurik>Ez duzu hitzordurik aurreikusita.</ez_hitzordurik>
         <agenda_ikusi>Agenda Ikusi</agenda_ikusi>
@@ -80,7 +80,7 @@
         <errezetak>Errezetak</errezetak>
         <errezetak_testua>Sortu eta kudeatu errezetak.</errezetak_testua>
         <neurketak>Neurketak</neurketak>
-        <neurketak_testua>Erregistratu bizi-seinaleak.</neurketak_testua>
+        <neurketak_testua>Ikusi pazienteen neurketak.</neurketak_testua>
         <grafikak>Grafikak</grafikak>
         <grafikak_testua>Aztertu neurketa bilakaerak.</grafikak_testua>
         <mezuak>Mezuak</mezuak>

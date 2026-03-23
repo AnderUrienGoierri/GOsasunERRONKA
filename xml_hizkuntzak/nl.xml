@@ -41,7 +41,7 @@
         <datuak>Mijn Gegevens</datuak>
         <datuak_testua>Bekijk en werk uw gegevens bij.</datuak_testua>
         <neurketak>Metingen</neurketak>
-        <neurketak_testua>Voer nieuwe metingen en symptomen in.</neurketak_testua>
+        <neurketak_testua>Bekijk uw metingenhistorie.</neurketak_testua>
         <grafikak>Grafieken</grafikak>
         <grafikak_testua>Bekijk uw gezondheidsontwikkeling.</grafikak_testua>
         <errezetak>Voorschriften</errezetak>
@@ -62,7 +62,7 @@
         <pisua>Gewicht</pisua>
         <eguneratua>Bijgewerkt</eguneratua>
         <ez_dago_neurketarik>Geen geregistreerde metingen gevonden.</ez_dago_neurketarik>
-        <neurketa_berria>Nieuwe Meting</neurketa_berria>
+        <neurketa_berria>Mijn Metingen</neurketa_berria>
         <hurrengo_hitzordua>Volgende Afspraak</hurrengo_hitzordua>
         <ez_hitzordurik>Geen geplande afspraken.</ez_hitzordurik>
         <agenda_ikusi>Agenda Bekijken</agenda_ikusi>
@@ -80,7 +80,7 @@
         <errezetak>Voorschriften</errezetak>
         <errezetak_testua>Maak en beheer voorschriften.</errezetak_testua>
         <neurketak>Metingen</neurketak>
-        <neurketak_testua>Registreer vitale functies.</neurketak_testua>
+        <neurketak_testua>Bekijk patiëntmetingen.</neurketak_testua>
         <grafikak>Grafieken</grafikak>
         <grafikak_testua>Analyseer metingtrends.</grafikak_testua>
         <mezuak>Berichten</mezuak>

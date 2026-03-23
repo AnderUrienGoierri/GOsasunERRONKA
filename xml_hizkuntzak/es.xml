@@ -41,7 +41,7 @@
         <datuak>Mis Datos</datuak>
         <datuak_testua>Vea y actualice sus datos personales.</datuak_testua>
         <neurketak>Mediciones</neurketak>
-        <neurketak_testua>Introduzca nuevas mediciones y síntomas.</neurketak_testua>
+        <neurketak_testua>Consulte su historial de mediciones.</neurketak_testua>
         <grafikak>Gráficos</grafikak>
         <grafikak_testua>Vea la evolución de su salud.</grafikak_testua>
         <errezetak>Recetas</errezetak>
@@ -62,7 +62,7 @@
         <pisua>Peso</pisua>
         <eguneratua>Actualizado</eguneratua>
         <ez_dago_neurketarik>No hay mediciones registradas.</ez_dago_neurketarik>
-        <neurketa_berria>Nueva Medición</neurketa_berria>
+        <neurketa_berria>Mis Mediciones</neurketa_berria>
         <hurrengo_hitzordua>Próxima Cita</hurrengo_hitzordua>
         <ez_hitzordurik>No tiene citas previstas.</ez_hitzordurik>
         <agenda_ikusi>Ver Agenda</agenda_ikusi>
@@ -80,7 +80,7 @@
         <errezetak>Recetas</errezetak>
         <errezetak_testua>Cree y gestione recetas.</errezetak_testua>
         <neurketak>Mediciones</neurketak>
-        <neurketak_testua>Registre constantes vitales.</neurketak_testua>
+        <neurketak_testua>Vea las mediciones de los pacientes.</neurketak_testua>
         <grafikak>Gráficos</grafikak>
         <grafikak_testua>Analice la evolución de mediciones.</grafikak_testua>
         <mezuak>Mensajes</mezuak>

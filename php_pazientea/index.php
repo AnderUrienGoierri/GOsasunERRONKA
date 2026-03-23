@@ -40,7 +40,7 @@ $css_pertsonalizatua = "index_pazientea.css";
 include_once '../php_includeak/paziente_goiburua.php';
 ?>
     <main class="panel-nagusia">
-        <section class="kaixo-atalak flex-zentratua-20" >
+        <section class="kaixo-atalak">
             <img src="../<?php echo str_replace('img/', 'img/png/', htmlspecialchars($erabiltzaile_datuak['irudia'] ?? 'img/lehenetsia_pazientea.png')); ?>" alt="Zure profila" class="profil-irudia-80">
             <div>
                 <h1 class="izenburu-nagusia"><?php echo $itzulpenak->erabiltzaile_panela->kaixo; ?>, <?php echo htmlspecialchars($erabiltzaile_datuak['izena']); ?>?</h1>
@@ -49,7 +49,7 @@ include_once '../php_includeak/paziente_goiburua.php';
         </section>
 
         <!-- Laburpen Txartelak (Dashboard) -->
-        <div class="panel-sareta flex-tartea-20 marjina-behe-30">
+        <div class="panel-sareta">
             <!-- Azken Neurketak -->
             <div id="dash-neurketak-card" class="kutxa-zuria-itzala">
                 <h3 class="izenburu-iluna"><img src="../img/svg/line-chart.svg" alt="" class="ikono-ertaina marjina-esk-5"> <?php echo $itzulpenak->dashboard_pazientea->azken_neurketak; ?></h3>

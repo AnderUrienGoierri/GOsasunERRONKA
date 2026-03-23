@@ -41,7 +41,7 @@
         <datuak>My Data</datuak>
         <datuak_testua>View and update your personal data.</datuak_testua>
         <neurketak>Measurements</neurketak>
-        <neurketak_testua>Enter new measurements and symptoms.</neurketak_testua>
+        <neurketak_testua>View your measurement history.</neurketak_testua>
         <grafikak>Charts</grafikak>
         <grafikak_testua>View your health evolution.</grafikak_testua>
         <errezetak>Prescriptions</errezetak>
@@ -62,7 +62,7 @@
         <pisua>Weight</pisua>
         <eguneratua>Updated</eguneratua>
         <ez_dago_neurketarik>No registered measurements found.</ez_dago_neurketarik>
-        <neurketa_berria>New Measurement</neurketa_berria>
+        <neurketa_berria>My Measurements</neurketa_berria>
         <hurrengo_hitzordua>Next Appointment</hurrengo_hitzordua>
         <ez_hitzordurik>No upcoming appointments.</ez_hitzordurik>
         <agenda_ikusi>View Agenda</agenda_ikusi>
@@ -80,7 +80,7 @@
         <errezetak>Prescriptions</errezetak>
         <errezetak_testua>Create and manage prescriptions.</errezetak_testua>
         <neurketak>Measurements</neurketak>
-        <neurketak_testua>Register vital signs.</neurketak_testua>
+        <neurketak_testua>View patient measurements.</neurketak_testua>
         <grafikak>Charts</grafikak>
         <grafikak_testua>Analyze measurement trends.</grafikak_testua>
         <mezuak>Messages</mezuak>
