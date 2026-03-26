@@ -46,8 +46,8 @@ include_once '../php_includeak/harrera_goiburua.php';
             <div class="alerta alerta-errorea"><?php echo htmlspecialchars($errorea); ?></div>
         <?php endif; ?>
 
-        <div class="flex-tartea-20">
-            <a href="mediku_sortu.php" class="botoia botoi-nagusia marjina-behe-0">+ Mediku Berria</a>
+        <div class="flex-tartea-20 marjina-behe-20">
+            <a href="mediku_sortu.php" class="botoia botoi-sortu marjina-behe-0">+ Mediku Berria</a>
             <input type="text" id="bilaketaMedikuak" class="inprimaki-kontrola bilaketa-barra gehienezko-zabalera-300" placeholder="Bilatu izena edo espezialitatea..." >
         </div>
 

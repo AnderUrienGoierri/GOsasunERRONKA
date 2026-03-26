@@ -144,9 +144,10 @@ include_once '../php_includeak/harrera_goiburua.php';
                 <h2 class="izenburu-nagusia">Hitzorduen Egutegia</h2>
                 <p class="azpititulu-grisa">Kudeatu klinikako ordutegia eta erregistroak</p>
             </div>
-            <div class="flex-taldea-10">
-                <button class="botoia botoi-nagusia" onclick="openModal()">+ Hitzordu Berria</button>
-            </div>
+        </div>
+
+        <div class="flex-tartea-20 marjina-behe-20">
+            <button class="botoia botoi-sortu marjina-behe-0" onclick="openModal()">+ Hitzordu Berria</button>
         </div>
 
         <script>

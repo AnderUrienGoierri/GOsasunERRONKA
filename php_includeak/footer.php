@@ -7,7 +7,7 @@
         <div class="orri-oin-nabigazioa">
             <a href="<?php echo $bide_absolutua; ?>index.php">Hasiera</a>
             <a href="<?php echo $bide_absolutua; ?>php_hasiera/kontaktua.php">Kontaktua</a>
-            <a href="<?php echo $bide_absolutua; ?>php_hasiera/login.php">Saioa Hasi</a>
+            <a href="<?php echo $bide_absolutua; ?>php_hasiera/login.php" class="botoia botoi-ertza">Saioa Hasi</a>
         </div>
         
         <p>&copy; 2026 GOsasun</p>

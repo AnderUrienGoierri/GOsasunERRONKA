@@ -17,6 +17,34 @@
         <p>&copy; 2026 GOsasun</p>
     </footer>
 
+    <?php include $bide_absolutua . 'php_includeak/ezarpenak_modala.php'; ?>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var modal = document.getElementById("ezarpenakModala");
+        var btn = document.getElementById("irekiEzarpenakModala");
+        var span = document.getElementsByClassName("itxi-modala")[0];
+
+        if (btn) {
+            btn.onclick = function(e) {
+                e.preventDefault();
+                modal.style.display = "block";
+            }
+        }
+
+        if (span) {
+            span.onclick = function() {
+                modal.style.display = "none";
+            }
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    });
+    </script>
+
     <!-- JS -->
     <script src="<?php echo $bide_absolutua; ?>js/orokorrak.js"></script>
     <?php if (isset($js_gehigarria)): ?>
