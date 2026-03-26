@@ -1,14 +1,13 @@
 <?php
 // PHP fitxategia: jaso_datuak.php
-// HELBURUKO KARPETA: xml_bezero_neurketak/ karpeta
+// HELBURUKO KARPETA: C:\Apache24-64\htdocs\neurketak\
 
 // GARRANTZITSUA: Erroreak agertu daitezen baimendu behar dugu!
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
 // Bide absolutua erabiliko dugu inolako dudarik ez egoteko
-// Orain proiektuaren bide erlatiboa erabiltzen dugu
-$karpeta = __DIR__ . "/../xml_bezero_neurketak/";
+$karpeta = "C:/Apache24-64/htdocs/neurketak/";
 
 // Karpeta existitzen ote den begiratu eta bestela sortzen saiatu
 if (!file_exists($karpeta)) {

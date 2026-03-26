@@ -82,8 +82,3 @@
   font-size: 1.3rem;
   font-weight: 600;
 }
-
-.hasiera-txartela .botoi-ertza:hover {
-  background-color: var(--secondary-color) !important;
-  color: #ffffff !important;
-}

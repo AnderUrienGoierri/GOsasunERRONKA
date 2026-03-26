@@ -54,15 +54,12 @@ include_once '../php_includeak/harrera_goiburua.php';
 ?>
 
 <main class="panel-nagusia">
-    <div class="orri-goiburua">
+    <div class="orri-goiburua flex-tartea-15 marjina-behe-20">
         <div>
-            <h2 class="izenburu-nagusia"><img src="../img/svg/mail.svg" alt="" class="ikono-ertaina marjina-esk-5"> Barne Mezuak</h2>
+            <h2 class="izenburu-nagusia">Barne Mezuak</h2>
             <p class="azpititulu-grisa">Pazienteekin eta medikuekin barne komunikazioa.</p>
         </div>
-    </div>
-
-    <div class="flex-tartea-20 marjina-behe-20">
-        <a href="mezu_berria.php" class="botoia botoi-sortu marjina-behe-0">+ Mezu Berria</a>
+        <a href="mezu_berria.php" class="botoia botoi-nagusia">+ Mezu Berria</a>
     </div>
 
     <div class="fitxa-edukiontzia marjina-behe-20">

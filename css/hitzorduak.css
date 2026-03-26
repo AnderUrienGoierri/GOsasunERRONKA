@@ -11,6 +11,7 @@
 }
 
 .orri-goiburua h2 {
+    color: var(--primary-color);
     margin: 0;
     font-size: 1.75rem;
     font-weight: 700;
