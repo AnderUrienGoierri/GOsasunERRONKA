@@ -54,7 +54,7 @@ include_once '../php_includeak/harrera_goiburua.php';
             <div class="alerta alerta-errorea"><?php echo htmlspecialchars($errorea); ?></div>
         <?php endif; ?>
 
-        <div class="flex-tartea-20">
+        <div class="flex-tartea-20 marjina-behe-20">
             <a href="harrerako_langile_sortu.php" class="botoia botoi-sortu marjina-behe-0" >+ Langile Berria</a>
             <input type="text" id="bilaketaLangileak" class="inprimaki-kontrola bilaketa-barra" placeholder="Bilatu izena edo abizena...">
         </div>
