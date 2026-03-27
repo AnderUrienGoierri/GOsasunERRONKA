@@ -41,8 +41,10 @@ include_once '../php_includeak/harrera_goiburua.php';
 
     <main class="panel-nagusia">
         <div class="orri-goiburua">
-            <h2><img src="../img/svg/users.svg" alt="" class="ikono-ertaina marjina-esk-5"> Pazienteen Kudeaketa</h2>
-            <p>Sortu, editatu edo ezabatu zentroko paziente guztiak.</p>
+            <div>
+                <h2 class="izenburu-nagusia"><img src="../img/svg/users.svg" alt="" class="ikono-ertaina marjina-esk-5"> Pazienteen Kudeaketa</h2>
+                <p class="azpititulu-grisa">Sortu, editatu edo ezabatu zentroko paziente guztiak.</p>
+            </div>
         </div>
 
         <?php if ($mezua): ?>
@@ -52,8 +54,8 @@ include_once '../php_includeak/harrera_goiburua.php';
             <div class="alerta alerta-errorea"><?php echo htmlspecialchars($errorea); ?></div>
         <?php endif; ?>
 
-        <div class="flex-tartea-20">
-            <a href="paziente_sortu.php" class="botoi-sortu marjina-behe-0" >+ Paziente Berria</a>
+        <div class="flex-tartea-20 marjina-behe-20">
+            <a href="paziente_sortu.php" class="botoia botoi-sortu marjina-behe-0" >+ Paziente Berria</a>
             <input type="text" id="bilaketaPazienteak" class="inprimaki-kontrola bilaketa-barra gehienezko-zabalera-300" placeholder="Bilatu izena edo abizena..." >
         </div>
 
@@ -62,24 +64,19 @@ include_once '../php_includeak/harrera_goiburua.php';
                 <thead>
                     <tr>
                         <th>Argazkia</th>
-                        <th class="kurtsore-erakuslea" onclick="ordenatuTaula(1)">ID <img src="../img/svg/sort.svg" alt="" class="ikono-txikia-gardena"></th>
-                        <th class="kurtsore-erakuslea" onclick="ordenatuTaula(2)">Izena <img src="../img/svg/sort.svg" alt="" class="ikono-txikia-gardena"></th>
-                        <th class="kurtsore-erakuslea" onclick="ordenatuTaula(3)">NAN <img src="../img/svg/sort.svg" alt="" class="ikono-txikia-gardena"></th>
+                        <th class="kurtsore-erakuslea" onclick="ordenatuTaula(1)">ID <img src="../img/sort.svg" alt="" class="ikono-txikia-gardena"></th>
+                        <th class="kurtsore-erakuslea" onclick="ordenatuTaula(2)">Izena <img src="../img/sort.svg" alt="" class="ikono-txikia-gardena"></th>
+                        <th class="kurtsore-erakuslea" onclick="ordenatuTaula(3)">NAN <img src="../img/sort.svg" alt="" class="ikono-txikia-gardena"></th>
                         <th>Telefonoa</th>
-                        <th class="kurtsore-erakuslea" onclick="ordenatuTaula(5)">Egoera Klinikoa <img src="../img/svg/sort.svg" alt="" class="ikono-txikia-gardena"></th>
+                        <th class="kurtsore-erakuslea" onclick="ordenatuTaula(5)">Egoera Klinikoa <img src="../img/sort.svg" alt="" class="ikono-txikia-gardena"></th>
                         <th>Ekintzak</th>
                     </tr>
                 </thead>
                 <taula_gorputza>
                     <?php foreach ($pazienteak as $p): ?>
+                        <tr>
                             <td class="zabalera-50">
-                                <?php 
-                                $irudia_bide = htmlspecialchars($p['irudia'] ?? 'img/lehenetsia_pazientea.png');
-                                if (strpos($irudia_bide, 'img/') === 0 && strpos($irudia_bide, 'img/png/') === false && strpos($irudia_bide, 'img/svg/') === false) {
-                                    $irudia_bide = str_replace('img/', 'img/png/', $irudia_bide);
-                                }
-                                ?>
-                                <img src="../<?php echo $irudia_bide; ?>" 
+                                <img src="../<?php echo htmlspecialchars($p['irudia'] ?? 'img/lehenetsia_pazientea.png'); ?>" 
                                      alt="ID" class="irudia-txikia">
                             </td>
                             <td class="identifikadorea">#<?php echo $p['paziente_id']; ?></td>
@@ -100,9 +97,9 @@ include_once '../php_includeak/harrera_goiburua.php';
                             </td>
                             <td>
                                 <div class="taula-ekintzak">
-                                    <a href="paziente_fitxa.php?id=<?php echo $p['paziente_id']; ?>" class="botoi-ikonoa" title="Ikusi Fitxa"><img src="../img/svg/eye.svg" alt="" class="ikono-ertaina marjina-esk-5"></a>
-                                    <a href="paziente_editatu.php?id=<?php echo $p['paziente_id']; ?>" class="botoi-ikonoa editatu-botoia" title="Editatu"><img src="../img/svg/pencil.svg" alt="" class="ikono-ertaina marjina-esk-5"></a>
-                                    <a href="pazienteak.php?delete_id=<?php echo $p['paziente_id']; ?>" class="botoi-ikonoa ezabatu-botoia" onclick="return confirm('Ziur zaude paziente hau eta bere datu guztiak ezabatu nahi dituzula?');" title="Ezabatu"><img src="../img/svg/trash-2.svg" alt="" class="ikono-ertaina marjina-esk-5"></a>
+                                    <a href="paziente_fitxa.php?id=<?php echo $p['paziente_id']; ?>" class="botoi-ikonoa" title="Ikusi Fitxa"><img src="../img/eye.svg" alt="" class="ikono-ertaina marjina-esk-5"></a>
+                                    <a href="paziente_editatu.php?id=<?php echo $p['paziente_id']; ?>" class="botoi-ikonoa editatu-botoia" title="Editatu"><img src="../img/pencil.svg" alt="" class="ikono-ertaina marjina-esk-5"></a>
+                                    <a href="pazienteak.php?delete_id=<?php echo $p['paziente_id']; ?>" class="botoi-ikonoa ezabatu-botoia" onclick="return confirm('Ziur zaude paziente hau eta bere datu guztiak ezabatu nahi dituzula?');" title="Ezabatu"><img src="../img/trash-2.svg" alt="" class="ikono-ertaina marjina-esk-5"></a>
                                 </div>
                             </td>
                         </tr>

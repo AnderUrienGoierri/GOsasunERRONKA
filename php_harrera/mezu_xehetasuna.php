@@ -111,7 +111,7 @@ include_once '../php_includeak/harrera_goiburua.php';
 <main class="panel-nagusia">
     <div class="orri-goiburua marjina-behe-20">
         <a href="<?php echo $mota === 'kanpoko' ? 'kanpoko_mezuak.php' : 'mezuak.php'; ?>" class="esteka-itzuli">&larr; Itzuli zerrendara</a>
-        <h2 class="izenburu-nagusia marjina-goi-10">Mezuaren Xehetasuna</h2>
+        <h2 class="izenburu-nagusia marjina-goi-10">&#128231; Mezuaren Xehetasuna</h2>
     </div>
 
     <?php if (isset($arrakasta_mezua)): ?>

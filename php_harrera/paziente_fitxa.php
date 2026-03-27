@@ -25,7 +25,7 @@ if (!$pazientea) {
 }
 
 // 2. Azken neurketak lortu
-$stmtN = $pdo->prepare("SELECT erregistro_data, tentsio_sistolikoa, tentsio_diastolikoa, glukosa_mg_dl, pisua_kg, altuera FROM Neurketak WHERE paziente_id = ? ORDER BY erregistro_data DESC LIMIT 5");
+$stmtN = $pdo->prepare("SELECT * FROM Neurketak WHERE paziente_id = ? ORDER BY data DESC LIMIT 5");
 $stmtN->execute([$id]);
 $neurketak = $stmtN->fetchAll(PDO::FETCH_ASSOC);
 
@@ -48,10 +48,10 @@ include_once '../php_includeak/harrera_goiburua.php';
 
 
 <main class="panel-nagusia">
-    <a href="pazienteak.php" class="atzera-botoia"><img src="../img/svg/arrow-left.svg" alt="" class="ikono-ertaina marjina-esk-5"> Pazienteen zerrendara itzuli</a>
+    <a href="pazienteak.php" class="atzera-botoia"><img src="../img/arrow-left.svg" alt="" class="ikono-ertaina marjina-esk-5"> Pazienteen zerrendara itzuli</a>
     
     <div class="orri-goiburua">
-        <h2><img src="../img/svg/user.svg" alt="" class="ikono-ertaina marjina-esk-5"> Pazientearen Fitxa</h2>
+        <h2><img src="../img/user.svg" alt="" class="ikono-ertaina marjina-esk-5"> Pazientearen Fitxa</h2>
         <span class="egoera-etiketa <?php echo $pazientea['egoera_klinikoa'] == 'Alta' ? 'egoera-alta' : 'egoera-baja'; ?>">
             <?php echo htmlspecialchars($pazientea['egoera_klinikoa']); ?>
         </span>
@@ -60,24 +60,18 @@ include_once '../php_includeak/harrera_goiburua.php';
     <div class="fitxa-edukiontzia">
         <!-- Ezkerreko zutabea: Datu pertsonalak -->
         <div class="profil-txartela">
-            <?php 
-            $irudia_bide = htmlspecialchars($pazientea['irudia'] ?? 'img/lehenetsia_pazientea.png');
-            if (strpos($irudia_bide, 'img/') === 0 && strpos($irudia_bide, 'img/png/') === false && strpos($irudia_bide, 'img/svg/') === false) {
-                $irudia_bide = str_replace('img/', 'img/png/', $irudia_bide);
-            }
-            ?>
-            <img src="../<?php echo $irudia_bide; ?>" alt="Profila" class="profil-irudia">
+            <img src="../<?php echo htmlspecialchars($pazientea['irudia'] ?? 'img/lehenetsia_pazientea.png'); ?>" alt="Profila" class="profil-irudia">
             <h3><?php echo htmlspecialchars($pazientea['izena'] . ' ' . $pazientea['abizenak']); ?></h3>
             <p class="identifikadorea">ID: #<?php echo $pazientea['paziente_id']; ?> | NAN: <?php echo htmlspecialchars($pazientea['nan']); ?></p>
             
             <hr class="banatzaile-marra">
             
             <div class="testua-ezkerrean">
-                <p><strong><img src="../img/svg/mail.svg" alt="" class="ikono-ertaina marjina-esk-5"> Email:</strong> <?php echo htmlspecialchars($pazientea['email']); ?></p>
-                <p><strong><img src="../img/svg/phone.svg" alt="" class="ikono-ertaina marjina-esk-5"> Telefonoa:</strong> <?php echo htmlspecialchars($pazientea['telefonoa'] ?? 'Ez zehaztua'); ?></p>
+                <p><strong><img src="../img/mail.svg" alt="" class="ikono-ertaina marjina-esk-5"> Email:</strong> <?php echo htmlspecialchars($pazientea['email']); ?></p>
+                <p><strong><img src="../img/phone.svg" alt="" class="ikono-ertaina marjina-esk-5"> Telefonoa:</strong> <?php echo htmlspecialchars($pazientea['telefonoa'] ?? 'Ez zehaztua'); ?></p>
             </div>
             
-            <a href="paziente_editatu.php?id=<?php echo $pazientea['paziente_id']; ?>" class="botoia botoi-ertza marjina-goi-zabalera"><img src="../img/svg/pencil.svg" alt="" class="ikono-ertaina marjina-esk-5"> Editatu Datuak</a>
+            <a href="paziente_editatu.php?id=<?php echo $pazientea['paziente_id']; ?>" class="botoia botoi-ertza marjina-goi-zabalera"><img src="../img/pencil.svg" alt="" class="ikono-ertaina marjina-esk-5"> Editatu Datuak</a>
         </div>
 
         <!-- Eskuineko zutabea: Neurketak eta Hitzorduak -->
@@ -87,7 +81,7 @@ include_once '../php_includeak/harrera_goiburua.php';
                 <h3 class="goiburu-iluna-flex">
                     Azken Parametroak
                     <?php if(count($neurketak) > 0): ?>
-                        <small class="datu-txikia-grisa">(<?php echo date('Y/m/d', strtotime($neurketak[0]['erregistro_data'])); ?>)</small>
+                        <small class="datu-txikia-grisa">(<?php echo date('Y/m/d', strtotime($neurketak[0]['data'])); ?>)</small>
                     <?php endif; ?>
                 </h3>
                 

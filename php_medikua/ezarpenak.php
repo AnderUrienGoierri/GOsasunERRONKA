@@ -13,96 +13,78 @@ $uneko_orria = "ezarpenak";
 
 include_once '../php_includeak/mediku_goiburua.php';
 
-require_once '../php_includeak/konfigurazioa_kargatu.php';
-$konf = kargatuKonfigurazioa(false);
+$xml_path = '../xml_konfigurazioa/config.xml';
+$hizkuntza_def = 'eu';
+$kolore_nagusia_def = '#4361ee';
+$bigarren_kolorea_def = '#3f37c9';
+$footer_kolorea_def = '#2b2d42';
+$gaia_def = 'argia';
 
-$hizkuntza_def = $konf['hizkuntza'];
-$kolore_nagusia_def = $konf['kolore_nagusia'];
-$bigarren_kolorea_def = $konf['bigarren_kolorea'];
-$gaia_def = $konf['gaia'];
+if (file_exists($xml_path)) {
+    $xml_conf = simplexml_load_file($xml_path);
+    if ($xml_conf) {
+        $hizkuntza_def = (string)$xml_conf->hizkuntza ?: $hizkuntza_def;
+        $kolore_nagusia_def = (string)$xml_conf->kolore_nagusia ?: $kolore_nagusia_def;
+        $bigarren_kolorea_def = (string)$xml_conf->bigarren_kolorea ?: $bigarren_kolorea_def;
+        $footer_kolorea_def = (string)$xml_conf->footer_kolorea ?: $footer_kolorea_def;
+        $gaia_def = (string)$xml_conf->gaia ?: $gaia_def;
+    }
+}
 ?>
 
 <main class="panel-nagusia">
     <div class="orri-goiburua">
-        <h1><img src="../img/svg/settings.svg" alt="" class="ikono-32px-erdian"> <?php echo $itzulpenak->menua_medikua->ezarpenak ?? 'Ezarpenak'; ?></h1>
-        <a href="index.php" class="botoia botoi-itsua"><img src="../img/svg/arrow-left.svg" alt="" class="ikono-16px-erdian"> <?php echo $itzulpenak->login->itzuli ?? 'Itzuli'; ?></a>
+        <h1><img src="../img/settings.svg" alt="" class="ikono-32px-erdian"> Ezarpenak</h1>
+        <a href="index.php" class="botoia botoi-itsua"><img src="../img/arrow-left.svg" alt="" class="ikono-16px-erdian"> Itzuli</a>
     </div>
- 
+
     <section class="ezarpen-panela-wrapper edukiontzi-ertaina">
         <div class="kutxa-zuria ertz-lodi-urdina">
             <div class="testua-erdian-marjina-behe-20">
-                <p class="testu-grisa"><?php echo $itzulpenak->ezarpenak->laguntza; ?></p>
+                <p class="testu-grisa">Hemen zure interfazearen itxura aldatu dezakezu.</p>
                 <?php if (isset($_GET['ezarpenak_gordeta'])): ?>
-                    <div class="alerta alerta-arrakasta marjina-goi-15"><?php echo $itzulpenak->ezarpenak->gordeta; ?></div>
-                <?php endif; ?>
-                <?php if (isset($_GET['ezarpenak_reset'])): ?>
-                    <div class="alerta alerta-arrakasta marjina-goi-15"><?php echo $itzulpenak->ezarpenak->reset_mezua; ?></div>
+                    <div class="alerta alerta-arrakasta marjina-goi-15">Ezarpenak XML fitxategian gorde dira!</div>
                 <?php endif; ?>
             </div>
             <form action="../php_laguntzaileak/ezarpenak_gorde.php" method="POST">
                 <!-- Ezarpen orokorretarako (itxura) -->
-                <input type="hidden" name="form_type" value="orokorra">
+                <input type="hidden" name="form_type" value="orokorra_aplikazio_barnekoa">
                 <input type="hidden" name="itzulera" value="medikua">
- 
+
                 <div class="inprimaki-taldea">
-                    <label><?php echo $itzulpenak->ezarpenak->hizkuntza; ?></label>
-                    <div class="hizkuntza-hautatzailea">
-                        <div class="hizkuntza-aukera">
-                            <input type="radio" name="hizkuntza" id="lang-eu" value="eu" <?php echo ($hizkuntza_def === 'eu') ? 'checked' : ''; ?>>
-                            <label for="lang-eu" class="aukera-edukia">
-                                <img src="../img/png/hizkunta_ikonoak/eu.png" alt="Euskara" style="width:60px !important; height:60px !important; border-radius:50%; object-fit:cover;">
-                                <span><?php echo $itzulpenak->ezarpenak->hizkuntza_eu; ?></span>
-                            </label>
-                        </div>
-                        <div class="hizkuntza-aukera">
-                            <input type="radio" name="hizkuntza" id="lang-es" value="es" <?php echo ($hizkuntza_def === 'es') ? 'checked' : ''; ?>>
-                            <label for="lang-es" class="aukera-edukia">
-                                <img src="../img/png/hizkunta_ikonoak/es.png" alt="Castellano" style="width:60px !important; height:60px !important; border-radius:50%; object-fit:cover;">
-                                <span><?php echo $itzulpenak->ezarpenak->hizkuntza_es; ?></span>
-                            </label>
-                        </div>
-                        <div class="hizkuntza-aukera">
-                            <input type="radio" name="hizkuntza" id="lang-en" value="en" <?php echo ($hizkuntza_def === 'en') ? 'checked' : ''; ?>>
-                            <label for="lang-en" class="aukera-edukia">
-                                <img src="../img/png/hizkunta_ikonoak/en.png" alt="English" style="width:60px !important; height:60px !important; border-radius:50%; object-fit:cover;">
-                                <span><?php echo $itzulpenak->ezarpenak->hizkuntza_en; ?></span>
-                            </label>
-                        </div>
-                        <div class="hizkuntza-aukera">
-                            <input type="radio" name="hizkuntza" id="lang-nl" value="nl" <?php echo ($hizkuntza_def === 'nl') ? 'checked' : ''; ?>>
-                            <label for="lang-nl" class="aukera-edukia">
-                                <img src="../img/png/hizkunta_ikonoak/nl.png" alt="Nederlands" style="width:60px !important; height:60px !important; border-radius:50%; object-fit:cover;">
-                                <span><?php echo $itzulpenak->ezarpenak->hizkuntza_nl; ?></span>
-                            </label>
-                        </div>
-                    </div>
-                </div>
- 
-                <div class="inprimaki-taldea">
-                    <label><?php echo $itzulpenak->ezarpenak->kolore_nagusia; ?></label>
-                    <input type="color" name="kolore_nagusia" value="<?php echo htmlspecialchars($kolore_nagusia_def); ?>" class="inprimaki-kontrola sarrera-altuera-50">
-                </div>
- 
-                <div class="inprimaki-taldea">
-                    <label><?php echo $itzulpenak->ezarpenak->bigarren_kolorea; ?></label>
-                    <input type="color" name="bigarren_kolorea" value="<?php echo htmlspecialchars($bigarren_kolorea_def); ?>" class="inprimaki-kontrola sarrera-altuera-50">
-                </div>
- 
-                <div class="inprimaki-taldea">
-                    <label><?php echo $itzulpenak->ezarpenak->footer_kolorea; ?></label>
-                    <input type="color" name="footer_kolorea" value="<?php echo htmlspecialchars($footer_kolorea_def); ?>" class="inprimaki-kontrola sarrera-altuera-50">
-                </div>
- 
-                <div class="inprimaki-taldea">
-                    <label><?php echo $itzulpenak->ezarpenak->itxura; ?></label>
-                    <select name="gaia" class="inprimaki-kontrola">
-                        <option value="argia" <?php echo ($gaia_def === 'argia') ? 'selected' : ''; ?>><?php echo $itzulpenak->ezarpenak->gaia_argia; ?></option>
-                        <option value="iluna" <?php echo ($gaia_def === 'iluna') ? 'selected' : ''; ?>><?php echo $itzulpenak->ezarpenak->gaia_iluna; ?></option>
+                    <label>Defektuzko hizkuntza:</label>
+                    <select name="hizkuntza" class="inprimaki-kontrola">
+                        <option value="eu" <?php echo ($hizkuntza_def === 'eu') ? 'selected' : ''; ?>>Euskara</option>
+                        <option value="es" <?php echo ($hizkuntza_def === 'es') ? 'selected' : ''; ?>>Castellano</option>
+                        <option value="en" <?php echo ($hizkuntza_def === 'en') ? 'selected' : ''; ?>>English</option>
                     </select>
                 </div>
- 
+
+                <div class="inprimaki-taldea">
+                    <label>Kolore nagusia:</label>
+                    <input type="color" name="kolore_nagusia" value="<?php echo htmlspecialchars($kolore_nagusia_def); ?>" class="inprimaki-kontrola sarrera-altuera-50">
+                </div>
+
+                <div class="inprimaki-taldea">
+                    <label>Bigarren mailako kolorea:</label>
+                    <input type="color" name="bigarren_kolorea" value="<?php echo htmlspecialchars($bigarren_kolorea_def); ?>" class="inprimaki-kontrola sarrera-altuera-50">
+                </div>
+
+                <div class="inprimaki-taldea">
+                    <label>Footer kolorea:</label>
+                    <input type="color" name="footer_kolorea" value="<?php echo htmlspecialchars($footer_kolorea_def); ?>" class="inprimaki-kontrola sarrera-altuera-50">
+                </div>
+
+                <div class="inprimaki-taldea">
+                    <label>Aplikazioaren Itxura (Gaia):</label>
+                    <select name="gaia" class="inprimaki-kontrola">
+                        <option value="argia" <?php echo ($gaia_def === 'argia') ? 'selected' : ''; ?>>Argia (Mahaigaina klasikoa)</option>
+                        <option value="iluna" <?php echo ($gaia_def === 'iluna') ? 'selected' : ''; ?>>Iluna (Modo oscuro)</option>
+                    </select>
+                </div>
+
                 <div class="testua-erdian-marjina-goi-30">
-                    <button type="submit" class="botoia botoi-nagusia zabalera-osoa-300px"><?php echo $itzulpenak->ezarpenak->gorde_botoia; ?></button>
+                    <button type="submit" class="botoia botoi-ertza arrisku-kolorea zabalera-osoa-300px" id="gorde-ezarpenak-botoia"><?php echo $itzulpenak->ezarpenak->gorde_botoia; ?></button>
                 </div>
             </form>
  

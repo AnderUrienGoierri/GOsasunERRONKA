@@ -12,23 +12,3 @@
 .irteera-txartela {
     border-bottom-color: var(--danger-color);
 }
-
-/* Dashboard neurketak txartel berria */
-.paziente-informazio-laburpena {
-    background-color: var(--light-bg);
-    padding: 12px 15px;
-    border-radius: var(--border-radius-sm);
-    border-left: 4px solid var(--primary-color);
-    margin-bottom: 20px;
-}
-
-.paziente-informazio-laburpena p {
-    margin: 0;
-    line-height: 1.4;
-}
-
-@media (min-width: 992px) {
-    #dash-neurketak-card .sareta-bikoa {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}

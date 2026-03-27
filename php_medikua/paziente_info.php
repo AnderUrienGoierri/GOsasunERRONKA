@@ -39,7 +39,7 @@ $stmt->execute([$paziente_id]);
 $pazientea = $stmt->fetch(PDO::FETCH_ASSOC);
 
 // Azken neurketak
-$stmtNeurketak = $pdo->prepare("SELECT erregistro_data, glukosa_mg_dl, tentsio_sistolikoa, tentsio_diastolikoa, pisua_kg, altuera, pultsua_ppm, sintomak FROM Neurketak WHERE paziente_id = ? ORDER BY erregistro_data DESC LIMIT 10");
+$stmtNeurketak = $pdo->prepare("SELECT * FROM Neurketak WHERE paziente_id = ? ORDER BY data DESC, ordua DESC LIMIT 10");
 $stmtNeurketak->execute([$paziente_id]);
 $neurketak = $stmtNeurketak->fetchAll(PDO::FETCH_ASSOC);
 
@@ -54,7 +54,7 @@ include_once '../php_includeak/mediku_goiburua.php';
     
 
     <main class="panel-nagusia">
-        <a href="pazienteak.php" class="atzera-esteka"><img src="../img/svg/arrow-left.svg" alt="" class="ikono-1em marjina-esk-5"> Itzuli zerrendara</a>
+        <a href="pazienteak.php" class="atzera-esteka"><img src="../img/arrow-left.svg" alt="" class="ikono-1em marjina-esk-5"> Itzuli zerrendara</a>
         
         <div class="orri-goiburua">
             <h2>Pazientearen Fitxa Klinikoa</h2>
@@ -66,7 +66,7 @@ include_once '../php_includeak/mediku_goiburua.php';
         <?php endif; ?>
 
         <section class="egoera-kudeaketa">
-            <h4><img src="../img/svg/stethoscope.svg" alt="" class="ikono-1_2rem marjina-esk-10"> Egoera Klinikoa (Harrera)</h4>
+            <h4><img src="../img/stethoscope.svg" alt="" class="ikono-1_2rem marjina-esk-10"> Egoera Klinikoa (Harrera)</h4>
             <p>Egungo egoera: <span class="egoera-balioa"><?php echo htmlspecialchars($pazientea['egoera_klinikoa'] ?? 'Alta'); ?></span></p>
             <form method="POST" class="flex-goi-15">
                 <button type="submit" name="berria_egoera" value="Alta" class="botoi-egoera botoi-alta">Alta Eman</button>
@@ -77,13 +77,7 @@ include_once '../php_includeak/mediku_goiburua.php';
         <div class="profil-edukiontzia">
             <div class="paziente-txartela paziente-txartel-zuria" >
             <div class="argazki-inguratzailea">
-                <?php 
-                $irudia_bide = htmlspecialchars($pazientea['irudia'] ?? 'img/lehenetsia_pazientea.png');
-                if (strpos($irudia_bide, 'img/') === 0 && strpos($irudia_bide, 'img/png/') === false && strpos($irudia_bide, 'img/svg/') === false) {
-                    $irudia_bide = str_replace('img/', 'img/png/', $irudia_bide);
-                }
-                ?>
-                <img src="../<?php echo $irudia_bide; ?>" 
+                <img src="../<?php echo htmlspecialchars($pazientea['irudia'] ?? 'img/lehenetsia_pazientea.png'); ?>" 
                      alt="Pazientea" 
                      class="paziente-irudi-handia">
             </div>
@@ -105,24 +99,24 @@ include_once '../php_includeak/mediku_goiburua.php';
         </div>
 
             <div class="txartel-klinikoa">
-                <h3><img src="../img/svg/stethoscope.svg" alt="" class="ikono-1_5rem marjina-esk-10"> Datu Klinikoak</h3>
+                <h3><img src="../img/stethoscope.svg" alt="" class="ikono-1_5rem marjina-esk-10"> Datu Klinikoak</h3>
                 <div class="estatistika-klinikoak">
                     <div class="estatistika-kutxa">
-                        <span class="estatistika-ikonoa"><img src="../img/svg/droplet.svg" alt="" class="ikono-1_5rem"></span>
+                        <span class="estatistika-ikonoa"><img src="../img/droplet.svg" alt="" class="ikono-1_5rem"></span>
                         <div class="estatistika-xehetasunak">
                             <span class="estatistika-etiketa">Odol Taldea</span>
                             <span class="estatistika-balioa"><?php echo htmlspecialchars($pazientea['odol_taldea'] ?? 'Ezezaguna'); ?></span>
                         </div>
                     </div>
                     <div class="estatistika-kutxa">
-                        <span class="estatistika-ikonoa"><img src="../img/svg/ruler.svg" alt="" class="ikono-1_5rem"></span>
+                        <span class="estatistika-ikonoa"><img src="../img/ruler.svg" alt="" class="ikono-1_5rem"></span>
                         <div class="estatistika-xehetasunak">
                             <span class="estatistika-etiketa">Altuera</span>
                             <span class="estatistika-balioa"><?php echo htmlspecialchars($pazientea['azken_altuera'] ?? '-'); ?> m</span>
                         </div>
                     </div>
                     <div class="estatistika-kutxa">
-                        <span class="estatistika-ikonoa"><img src="../img/svg/scale.svg" alt="" class="ikono-1_5rem"></span>
+                        <span class="estatistika-ikonoa"><img src="../img/scale.svg" alt="" class="ikono-1_5rem"></span>
                         <div class="estatistika-xehetasunak">
                             <span class="estatistika-etiketa">Pisua</span>
                             <span class="estatistika-balioa"><?php echo htmlspecialchars($pazientea['azken_pisua'] ?? '-'); ?> kg</span>
@@ -136,28 +130,24 @@ include_once '../php_includeak/mediku_goiburua.php';
                         <table class="neurketa-taula">
                             <thead>
                                 <tr>
-                                    <th><?php echo $itzulpenak->dashboard_pazientea->data_taula; ?></th>
-                                    <th><?php echo $itzulpenak->dashboard_pazientea->glukosa; ?></th>
-                                    <th><?php echo $itzulpenak->dashboard_pazientea->tentsioa; ?></th>
-                                    <th><?php echo $itzulpenak->dashboard_pazientea->pultsua; ?></th>
-                                    <th><?php echo $itzulpenak->dashboard_pazientea->altuera; ?></th>
-                                    <th><?php echo $itzulpenak->dashboard_pazientea->pisua; ?></th>
-                                    <th><?php echo $itzulpenak->dashboard_pazientea->oharrak; ?></th>
+                                    <th>Data</th>
+                                    <th>Glukosa</th>
+                                    <th>Tentsioa</th>
+                                    <th>Pisua</th>
+                                    <th>Oharrak</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <taula_gorputza>
                                 <?php foreach ($neurketak as $n): ?>
                                     <tr>
-                                        <td><?php echo date('Y/m/d H:i', strtotime($n['erregistro_data'])); ?></td>
-                                        <td><?php echo $n['glukosa_mg_dl'] ? $n['glukosa_mg_dl'] . ' mg/dL' : '-'; ?></td>
-                                        <td><?php echo ($n['tentsio_sistolikoa'] && $n['tentsio_diastolikoa']) ? $n['tentsio_sistolikoa'] . '/' . $n['tentsio_diastolikoa'] : '-'; ?></td>
-                                        <td><?php echo $n['pultsua_ppm'] ? $n['pultsua_ppm'] . ' ppm' : '-'; ?></td>
-                                        <td><?php echo $n['altuera'] ? $n['altuera'] . ' cm' : '-'; ?></td>
-                                        <td><?php echo $n['pisua_kg'] ? $n['pisua_kg'] . ' kg' : '-'; ?></td>
-                                        <td class="testu-gris-iluna"><?php echo htmlspecialchars($n['sintomak'] ?? '-'); ?></td>
+                                        <td><?php echo date('Y/m/d H:i', strtotime($n['data'] . ' ' . $n['ordua'])); ?></td>
+                                        <td><?php echo $n['glukosa_mg_dl']; ?> mg/dL</td>
+                                        <td><?php echo $n['tentsio_sistolikoa'] . '/' . $n['tentsio_diastolikoa']; ?></td>
+                                        <td><?php echo $n['pisua_kg']; ?> kg</td>
+                                        <td class="testu-gris-iluna"><?php echo htmlspecialchars($n['oharrak'] ?? '-'); ?></td>
                                     </tr>
                                 <?php endforeach; ?>
-                            </tbody>
+                            </taula_gorputza>
                         </table>
                     </div>
                 <?php else: ?>

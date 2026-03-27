@@ -52,17 +52,20 @@ include_once '../php_includeak/mediku_goiburua.php';
 ?>
 
 <main class="panel-nagusia">
-    <div class="orri-goiburua flex-tartea-15 marjina-behe-20">
+    <div class="orri-goiburua">
         <div>
-            <h2 class="izenburu-nagusia"><img src="../img/svg/mail.svg" alt="" class="ikono-ertaina marjina-esk-5"> Nire Mezuak</h2>
+            <h2 class="izenburu-nagusia"><img src="../img/mail.svg" alt="" class="ikono-ertaina marjina-esk-5"> Nire Mezuak</h2>
             <p class="azpititulu-grisa">Pazienteekin eta harrerako langileekin komunikazioa.</p>
         </div>
-        <a href="mezu_berria.php" class="botoia botoi-nagusia">+ Mezu Berria</a>
+    </div>
+
+    <div class="flex-tartea-20 marjina-behe-20">
+        <a href="mezu_berria.php" class="botoia botoi-sortu marjina-behe-0">+ Mezu Berria</a>
     </div>
 
     <div class="fitxa-edukiontzia marjina-behe-20">
-        <button class="fitxa-botoia aktiboa" onclick="fitxaAldatu('jasotakoak')"><img src="../img/svg/inbox.svg" alt="" class="ikono-1_1em marjina-esk-5"> Jasotakoak</button>
-        <button class="fitxa-botoia" onclick="fitxaAldatu('bidalitakoak')"><img src="../img/svg/send.svg" alt="" class="ikono-1_1em marjina-esk-5"> Bidalitakoak</button>
+        <button class="fitxa-botoia aktiboa" onclick="fitxaAldatu('jasotakoak')"><img src="../img/inbox.svg" alt="" class="ikono-1_1em marjina-esk-5"> Jasotakoak</button>
+        <button class="fitxa-botoia" onclick="fitxaAldatu('bidalitakoak')"><img src="../img/send.svg" alt="" class="ikono-1_1em marjina-esk-5"> Bidalitakoak</button>
     </div>
 
     <div id="jasotakoak" class="fitxa-edukia aktiboa">
@@ -99,7 +102,7 @@ include_once '../php_includeak/mediku_goiburua.php';
             </table>
         <?php else: ?>
             <div class="egoera-hutsa">
-                <div class="ikono-hutsa"><img src="../img/svg/mailbox.svg" alt="" class="ikono-3rem-gardena"></div>
+                <div class="ikono-hutsa"><img src="../img/mailbox.svg" alt="" class="ikono-3rem-gardena"></div>
                 <h3>Ez dago mezurik</h3>
                 <p>Ez duzu mezurik jaso oraindik.</p>
             </div>
@@ -132,7 +135,7 @@ include_once '../php_includeak/mediku_goiburua.php';
             </table>
         <?php else: ?>
             <div class="egoera-hutsa">
-                <div class="ikono-hutsa"><img src="../img/svg/send.svg" alt="" class="ikono-3rem-gardena"></div>
+                <div class="ikono-hutsa"><img src="../img/send.svg" alt="" class="ikono-3rem-gardena"></div>
                 <h3>Ez dago bidalitako mezurik</h3>
                 <p>Ez duzu mezurik bidali oraindik.</p>
             </div>

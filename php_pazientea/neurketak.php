@@ -4,72 +4,113 @@ if (!isset($_SESSION['rol_id']) || $_SESSION['rol_izena'] !== 'Pazientea') {
     header("Location: ../php_hasiera/login.php");
     exit;
 }
+?>
+<script>
+    if (sessionStorage.getItem('usb_connected') !== 'true') {
+        window.location.href = 'index.php';
+    }
+</script>
+<?php
 
 require_once '../php_laguntzaileak/DB_konexioa.php';
-
 $paziente_id = $_SESSION['erabiltzaile_id'];
+$arrakasta_mezua = '';
+$errore_mezua = '';
 
-// Lortu neurketen historia (pultsua eta altuera barne)
-$stmtNeurketak = $pdo->prepare("SELECT erregistro_data, glukosa_mg_dl, tentsio_sistolikoa, tentsio_diastolikoa, pisua_kg, altuera, pultsua_ppm, sintomak FROM Neurketak WHERE paziente_id = ? ORDER BY erregistro_data DESC");
-$stmtNeurketak->execute([$paziente_id]);
-$neurketak = $stmtNeurketak->fetchAll(PDO::FETCH_ASSOC);
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Data eta ordua automatikoki hartuko dira erregistro_data bidez (TIMESTAMP)
+    $glukosa = !empty($_POST['glukosa']) ? $_POST['glukosa'] : null;
+    $sistolikoa = !empty($_POST['sistolikoa']) ? $_POST['sistolikoa'] : null;
+    $diastolikoa = !empty($_POST['diastolikoa']) ? $_POST['diastolikoa'] : null;
+    $pisua = !empty($_POST['pisua']) ? str_replace(',', '.', $_POST['pisua']) : null;
+    $pultsua = !empty($_POST['pultsua']) ? $_POST['pultsua'] : null;
+    $sintomak = !empty($_POST['sintomak']) ? $_POST['sintomak'] : null;
 
-$orri_izenburua = "Nire Neurketak - GOsasun";
+    if ($glukosa || ($sistolikoa && $diastolikoa) || $pisua || $pultsua || $sintomak) {
+        try {
+            $stmt = $pdo->prepare("
+                INSERT INTO Neurketak (paziente_id, glukosa_mg_dl, tentsio_sistolikoa, tentsio_diastolikoa, pisua_kg, pultsua_ppm, sintomak) 
+                VALUES (?, ?, ?, ?, ?, ?, ?)
+            ");
+            $stmt->execute([$paziente_id, $glukosa, $sistolikoa, $diastolikoa, $pisua, $pultsua, $sintomak]);
+            $arrakasta_mezua = "Neurketak ondo erregistratu dira!";
+        } catch (PDOException $e) {
+            $errore_mezua = "Errorea gertatu da datuak gordetzean: " . $e->getMessage();
+        }
+    } else {
+        $errore_mezua = "Gutxienez neurketa bat bete behar duzu gordetzeko.";
+    }
+}
+
+$orri_izenburua = "Neurketa Berria - GOsasun";
 $uneko_orria = "neurketak";
 $css_pertsonalizatua = "pazienteak.css";
 
 include_once '../php_includeak/paziente_goiburua.php';
 ?>
 
-    <main class="panel-nagusia">
+    <main class="panel-nagusia" data-paziente-id="<?php echo $paziente_id; ?>">
         <div class="orri-goiburua">
-            <h2><img src="../img/svg/clipboard-pen.svg" alt="" class="ikono-ertaina marjina-esk-5"> Neurketen Historiala</h2>
-            <p>Hemen zure osasun datuen jarraipena ikusi dezakezu. Neurketak kanpoko gailu bidez inportatzen dira.</p>
+            <h2><img src="../img/clipboard-pen.svg" alt="" class="ikono-ertaina marjina-esk-5"> Neurketa Berria Gehitu</h2>
+            <p>Sartu zure bizi-seinaleak eta sintomak jarraipen klinikorako.</p>
         </div>
 
-        <div class="txartel-klinikoa">
-            <h3><img src="../img/svg/line-chart.svg" alt="" class="ikono-1_5rem marjina-esk-10"> Azken Neurketak</h3>
-            
-            <?php if (count($neurketak) > 0): ?>
-                <div class="korritze-horizontala">
-                    <table class="neurketa-taula">
-                        <thead>
-                            <tr>
-                                <th><?php echo $itzulpenak->dashboard_pazientea->data_taula; ?></th>
-                                <th><?php echo $itzulpenak->dashboard_pazientea->glukosa; ?></th>
-                                <th><?php echo $itzulpenak->dashboard_pazientea->tentsioa; ?></th>
-                                <th><?php echo $itzulpenak->dashboard_pazientea->pultsua; ?></th>
-                                <th><?php echo $itzulpenak->dashboard_pazientea->altuera; ?></th>
-                                <th><?php echo $itzulpenak->dashboard_pazientea->pisua; ?></th>
-                                <th><?php echo $itzulpenak->dashboard_pazientea->oharrak; ?></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php foreach ($neurketak as $n): ?>
-                                <tr>
-                                    <td><strong><?php echo date('Y/m/d', strtotime($n['erregistro_data'])); ?></strong><br><small><?php echo date('H:i', strtotime($n['erregistro_data'])); ?></small></td>
-                                    <td><?php echo $n['glukosa_mg_dl'] ? $n['glukosa_mg_dl'] . ' mg/dL' : '-'; ?></td>
-                                    <td><?php echo ($n['tentsio_sistolikoa'] && $n['tentsio_diastolikoa']) ? $n['tentsio_sistolikoa'] . '/' . $n['tentsio_diastolikoa'] : '-'; ?></td>
-                                    <td><?php echo $n['pultsua_ppm'] ? $n['pultsua_ppm'] . ' ppm' : '-'; ?></td>
-                                    <td><?php echo $n['altuera'] ? $n['altuera'] . ' cm' : '-'; ?></td>
-                                    <td><?php echo $n['pisua_kg'] ? $n['pisua_kg'] . ' kg' : '-'; ?></td>
-                                    <td class="testu-gris-iluna"><?php echo htmlspecialchars($n['sintomak'] ?? '-'); ?></td>
-                                </tr>
-                            <?php endforeach; ?>
-                        </tbody>
-                    </table>
+        <?php if ($arrakasta_mezua): ?>
+            <div class="alerta alerta-arrakasta"><?php echo htmlspecialchars($arrakasta_mezua); ?></div>
+        <?php endif; ?>
+        <?php if ($errore_mezua): ?>
+            <div class="alerta alerta-errorea"><?php echo htmlspecialchars($errore_mezua); ?></div>
+        <?php endif; ?>
+
+        <div class="inprimaki-edukiontzia">
+            <form id="neurketaForm" action="neurketak.php" method="POST" class="neurketa-inprimakia">
+                <!-- Data eta ordua automatikoki erregistratzen dira -->
+
+                <div class="neurketa-taldea">
+                    <div class="inprimaki-lerroa">
+                        <div class="inprimaki-taldea">
+                            <label for="glukosa">Glukosa (mg/dL):</label>
+                            <input type="number" step="0.1" id="glukosa" name="glukosa" placeholder="Adib: 105" class="inprimaki-kontrola">
+                        </div>
+                        <div class="inprimaki-taldea">
+                            <label for="pultsua">Pultsua (ppm):</label>
+                            <input type="number" id="pultsua" name="pultsua" placeholder="Adib: 75" class="inprimaki-kontrola">
+                        </div>
+                    </div>
+                    <div class="inprimaki-lerroa">
+                        <div class="inprimaki-taldea">
+                            <label for="sistolikoa">Tentsio Sistolikoa:</label>
+                            <input type="number" id="sistolikoa" name="sistolikoa" placeholder="Goikoa (Adib: 120)" class="inprimaki-kontrola">
+                        </div>
+                        <div class="inprimaki-taldea">
+                            <label for="diastolikoa">Tentsio Diastolikoa:</label>
+                            <input type="number" id="diastolikoa" name="diastolikoa" placeholder="Behekoa (Adib: 80)" class="inprimaki-kontrola">
+                        </div>
+                    </div>
                 </div>
-            <?php else: ?>
-                <div class="zerrenda-hutsa">
-                    <img src="../img/svg/clipboard-list.svg" alt="" class="ikono-handia-48 marjina-behe-15 opazitatea-50">
-                    <p>Oraindik ez duzu neurketarik erregistratuta.</p>
+
+                <div class="inprimaki-taldea">
+                    <label for="pisua">Pisua (kg):</label>
+                    <input type="number" step="0.1" id="pisua" name="pisua" placeholder="Adib: 72.5" class="inprimaki-kontrola">
                 </div>
-            <?php endif; ?>
-        </div>
-        
-        <div class="marjina-goi-30 testua-erdian">
-            <a href="index.php" class="botoia botoi-ertza">Itzuli Panelera</a>
+
+                <div class="inprimaki-taldea">
+                    <label for="sintomak">Sintomak / Oharrak:</label>
+                    <textarea id="sintomak" name="sintomak" errenkadak="4" placeholder="Nola sentitzen zara? Zerbait arraroa sumatu duzu?" class="inprimaki-kontrola"></textarea>
+                </div>
+
+                <div class="inprimaki-ekintzak">
+                    <button type="submit" class="botoia botoi-nagusia botoi-zabal">Gorde Neurketak</button>
+                    <a href="index.php" class="botoia botoi-ertza">Utzi</a>
+                </div>
+            </form>
         </div>
     </main>
 
-<?php include_once '../php_includeak/paziente_footer.php'; ?>
+    <script src="../js/abisuak_logika.js"></script>
+    <script src="../js/neurketak.js"></script>
+
+<?php include_once '../php_includeak/paziente_footer.php';
+?>
+
+

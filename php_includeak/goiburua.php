@@ -1,20 +1,52 @@
 <?php
-require_once __DIR__ . '/konfigurazioa_kargatu.php';
-require_once __DIR__ . '/estiloak_kargatu.php';
-require_once __DIR__ . '/hizkuntza_kargatu.php';
+$hizkuntza_def = "eu";
+$kolore_nagusia_def = "#4361ee";
+$bigarren_kolorea_def = "#3f37c9";
+$footer_kolorea_def = "#2b2d42";
+$gaia_def = "argia";
 
-// Orrialde publikoan gaude, globala bakarrik kargatu
-$konf = kargatuKonfigurazioa(false);
-$itzulpenak = kargatuItzulpenak($konf['hizkuntza']);
+// Osasun ezarpenak
+$sistema_izena_def = "GOsasun";
+$hitzordu_muga_def = "20";
+$ordutegia_ireki_def = "08:00";
+$ordutegia_itxi_def = "20:00";
+$mantenimendua_def = "ez";
 
-$hizkuntza_def = $konf['hizkuntza'];
-$kolore_nagusia_def = $konf['kolore_nagusia'];
-$bigarren_kolorea_def = $konf['bigarren_kolorea'];
-$footer_kolorea_def = $konf['footer_kolorea'];
-$gaia_def = $konf['gaia'];
+$xml_path = __DIR__ . '/../xml_konfigurazioa/config.xml';
+if (file_exists($xml_path)) {
+    $xml_conf = simplexml_load_file($xml_path);
+    if ($xml_conf) {
+        $hizkuntza_def = isset($xml_conf->hizkuntza) ? (string)$xml_conf->hizkuntza : $hizkuntza_def;
+        $kolore_nagusia_def = isset($xml_conf->kolore_nagusia) ? (string)$xml_conf->kolore_nagusia : $kolore_nagusia_def;
+        $bigarren_kolorea_def = isset($xml_conf->bigarren_kolorea) ? (string)$xml_conf->bigarren_kolorea : $bigarren_kolorea_def;
+        $footer_kolorea_def = isset($xml_conf->footer_kolorea) ? (string)$xml_conf->footer_kolorea : $footer_kolorea_def;
+        $gaia_def = isset($xml_conf->gaia) ? (string)$xml_conf->gaia : $gaia_def;
+        
+        if (isset($xml_conf->osasun_zentroa)) {
+            $sistema_izena_def = isset($xml_conf->osasun_zentroa->sistema_izena) ? (string)$xml_conf->osasun_zentroa->sistema_izena : $sistema_izena_def;
+            $hitzordu_muga_def = isset($xml_conf->osasun_zentroa->mediku_bakoitzeko_gehienezko_hitzorduak) ? (string)$xml_conf->osasun_zentroa->mediku_bakoitzeko_gehienezko_hitzorduak : $hitzordu_muga_def;
+            $ordutegia_ireki_def = isset($xml_conf->osasun_zentroa->ordutegia_ireki) ? (string)$xml_conf->osasun_zentroa->ordutegia_ireki : $ordutegia_ireki_def;
+            $ordutegia_itxi_def = isset($xml_conf->osasun_zentroa->ordutegia_itxi) ? (string)$xml_conf->osasun_zentroa->ordutegia_itxi : $ordutegia_itxi_def;
+            $mantenimendua_def = isset($xml_conf->osasun_zentroa->mantenimendu_modua) ? (string)$xml_conf->osasun_zentroa->mantenimendu_modua : $mantenimendua_def;
+        }
+    }
+}
 
- 
-$orri_izenburua = "GOsasun - Zure Osasun Ataria";
+// Kargatu hizkuntzen fitxategia
+$hizkuntza_xml_path = __DIR__ . '/../xml_hizkuntzak/' . $hizkuntza_def . '.xml';
+$itzulpenak = null;
+if (file_exists($hizkuntza_xml_path)) {
+    $itzulpenak = simplexml_load_file($hizkuntza_xml_path);
+} else {
+    // Fallback: kargatu eu.xml baieztatzeko existitzen dela
+    $hizkuntza_xml_path = __DIR__ . '/../xml_hizkuntzak/eu.xml';
+    if (file_exists($hizkuntza_xml_path)) {
+        $itzulpenak = simplexml_load_file($hizkuntza_xml_path);
+    }
+}
+
+// Bidaliko dugu izenburua konfiguraziotik zuzenean
+$orri_izenburua = $sistema_izena_def . " - Zure Osasun Ataria";
 ?>
 <!DOCTYPE html>
 <html lang="<?php echo htmlspecialchars($hizkuntza_def); ?>">
@@ -24,9 +56,8 @@ $orri_izenburua = "GOsasun - Zure Osasun Ataria";
     <title><?php echo $orri_izenburua ?? 'GOsasun'; ?></title>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="shortcut icon" href="<?php echo $bide_absolutua; ?>img/png/GOsasun_logoa.png">
     <!-- CSS -->
-    <link rel="stylesheet" href="<?php echo $bide_absolutua; ?>css/estilo_orokorrak.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="<?php echo $bide_absolutua; ?>css/estilo_orokorrak.css">
     <link rel="stylesheet" href="<?php echo $bide_absolutua; ?>css/goiburua.css">
     <?php
         $orri_izena = basename($_SERVER['PHP_SELF'], '.php');
@@ -36,29 +67,48 @@ $orri_izenburua = "GOsasun - Zure Osasun Ataria";
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    <?php inprimatuEstiloak($konf); ?>
+    <?php
+    echo "<style>\n";
+    echo ":root {\n";
+    echo "  --primary-color: " . htmlspecialchars($kolore_nagusia_def) . " !important;\n";
+    echo "  --secondary-color: " . htmlspecialchars($bigarren_kolorea_def) . " !important;\n";
+    echo "  --footer-color: " . htmlspecialchars($footer_kolorea_def) . " !important;\n";
+    echo "}\n";
+    
+    if ($gaia_def == 'iluna') {
+        echo "body, main { background-color: #121212 !important; color: #f0f0f0 !important; }\n";
+        echo ".portal-txartela, .ezaugarri-txartela, .kutxa-zuria, .kaixo-atalak, .menu-txartela, .kutxa-zuria-800, .kutxa-zuria-700, .kuadro-estatistikak {\n";
+        echo "    background-color: #1e1e1e !important; color: #f0f0f0 !important; border-color: #333 !important;\n";
+        echo "}\n";
+        echo "h1, h2, h3, .portal-info h3, .ezaugarri-txartela h3, .izenburu-nagusia, .izenburu-iluna {\n";
+        echo "    color: #ffffff !important;\n";
+        echo "}\n";
+        echo ".azpititulua, .portal-info p, .ezaugarri-txartela p, .testu-gris-txikia, .azpititulu-grisa, .gray-text, .deskribapen-grisa {\n";
+        echo "    color: #cccccc !important;\n";
+        echo "}\n";
+        echo "td, th { color: #f0f0f0 !important; border-color: #333 !important; }\n";
+        echo "th { background: #2d2d2d !important; }\n";
+        echo ".egoera-hutsa, .kutxa-hutsa-40, .inprimaki-kontrola { background-color: #1e1e1e !important; color: #fff !important; border-color: #555 !important; }\n";
+    }
+    echo "</style>\n";
+    ?>
 </head>
 <body>
     <header>
         <nav class="nabigazio-barra">
             <div class="logoa">
                 <a href="<?php echo $bide_absolutua; ?>index.php">
-                    <img src="<?php echo $bide_absolutua; ?>img/png/GOsasun_logoa.png" alt="GOsasun" class="logo-irudia">
+                    <img src="<?php echo $bide_absolutua; ?>img/GOsasun_logoa.png" alt="GOsasun" class="logo-irudia">
                 </a>
             </div>
             <div class="mugikorreko-ikonoak">
-                <?php if (isset($uneko_orria) && ($uneko_orria === 'index' || $uneko_orria === 'kontaktua')): ?>
-                <button class="ezarpenak-botoia-mugikorra" aria-label="Ireki ezarpenak" id="irekiEzarpenakModalaMugikorra"><img src="<?php echo $bide_absolutua; ?>img/svg/settings.svg" alt=""></button>
-                <?php endif; ?>
                 <button class="menu-botoia" aria-label="Ireki menua"><img src="<?php echo $bide_absolutua; ?>img/svg/list.svg" alt=""></button>
             </div>
             <ul class="nabigazio-estekak">
                 <li><a href="<?php echo $bide_absolutua; ?>index.php" <?php echo (isset($uneko_orria) && $uneko_orria === 'index') ? 'class="aktiboa"' : ''; ?>><?php echo $itzulpenak->menua->hasiera; ?></a></li>
                 <li><a href="<?php echo $bide_absolutua; ?>php_hasiera/kontaktua.php" <?php echo (isset($uneko_orria) && $uneko_orria === 'kontaktua') ? 'class="aktiboa"' : ''; ?>><?php echo $itzulpenak->menua->kontaktua; ?></a></li>
-                <?php if (isset($uneko_orria) && ($uneko_orria === 'index' || $uneko_orria === 'kontaktua')): ?>
-                <li><a href="#" id="irekiEzarpenakModala"><img src="<?php echo $bide_absolutua; ?>img/svg/settings.svg" alt=""> <?php echo $itzulpenak->menua->ezarpenak; ?></a></li>
-                <?php endif; ?>
-                <li><a href="<?php echo $bide_absolutua; ?>php_hasiera/login.php" class="botoia botoi-nagusia"><?php echo $itzulpenak->menua->saioa_hasi; ?></a></li>
+                <li><a href="#" id="irekiEzarpenakModala"><?php echo $itzulpenak->menua->ezarpenak; ?></a></li>
+                <li><a href="<?php echo $bide_absolutua; ?>php_hasiera/login.php" class="botoia botoi-ertza" id="goiburu-login-botoia"><?php echo $itzulpenak->menua->saioa_hasi; ?></a></li>
             </ul>
         </nav>
     </header>

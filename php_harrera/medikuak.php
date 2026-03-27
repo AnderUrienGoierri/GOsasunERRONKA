@@ -35,8 +35,10 @@ include_once '../php_includeak/harrera_goiburua.php';
 
     <main class="panel-nagusia">
         <div class="orri-goiburua">
-            <h2><img src="../img/svg/stethoscope.svg" alt="" class="ikono-1_25rem marjina-esk-10"> Medikuen Kudeaketa</h2>
-            <p>Ikusi eta kudeatu zentroko lantalde medikoa.</p>
+            <div>
+                <h2 class="izenburu-nagusia"><img src="../img/svg/stethoscope.svg" alt="" class="ikono-1_25rem marjina-esk-10"> Medikuen Kudeaketa</h2>
+                <p class="azpititulu-grisa">Ikusi eta kudeatu zentroko lantalde medikoa.</p>
+            </div>
         </div>
 
         <?php if ($mezua): ?>
@@ -46,8 +48,8 @@ include_once '../php_includeak/harrera_goiburua.php';
             <div class="alerta alerta-errorea"><?php echo htmlspecialchars($errorea); ?></div>
         <?php endif; ?>
 
-        <div class="flex-tartea-20">
-            <a href="mediku_sortu.php" class="botoia botoi-nagusia marjina-behe-0">+ Mediku Berria</a>
+        <div class="flex-tartea-20 marjina-behe-20">
+            <a href="mediku_sortu.php" class="botoia botoi-sortu marjina-behe-0">+ Mediku Berria</a>
             <input type="text" id="bilaketaMedikuak" class="inprimaki-kontrola bilaketa-barra gehienezko-zabalera-300" placeholder="Bilatu izena edo espezialitatea..." >
         </div>
 
@@ -56,22 +58,17 @@ include_once '../php_includeak/harrera_goiburua.php';
                 <thead>
                     <tr>
                         <th>Argazkia</th>
-                        <th class="kurtsore-erakuslea" onclick="ordenatuTaula(1)">Izena <img src="../img/svg/sort.svg" alt="" class="ikono-txikia-gardena"></th>
-                        <th class="kurtsore-erakuslea" onclick="ordenatuTaula(2)">Espezialitatea <img src="../img/svg/sort.svg" alt="" class="ikono-txikia-gardena"></th>
-                        <th class="kurtsore-erakuslea" onclick="ordenatuTaula(3)">Elkargokide Zkia. <img src="../img/svg/sort.svg" alt="" class="ikono-txikia-gardena"></th>
+                        <th class="kurtsore-erakuslea" onclick="ordenatuTaula(1)">Izena <img src="../img/sort.svg" alt="" class="ikono-txikia-gardena"></th>
+                        <th class="kurtsore-erakuslea" onclick="ordenatuTaula(2)">Espezialitatea <img src="../img/sort.svg" alt="" class="ikono-txikia-gardena"></th>
+                        <th class="kurtsore-erakuslea" onclick="ordenatuTaula(3)">Elkargokide Zkia. <img src="../img/sort.svg" alt="" class="ikono-txikia-gardena"></th>
                         <th>Ekintzak</th>
                     </tr>
                 </thead>
                 <taula_gorputza>
                     <?php foreach ($medikuak as $m): ?>
+                        <tr>
                             <td class="zabalera-50">
-                                <?php 
-                                $irudia_bide = htmlspecialchars($m['irudia'] ?? 'img/lehenetsia_medikua.png');
-                                if (strpos($irudia_bide, 'img/') === 0 && strpos($irudia_bide, 'img/png/') === false && strpos($irudia_bide, 'img/svg/') === false) {
-                                    $irudia_bide = str_replace('img/', 'img/png/', $irudia_bide);
-                                }
-                                ?>
-                                <img src="../<?php echo $irudia_bide; ?>" 
+                                <img src="../<?php echo htmlspecialchars($m['irudia'] ?? 'img/lehenetsia_medikua.png'); ?>" 
                                      alt="Medikuaren argazkia" class="irudia-txikia">
                             </td>
                             <td>
@@ -82,10 +79,10 @@ include_once '../php_includeak/harrera_goiburua.php';
                             <td><?php echo htmlspecialchars($m['elkargokide_zenbakia']); ?></td>
                             <td>
                                 <div class="taula-ekintzak">
-                                    <a href="mediku_fitxa.php?id=<?php echo $m['mediku_id']; ?>" class="botoi-ikonoa" title="Ikusi Fitxa"><img src="../img/svg/eye.svg" alt="" class="ikono-ertaina marjina-esk-5"></a>
-                                    <a href="hitzorduak.php?filter_mediku_id=<?php echo $m['mediku_id']; ?>" class="botoi-ikonoa hitzordu-botoia" title="Ikusi Agenda"><img src="../img/svg/calendar-days.svg" alt="" class="ikono-ertaina marjina-esk-5"></a>
-                                    <a href="mediku_editatu.php?id=<?php echo $m['mediku_id']; ?>" class="botoi-ikonoa editatu-botoia" title="Editatu"><img src="../img/svg/pencil.svg" alt="" class="ikono-ertaina marjina-esk-5"></a>
-                                    <a href="medikuak.php?delete_id=<?php echo $m['mediku_id']; ?>" class="botoi-ikonoa ezabatu-botoia" onclick="return confirm('Ziur zaude mediku hau ezabatu nahi duzula?');" title="Ezabatu"><img src="../img/svg/trash-2.svg" alt="" class="ikono-ertaina marjina-esk-5"></a>
+                                    <a href="mediku_fitxa.php?id=<?php echo $m['mediku_id']; ?>" class="botoi-ikonoa" title="Ikusi Fitxa"><img src="../img/eye.svg" alt="" class="ikono-ertaina marjina-esk-5"></a>
+                                    <a href="hitzorduak.php?filter_mediku_id=<?php echo $m['mediku_id']; ?>" class="botoi-ikonoa hitzordu-botoia" title="Ikusi Agenda"><img src="../img/calendar-days.svg" alt="" class="ikono-ertaina marjina-esk-5"></a>
+                                    <a href="mediku_editatu.php?id=<?php echo $m['mediku_id']; ?>" class="botoi-ikonoa editatu-botoia" title="Editatu"><img src="../img/pencil.svg" alt="" class="ikono-ertaina marjina-esk-5"></a>
+                                    <a href="medikuak.php?delete_id=<?php echo $m['mediku_id']; ?>" class="botoi-ikonoa ezabatu-botoia" onclick="return confirm('Ziur zaude mediku hau ezabatu nahi duzula?');" title="Ezabatu"><img src="../img/trash-2.svg" alt="" class="ikono-ertaina marjina-esk-5"></a>
                                 </div>
                             </td>
                         </tr>

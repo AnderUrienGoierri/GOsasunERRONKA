@@ -7,6 +7,8 @@ if (!isset($_SESSION['rol_id']) || $_SESSION['rol_izena'] !== 'Medikua') {
 
 require_once '../php_laguntzaileak/DB_konexioa.php';
 $mediku_id = $_SESSION['erabiltzaile_id'];
+$arrakasta_mezua = '';
+$errore_mezua = '';
 
 // 1. Lortu esleitutako pazienteen zerrenda
 $stmtP = $pdo->prepare("SELECT p.paziente_id, p.izena, p.abizenak, p.nan 
@@ -17,106 +19,123 @@ $stmtP = $pdo->prepare("SELECT p.paziente_id, p.izena, p.abizenak, p.nan
 $stmtP->execute([$mediku_id]);
 $pazienteak = $stmtP->fetchAll(PDO::FETCH_ASSOC);
 
-// 2. Aukeratutako pazientearen neurketak lortu (baldin badago)
-$paziente_id_aukera = $_GET['paziente_id'] ?? null;
-$neurketak = [];
-$paziente_izena = "";
+// Paziente bat ezarrita badago parametro bidez
+$paziente_id_lehenetsia = $_GET['paziente_id'] ?? null;
 
-if ($paziente_id_aukera) {
-    // Ziurtatu medikuak sarbidea duela
-    $stm_egiaztatu = $pdo->prepare("SELECT 1 FROM Mediku_Paziente WHERE mediku_id = ? AND paziente_id = ?");
-    $stm_egiaztatu->execute([$mediku_id, $paziente_id_aukera]);
-    
-    if ($stm_egiaztatu->fetch()) {
-        $stmtN = $pdo->prepare("SELECT erregistro_data, glukosa_mg_dl, tentsio_sistolikoa, tentsio_diastolikoa, pisua_kg, altuera, pultsua_ppm, sintomak FROM Neurketak WHERE paziente_id = ? ORDER BY erregistro_data DESC");
-        $stmtN->execute([$paziente_id_aukera]);
-        $neurketak = $stmtN->fetchAll(PDO::FETCH_ASSOC);
-        
-        // Lortu pazientearen izena izenbururako
-        $stmtI = $pdo->prepare("SELECT izena, abizenak FROM Pazienteak WHERE paziente_id = ?");
-        $stmtI->execute([$paziente_id_aukera]);
-        $pInfo = $stmtI->fetch();
-        $paziente_izena = $pInfo['izena'] . " " . $pInfo['abizenak'];
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $paziente_id_post = $_POST['paziente_id'] ?? null;
+    // Data eta ordua automatikoki hartuko dira erregistro_data bidez (TIMESTAMP)
+    $glukosa = !empty($_POST['glukosa']) ? $_POST['glukosa'] : null;
+    $sistolikoa = !empty($_POST['sistolikoa']) ? $_POST['sistolikoa'] : null;
+    $diastolikoa = !empty($_POST['diastolikoa']) ? $_POST['diastolikoa'] : null;
+    $pisua = !empty($_POST['pisua']) ? str_replace(',', '.', $_POST['pisua']) : null;
+    $pultsua = !empty($_POST['pultsua']) ? $_POST['pultsua'] : null;
+    $sintomak = !empty($_POST['sintomak']) ? $_POST['sintomak'] : null;
+
+    if ($paziente_id_post && ($glukosa || ($sistolikoa && $diastolikoa) || $pisua || $pultsua || $sintomak)) {
+        try {
+            $stmt = $pdo->prepare("
+                INSERT INTO Neurketak (paziente_id, glukosa_mg_dl, tentsio_sistolikoa, tentsio_diastolikoa, pisua_kg, pultsua_ppm, sintomak) 
+                VALUES (?, ?, ?, ?, ?, ?, ?)
+            ");
+            $stmt->execute([$paziente_id_post, $glukosa, $sistolikoa, $diastolikoa, $pisua, $pultsua, $sintomak]);
+            
+            if ($pisua) {
+                $stmtPisua = $pdo->prepare("UPDATE Pazienteak SET azken_pisua = ? WHERE paziente_id = ?");
+                $stmtPisua->execute([$pisua, $paziente_id_post]);
+            }
+
+            $arrakasta_mezua = "Neurketak ondo erregistratu dira!";
+        } catch (PDOException $e) {
+            $errore_mezua = "Errorea gertatu da datuak gordetzean: " . $e->getMessage();
+        }
+    } else {
+        if (!$paziente_id_post) {
+            $errore_mezua = "Paziente bat aukeratu behar duzu.";
+        } else {
+            $errore_mezua = "Gutxienez neurketa bat bete behar duzu gordetzeko.";
+        }
     }
 }
 
-$orri_izenburua = "Pazienteen Neurketak - GOsasun";
+$orri_izenburua = "Neurketak Erregistratu - GOsasun";
 $uneko_orria = "neurketak";
-$css_pertsonalizatua = "medikua_errezetak.css";
+$css_pertsonalizatua = "medikua_errezetak.css"; // Estilo bateragarrietarako
 
 include_once '../php_includeak/mediku_goiburua.php';
 ?>
 
     <main class="panel-nagusia">
         <div class="orri-goiburua">
-            <h2><img src="../img/svg/clipboard-pen.svg" alt="" class="ikono-ertaina marjina-esk-5"> Pazienteen Neurketen Historia</h2>
-            <p>Hautatu paziente bat bere bizi-seinaleen eta sintomen historiala ikusteko. Neurketak C# aplikazioaren bidez kudeatzen dira.</p>
+            <h2><img src="../img/clipboard-pen.svg" alt="" class="ikono-ertaina marjina-esk-5"> Neurketa Berria Gehitu</h2>
+            <p>Sartu aukeratutako pazientearen bizi-seinaleak eta sintomak jarraipen klinikorako. Ez da USB-arik behar.</p>
         </div>
 
+        <?php if ($arrakasta_mezua): ?>
+            <div class="alerta alerta-arrakasta"><?php echo htmlspecialchars($arrakasta_mezua); ?></div>
+        <?php endif; ?>
+        <?php if ($errore_mezua): ?>
+            <div class="alerta alerta-errorea"><?php echo htmlspecialchars($errore_mezua); ?></div>
+        <?php endif; ?>
+
         <div class="inprimaki-edukiontzia form-edukiontzi-zuria">
-            <form id="pazienteAukeraForm" action="neurketak.php" method="GET" class="neurketa-inprimakia">
-                <div class="inprimaki-taldea marjina-behe-10">
-                    <label for="paziente_id" class="etiketa-lodia">Hautatu Pazientea</label>
-                    <div class="flex-tartea-10">
-                        <select name="paziente_id" id="paziente_id" class="inprimaki-kontrola sarrera-handia" onchange="this.form.submit()">
-                            <option value="">-- Hautatu pazientea --</option>
-                            <?php foreach ($pazienteak as $p): ?>
-                                <option value="<?php echo $p['paziente_id']; ?>" <?php echo ($paziente_id_aukera == $p['paziente_id']) ? 'selected' : ''; ?>>
-                                    <?php echo htmlspecialchars($p['abizenak'] . ", " . $p['izena'] . " (" . $p['nan'] . ")"); ?>
-                                </option>
-                            <?php endforeach; ?>
-                        </select>
-                        <button type="submit" class="botoia botoi-nagusia">Ikusi</button>
+            <form id="neurketaForm" action="neurketak.php" method="POST" class="neurketa-inprimakia">
+                
+                <div class="inprimaki-taldea marjina-behe-20">
+                    <label for="paziente_id" class="etiketa-lodia">Pazientea *</label>
+                    <select name="paziente_id" id="paziente_id" class="inprimaki-kontrola sarrera-handia" required>
+                        <option value="">Hautatu pazientea...</option>
+                        <?php foreach ($pazienteak as $p): ?>
+                            <option value="<?php echo $p['paziente_id']; ?>" <?php echo ($paziente_id_lehenetsia == $p['paziente_id']) ? 'selected' : ''; ?>>
+                                <?php echo htmlspecialchars($p['abizenak'] . ", " . $p['izena'] . " (" . $p['nan'] . ")"); ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+
+                <!-- Data eta ordua automatikoki erregistratzen dira -->
+
+                <div class="neurketa-taldea neurketa-kutxa-argia">
+                    <div class="inprimaki-lerroa flex-20px-tartea marjina-behe-15">
+                        <div class="inprimaki-taldea flex-1">
+                            <label for="glukosa" class="etiketa-lodia">Glukosa (mg/dL):</label>
+                            <input type="number" step="0.1" id="glukosa" name="glukosa" placeholder="Adib: 105" class="inprimaki-kontrola sarrera-handia">
+                        </div>
+                        <div class="inprimaki-taldea flex-1">
+                            <label for="pultsua" class="etiketa-lodia">Pultsua (ppm):</label>
+                            <input type="number" id="pultsua" name="pultsua" placeholder="Adib: 75" class="inprimaki-kontrola sarrera-handia">
+                        </div>
                     </div>
+                    <div class="inprimaki-lerroa flex-20px-tartea">
+                        <div class="inprimaki-taldea flex-1">
+                            <label for="sistolikoa" class="etiketa-lodia">Tentsio Sistolikoa:</label>
+                            <input type="number" id="sistolikoa" name="sistolikoa" placeholder="Goikoa (Adib: 120)" class="inprimaki-kontrola sarrera-handia">
+                        </div>
+                        <div class="inprimaki-taldea flex-1">
+                            <label for="diastolikoa" class="etiketa-lodia">Tentsio Diastolikoa:</label>
+                            <input type="number" id="diastolikoa" name="diastolikoa" placeholder="Behekoa (Adib: 80)" class="inprimaki-kontrola sarrera-handia">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="inprimaki-taldea marjina-behe-20">
+                    <label for="pisua" class="etiketa-lodia">Pisua (kg):</label>
+                    <input type="number" step="0.1" id="pisua" name="pisua" placeholder="Adib: 72.5" class="inprimaki-kontrola sarrera-handia">
+                </div>
+
+                <div class="inprimaki-taldea marjina-behe-25">
+                    <label for="sintomak" class="etiketa-lodia">Sintomak / Oharrak:</label>
+                    <textarea id="sintomak" name="sintomak" rows="4" placeholder="Sartu pazientearen sintomak edo oharrak hemen..." class="inprimaki-kontrola sarrera-testu-eremua"></textarea>
+                </div>
+
+                <div class="inprimaki-ekintzak flex-15px-tartea">
+                    <button type="submit" class="botoia botoi-nagusia botoi-handia-flex">Gorde Neurketak</button>
+                    <a href="index.php" class="botoia botoi-ertza botoi-handia-padding">Utzi</a>
                 </div>
             </form>
         </div>
+    </main>
 
-        <?php if ($paziente_id_aukera): ?>
-            <div class="txartel-klinikoa">
-                <div class="flex-tartea-15 flex-erdia marjina-behe-15">
-                    <h3 class="izenburu-urdina marjina-behe-0"><?php echo htmlspecialchars($paziente_izena); ?> -(r)en Neurketak</h3>
-                    <a href="paziente_info.php?id=<?php echo $paziente_id_aukera; ?>" class="testu-esteka testu-gris-txikia">Ikusi fitxa osoa</a>
-                </div>
-                
-                <?php if (count($neurketak) > 0): ?>
-                    <div class="korritze-horizontala">
-                        <table class="neurketa-taula">
-                            <thead>
-                                <tr>
-                                    <th><?php echo $itzulpenak->dashboard_pazientea->data_taula; ?> / Ordua</th>
-                                    <th><?php echo $itzulpenak->dashboard_pazientea->glukosa; ?></th>
-                                    <th><?php echo $itzulpenak->dashboard_pazientea->tentsioa; ?></th>
-                                    <th><?php echo $itzulpenak->dashboard_pazientea->pultsua; ?></th>
-                                    <th><?php echo $itzulpenak->dashboard_pazientea->altuera; ?></th>
-                                    <th><?php echo $itzulpenak->dashboard_pazientea->pisua; ?></th>
-                                    <th><?php echo $itzulpenak->dashboard_pazientea->oharrak; ?></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php foreach ($neurketak as $n): ?>
-                                    <tr>
-                                        <td><strong><?php echo date('Y/m/d', strtotime($n['erregistro_data'])); ?></strong><br><small><?php echo date('H:i', strtotime($n['erregistro_data'])); ?></small></td>
-                                        <td><?php echo $n['glukosa_mg_dl'] ? $n['glukosa_mg_dl'] . ' mg/dL' : '-'; ?></td>
-                                        <td><?php echo ($n['tentsio_sistolikoa'] && $n['tentsio_diastolikoa']) ? $n['tentsio_sistolikoa'] . '/' . $n['tentsio_diastolikoa'] : '-'; ?></td>
-                                        <td><?php echo $n['pultsua_ppm'] ? $n['pultsua_ppm'] . ' ppm' : '-'; ?></td>
-                                        <td><?php echo $n['altuera'] ? $n['altuera'] . ' cm' : '-'; ?></td>
-                                        <td><?php echo $n['pisua_kg'] ? $n['pisua_kg'] . ' kg' : '-'; ?></td>
-                                        <td class="testu-gris-iluna"><?php echo htmlspecialchars($n['sintomak'] ?? '-'); ?></td>
-                                    </tr>
-                                <?php endforeach; ?>
-                            </tbody>
-                        </table>
-                    </div>
-                <?php else: ?>
-                    <p class="zerrenda-hutsa">Ez dago neurketa erregistratuta paziente honentzat.</p>
-                <?php endif; ?>
-            </div>
-        <?php else: ?>
-            <div class="testua-erdian hutsartea-50 opazitatea-50">
-                <img src="../img/svg/users.svg" alt="" class="ikono-handia-48 marjina-behe-15">
-                <p>Hautatu paziente bat bere neurketen historia kargatzeko.</p>
-            </div>
-<?php endif; ?>
-    <!-- JavaScript inclusion removed because form is gone -->
+    <script src="../js/mediku_neurketak.js"></script>
+
 <?php include_once '../php_includeak/mediku_footer.php'; ?>

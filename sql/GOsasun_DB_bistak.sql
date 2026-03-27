@@ -102,4 +102,15 @@ SELECT a.abisu_id,
     a.testua,
     a.irakurrita
 FROM Abisuak a
-    JOIN Pazienteak p ON a.paziente_id = p.paziente_id;
+    JOIN Pazienteak p ON a.paziente_id = p.paziente_id;
+-- 8. V_Kanpoko_Mezuak: Webgune publikotik jasotako mezuak
+CREATE OR REPLACE VIEW V_Kanpoko_Mezuak AS
+SELECT mezu_id,
+    izena,
+    email,
+    mezua,
+    erantzuna,
+    erantzun_data,
+    irakurrita,
+    bidalketa_data
+FROM Kontaktua_Mezuak;  

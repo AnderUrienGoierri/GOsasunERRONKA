@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body class="panel-gorputza">
     <header class="panel-goiburua">
-        <div class="logoa"><a href="index.php"><img src="../img/svg/building.svg" alt="" class="ikono-1em marjina-esk-5"> GOsasun - Harrera</a></div>
+        <div class="logoa"><a href="index.php"><img src="../img/building.svg" alt="" class="ikono-1em marjina-esk-5"> GOsasun - Harrera</a></div>
         <ul class="nabigazio-estekak">
             <li><a href="index.php">Hasiera</a></li>
             <li><a href="pazienteak.php">Pazienteak</a></li>
@@ -63,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <main class="panel-nagusia">
         <div class="orri-goiburua">
-            <h2><img src="../img/svg/plus-circle.svg" alt="" class="ikono-ertaina marjina-esk-5"> Mediku Berria Sortu</h2>
+            <h2><img src="../img/plus-circle.svg" alt="" class="ikono-ertaina marjina-esk-5"> Mediku Berria Sortu</h2>
         </div>
 
         <?php if ($errorea): ?><div class="alerta alerta-errorea"><?php echo $errorea; ?></div><?php endif; ?>

@@ -144,9 +144,10 @@ include_once '../php_includeak/harrera_goiburua.php';
                 <h2 class="izenburu-nagusia">Hitzorduen Egutegia</h2>
                 <p class="azpititulu-grisa">Kudeatu klinikako ordutegia eta erregistroak</p>
             </div>
-            <div class="flex-taldea-10">
-                <button class="botoia botoi-nagusia" onclick="openModal()">+ Hitzordu Berria</button>
-            </div>
+        </div>
+
+        <div class="flex-tartea-20 marjina-behe-20">
+            <button class="botoia botoi-sortu marjina-behe-0" onclick="openModal()">+ Hitzordu Berria</button>
         </div>
 
         <script>
@@ -280,7 +281,7 @@ include_once '../php_includeak/harrera_goiburua.php';
         <!-- Zerrenda orokorra (behean mantentzen dugu segurtasun gisa momentuz) -->
         <section class="hitzordu-zerrenda marjina-goi-30">
             <div class="flex-tartea-15">
-                <h3><img src="../img/svg/list.svg" alt="" class="ikono-ertaina marjina-esk-5"> Hitzordu Guztiak</h3>
+                <h3><img src="../img/list.svg" alt="" class="ikono-ertaina marjina-esk-5"> Hitzordu Guztiak</h3>
                 <form method="GET" class="flex-taldea-10">
                     <select name="filter_mediku_id" class="inprimaki-kontrola zabalera-autoa" onchange="this.form.submit()">
                         <option value="">Iragazi medikua...</option>

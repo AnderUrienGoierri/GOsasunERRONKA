@@ -41,8 +41,10 @@ include_once '../php_includeak/harrera_goiburua.php';
 
     <main class="panel-nagusia">
         <div class="orri-goiburua">
-            <h2><img src="../img/svg/users.svg" alt="" class="ikono-ertaina marjina-esk-5"> Harrerako Langileak</h2>
-            <p>Kudeatu zentroko harrerako lantaldea.</p>
+            <div>
+                <h2 class="izenburu-nagusia"><img src="../img/svg/users.svg" alt="" class="ikono-ertaina marjina-esk-5"> Harrerako Langileak</h2>
+                <p class="azpititulu-grisa">Kudeatu zentroko harrerako lantaldea.</p>
+            </div>
         </div>
 
         <?php if ($mezua): ?>
@@ -52,7 +54,7 @@ include_once '../php_includeak/harrera_goiburua.php';
             <div class="alerta alerta-errorea"><?php echo htmlspecialchars($errorea); ?></div>
         <?php endif; ?>
 
-        <div class="flex-tartea-20">
+        <div class="flex-tartea-20 marjina-behe-20">
             <a href="harrerako_langile_sortu.php" class="botoia botoi-sortu marjina-behe-0" >+ Langile Berria</a>
             <input type="text" id="bilaketaLangileak" class="inprimaki-kontrola bilaketa-barra" placeholder="Bilatu izena edo abizena...">
         </div>
@@ -62,9 +64,9 @@ include_once '../php_includeak/harrera_goiburua.php';
                 <thead>
                     <tr>
                         <th>Argazkia</th>
-                        <th class="kurtsore-erakuslea" onclick="ordenatuTaula(1)">ID <img src="../img/svg/sort.svg" alt="" class="ikono-txikia-gardena"></th>
-                        <th class="kurtsore-erakuslea" onclick="ordenatuTaula(2)">Izena <img src="../img/svg/sort.svg" alt="" class="ikono-txikia-gardena"></th>
-                        <th class="kurtsore-erakuslea" onclick="ordenatuTaula(3)">Emaila <img src="../img/svg/sort.svg" alt="" class="ikono-txikia-gardena"></th>
+                        <th class="kurtsore-erakuslea" onclick="ordenatuTaula(1)">ID <img src="../img/sort.svg" alt="" class="ikono-txikia-gardena"></th>
+                        <th class="kurtsore-erakuslea" onclick="ordenatuTaula(2)">Izena <img src="../img/sort.svg" alt="" class="ikono-txikia-gardena"></th>
+                        <th class="kurtsore-erakuslea" onclick="ordenatuTaula(3)">Emaila <img src="../img/sort.svg" alt="" class="ikono-txikia-gardena"></th>
                         <th>Ekintzak</th>
                     </tr>
                 </thead>
@@ -73,30 +75,22 @@ include_once '../php_includeak/harrera_goiburua.php';
                         <?php foreach ($langileak as $l): ?>
                             <tr>
                                 <td class="zabalera-50">
-                                    <?php 
-                                    $irudia_bide = htmlspecialchars($l['irudia'] ?? 'img/lehenetsia_harrera.png');
-                                    if (strpos($irudia_bide, 'img/') === 0 && strpos($irudia_bide, 'img/png/') === false && strpos($irudia_bide, 'img/svg/') === false) {
-                                        $irudia_bide = str_replace('img/', 'img/png/', $irudia_bide);
-                                    }
-                                    ?>
-                                    <img src="../<?php echo $irudia_bide; ?>" 
+                                    <img src="../<?php echo htmlspecialchars($l['irudia'] ?? 'img/lehenetsia_harrera.png'); ?>" 
                                          alt="Langilearen argazkia" class="irudia-txikia">
                                 </td>
                                 <td>#<?php echo $l['langile_id']; ?></td>
                                 <td>
-                                    <a href="harrerako_langile_fitxa.php?id=<?php echo $l['langile_id']; ?>" class="esteka-langilea">
-                                        <strong><?php echo htmlspecialchars($l['abizenak'] . ', ' . $l['izena']); ?></strong>
-                                    </a>
+                                    <strong><?php echo htmlspecialchars($l['abizenak'] . ', ' . $l['izena']); ?></strong>
                                 </td>
                                 <td><?php echo htmlspecialchars($l['email']); ?></td>
                                 <td>
                                     <div class="taula-ekintzak">
-                                        <a href="harrerako_langile_editatu.php?id=<?php echo $l['langile_id']; ?>" class="botoi-ikonoa" title="Editatu"><img src="../img/svg/pencil.svg" alt="" class="ikono-ertaina marjina-esk-5"></a>
+                                        <a href="harrerako_langile_editatu.php?id=<?php echo $l['langile_id']; ?>" class="botoi-ikonoa" title="Editatu"><img src="../img/pencil.svg" alt="" class="ikono-ertaina marjina-esk-5"></a>
                                         <!-- Administratzaile nagusiak bakarrik ezabatu beharko luke normalean, baina baldintzak onartzen badu gehituko dugu. Uneko saioa bera bada ezin du ezabatu -->
                                         <?php if($_SESSION['erabiltzaile_id'] != $l['langile_id']): ?>
-                                            <a href="harrerako_langile_ezabatu.php?id=<?php echo $l['langile_id']; ?>" class="botoi-ikonoa" onclick="return confirm('Ziur ezabatu nahi duzula?');" title="Ezabatu"><img src="../img/svg/trash-2.svg" alt="" class="ikono-ertaina marjina-esk-5"></a>
+                                            <a href="harrerako_langile_ezabatu.php?id=<?php echo $l['langile_id']; ?>" class="botoi-ikonoa" onclick="return confirm('Ziur ezabatu nahi duzula?');" title="Ezabatu"><img src="../img/trash-2.svg" alt="" class="ikono-ertaina marjina-esk-5"></a>
                                         <?php else: ?>
-                                            <span class="kolorea-grisa" title="Zure burua ezin duzu ezabatu"><img src="../img/svg/ban.svg" alt="" class="ikono-ertaina-gardena-txikia"></span>
+                                            <span class="kolorea-grisa" title="Zure burua ezin duzu ezabatu"><img src="../img/ban.svg" alt="" class="ikono-ertaina-gardena-txikia"></span>
                                         <?php endif; ?>
                                     </div>
                                 </td>

@@ -73,10 +73,10 @@ include_once '../php_includeak/harrera_goiburua.php';
 ?>
 
 <main class="panel-nagusia">
-    <a href="harrerako_langileak.php" class="atzera-botoia esteka-itzuli" ><img src="../img/svg/arrow-left.svg" alt="" class="ikono-ertaina marjina-esk-5"> Itzuli zerrendara</a>
+    <a href="harrerako_langileak.php" class="atzera-botoia esteka-itzuli" ><img src="../img/arrow-left.svg" alt="" class="ikono-ertaina marjina-esk-5"> Itzuli zerrendara</a>
 
     <div class="orri-goiburua">
-        <h2><img src="../img/svg/pencil.svg" alt="" class="ikono-ertaina marjina-esk-5"> Langilea Editatu: <?php echo htmlspecialchars($langilea['izena']); ?>
+        <h2><img src="../img/pencil.svg" alt="" class="ikono-ertaina marjina-esk-5"> Langilea Editatu: <?php echo htmlspecialchars($langilea['izena']); ?>
         </h2>
     </div>
 

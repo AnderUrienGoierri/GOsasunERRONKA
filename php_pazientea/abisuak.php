@@ -34,7 +34,7 @@ include_once '../php_includeak/paziente_goiburua.php';
 
     <main class="panel-nagusia">
         <div class="orri-goiburua">
-            <h2><img src="../img/svg/bell-ring.svg" alt="" class="ikono-ertaina marjina-esk-5"> Osasun Abisuak</h2>
+            <h2><img src="../img/bell-ring.svg" alt="" class="ikono-ertaina marjina-esk-5"> Osasun Abisuak</h2>
             <p>Zure neurketen araberako abisu automatikoak.</p>
         </div>
 
@@ -49,7 +49,7 @@ include_once '../php_includeak/paziente_goiburua.php';
                         <h4>
                             <span>
                                 <span class="abisu-mota mota-<?php echo strtolower($a['mota']); ?>"><?php echo htmlspecialchars($a['mota']); ?></span>
-                                <?php echo $a['irakurrita'] ? '' : '<span class="testu-arriskua-ezk"><img src="../img/svg/alert.svg" alt="" class="ikono-14px-erdian"> Berria</span>'; ?>
+                                <?php echo $a['irakurrita'] ? '' : '<span class="testu-arriskua-ezk"><img src="../img/alert.svg" alt="" class="ikono-14px-erdian"> Berria</span>'; ?>
                             </span>
                             <?php if (!$a['irakurrita']): ?>
                                 <form method="POST" class="barneko-bistarapena">
@@ -59,12 +59,12 @@ include_once '../php_includeak/paziente_goiburua.php';
                             <?php endif; ?>
                         </h4>
                         <p><?php echo htmlspecialchars($a['testua']); ?></p>
-                        <span class="abisu-data"><img src="../img/svg/calendar-days.svg" alt="" class="ikono-ertaina marjina-esk-5"> <?php echo date('Y/m/d H:i', strtotime($a['data'])); ?></span>
+                        <span class="abisu-data"><img src="../img/calendar-days.svg" alt="" class="ikono-ertaina marjina-esk-5"> <?php echo date('Y/m/d H:i', strtotime($a['data'])); ?></span>
                     </div>
                 <?php endforeach; ?>
             <?php else: ?>
                 <div class="egoera-hutsa kutxa-hutsa-40" >
-                    <div class="ikono-handia-3"><img src="../img/svg/smile.svg" alt="" class="ikono-ertaina marjina-esk-5"></div>
+                    <div class="ikono-handia-3"><img src="../img/smile.svg" alt="" class="ikono-ertaina marjina-esk-5"></div>
                     <h3>Ez duzu abisurik!</h3>
                     <p>Zure neurketa guztiak normaltasunaren barruan daude une honetan.</p>
                 </div>

@@ -54,12 +54,15 @@ include_once '../php_includeak/harrera_goiburua.php';
 ?>
 
 <main class="panel-nagusia">
-    <div class="orri-goiburua flex-tartea-15 marjina-behe-20">
+    <div class="orri-goiburua">
         <div>
-            <h2 class="izenburu-nagusia">Barne Mezuak</h2>
+            <h2 class="izenburu-nagusia"><img src="../img/svg/mail.svg" alt="" class="ikono-ertaina marjina-esk-5"> Barne Mezuak</h2>
             <p class="azpititulu-grisa">Pazienteekin eta medikuekin barne komunikazioa.</p>
         </div>
-        <a href="mezu_berria.php" class="botoia botoi-nagusia">+ Mezu Berria</a>
+    </div>
+
+    <div class="flex-tartea-20 marjina-behe-20">
+        <a href="mezu_berria.php" class="botoia botoi-sortu marjina-behe-0">+ Mezu Berria</a>
     </div>
 
     <div class="fitxa-edukiontzia marjina-behe-20">
@@ -134,7 +137,7 @@ include_once '../php_includeak/harrera_goiburua.php';
             </table>
         <?php else: ?>
             <div class="egoera-hutsa">
-                <div class="ikono-hutsa"><img src="../img/svg/send.svg" alt="" class="ikono-3rem-gardena"></div>
+                <div class="ikono-hutsa"><img src="../img/send.svg" alt="" class="ikono-3rem-gardena"></div>
                 <h3>Ez dago bidalitako mezurik</h3>
                 <p>Ez duzu mezurik bidali oraindik.</p>
             </div>

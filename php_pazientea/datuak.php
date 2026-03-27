@@ -36,7 +36,7 @@ include_once '../php_includeak/paziente_goiburua.php';
 
     <main class="panel-nagusia">
         <div class="orri-goiburua">
-            <h2><img src="../img/svg/user.svg" alt="" class="ikono-ertaina marjina-esk-5"> Nire Informazioa</h2>
+            <h2><img src="../img/user.svg" alt="" class="ikono-ertaina marjina-esk-5"> Nire Informazioa</h2>
             <p>Berrikusi zure datu pertsonalak eta egoera klinikoa.</p>
         </div>
 

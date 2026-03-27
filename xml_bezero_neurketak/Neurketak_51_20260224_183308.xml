@@ -18,7 +18,7 @@
         <Sistolikoa>126</Sistolikoa>
         <Diastolikoa>91</Diastolikoa>
       </Tentsio_Arteriala>
-      <oharrak>Gaur goizean neurtuta.</oharrak>
+      <Sintomak>Gaur goizean neurtuta.</Sintomak>
     </Neurketa>
     <Neurketa>
       <Data>2026-02-06</Data>
@@ -30,7 +30,7 @@
         <Sistolikoa>120</Sistolikoa>
         <Diastolikoa>90</Diastolikoa>
       </Tentsio_Arteriala>
-      <oharrak>Baraualdian.</oharrak>
+      <Sintomak>Baraualdian.</Sintomak>
     </Neurketa>
     <Neurketa>
       <Data>2026-02-07</Data>
@@ -42,7 +42,7 @@
         <Sistolikoa>129</Sistolikoa>
         <Diastolikoa>82</Diastolikoa>
       </Tentsio_Arteriala>
-      <oharrak>Apur bat nekatuta.</oharrak>
+      <Sintomak>Apur bat nekatuta.</Sintomak>
     </Neurketa>
     <Neurketa>
       <Data>2026-02-08</Data>
@@ -54,7 +54,7 @@
         <Sistolikoa>120</Sistolikoa>
         <Diastolikoa>90</Diastolikoa>
       </Tentsio_Arteriala>
-      <oharrak>Apur bat nekatuta.</oharrak>
+      <Sintomak>Apur bat nekatuta.</Sintomak>
     </Neurketa>
     <Neurketa>
       <Data>2026-02-09</Data>
@@ -66,7 +66,7 @@
         <Sistolikoa>120</Sistolikoa>
         <Diastolikoa>80</Diastolikoa>
       </Tentsio_Arteriala>
-      <oharrak>Dena ondo.</oharrak>
+      <Sintomak>Dena ondo.</Sintomak>
     </Neurketa>
     <Neurketa>
       <Data>2026-02-10</Data>
@@ -78,7 +78,7 @@
         <Sistolikoa>121</Sistolikoa>
         <Diastolikoa>92</Diastolikoa>
       </Tentsio_Arteriala>
-      <oharrak>Gosariaren ondoren.</oharrak>
+      <Sintomak>Gosariaren ondoren.</Sintomak>
     </Neurketa>
     <Neurketa>
       <Data>2026-02-11</Data>
@@ -90,7 +90,7 @@
         <Sistolikoa>120</Sistolikoa>
         <Diastolikoa>86</Diastolikoa>
       </Tentsio_Arteriala>
-      <oharrak>Baraualdian.</oharrak>
+      <Sintomak>Baraualdian.</Sintomak>
     </Neurketa>
     <Neurketa>
       <Data>2026-02-12</Data>
@@ -102,7 +102,7 @@
         <Sistolikoa>140</Sistolikoa>
         <Diastolikoa>84</Diastolikoa>
       </Tentsio_Arteriala>
-      <oharrak>Gaur goizean neurtuta.</oharrak>
+      <Sintomak>Gaur goizean neurtuta.</Sintomak>
     </Neurketa>
     <Neurketa>
       <Data>2026-02-15</Data>
@@ -114,7 +114,7 @@
         <Sistolikoa>123</Sistolikoa>
         <Diastolikoa>83</Diastolikoa>
       </Tentsio_Arteriala>
-      <oharrak>Kirola egin ondoren.</oharrak>
+      <Sintomak>Kirola egin ondoren.</Sintomak>
     </Neurketa>
     <Neurketa>
       <Data>2026-02-16</Data>
@@ -126,7 +126,7 @@
         <Sistolikoa>123</Sistolikoa>
         <Diastolikoa>91</Diastolikoa>
       </Tentsio_Arteriala>
-      <oharrak>Ondo sentitzen naiz.</oharrak>
+      <Sintomak>Ondo sentitzen naiz.</Sintomak>
     </Neurketa>
     <Neurketa>
       <Data>2026-02-17</Data>
@@ -138,7 +138,7 @@
         <Sistolikoa>132</Sistolikoa>
         <Diastolikoa>89</Diastolikoa>
       </Tentsio_Arteriala>
-      <oharrak>Apur bat nekatuta.</oharrak>
+      <Sintomak>Apur bat nekatuta.</Sintomak>
     </Neurketa>
     <Neurketa>
       <Data>2026-02-19</Data>
@@ -150,7 +150,7 @@
         <Sistolikoa>126</Sistolikoa>
         <Diastolikoa>91</Diastolikoa>
       </Tentsio_Arteriala>
-      <oharrak>Ondo sentitzen naiz.</oharrak>
+      <Sintomak>Ondo sentitzen naiz.</Sintomak>
     </Neurketa>
     <Neurketa>
       <Data>2026-02-20</Data>
@@ -162,7 +162,7 @@
         <Sistolikoa>130</Sistolikoa>
         <Diastolikoa>85</Diastolikoa>
       </Tentsio_Arteriala>
-      <oharrak>Arazorik gabe, medikazioa hartuta.</oharrak>
+      <Sintomak>Arazorik gabe, medikazioa hartuta.</Sintomak>
     </Neurketa>
     <Neurketa>
       <Data>2026-02-20</Data>
@@ -174,7 +174,7 @@
         <Sistolikoa>129</Sistolikoa>
         <Diastolikoa>82</Diastolikoa>
       </Tentsio_Arteriala>
-      <oharrak>Kirola egin ondoren.</oharrak>
+      <Sintomak>Kirola egin ondoren.</Sintomak>
     </Neurketa>
     <Neurketa>
       <Data>2026-02-21</Data>
@@ -186,7 +186,7 @@
         <Sistolikoa>128</Sistolikoa>
         <Diastolikoa>82</Diastolikoa>
       </Tentsio_Arteriala>
-      <oharrak>Lotan ondo deskantsatu dut.</oharrak>
+      <Sintomak>Lotan ondo deskantsatu dut.</Sintomak>
     </Neurketa>
     <Neurketa>
       <Data>2026-02-21</Data>
@@ -198,7 +198,7 @@
         <Sistolikoa>126</Sistolikoa>
         <Diastolikoa>87</Diastolikoa>
       </Tentsio_Arteriala>
-      <oharrak>Kirola egin ondoren.</oharrak>
+      <Sintomak>Kirola egin ondoren.</Sintomak>
     </Neurketa>
     <Neurketa>
       <Data>2026-02-22</Data>
@@ -210,7 +210,7 @@
         <Sistolikoa>128</Sistolikoa>
         <Diastolikoa>84</Diastolikoa>
       </Tentsio_Arteriala>
-      <oharrak>Beti bezala.</oharrak>
+      <Sintomak>Beti bezala.</Sintomak>
     </Neurketa>
     <Neurketa>
       <Data>2026-02-24</Data>

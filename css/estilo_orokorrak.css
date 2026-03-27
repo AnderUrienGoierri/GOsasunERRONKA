@@ -23,7 +23,7 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('../img/png/background_medical.png');
+    background-image: url('../img/background_medical.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -320,36 +320,6 @@ body {
 .botoi-ikonoa { text-decoration: none; font-size: 1.2rem; transition: transform 0.2s ease; }
 .botoi-ikonoa:hover { transform: scale(1.2); }
 
-/* Neurketa Taulak (Bordedun diseinua) */
-.neurketa-taula {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-    background: var(--white);
-    border: 1px solid #dee2e6;
-    border-radius: var(--border-radius-sm);
-}
-
-.neurketa-taula th, 
-.neurketa-taula td {
-    padding: 12px 15px;
-    border: 1px solid #dee2e6;
-    text-align: left;
-}
-
-.neurketa-taula th {
-    background-color: #f8f9fa;
-    font-weight: 600;
-    color: var(--dark-text);
-    text-transform: uppercase;
-    font-size: 0.85rem;
-    letter-spacing: 0.5px;
-}
-
-.neurketa-taula tbody tr:hover {
-    background-color: rgba(67, 97, 238, 0.04);
-}
-
 
 .orri-goiburua {
     display: flex;
@@ -489,7 +459,7 @@ body {
 
 .izenburu-nagusia {
     margin: 0;
-    color: var(--dark-text);
+    color: var(--primary-color);
     font-size: 2rem;
     font-weight: 800;
 }
@@ -770,7 +740,7 @@ body {
 }
 
 
-  /* Mugikorra lehenesteko hurbilketa panel nagusirako */
+  /* Mugikorra lehenesteko hurbilketa panel nagusirako (above 768px handled below) */
   .panel-nagusia {
     padding: 20px 15px; 
     width: 100%;
@@ -779,22 +749,16 @@ body {
   
   .kaixo-atalak {
     padding: 20px 15px; 
+    align-items: flex-start;
   }
 
   .kaixo-atalak h1 {
     font-size: 2rem;
   }
 
-  /* 480px-tik gora, row diseinua eta lerrokadorea aldatu */
-  @media (min-width: 480px) {
-    .kaixo-atalak {
-      align-items: center; 
-    }
-
-    .flex-zentratua-20 {
-      flex-direction: row;
-      text-align: left;
-    }
+  .flex-zentratua-20 {
+    flex-direction: row;
+    text-align: left;
   }
 
   .menu-sareta {
@@ -940,71 +904,9 @@ body {
 .ikono-24px-erdian { width: 24px; vertical-align: middle; margin-right: 10px; }
 .testu-iluna-izenburua { color: var(--dark-text); font-size: 1.5rem; }
 .ikono-14px-erdian { width: 14px; vertical-align: middle; }
-
+.ikono-24px { width: 24px; }
 .flex-15px-tartea { display: flex; gap: 15px; }
 .checkbox-20px { width: 20px; height: 20px; }
 .marjina-behe-0 { margin-bottom: 0; }
 .errezeta-kutxa-argia { background-color: var(--azentua-argia); padding: 15px; border-radius: 8px; margin-bottom: 15px; }
 .errezeta-izenburu-urdina { margin-top: 0; margin-bottom: 10px; color: var(--primary-color); }
-/* ================= HIZKUNTZA HAUTATZAILEA (Flags) ================= */
-.hizkuntza-hautatzailea {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-    margin-top: 10px;
-}
-
-.hizkuntza-aukera {
-    cursor: pointer;
-    position: relative;
-}
-
-.hizkuntza-aukera input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-}
-
-.hizkuntza-aukera .aukera-edukia {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 15px;
-    border: 2px solid #eee;
-    border-radius: var(--border-radius);
-    transition: var(--transition);
-    background: var(--white);
-    gap: 10px;
-}
-
-.hizkuntza-aukera img {
-    width: 60px !important;
-    height: 60px !important;
-    border-radius: 50% !important;
-    object-fit: cover !important;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1) !important;
-    display: block;
-    margin: 0 auto;
-}
-
-.hizkuntza-aukera span {
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: var(--gray);
-}
-
-.hizkuntza-aukera input:checked + .aukera-edukia {
-    border-color: var(--primary-color);
-    background: rgba(67, 97, 238, 0.05);
-    transform: scale(1.02);
-}
-
-.hizkuntza-aukera input:checked + .aukera-edukia span {
-    color: var(--primary-color);
-}
-
-@media (min-width: 480px) {
-    .hizkuntza-hautatzailea {
-        grid-template-columns: repeat(4, 1fr);
-    }
-}

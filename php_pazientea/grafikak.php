@@ -27,9 +27,12 @@ include_once '../php_includeak/paziente_goiburua.php';
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
-    <main class="grafika-edukiontzia" id="pdf-eremua">
-        <div class="grafika-goiburua">
-            <h2>Nire Datuen Bilakaera</h2>
+    <main class="panel-nagusia" id="pdf-eremua">
+        <div class="orri-goiburua">
+            <div>
+                <h2 class="izenburu-nagusia"><img src="../img/svg/line-chart.svg" alt="" class="ikono-ertaina marjina-esk-5"> Nire Datuen Bilakaera</h2>
+                <p>Ikusi zure osasun datuen bilakaera grafikoen bidez.</p>
+            </div>
             <div class="grafika-kontrolak" data-html2canvas-ignore="true">
                 <select id="datu-mota" class="inprimaki-kontrola">
                     <option value="pisua">Pisua (kg)</option>
@@ -38,7 +41,7 @@ include_once '../php_includeak/paziente_goiburua.php';
                     <option value="pultsua">Pultsua (ppm)</option>
                 </select>
                 <button type="button" class="botoia botoi-nagusia" id="btn-deskargatu-pdf">
-                    <img src="../img/svg/file-text.svg" alt="" class="ikono-ertaina marjina-esk-5"> Deskargatu PDF (Txostena)
+                    <img src="../img/file-text.svg" alt="" class="ikono-ertaina marjina-esk-5"> Deskargatu PDF (Txostena)
                 </button>
             </div>
         </div>
@@ -49,7 +52,7 @@ include_once '../php_includeak/paziente_goiburua.php';
             <div class="grafika-txartela">
                 <canvas id="osabide-grafika" class="nire-grafika"></canvas>
             </div>
-
+            <br>
             <div id="estatistika-panela" class="estatistika-panela marjina-goi-25">
                 <!-- JavaScript-ek beteko du hau dinamikoki -->
             </div>
