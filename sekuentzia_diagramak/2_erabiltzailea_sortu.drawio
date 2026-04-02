@@ -1,0 +1,88 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.3.6 Chrome/140.0.7339.249 Electron/38.8.0 Safari/537.36" version="29.3.6">
+  <diagram id="d2" name="Page-1">
+    <mxGraphModel dx="946" dy="710" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="L1" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;participant=umlActor;" value="Harrerakoa" vertex="1">
+          <mxGeometry height="650" width="40" x="130" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="L2" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" value="Interfazea" vertex="1">
+          <mxGeometry height="650" width="100" x="300" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="L3" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" value="Kontrola" vertex="1">
+          <mxGeometry height="650" width="100" x="500" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="L4" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" value="Pazientea" vertex="1">
+          <mxGeometry height="650" width="100" x="700" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="E1" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;rounded=0;" value="erregistratu(datuak)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="150" y="150" as="sourcePoint" />
+            <mxPoint x="350" y="150" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="E2" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;rounded=0;" value="sortuErabiltzailea(datuak)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="350" y="190" as="sourcePoint" />
+            <mxPoint x="550" y="190" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="F_Alt1" parent="1" style="shape=umlFrame;whiteSpace=wrap;html=1;width=70;height=40;boundedLbl=1;verticalAlign=top;align=left;spacingLeft=5;" value="alt&#xa;[okerrak]" vertex="1">
+          <mxGeometry height="90" width="500" x="100" y="210" as="geometry" />
+        </mxCell>
+        <mxCell id="E_err1" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;edgeStyle=elbowEdgeStyle;elbow=vertical;rounded=0;dashed=1;" value="errorea datuetan">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="550" y="250" as="sourcePoint" />
+            <mxPoint x="350" y="250" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="E_err2" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;edgeStyle=elbowEdgeStyle;elbow=vertical;rounded=0;dashed=1;" value="Formularioa berriz bete">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="350" y="280" as="sourcePoint" />
+            <mxPoint x="150" y="280" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="F_Alt2" parent="1" style="shape=umlFrame;whiteSpace=wrap;html=1;width=80;height=40;boundedLbl=1;verticalAlign=top;align=left;spacingLeft=5;" value="alt&#xa;[ondo]" vertex="1">
+          <mxGeometry height="280" width="700" x="100" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="E3" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;rounded=0;" value="p = new Pazientea(datuak)">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="550" y="360" as="sourcePoint" />
+            <mxPoint x="750" y="360" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="E4" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;edgeStyle=elbowEdgeStyle;elbow=vertical;rounded=0;dashed=1;" value="p">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="750" y="400" as="sourcePoint" />
+            <mxPoint x="550" y="400" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="E_G" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;rounded=0;" value="p.gorde()">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="550" y="440" as="sourcePoint" />
+            <mxPoint x="750" y="440" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="E_G2" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;edgeStyle=elbowEdgeStyle;elbow=vertical;rounded=0;dashed=1;" value="sortuta">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="750" y="480" as="sourcePoint" />
+            <mxPoint x="550" y="480" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="E5" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;edgeStyle=elbowEdgeStyle;elbow=vertical;rounded=0;dashed=1;" value="prozesua amaituta">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="550" y="520" as="sourcePoint" />
+            <mxPoint x="350" y="520" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="E6" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;edgeStyle=elbowEdgeStyle;elbow=vertical;rounded=0;dashed=1;" value="Erabiltzailea ondo gorde dela adierazi">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="350" y="560" as="sourcePoint" />
+            <mxPoint x="150" y="560" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
