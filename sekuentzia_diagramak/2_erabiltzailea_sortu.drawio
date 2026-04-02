@@ -7,70 +7,70 @@
         <mxCell id="L1" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;participant=umlActor;" value="Harrerakoa" vertex="1">
           <mxGeometry height="650" width="40" x="130" y="80" as="geometry" />
         </mxCell>
-        <mxCell id="L2" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" value="Interfazea" vertex="1">
+        <mxCell id="L2" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" value="paziente_sortu.php (HTML)" vertex="1">
           <mxGeometry height="650" width="100" x="300" y="80" as="geometry" />
         </mxCell>
-        <mxCell id="L3" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" value="Kontrola" vertex="1">
+        <mxCell id="L3" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" value="paziente_sortu.php (PHP)" vertex="1">
           <mxGeometry height="650" width="100" x="500" y="80" as="geometry" />
         </mxCell>
-        <mxCell id="L4" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" value="Pazientea" vertex="1">
+        <mxCell id="L4" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" value="Datu-basea" vertex="1">
           <mxGeometry height="650" width="100" x="700" y="80" as="geometry" />
         </mxCell>
-        <mxCell id="E1" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;rounded=0;" value="erregistratu(datuak)">
+        <mxCell id="E1" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;rounded=0;" value="Datuak bete eta &quot;Gorde&quot; sakatu">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="150" y="150" as="sourcePoint" />
             <mxPoint x="350" y="150" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="E2" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;rounded=0;" value="sortuErabiltzailea(datuak)">
+        <mxCell id="E2" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;rounded=0;" value="POST (nan, email, izena...)">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="350" y="190" as="sourcePoint" />
             <mxPoint x="550" y="190" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="F_Alt1" parent="1" style="shape=umlFrame;whiteSpace=wrap;html=1;width=70;height=40;boundedLbl=1;verticalAlign=top;align=left;spacingLeft=5;" value="alt&#xa;[okerrak]" vertex="1">
+        <mxCell id="F_Alt1" parent="1" style="shape=umlFrame;whiteSpace=wrap;html=1;width=70;height=40;boundedLbl=1;verticalAlign=top;align=left;spacingLeft=5;" value="alt&#xa;[nan/email errepikatuta]" vertex="1">
           <mxGeometry height="90" width="500" x="100" y="210" as="geometry" />
         </mxCell>
-        <mxCell id="E_err1" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;edgeStyle=elbowEdgeStyle;elbow=vertical;rounded=0;dashed=1;" value="errorea datuetan">
+        <mxCell id="E_err1" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;edgeStyle=elbowEdgeStyle;elbow=vertical;rounded=0;dashed=1;" value="$errorea definitu">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="550" y="250" as="sourcePoint" />
             <mxPoint x="350" y="250" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="E_err2" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;edgeStyle=elbowEdgeStyle;elbow=vertical;rounded=0;dashed=1;" value="Formularioa berriz bete">
+        <mxCell id="E_err2" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;edgeStyle=elbowEdgeStyle;elbow=vertical;rounded=0;dashed=1;" value="Errore mezua erakutsi">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="350" y="280" as="sourcePoint" />
             <mxPoint x="150" y="280" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="F_Alt2" parent="1" style="shape=umlFrame;whiteSpace=wrap;html=1;width=80;height=40;boundedLbl=1;verticalAlign=top;align=left;spacingLeft=5;" value="alt&#xa;[ondo]" vertex="1">
+        <mxCell id="F_Alt2" parent="1" style="shape=umlFrame;whiteSpace=wrap;html=1;width=80;height=40;boundedLbl=1;verticalAlign=top;align=left;spacingLeft=5;" value="alt&#xa;[Akatsik gabe]" vertex="1">
           <mxGeometry height="280" width="700" x="100" y="320" as="geometry" />
         </mxCell>
-        <mxCell id="E3" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;rounded=0;" value="p = new Pazientea(datuak)">
+        <mxCell id="E3" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;rounded=0;" value="$pdo-&gt;beginTransaction()">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="550" y="360" as="sourcePoint" />
             <mxPoint x="750" y="360" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="E4" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;edgeStyle=elbowEdgeStyle;elbow=vertical;rounded=0;dashed=1;" value="p">
+        <mxCell id="E4" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;edgeStyle=elbowEdgeStyle;elbow=vertical;rounded=0;dashed=1;" value="INSERT INTO Erabiltzaileak">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="750" y="400" as="sourcePoint" />
             <mxPoint x="550" y="400" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="E_G" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;rounded=0;" value="p.gorde()">
+        <mxCell id="E_G" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;rounded=0;" value="INSERT INTO Pazienteak">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="550" y="440" as="sourcePoint" />
             <mxPoint x="750" y="440" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="E_G2" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;edgeStyle=elbowEdgeStyle;elbow=vertical;rounded=0;dashed=1;" value="sortuta">
+        <mxCell id="E_G2" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;edgeStyle=elbowEdgeStyle;elbow=vertical;rounded=0;dashed=1;" value="$pdo-&gt;commit()">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="750" y="480" as="sourcePoint" />
             <mxPoint x="550" y="480" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="E5" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;edgeStyle=elbowEdgeStyle;elbow=vertical;rounded=0;dashed=1;" value="prozesua amaituta">
+        <mxCell id="E5" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;edgeStyle=elbowEdgeStyle;elbow=vertical;rounded=0;dashed=1;" value="header(&quot;Location: ...&quot;)">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="550" y="520" as="sourcePoint" />
             <mxPoint x="350" y="520" as="targetPoint" />

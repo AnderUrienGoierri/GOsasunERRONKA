@@ -1,48 +1,55 @@
 # 2. Erabiltzailea Sortu - Sekuentzia Diagrama
 
-Sistemako langile batek (normalean Harrerakoak) erabiltzaile berri bat sistema barruan erregistratzean ematen den prozesua.
+Harrerako langileak sisteman paziente berri bat erregistratzeko `paziente_sortu.php` fitxategiaren bidez jarraitzen duen fluxua.
 
-## Draw.io-n marrazteko elementuak (Zutabeak):
-*   **Aktorea:** Harrerakoa (edo Administradorea)
-*   **Muga / Interfazea:** Interfazea (Erregistro inprimakia)
-*   **Kontrola:** Kontrola (Erabiltzaile sortzailea)
-*   **Klasea:** Pazientea edo Medikua (dagokion klasea azpian sortuko da)
+## Partaideak:
+*   **Harrerakoa:** Erregistro-inprimakia betetzen duen langilea.
+*   **paziente_sortu.php (HTML):** Erregistro-inprimakia erakusten duen zatia.
+*   **paziente_sortu.php (PHP):** Backend logika, transakzioak eta SQL exekuzioa kudeatzeko.
+*   **Datu-basea:** `Erabiltzaileak` eta `Pazienteak` taulak.
 
-## Urratsak (Geziak) Draw.io-n irudikatzeko:
-1.  **Harrerakoa -> Interfazea:** Bezeroaren/Medikuaren datu pertsonal guztiak idazten ditu eta "Gorde" botoiari ematen dio. Gezi testua: `erregistratu(datuak[])`
-2.  **Interfazea -> Kontrola:** Funtzioa deitzen da. Gezi testua: `sortuErabiltzailea(datuak[])`
+## Urratsak (Gertaerak):
+1.  **Harrerakoa -> paziente_sortu.php (HTML):** Datu guztiak sartu (NAN, emaila, izena, pasahitza, odol taldea, etab.) eta "Gorde Pazientea" sakatu.
+2.  **paziente_sortu.php (HTML) -> paziente_sortu.php (PHP):** Datuak bidali `POST` metodoaren bidez.
+3.  **paziente_sortu.php (PHP) -> Datu-basea:** Transakzio bat hasi. Testua: `$pdo->beginTransaction()`
+4.  **paziente_sortu.php (PHP) -> Datu-basea (Erabiltzaileak):** Kontu orokorra sortu. Testua: `INSERT INTO Erabiltzaileak (email, pasahitza, rol_id, aktibo) VALUES (?, ?, 2, 1)`
+5.  **paziente_sortu.php (PHP) -> Datu-basea:** Sortutako ID-a jaso. Testua: `$id_berria = $pdo->lastInsertId()`
+6.  **paziente_sortu.php (PHP) -> Datu-basea (Pazienteak):** Pazientearen datu espezifikoak gordetzen dira. Testua: `INSERT INTO Pazienteak (paziente_id, nan, izena, abizenak, jaiotze_data, telefonoa, odol_taldea) VALUES (?, ?, ?, ?, ?, ?, ?)`
+7.  **paziente_sortu.php (PHP) -> Datu-basea:** Transakzioa baieztatu. Testua: `$pdo->commit()`
+8.  **paziente_sortu.php (PHP) -->> Harrerakoa:** Baieztapen mezua eta redirect-a orri nagusira. Testua: `header("Location: pazienteak.php?msg=...")`
 
-**[Alt: Datuak desegokiak badira]**:
-3.  **Kontrola -> Interfazea** (Zatikako): Validazio errorea itzuli. Testua: `[ez baliozkoa] errorea`
-4.  **Interfazea -> Harrerakoa** (Zatikako): Datuak berrikusteko eskatzen da.
-
-**[Alt: Datuak baliozkoak badira]**:
-5.  **Kontrola -> Klasea (Pazientea/Medikua):** Kontrolak instantzia berria sortzen du. Gezi mota: sorkuntza berria. Testua: `p = new Pazientea(nan, izena, email...)` edo `m = new Medikua(...)`
-6.  **Klasea -> Kontrola** (Zatikako): Objektua sortu dela adierazi. Testua: `sortuta`
-7.  **Kontrola -> Interfazea** (Zatikako): Sorkuntzaren baieztapena. Testua: `[sortuta] onartuta`
-8.  **Interfazea -> Harrerakoa** (Zatikako): Erabiltzailea ondo txertatu den abisua pantailaratzen da. Testua: `Erabiltzaile berria erakutsi / Abisua onartu`
+**[Alt: Errorea txertatzean (Adibidez emaila edo NANa errepikatuta dagoelako)]**:
+9.  **paziente_sortu.php (PHP) -> Datu-basea:** Transakzioa atzera bota. Testua: `$pdo->rollBack()`
+10. **paziente_sortu.php (PHP) -->> Harrerakoa:** Errore mezua inprimatu formularioaren gainean.
 
 ---
 
-## Ikuspegia (Mermaid bidez)
+## Ikuspegia (Mermaid)
 
 ```mermaid
 sequenceDiagram
     participant H as Harrerakoa
-    participant I as Interfazea
-    participant K as Kontrola
-    participant KL as Pazientea
+    participant PH as paziente_sortu.php (HTML)
+    participant PP as paziente_sortu.php (PHP)
+    participant DB as Datu-basea
 
-    H->>I: erregistratu(nan, izena, abizena, tel...)
-    I->>K: sortuErabiltzailea(datuak)
+    H->>PH: Datuak bete eta "Gorde" sakatu
+    PH->>PP: POST (nan, email, izena, pasahitza...)
     
-    alt datuak okerrak / falta dira
-        K-->>I: errorea datuetan
-        I-->>H: [errorea] Formularioa berriz bete mesedez
-    else datuak ondo
-        K->>KL: p = new Pazientea(datuak)
-        KL-->>K: sortuta
-        K-->>I: prozesua amaituta
-        I-->>H: [sortuta] Erabiltzailea ondo gorde dela adierazi
+    Note over PP: $pdo->beginTransaction()
+    
+    PP->>DB: INSERT INTO Erabiltzaileak
+    DB-->>PP: $id_berria (lastInsertId)
+    
+    PP->>DB: INSERT INTO Pazienteak (paziente_id, nan, izena...)
+    DB-->>PP: Erfolg/Ok
+    
+    alt Akatsik gabe
+        PP->>DB: $pdo->commit()
+        PP-->>H: header("Location: pazienteak.php?msg=...")
+    else Errorea (nan/email errepikatuta)
+        PP->>DB: $pdo->rollBack()
+        PP-->>PH: $errorea definitu
+        PH-->>H: Errore mezua erakutsi
     end
 ```

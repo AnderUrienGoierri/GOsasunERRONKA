@@ -1,55 +1,52 @@
 # 3. Hitzordua Hartu - Sekuentzia Diagrama
 
-Harrerako langileak paziente baten izenean hitzordu berri bat mediku espezifiko batekin gorde nahi duenean garatzen den fluxua.
+Hitzordu berri bat mediku espezifiko batekin gorde nahi denean `hitzorduak.php` fitxategian garatzen den fluxu ERREALA.
 
-## Draw.io-n marrazteko elementuak (Zutabeak):
-*   **Aktorea:** Harrerakoa
-*   **Muga / Interfazea:** Interfazea (Egutegia eta orduen taula)
-*   **Kontrola:** Kontrola (Hitzorduen kudeatzailea)
-*   **Klasea 1:** Medikua (Ordutegia egiaztatzeko)
-*   **Klasea 2:** Hitzordua (Klasea / instantzia berria)
+## Partaideak:
+*   **Harrerakoa:** Erregistro-inprimakia betetzen duen langilea.
+*   **hitzorduak.php (HTML):** Modala eta egutegia erakusten duen zatia.
+*   **hitzorduak.php (PHP):** Backend logika, gatazkak egiaztatu eta SQL exekuzioa kudeatzeko.
+*   **Datu-basea:** `Hitzorduak` taula.
 
-## Urratsak (Geziak) Draw.io-n irudikatzeko:
-1.  **Harrerakoa -> Interfazea:** Pazientea eta Medikua aukeratu eta egun/ordu zehatz batean klikatzean. Testua: `aukera(idPazientea, idMedikua, data_ordua)`
-2.  **Interfazea -> Kontrola:** Eskaria kontrolera doan lekua. Testua: `eskatuHitzordua(idMedikua, idPaziente, data_ordua)`
-3.  **Kontrola -> Medikua (Klasea):** Kontrolak ea ordutegi horretan librea baden medikua bilatzen du. Testua: `orduBerdinaDauka = egiaztatuOrdutegia(idMedikua, data_ordua)`
-4.  **Medikua (Klasea) -> Kontrola** (Zatikako): Erantzuna jaso. Testua: `bai / ez`
+## Urratsak (Gertaerak):
+1.  **Harrerakoa -> hitzorduak.php (HTML):** Modala ireki ("+ Hitzordu Berria"), pazientea, medikua, data eta orduak (hasiera/bukaera) aukeratu eta "Gorde" sakatu.
+2.  **hitzorduak.php (HTML) -> hitzorduak.php (PHP):** Datuak bidali `POST` metodoaren bidez (`sortu_hitzordua`).
+3.  **hitzorduak.php (PHP) -> Datu-basea:** Medikua libre ote den begiratu. Kontsulta: `SELECT COUNT(*) FROM Hitzorduak WHERE mediku_id = ? AND data = ? AND ((hasiera_ordua < ? AND bukaera_ordua > ?) OR ...)`
+4.  **Datu-basea -->> hitzorduak.php (PHP):** Zenbakia (count) itzuli.
+5.  **hitzorduak.php (PHP):** Egiaztapena. Testua: `if (fetchColumn() == 0)`.
 
-**[Alt: Medikuak ordutegia okupatuta badu ordu horretan]**:
-5.  **Kontrola -> Interfazea** (Zatikako): `errorea`
-6.  **Interfazea -> Harrerakoa** (Zatikako): `[okupatua] Ordu hori jada hartuta dagoela adierazi`
+**[Alt: Medikuak ordutegia okupatuta badu (count > 0)]**:
+6.  **hitzorduak.php (PHP) -->> hitzorduak.php (HTML):** Errore mezua definitu (`$errore_mezua`).
+7.  **hitzorduak.php (HTML) -->> Harrerakoa:** Alerta gorria erakutsi modalean.
 
-**[Alt: Ordu librea badago]**:
-7.  **Kontrola -> Hitzordua (Klasea):** Kontrolak instantzia sortzen du. Testua: `h = new Hitzordua(idMedikua, idPaziente, data_ordua)`
-8.  **Hitzordua -> Kontrola** (Zatikako): `sortuta`
-9.  **Kontrola -> Interfazea** (Zatikako): `baieztapena`
-10. **Interfazea -> Harrerakoa** (Zatikako): `Hitzordua ongi gorde dela erakutsi eta egutegian agertu`
+**[Alt: Ordu librea badago (count == 0)]**:
+8.  **hitzorduak.php (PHP) -> Datu-basea:** Hitzordua gordetzen da. Kontsulta: `INSERT INTO Hitzorduak (paziente_id, mediku_id, data, hasiera_ordua, bukaera_ordua, arrazoia) VALUES (?, ?, ?, ?, ?, ?)`
+9.  **Datu-basea -->> hitzorduak.php (PHP):** Baieztapena.
+10. **hitzorduak.php (PHP) -->> Harrerakoa:** Baieztapen mezua eta orria berritzea. Testua: `$mezua = "Hitzordua arrakastaz sortu da."`
 
 ---
 
-## Ikuspegia (Mermaid bidez)
+## Ikuspegia (Mermaid)
 
 ```mermaid
 sequenceDiagram
-    participant Ha as Harrerakoa
-    participant I as Interfazea
-    participant K as Kontrola
-    participant M as Medikua
-    participant Hit as Hitzordua
+    participant H as Harrerakoa
+    participant HH as hitzorduak.php (HTML)
+    participant HP as hitzorduak.php (PHP)
+    participant DB as Datu-basea (Hitzorduak)
 
-    Ha->>I: aukera(idPazientea, idMedikua, data_ordua)
-    I->>K: eskatuHitzordua(idMedikua, idPaziente, data_ordua)
+    H->>HH: Pazientea, Medikua, Data eta Orduak aukeratu
+    HH->>HP: POST (sortu_hitzordua, p_id, m_id, data, h_ordua, b_ordua)
     
-    K->>M: libre_dago = egiaztatuOrdutegia(data_ordua)
-    M-->>K: ebaluazio emaitza
+    HP->>DB: prepare("SELECT COUNT(*) FROM Hitzorduak WHERE mediku_id = ? AND data = ? AND ...")
+    DB-->>HP: count emaitza
     
-    alt libre_dago == false
-        K-->>I: okupatuta errorea
-        I-->>Ha: Ordu hori ezin da hautatu
-    else libre badago
-        K->>Hit: h = new Hitzordua(...)
-        Hit-->>K: sortuta
-        K-->>I: [ondo] gordeta
-        I-->>Ha: Hitzorduaren baieztapen mezua atera
+    alt count > 0 (Gatazka)
+        HP-->>HH: $errore_mezua ("Medikuak beste hitzordu bat du")
+        HH-->>H: Alerta Gorria erakutsi
+    else count == 0 (Libre)
+        HP->>DB: prepare("INSERT INTO Hitzorduak (paziente_id, mediku_id, data, h_ordua, b_ordua...)")
+        DB-->>HP: OK
+        HP-->>H: $mezua ("Hitzordua arrakastaz sortu da") eta orria berritu
     end
 ```

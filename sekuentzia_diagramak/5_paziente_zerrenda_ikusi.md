@@ -1,60 +1,43 @@
 # 5. Paziente Zerrenda Ikusi - Sekuentzia Diagrama
 
-Medikuak saioa hasita duela, bere eguneko pazienteen zerrenda edo bere kargura dauden paziente guztiak kontsultatzen dituen prozesua bada.
+Medikuak saioa hasita duela, bere kargura dauden pazienteen zerrenda kontsultatzeko `pazienteak.php` fitxategian garatzen den fluxu ERREALA.
 
-## Draw.io-n marrazteko elementuak (Zutabeak):
-*   **Aktorea:** Medikua
-*   **Muga / Interfazea:** Interfazea (Paziente zerrendaren bistaratzailea)
-*   **Kontrola:** Kontrola (Medikuaren hitzorduen kontrolatzailea)
-*   **Klasea:** Pazientea / Hitzordua (Bilaketa egin ahal izateko)
+## Partaideak:
+*   **Medikua:** Bere pazienteak ikusi nahi dituen langilea.
+*   **pazienteak.php (HTML):** Taula eta inprimakiak erakusten dituen zatia.
+*   **pazienteak.php (PHP):** Backend logika, saioa egiaztatu eta SQL exekuzioa kudeatzeko.
+*   **Datu-basea (V_Mediku_Pazienteak):** Mediku eta pazienteen arteko loturak kudeatzen dituen bista.
 
-## Urratsak (Geziak) Draw.io-n irudikatzeko:
-1.  **Medikua -> Interfazea:** Medikuak "Pazienteak ikusi" atalera klik egiten du. Testua: `pazienteZerrendaIkusi(gaurkoData)`
-2.  **Interfazea -> Kontrola:** Eskaeraren datuak bidaltzen dizkio. Testua: `lortuPazienteZerrenda(idMedikua, gaurkoData)`
-3.  **Kontrola -> Kontrola:** DB edo bestelako informazio-iturri batetik pazienteen datu gordinak eskuratzen ditu. Testua: `datuak = datubasetikLortu(idMedikua, gaurkoData)`
-
-**Begizta (Loop) [i = 0 .. count(datuak)]:**
-4.  **Kontrola -> Pazientea (Klasea):** Datu horiekin Paziente objektua sortzen du banan-banan. Testua: `p = new Pazientea(datuak[i].izena, datuak[i].nan)`
-5.  **Pazientea -> Kontrola** (Zatikakoa): Instantzia itzultzen da. Testua: `p`
-6.  **Kontrola -> Kontrola:** Instantzia hori Array/Zerrenda batean (z) gehitzen da. Testua: `z.add(p)`
-
-**[Alt: z == null edo luzera = 0 (Gaur egun ez dauka pazienterik)]**
-7.  **Kontrola -> Interfazea** (Zatikakoa): Emaitza hutsik dagoela bueltatzen du. Testua: `z.size = 0`
-8.  **Interfazea -> Medikua** (Zatikakoa): `[z==0] Adierazi pantailan ez daukala inor programatua.`
-
-**[Alt: Zerrenda ekarri badu (luzera > 0)] [else]**
-9.  **Kontrola -> Interfazea** (Zatikakoa): Sortutako pazienteen lista bueltatzen du. Testua: `z` (Paziente zerrenda)
-10. **Interfazea -> Interfazea:** Pantailako grid-a eguneratzen da. Testua: `txertatuTaula(z)`
-11. **Interfazea -> Medikua** (Zatikakoa): `Taula eta gaurko zerrendaren xehetasunak erakutsi pantailan.`
+## Urratsak (Gertaerak):
+1.  **Medikua -> pazienteak.php (HTML):** Medikuaren menuko "Nire Pazienteak" botoian klik egin.
+2.  **pazienteak.php (HTML) -> pazienteak.php (PHP):** Eskaera zerbitzarira bidali.
+3.  **pazienteak.php (PHP) -> pazienteak.php (PHP):** Saioa hasita dagoela eta rola zuzena dela egiaztatu. Testua: `session_start()`, `$_SESSION['rol_izena'] === 'Medikua'`
+4.  **pazienteak.php (PHP) -> Datu-basea:** Mediku horri esleitutako pazienteak bilatu. Kontsulta: `SELECT * FROM V_Mediku_Pazienteak WHERE mediku_id = ?`
+5.  **Datu-basea -->> pazienteak.php (PHP):** Pazienteen zerrenda (Array) itzuli. Testua: `$pazienteak = $stmt->fetchAll()`
+6.  **pazienteak.php (PHP) -> pazienteak.php (HTML):** Datu-taula dinamikoki sortzen da. Testua: `foreach ($pazienteak as $p)` loop-a eta `<tr>` tag-ak txertatu.
+7.  **pazienteak.php (HTML) -->> Medikua:** Pazienteen argazkiak, NAN, izena eta telefonoa erakusten dituen taula pantailaratzen da.
 
 ---
 
-## Ikuspegia (Mermaid bidez)
+## Ikuspegia (Mermaid)
 
 ```mermaid
 sequenceDiagram
     participant M as Medikua
-    participant I as Interfazea
-    participant K as Kontrola
-    participant P as Pazientea
+    participant PH as pazienteak.php (HTML)
+    participant PP as pazienteak.php (PHP)
+    participant DB as Datu-basea (V_Mediku_Pazienteak)
 
-    M->>I: pazienteZerrendaIkusi(gaurkoData)
-    I->>K: z = lortuPazienteZerrenda(idMediku, gaurkoData)
+    M->>PH: "Nire Pazienteak" sakatu
+    PH->>PP: Fitxategia exekutatu
     
-    K->>K: datuak = datubasetikLortu(idMediku, gaurkoData)
+    PP->>PP: session_start() / baimenak egiaztatu
     
-    loop i = 0 .. count(datuak)
-        K->>P: p = new Pazientea(datuak[i].izena, datuak[i].nan)
-        P-->>K: p
-        K->>K: z.add(p)
-    end
+    PP->>DB: prepare("SELECT * FROM V_Mediku_Pazienteak WHERE mediku_id = ?")
+    DB-->>PP: Pazienteen Array-a ($pazienteak)
     
-    alt z.size == 0
-        K-->>I: size=0
-        I-->>M: [z==0] Egun gaurko ez duzula hitzordurik jakinarazi
-    else z baditu hitzorduak
-        K-->>I: z (pazienteen datuen lista)
-        I->>I: txertatuDataGrid(z)
-        I-->>M: Gaur bisitatu beharrekoen Datu-taula erakutsi
-    end
+    Note over PP, PH: PHP-ko foreach begizta
+    PP->>PH: PHP-k HTML taulako <tr> elementuak sortu ($p['izena'], $p['nan']...)
+    
+    PH-->>M: Pazienteen zerrenda eta argazkiak pantailan erakutsi
 ```

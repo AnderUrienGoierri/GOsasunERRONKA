@@ -1,49 +1,52 @@
 # 1. Saioa Hasi - Sekuentzia Diagrama
 
-Diagrama honek erabiltzaile batek sisteman saioa hastean jarraitzen duen prozesua erakusten du.
+Diagrama honek erabiltzaile batek `login.php` bitartez saioa hastean jarraitzen duen prozesu ERREALA erakusten du.
 
-## Draw.io-n marrazteko elementuak (Zutabeak):
-*   **Aktorea:** Erabiltzailea
-*   **Muga / Interfazea:** Interfazea (Login pantaila)
-*   **Kontrola:** Kontrola (Saioaren kudeatzailea)
-*   **Klasea:** Erabiltzailea (Klasea/Datu-basea)
+## Partaideak (Zutabeak):
+*   **Erabiltzailea:** Sisteman sartu nahi duen pertsona.
+*   **login.php (HTML):** Erabiltzaileari erakusten zaion inprimakia.
+*   **login.php (PHP):** Zerbitzarian exekutatzen den backend logika.
+*   **Datu-basea (V_Login):** Erabiltzaileen datuak gordetzen dituen bistak.
 
-## Urratsak (Geziak) Draw.io-n irudikatzeko:
-1.  **Erabiltzailea -> Interfazea:** Erabiltzaileak bere NAN eta Pasahitza sartu eta "Saioa hasi" botoia sakatzen du. Geziaren testua: `datuakSartu(nan, pasahitza)`
-2.  **Interfazea -> Kontrola:** Interfazeak datuak kontrolagailuari bidaltzen dizkio. Gezi testua: `egiaztatuDatuak(nan, pasahitza)`
-3.  **Kontrola -> Erabiltzailea (Klasea):** Kontrolak datu-basean/klasean erabiltzailea bilatzen du. Gezi testua: `e = new Erabiltzailea(nan, pasahitza)` edo `e = getErabiltzailea(nan, pasahitza)`
-4.  **Erabiltzailea (Klasea) -> Kontrola** (Zatikako lineaz / puntu-puntuzkoa): Bilaketaren emaitza itzultzen du. Testua: `e`
+## Urratsak (Gertaerak):
+1.  **Erabiltzailea -> login.php (HTML):** Emaila eta pasahitza idatzi eta "Sartu" sakatu.
+2.  **login.php (HTML) -> login.php (PHP):** Formularioa bidali `POST` metodoaren bidez.
+3.  **login.php (PHP) -> Datu-basea:** Kredentzialak egiaztatu. Testua: `SELECT * FROM V_Login WHERE email = ?`
+4.  **Datu-basea -->> login.php (PHP):** Erabiltzailearen errenkada (id, pasahitza, rola).
+5.  **login.php (PHP) -> login.php (PHP):** Pasahitza konparatu (`$pasahitza === $user['pasahitza']`).
 
-**[Alt: e == null] (karratuan inguratuta Draw.io-n)**:
-5.  **Kontrola -> Interfazea** (Zatikako lineaz): Emaitza hutsa bada. Testua: `errorea`
-6.  **Interfazea -> Erabiltzailea** (Zatikako lineaz): Errore-mezua pantailan. Testua: `[e==null] Datuak okerrak direla adierazi`
+**[Alt: Kredentzial okerrak edota erabiltzailea ez dago aktibo]**:
+6.  **login.php (PHP) -->> login.php (HTML):** Errore mezua definitu (`$errore_mezua`).
+7.  **login.php (HTML) -->> Erabiltzailea:** Alerta gorria erakutsi pantailan.
 
-**[Alt: e != null]**:
-7.  **Kontrola -> Interfazea** (Zatikako lineaz): Datuak zuzenak dira bere rolarekin batera. Testua: `saioaOnartuta(rol)`
-8.  **Interfazea -> Erabiltzailea** (Zatikako lineaz): Dagokion menura sartzeko aukera eman. Testua: `Menura bideratu`
+**[Alt: Kredentzial zuzenak]**:
+8.  **login.php (PHP) -> login.php (PHP):** Saioa hasi eta aldagaiak gorde. Testua: `session_start()` eta `$_SESSION['rol_id'] = ...`
+9.  **login.php (PHP) -->> Erabiltzailea:** Orri nagusira birbideratu. Testua: `header("Location: ../php_medikua/index.php")` (edota dagokion rola).
 
 ---
 
-## Ikuspegia (Mermaid bidez)
-*Hobeto ulertzeko eskema auto-generatua:*
+## Ikuspegia (Mermaid)
 
 ```mermaid
 sequenceDiagram
-    participant e as Erabiltzailea
-    participant I as Interfazea
-    participant K as Kontrola
-    participant KL as Erabiltzailea
+    participant E as Erabiltzailea
+    participant H as login.php (HTML)
+    participant P as login.php (PHP)
+    participant DB as Datu-basea (V_Login)
 
-    e->>I: datuakSartu(nan, pasahitza)
-    I->>K: egiaztatuDatuak(nan, pasahitza)
-    K->>KL: e = getErabiltzailea(nan, pasahitza)
-    KL-->>K: e (ikusteko rol eta datuak)
+    E->>H: Email eta Pasahitza sartu
+    H->>P: POST eskaera bidali
+    P->>DB: prepare("SELECT * FROM V_Login WHERE email = ?")
+    DB-->>P: Erabiltzaile datuak (ID, Rola, Pass)
     
-    alt e == null
-        K-->>I: errorea
-        I-->>e: [e==null] Datuak okerrak direla adierazi
-    else e != null
-        K-->>I: saioaOnartuta(e.rola)
-        I-->>e: [e!=null] Dagokion menura bideratu
+    Note over P: Pasahitza egiaztatu
+    
+    alt Kredentzial okerrak
+        P-->>H: $errore_mezua definitu
+        H-->>E: Alerta Mezua erakutsi
+    else Kredentzial zuzenak
+        Note over P: session_start()
+        P->>P: $_SESSION aldagaiak kargatu
+        P-->>E: header("Location: .../index.php")
     end
 ```

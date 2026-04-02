@@ -7,64 +7,64 @@
         <mxCell id="L1" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;participant=umlActor;" value="Erabiltzailea" vertex="1">
           <mxGeometry height="550" width="40" x="130" y="80" as="geometry" />
         </mxCell>
-        <mxCell id="L2" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" value="Interfazea" vertex="1">
+        <mxCell id="L2" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" value="login.php (HTML)" vertex="1">
           <mxGeometry height="550" width="100" x="300" y="80" as="geometry" />
         </mxCell>
-        <mxCell id="L3" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" value="Kontrola" vertex="1">
+        <mxCell id="L3" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" value="login.php (PHP)" vertex="1">
           <mxGeometry height="550" width="100" x="500" y="80" as="geometry" />
         </mxCell>
-        <mxCell id="L4" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" value="Erabiltzailea" vertex="1">
+        <mxCell id="L4" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;collapsible=0;recursiveResize=0;outlineConnect=0;" value="Datu-basea (V_Login)" vertex="1">
           <mxGeometry height="550" width="100" x="700" y="80" as="geometry" />
         </mxCell>
-        <mxCell id="E1" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;rounded=0;" value="datuakSartu(nan, pasahitza)">
+        <mxCell id="E1" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;rounded=0;" value="Email eta Pasahitza sartu">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="150" y="150" as="sourcePoint" />
             <mxPoint x="350" y="150" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="E2" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;rounded=0;" value="egiaztatuDatuak(nan, pasahitza)">
+        <mxCell id="E2" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;rounded=0;" value="POST eskaera bidali">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="350" y="200" as="sourcePoint" />
             <mxPoint x="550" y="200" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="E3" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;rounded=0;" value="e = getErabiltzailea(nan, pasahitza)">
+        <mxCell id="E3" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=block;edgeStyle=elbowEdgeStyle;elbow=vertical;rounded=0;" value="prepare(&quot;SELECT * FROM V_Login WHERE email = ?&quot;)">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="550" y="250" as="sourcePoint" />
             <mxPoint x="750" y="250" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="E4" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;edgeStyle=elbowEdgeStyle;elbow=vertical;rounded=0;dashed=1;" value="e">
+        <mxCell id="E4" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;edgeStyle=elbowEdgeStyle;elbow=vertical;rounded=0;dashed=1;" value="Erabiltzaile datuak (ID, Rola, Pass)">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="750" y="300" as="sourcePoint" />
             <mxPoint x="550" y="300" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="F_Alt" parent="1" style="shape=umlFrame;whiteSpace=wrap;html=1;width=90;height=40;boundedLbl=1;verticalAlign=top;align=left;spacingLeft=5;" value="alt&#xa;[e == null]" vertex="1">
+        <mxCell id="F_Alt" parent="1" style="shape=umlFrame;whiteSpace=wrap;html=1;width=90;height=40;boundedLbl=1;verticalAlign=top;align=left;spacingLeft=5;" value="alt&#xa;[Kredentzial okerrak]" vertex="1">
           <mxGeometry height="100" width="500" x="100" y="320" as="geometry" />
         </mxCell>
-        <mxCell id="E5" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;edgeStyle=elbowEdgeStyle;elbow=vertical;rounded=0;dashed=1;" value="errorea">
+        <mxCell id="E5" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;edgeStyle=elbowEdgeStyle;elbow=vertical;rounded=0;dashed=1;" value="$errore_mezua definitu">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="550" y="360" as="sourcePoint" />
             <mxPoint x="350" y="360" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="E6" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;edgeStyle=elbowEdgeStyle;elbow=vertical;rounded=0;dashed=1;" value="Datuak okerrak direla adierazi">
+        <mxCell id="E6" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;edgeStyle=elbowEdgeStyle;elbow=vertical;rounded=0;dashed=1;" value="Alerta mezua erakutsi">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="350" y="400" as="sourcePoint" />
             <mxPoint x="150" y="400" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="F_Else" parent="1" style="shape=umlFrame;whiteSpace=wrap;html=1;width=90;height=40;boundedLbl=1;verticalAlign=top;align=left;spacingLeft=5;" value="alt&#xa;[e != null]" vertex="1">
+        <mxCell id="F_Else" parent="1" style="shape=umlFrame;whiteSpace=wrap;html=1;width=90;height=40;boundedLbl=1;verticalAlign=top;align=left;spacingLeft=5;" value="alt&#xa;[Kredentzial zuzenak]" vertex="1">
           <mxGeometry height="100" width="500" x="100" y="440" as="geometry" />
         </mxCell>
-        <mxCell id="E7" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;edgeStyle=elbowEdgeStyle;elbow=vertical;rounded=0;dashed=1;" value="saioaOnartuta(e.rola)">
+        <mxCell id="E7" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;edgeStyle=elbowEdgeStyle;elbow=vertical;rounded=0;dashed=1;" value="session_start() / $_SESSION kargatu">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="550" y="480" as="sourcePoint" />
             <mxPoint x="350" y="480" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="E8" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;edgeStyle=elbowEdgeStyle;elbow=vertical;rounded=0;dashed=1;" value="Dagokion menura bideratu">
+        <mxCell id="E8" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;edgeStyle=elbowEdgeStyle;elbow=vertical;rounded=0;dashed=1;" value="header(&quot;Location: .../index.php&quot;)">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="350" y="520" as="sourcePoint" />
             <mxPoint x="150" y="520" as="targetPoint" />
