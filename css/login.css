@@ -19,14 +19,13 @@
 }
 
 .hasiera-txartela {
-  background-color: rgba(255, 255, 255, 0.95); /* Erdi gardena atzeko planoko ikonoak agertzeko */
+  background-color: var(--bg-surface);
   padding: 40px;
   border-radius: var(--border-radius);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-color);
   width: 100%;
   max-width: 400px;
-  -webkit-backdrop-filter: blur(5px);
-  backdrop-filter: blur(5px);
+  border: 1px solid var(--border-color);
 }
 
 .hasiera-goiburua {
@@ -47,7 +46,7 @@
 .hasiera-oina {
   text-align: center;
   margin-top: 25px;
-  border-top: 1px solid #eee;
+  border-top: 1px solid var(--border-color);
   padding-top: 15px;
 }
 
@@ -74,7 +73,6 @@
 .logo-login {
   margin: 0 auto 20px;
   height: 60px;
-  mix-blend-mode: multiply;
   display: block;
 }
 

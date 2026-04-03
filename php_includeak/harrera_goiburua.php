@@ -4,6 +4,7 @@ if (!isset($orri_izenburua)) {
 }
 
 require_once __DIR__ . '/konfigurazioa_kargatu.php';
+require_once __DIR__ . '/estiloak_kargatu.php';
 require_once __DIR__ . '/hizkuntza_kargatu.php';
 
 // Erabiltzailearen konfigurazioa kargatu (pertsonala bada lehenetsi)
@@ -47,13 +48,15 @@ $itzulpenak = kargatuItzulpenak($hizkuntza_def);
     ?>
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <?php inprimatuEstiloak($konf); ?>
 </head>
 <body class="<?php echo $body_class ?? 'panel-gorputza'; ?>">
     <header class="panel-goiburua">
         <div class="logoa">
             <a href="index.php" class="logo-esteka">
                 <img src="<?php echo $bide_absolutua; ?>img/png/GOsasun_logoa.png" alt="GOsasun" class="logo-irudia">
-                <span class="logo-etiketa">Harrera</span>
+                <span class="logo-etiketa"><?php echo $itzulpenak->rolak->harrera; ?></span>
             </a>
         </div>
         <div class="mugikorreko-ikonoak">

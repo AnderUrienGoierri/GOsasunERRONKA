@@ -14,11 +14,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $xml_path = "../xml_konfigurazioa/konfig_erabiltzailea_" . $_SESSION['erabiltzaile_id'] . ".xml";
     }
 
-    // Ekintza 'reset' bada, fitxategia ezabatu eta itzuli
+    // Ekintza 'reset' bada, hasierako balioak ezarri (Basque, Light, Blue)
     if ($ekintza === 'reset') {
-        if (file_exists($xml_path)) {
-            unlink($xml_path);
-        }
+        $hizk = 'eu'; 
+        $kol_nag = '#4361ee'; 
+        $big_kol = '#3f37c9'; 
+        $foot_kol = '#2b2d42'; 
+        $gaia = 'argia';
+
+        $xml = new DOMDocument("1.0", "UTF-8");
+        $xml->formatOutput = true;
+        $root = $xml->createElement("konfigurazioa");
+        $xml->appendChild($root);
+     
+        $root->appendChild($xml->createElement("hizkuntza", $hizk));
+        $root->appendChild($xml->createElement("kolore_nagusia", $kol_nag));
+        $root->appendChild($xml->createElement("bigarren_kolorea", $big_kol));
+        $root->appendChild($xml->createElement("footer_kolorea", $foot_kol));
+        $root->appendChild($xml->createElement("gaia", $gaia));
+        
+        $xml->save($xml_path);
         
         $nondik = $_POST['nondik'] ?? '';
         if (!empty($nondik)) {

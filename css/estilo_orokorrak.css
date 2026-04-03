@@ -466,9 +466,10 @@ body {
     width: auto;
 }
 .kutxa-txikia {
-    background:white;
+    background: var(--bg-surface);
     border-radius:12px;
     padding:10px;
+    border: 1px solid var(--border-color);
 }
 .testu-txikia-200 {
     font-size:0.85rem;
@@ -503,7 +504,7 @@ body {
 
 .izenburu-nagusia {
     margin: 0;
-    color: var(--dark-text);
+    color: var(--text-main);
     font-size: 2rem;
     font-weight: 800;
 }
@@ -548,7 +549,7 @@ body {
 .menu-txartela h3 {
     font-size: 1.4rem;
     margin-bottom: 10px;
-    color: var(--dark-text);
+    color: var(--text-main);
 }
 
 .menu-txartela p {
@@ -563,30 +564,32 @@ body {
     text-decoration: none;
 }
 .kutxa-zuria-700 {
-    background:white;
-    padding:20px; /* Mugikorrerako murriztua */
+    background: var(--bg-surface);
+    padding:20px; 
     border-radius:12px;
     max-width:700px;
     margin:0 auto;
     width: 100%;
+    border: 1px solid var(--border-color);
 }
 .banatzaile-marra {
     margin: 20px 0;
     border: 0;
-    border-top: 1px solid #eee;
+    border-top: 1px solid var(--border-color);
 }
 .testua-ezkerrean {
     text-align: left;
 }
 .kutxa-zuria-itzala {
-    background: white;
-    padding: 20px; /* Mugikorrerako murriztua */
+    background: var(--bg-surface);
+    padding: 20px; 
     border-radius: 15px;
     box-shadow: var(--box-shadow);
+    border: 1px solid var(--border-color);
 }
 .izenburu-iluna {
     margin-bottom: 20px;
-    color: var(--dark-text);
+    color: var(--text-main);
 }
 .betegarria-15 {
     padding: 15px 0;
@@ -775,7 +778,7 @@ body {
   }
 }
 
-/* ================= EBAZPEN-ARAUAK (Media queries) (Mahaigaina - gutxieneko zabalera) ================= */
+/* ================= (Media queries) (Mahaigaina - gutxieneko zabalera) ================= */
 
 @media (min-width: 480px) {
   .sareta-bikoa {
@@ -903,10 +906,10 @@ body {
 .flex-hazkundea-1 { flex-grow: 1; }
 
 /* Ertzak eta Atzeko planoak */
-.ertz-goi-argia { border-top: 1px solid #eee; }
-.ertz-behe-argia { border-bottom: 1px solid #eee; }
-.mezu-edukia-estiloa { white-space: pre-wrap; line-height: 1.6; background: #f8f9fa; padding: 20px; border-radius: 8px; }
-.abisu-koloreak { background: #fff3cd; color: #856404; }
+.ertz-goi-argia { border-top: 1px solid var(--border-color); }
+.ertz-behe-argia { border-bottom: 1px solid var(--border-color); }
+.mezu-edukia-estiloa { white-space: pre-wrap; line-height: 1.6; background: var(--bg-body); padding: 20px; border-radius: 8px; border: 1px solid var(--border-color); }
+.abisu-koloreak { background: rgba(255, 193, 7, 0.1); color: #ffc107; }
 
 /* Tipografia eta Kurtsorea */
 .kurtsore-erakuslea { cursor: pointer; }
@@ -916,18 +919,28 @@ body {
 
 /* Automatikoki sortutako klasa laguntzaile osagarriak */
 .bloke-bistarapena { display: block; }
-.mezu-erantzun-edukia { white-space: pre-wrap; line-height: 1.6; background: #e3f2fd; padding: 20px; border-radius: 8px; }
+.mezu-erantzun-edukia { white-space: pre-wrap; line-height: 1.6; background: rgba(67, 97, 238, 0.05); padding: 20px; border-radius: 8px; border: 1px solid var(--border-color); }
 .ikono-ertaina-gardena-txikia { width: 1.2em; height: 1.2em; vertical-align: middle; opacity: 0.3; }
 .ikono-1_2rem-marjina-10 { width: 1.2rem; height: 1.2rem; vertical-align: middle; filter: var(--primary-filter); margin-right: 10px; }
 .ikono-1_5rem-marjina-10 { width: 1.5rem; height: 1.5rem; vertical-align: middle; filter: var(--primary-filter); margin-right: 10px; }
 .ikono-1_5rem { width: 1.5rem; height: 1.5rem; filter: var(--primary-filter); }
-.aginte-panel-sareta { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 30px; }
+.aginte-panel-sareta { 
+    display: grid; 
+    grid-template-columns: 1fr; 
+    gap: 20px; 
+    margin-bottom: 30px; 
+}
+@media (min-width: 550px) {
+    .aginte-panel-sareta { grid-template-columns: 1fr 1fr; gap: 30px; }
+}
+.panel-sareta { width: 100%; }
+.flex-tartea-20 { display: flex; gap: 20px; flex-wrap: wrap; }
 .ikono-kutxa-handia { font-size: 3rem; margin-bottom: 10px; }
 .zenbaki-handi-urdina { font-size: 2rem; margin: 0; color: var(--primary-color); }
 .marjina-bertikal-doikuntza { margin-top:10px; margin-bottom: 20px; }
 .flex-erdian { display: flex; align-items: center; }
 .marjina-esk-8 { margin-right: 8px; }
-.txartel-zuri-argia { padding: 15px; background: #f8f9fa; }
+.txartel-zuri-argia { padding: 15px; background: var(--bg-body); border: 1px solid var(--border-color); }
 .data-kutxa { background: var(--primary-color); color: white; padding: 10px; border-radius: 8px; min-width: 60px; }
 .testu-txiki-maiuskula { font-size: 0.8rem; text-transform: uppercase; }
 .testu-handi-lodia { font-size: 1.5rem; font-weight: bold; }
@@ -984,10 +997,10 @@ body {
     flex-direction: column;
     align-items: center;
     padding: 15px;
-    border: 2px solid #eee;
+    border: 2px solid var(--border-color);
     border-radius: var(--border-radius);
     transition: var(--transition);
-    background: var(--white);
+    background: var(--bg-surface);
     gap: 10px;
 }
 

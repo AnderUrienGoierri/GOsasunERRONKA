@@ -49,7 +49,7 @@ include_once '../php_includeak/mediku_goiburua.php';
         </section>
 
         <!-- Estatistika Txartelak (Dashboard) -->
-        <div class="panel-sareta flex-tartea-20 marjina-behe-30 aginte-panel-sareta">
+        <div class="panel-sareta marjina-behe-30 aginte-panel-sareta">
             <div class="kutxa-zuria-itzala testua-erdian">
                 <div class="ikono-kutxa-handia"><img src="../img/svg/users.svg" alt="" class="ikono-ertaina marjina-esk-5"></div>
                 <h3 class="zenbaki-handi-urdina"><?php echo $pazienteKopurua; ?></h3>

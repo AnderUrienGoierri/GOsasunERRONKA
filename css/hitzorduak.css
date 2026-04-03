@@ -62,13 +62,13 @@
 }
 
 .joera-igoera {
-    background: #e6ffed;
-    color: #22863a;
+    background: rgba(40, 167, 69, 0.1);
+    color: #28a745;
 }
 
 .joera-beherakada {
-    background: #ffeef0;
-    color: #cb2431;
+    background: rgba(220, 53, 69, 0.1);
+    color: #dc3545;
 }
 
 /* Egutegi Edukiontzia */
@@ -147,7 +147,8 @@
 }
 
 .egun-gelaxka.hutsik {
-    background-color: #fcfcfc;
+    background-color: var(--bg-body);
+    opacity: 0.6;
 }
 
 .egun-gelaxka.gaurkoa {
@@ -179,7 +180,7 @@
 }
 
 .hitzordu-blokea {
-    background: #e8f0fe;
+    background: rgba(74, 144, 226, 0.15);
     border-left: 4px solid var(--primary-color);
     padding: 8px;
     border-radius: 4px;
@@ -194,9 +195,9 @@
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
-.hitzordu-blokea.status-bukatuta { border-left-color: var(--success-color); background-color: #e6ffed; }
-.hitzordu-blokea.status-ezeztatuta { border-left-color: var(--danger-color); background-color: #ffeef0; }
-.hitzordu-blokea.status-zain { border-left-color: #ffc107; background-color: #fff8e1; }
+.hitzordu-blokea.status-bukatuta { border-left-color: var(--success-color); background-color: rgba(40, 167, 69, 0.1); }
+.hitzordu-blokea.status-ezeztatuta { border-left-color: var(--danger-color); background-color: rgba(220, 53, 69, 0.1); }
+.hitzordu-blokea.status-zain { border-left-color: #ffc107; background-color: rgba(255, 193, 7, 0.1); }
 
 .bloke-izenik { font-weight: 700; display: block; margin-bottom: 2px; }
 .bloke-mota { font-size: 0.75rem; color: var(--gray); }
@@ -234,7 +235,7 @@
     gap: 20px;
 }
 
-.hitzordu-txartela:hover { background-color: #fcfcfc; }
+.hitzordu-txartela:hover { background-color: var(--bg-body); }
 
 .ordu-tartea {
     font-size: 1.2rem;
@@ -244,7 +245,7 @@
 }
 
 .hitzordu-xehetasunak { flex: 1; }
-.hitzordu-xehetasunak h4 { margin: 0 0 5px 0; color: var(--dark-text); font-size: 1.1rem; }
+.hitzordu-xehetasunak h4 { margin: 0 0 5px 0; color: var(--text-main); font-size: 1.1rem; }
 .hitzordu-xehetasunak .arrazoia { margin: 0; color: var(--gray); font-size: 0.9rem; }
 
 .egoera-txapa {
@@ -254,9 +255,9 @@
     font-weight: 600;
 }
 
-.egoera-txapa.status-bukatuta { background: #e6ffed; color: #22863a; }
-.egoera-txapa.status-ezeztatuta { background: #ffeef0; color: #cb2431; }
-.egoera-txapa.status-zain { background: #fff8e1; color: #b7791f; }
+.egoera-txapa.status-bukatuta { background: rgba(40, 167, 69, 0.1); color: #28a745; }
+.egoera-txapa.status-ezeztatuta { background: rgba(220, 53, 69, 0.1); color: #dc3545; }
+.egoera-txapa.status-zain { background: rgba(255, 193, 7, 0.1); color: #b7791f; }
 
 /* Modalak */
 .modala-inguratzailea {

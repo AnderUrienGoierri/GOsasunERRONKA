@@ -90,6 +90,7 @@
         <mezuak_testua>Komunikatu pazienteekin.</mezuak_testua>
         <abisuak>Abisuak</abisuak>
         <abisuak_testua>Ikusi alerta kritikoak.</abisuak_testua>
+        <ezarpenak>Ezarpenak</ezarpenak>
     </menua_medikua>
     <dashboard_medikua>
         <paziente_kopurua>Esleitutako Pazienteak</paziente_kopurua>
@@ -111,6 +112,7 @@
         <kanpoko_mezuak_testua>Irakurri webgune publikoko kontsultak.</kanpoko_mezuak_testua>
         <harrerako_langileak>Harrerako Langileak</harrerako_langileak>
         <harrerako_langileak_testua>Kudeatu harrerako langileak.</harrerako_langileak_testua>
+        <ezarpenak>Ezarpenak</ezarpenak>
     </menua_harrera>
     <login>
         <izenburua>Saioa Hasi</izenburua>
@@ -142,9 +144,12 @@
         <gorde_botoia>Gorde Ezarpenak (XML-an)</gorde_botoia>
         <reset_botoia>Berreskuratu hasierako baloreak</reset_botoia>
         <reset_konfirmazioa>Ziur zaude hasierako baloreak berreskuratu nahi dituzula?</reset_konfirmazioa>
-        <hizkuntza_eu>Euskara</hizkuntza_eu>
-        <hizkuntza_es>Gaztelania</hizkuntza_es>
-        <hizkuntza_en>Ingelesa</hizkuntza_en>
-        <hizkuntza_nl>Nederlandera</hizkuntza_nl>
+        <zentro_konfigurazioa>Osasun Zentroaren Konfigurazio Orokorra</zentro_konfigurazioa>
+        <zentro_laguntza>Hemen zentroko erabiltzaile guztientzako balio lehenetsiak aldatu ditzakezu. Kontuan izan erabiltzaileek euren kabuz pertsonalizatu ditzaketela ezarpen hauek.</zentro_laguntza>
     </ezarpenak>
+    <rolak>
+        <medikua>Medikua</medikua>
+        <pazientea>Pazientea</pazientea>
+        <harrera>Harrera</harrera>
+    </rolak>
 </hizkuntza>

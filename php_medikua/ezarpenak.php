@@ -24,7 +24,7 @@ $gaia_def = $konf['gaia'];
 
 <main class="panel-nagusia">
     <div class="orri-goiburua">
-        <h1><img src="../img/svg/settings.svg" alt="" class="ikono-32px-erdian"> <?php echo $itzulpenak->menua_medikua->ezarpenak ?? 'Ezarpenak'; ?></h1>
+        <h1><img src="../img/svg/settings.svg" alt="" class="ikono-32px-erdian"> <?php echo $itzulpenak->ezarpenak->izenburua; ?></h1>
         <a href="index.php" class="botoia botoi-itsua"><img src="../img/svg/arrow-left.svg" alt="" class="ikono-16px-erdian"> <?php echo $itzulpenak->login->itzuli ?? 'Itzuli'; ?></a>
     </div>
  

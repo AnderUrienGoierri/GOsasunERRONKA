@@ -90,6 +90,7 @@
         <mezuak_testua>Communicate with your patients.</mezuak_testua>
         <abisuak>Alerts</abisuak>
         <abisuak_testua>View critical alerts.</abisuak_testua>
+        <ezarpenak>Settings</ezarpenak>
     </menua_medikua>
     <dashboard_medikua>
         <paziente_kopurua>Assigned Patients</paziente_kopurua>
@@ -111,6 +112,7 @@
         <kanpoko_mezuak_testua>Read public web inquiries.</kanpoko_mezuak_testua>
         <harrerako_langileak>Reception Staff</harrerako_langileak>
         <harrerako_langileak_testua>Manage reception staff.</harrerako_langileak_testua>
+        <ezarpenak>Settings</ezarpenak>
     </menua_harrera>
     <login>
         <izenburua>Login</izenburua>
@@ -141,10 +143,13 @@
         <hizkuntza_nl>Dutch</hizkuntza_nl>
         <gorde_botoia>Save Settings (in XML)</gorde_botoia>
         <reset_botoia>Restore initial values</reset_botoia>
-        <reset_konfirmazioa>Are you sure you want to restore initial values?</reset_konfirmazioa>
-        <hizkuntza_eu>Basque</hizkuntza_eu>
-        <hizkuntza_es>Spanish</hizkuntza_es>
-        <hizkuntza_en>English</hizkuntza_en>
-        <hizkuntza_nl>Dutch</hizkuntza_nl>
+        <reset_konfirmazioa>Are you sure you want to restore the initial values?</reset_konfirmazioa>
+        <zentro_konfigurazioa>Global Health Center Configuration</zentro_konfigurazioa>
+        <zentro_laguntza>Here you can change the default values for all users of the center. Note that users can still customize their own settings.</zentro_laguntza>
     </ezarpenak>
+    <rolak>
+        <medikua>Doctor</medikua>
+        <pazientea>Patient</pazientea>
+        <harrera>Reception</harrera>
+    </rolak>
 </hizkuntza>

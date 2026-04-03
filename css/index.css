@@ -54,7 +54,7 @@
   border-radius: 15px;
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  border: 3px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--border-color);
   background: #000;
 }
 
@@ -83,8 +83,8 @@
   flex: 0 0 33.333333%; /* 1 slide visible at a time */
   text-align: center;
   padding: 40px;
-  background-color: var(--white);
-  border: 1px solid #eee;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
   transition: var(--transition);
@@ -101,7 +101,7 @@
 }
 
 .ezaugarri-txartela h3 {
-  color: var(--dark-text);
+  color: var(--text-main);
   margin-bottom: 10px;
 }
 

@@ -27,7 +27,7 @@ $gaia_def = $konf['gaia'];
 
 <main class="panel-nagusia">
     <div class="orri-goiburua">
-        <h1><img src="../img/svg/settings.svg" alt="" class="ikono-32px-erdian"> <?php echo $itzulpenak->menua_harrera->ezarpenak ?? 'Ezarpenak'; ?></h1>
+        <h1><img src="../img/svg/settings.svg" alt="" class="ikono-32px-erdian"> <?php echo $itzulpenak->ezarpenak->izenburua; ?></h1>
         <a href="index.php" class="botoia botoi-itsua"><img src="../img/svg/arrow-left.svg" alt="" class="ikono-16px-erdian"> <?php echo $itzulpenak->login->itzuli ?? 'Itzuli'; ?></a>
     </div>
  
@@ -117,6 +117,62 @@ $gaia_def = $konf['gaia'];
                 <input type="hidden" name="itzulera" value="harrera">
                 <div class="testua-erdian">
                     <button type="submit" class="botoia botoi-itsua-gorria" onclick="return confirm('<?php echo $itzulpenak->ezarpenak->reset_konfirmazioa; ?>')"><?php echo $itzulpenak->ezarpenak->reset_botoia; ?></button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Zentroaren Konfigurazio Orokorra (Administratzaileentzat soilik) -->
+        <div class="kutxa-zuria ertz-lodi-urdina marjina-goi-30">
+            <div class="testua-erdian-marjina-behe-20">
+                <h2 class="testua-urdina"><img src="../img/svg/hospital.svg" alt="" class="ikono-24px-erdian"> <?php echo $itzulpenak->ezarpenak->zentro_konfigurazioa; ?></h2>
+                <p class="testu-grisa"><?php echo $itzulpenak->ezarpenak->zentro_laguntza; ?></p>
+            </div>
+            
+            <form action="../php_laguntzaileak/ezarpenak_gorde.php" method="POST">
+                <input type="hidden" name="form_type" value="osasun_zentroa">
+                <input type="hidden" name="itzulera" value="harrera">
+
+                <div class="inprimaki-taldea">
+                    <label><?php echo $itzulpenak->ezarpenak->hizkuntza; ?></label>
+                    <select name="hizkuntza" class="inprimaki-kontrola">
+                        <option value="eu" <?php echo ($hizkuntza_def === 'eu') ? 'selected' : ''; ?>><?php echo $itzulpenak->ezarpenak->hizkuntza_eu; ?></option>
+                        <option value="es" <?php echo ($hizkuntza_def === 'es') ? 'selected' : ''; ?>><?php echo $itzulpenak->ezarpenak->hizkuntza_es; ?></option>
+                        <option value="en" <?php echo ($hizkuntza_def === 'en') ? 'selected' : ''; ?>><?php echo $itzulpenak->ezarpenak->hizkuntza_en; ?></option>
+                        <option value="nl" <?php echo ($hizkuntza_def === 'nl') ? 'selected' : ''; ?>><?php echo $itzulpenak->ezarpenak->hizkuntza_nl; ?></option>
+                    </select>
+                </div>
+
+                <div class="inprimaki-taldea">
+                    <label><?php echo $itzulpenak->ezarpenak->kolore_nagusia; ?></label>
+                    <input type="color" name="kolore_nagusia" value="<?php echo htmlspecialchars($kolore_nagusia_def); ?>" class="inprimaki-kontrola sarrera-altuera-50">
+                </div>
+
+                <div class="inprimaki-taldea">
+                    <label><?php echo $itzulpenak->ezarpenak->bigarren_kolorea; ?></label>
+                    <input type="color" name="bigarren_kolorea" value="<?php echo htmlspecialchars($bigarren_kolorea_def); ?>" class="inprimaki-kontrola sarrera-altuera-50">
+                </div>
+
+                <div class="inprimaki-taldea">
+                    <label><?php echo $itzulpenak->ezarpenak->itxura; ?></label>
+                    <select name="gaia" class="inprimaki-kontrola">
+                        <option value="argia" <?php echo ($gaia_def === 'argia') ? 'selected' : ''; ?>><?php echo $itzulpenak->ezarpenak->gaia_argia; ?></option>
+                        <option value="iluna" <?php echo ($gaia_def === 'iluna') ? 'selected' : ''; ?>><?php echo $itzulpenak->ezarpenak->gaia_iluna; ?></option>
+                    </select>
+                </div>
+
+                <div class="testua-erdian-marjina-behe-20">
+                    <button type="submit" class="botoia botoi-nagusia zabalera-osoa-300px"><?php echo $itzulpenak->ezarpenak->gorde_botoia; ?></button>
+                </div>
+            </form>
+
+            <hr class="banatzaile-marra">
+
+            <form action="../php_laguntzaileak/ezarpenak_gorde.php" method="POST" class="marjina-goi-15">
+                <input type="hidden" name="ekintza" value="reset">
+                <input type="hidden" name="form_type" value="osasun_zentroa">
+                <input type="hidden" name="itzulera" value="harrera">
+                <div class="testua-erdian">
+                    <button type="submit" class="botoia botoi-itsua-gorria" onclick="return confirm('<?php echo $itzulpenak->ezarpenak->reset_konfirmazioa; ?>')"><?php echo $itzulpenak->ezarpenak->reset_botoia; ?> (Globala)</button>
                 </div>
             </form>
         </div>

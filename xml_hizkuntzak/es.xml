@@ -23,7 +23,7 @@
         <izena>Nombre</izena>
         <email>Correo electrónico</email>
         <mezua>Mensaje</mezua>
-        <bidali>Enviar Mensaje</bidali>
+        <bidali>Enviar Mezua</bidali>
         <bulegoak>Nuestras oficinas</bulegoak>
         <arrakasta>Su mensaje ha sido enviado correctamente. ¡Nos pondremos en contacto con usted pronto!</arrakasta>
     </kontaktua>
@@ -89,7 +89,8 @@
         <mezuak>Mensajes</mezuak>
         <mezuak_testua>Comuníquese con sus pacientes.</mezuak_testua>
         <abisuak>Avisos</abisuak>
-        <abisuak_testua>Vea alertas críticas.</abisuak_testua>
+        <abisuak_testua>Ver alertas críticas.</abisuak_testua>
+        <ezarpenak>Ajustes</ezarpenak>
     </menua_medikua>
     <dashboard_medikua>
         <paziente_kopurua>Pacientes Asignados</paziente_kopurua>
@@ -110,7 +111,8 @@
         <kanpoko_mezuak>Mensajes Externos</kanpoko_mezuak>
         <kanpoko_mezuak_testua>Lea consultas de la web pública.</kanpoko_mezuak_testua>
         <harrerako_langileak>Personal de Recepción</harrerako_langileak>
-        <harrerako_langileak_testua>Gestione el personal de recepción.</harrerako_langileak_testua>
+        <harrerako_langileak_testua>Gestionar el personal de recepción.</harrerako_langileak_testua>
+        <ezarpenak>Ajustes</ezarpenak>
     </menua_harrera>
     <login>
         <izenburua>Iniciar Sesión</izenburua>
@@ -136,15 +138,18 @@
         <gaia_argia>Claro (Clásico de escritorio)</gaia_argia>
         <gaia_iluna>Oscuro (Modo oscuro)</gaia_iluna>
         <hizkuntza_eu>Vasco</hizkuntza_eu>
-        <hizkuntza_es>Español</hizkuntza_es>
-        <hizkuntza_en>Inglés</hizkuntza_en>
-        <hizkuntza_nl>Holandés</hizkuntza_nl>
-        <gorde_botoia>Guardar Configuración (en XML)</gorde_botoia>
-        <reset_botoia>Restaurar valores iniciales</reset_botoia>
-        <reset_konfirmazioa>¿Estás seguro de que deseas restaurar los valores iniciales?</reset_konfirmazioa>
-        <hizkuntza_eu>Vasco</hizkuntza_eu>
         <hizkuntza_es>Castellano</hizkuntza_es>
         <hizkuntza_en>Inglés</hizkuntza_en>
         <hizkuntza_nl>Holandés</hizkuntza_nl>
+        <gorde_botoia>Guardar Configuración (en XML)</gorde_botoia>
+        <reset_botoia>Restablecer valores iniciales</reset_botoia>
+        <reset_konfirmazioa>¿Estás seguro de que deseas restablecer los valores iniciales?</reset_konfirmazioa>
+        <zentro_konfigurazioa>Configuración General del Centro de Salud</zentro_konfigurazioa>
+        <zentro_laguntza>Aquí puedes cambiar los valores predeterminados para todos los usuarios del centro. Ten en cuenta que los usuarios pueden personalizar sus propios ajustes.</zentro_laguntza>
     </ezarpenak>
+    <rolak>
+        <medikua>Médico</medikua>
+        <pazientea>Paciente</pazientea>
+        <harrera>Recepción</harrera>
+    </rolak>
 </hizkuntza>
