@@ -557,7 +557,8 @@ body {
     font-size: 0.95rem;
 }
 .gehienezko-zabalera-300 {
-    max-width: 100%; /* Pantaila txikietarako */
+    max-width: 300px;
+    width: 100%;
 }
 .esteka-nagusia {
     color: var(--primary-color);

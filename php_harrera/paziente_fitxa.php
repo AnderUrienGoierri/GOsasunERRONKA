@@ -25,14 +25,14 @@ if (!$pazientea) {
 }
 
 // 2. Azken neurketak lortu
-$stmtN = $pdo->prepare("SELECT erregistro_data, tentsio_sistolikoa, tentsio_diastolikoa, glukosa_mg_dl, pisua_kg, altuera FROM Neurketak WHERE paziente_id = ? ORDER BY erregistro_data DESC LIMIT 5");
+$stmtN = $pdo->prepare("SELECT erregistro_data, tentsio_sistolikoa, tentsio_diastolikoa, pultsua_ppm, pisua_kg, altuera FROM Neurketak WHERE paziente_id = ? ORDER BY erregistro_data DESC LIMIT 5");
 $stmtN->execute([$id]);
 $neurketak = $stmtN->fetchAll(PDO::FETCH_ASSOC);
 
 // 3. Hitzorduak lortu (etorkizunekoak eta azkenak)
 $stmtH = $pdo->prepare("SELECT h.*, m.izena as m_izena, m.abizenak as m_abizenak 
                         FROM Hitzorduak h 
-                        JOIN Medikuak m ON h.mediku_id = m.mediku_id 
+                        JOIN Medikuak m ON h.mediku_id = m.id 
                         WHERE h.paziente_id = ? 
                         ORDER BY h.data DESC LIMIT 10");
 $stmtH->execute([$id]);
@@ -100,9 +100,9 @@ include_once '../php_includeak/harrera_goiburua.php';
                             <div>mmHg</div>
                         </div>
                         <div class="param-txartela">
-                            <div>Glukosa</div>
-                            <div class="param-balioa"><?php echo $azkena['glukosa_mg_dl']; ?></div>
-                            <div>mg/dL</div>
+                            <div>Pultsua</div>
+                            <div class="param-balioa"><?php echo $azkena['pultsua_ppm'] ?? '-'; ?></div>
+                            <div>ppm</div>
                         </div>
                         <div class="param-txartela">
                             <div>Pisua</div>

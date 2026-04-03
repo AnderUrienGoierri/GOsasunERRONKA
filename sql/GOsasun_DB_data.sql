@@ -3,7 +3,7 @@ USE GOsasun_DB;
 -- Disable constraint checks temporarily for bulk inserts if needed (optional)
 SET FOREIGN_KEY_CHECKS = 0;
 -- 1. Rolak (Dagoeneko badaude, baina bistan badago berridatziko ditugu)
-INSERT IGNORE INTO Rolak (rol_id, izena)
+INSERT IGNORE INTO Rolak (id, izena)
 VALUES (1, 'Medikua'),
        (2, 'Pazientea'),
        (3, 'Harrera');
@@ -11,7 +11,7 @@ VALUES (1, 'Medikua'),
 -- Medikuak (50), Pazienteak (50)
 -- Pasahitz guztientzat: '1234'
 INSERT INTO Erabiltzaileak (
-        erabiltzaile_id,
+        id,
         email,
         pasahitza,
         rol_id,
@@ -127,7 +127,7 @@ VALUES -- Medikuak (1 - 50)
     (104, 'leire.harrera@gosasun.eus', '1234', 3, 1);
 -- 3. Medikuak (50)
 INSERT INTO Medikuak (
-        mediku_id,
+        id,
         izena,
         abizenak,
         jaiotze_data,
@@ -739,7 +739,7 @@ VALUES (
         'img/png/medikua_50.png'
     );
 -- 4. Harrerako Langileak
-INSERT INTO Harrerako_Langileak (langile_id, izena, abizenak, txanda, jaiotze_data, telefonoa, irudia)
+INSERT INTO Harrerako_Langileak (id, izena, abizenak, txanda, jaiotze_data, telefonoa, irudia)
     VALUES (101, 'Ane', 'Martinez Mendizabal', 'Goizez', '1985-05-10', '611222333', 'img/png/harrera_101.png'),
     (102, 'Ane', 'Garcia', 'Goizez', '1990-03-15', '622333444', 'img/png/harrera_102.png'),
     (103, 'Mikel', 'Lopez', 'Arratsaldez', '1988-07-20', '633444555', 'img/png/harrera_103.png'),
@@ -747,7 +747,7 @@ INSERT INTO Harrerako_Langileak (langile_id, izena, abizenak, txanda, jaiotze_da
 -- 6. Mediku-Paziente Loturak
 -- 5. Pazienteak (50)
 INSERT INTO Pazienteak (
-        paziente_id,
+        id,
         nan,
         izena,
         abizenak,
@@ -34709,11 +34709,11 @@ SELECT paziente_id, DATE(erregistro_data),
 FROM Neurketak
 WHERE pisua_kg < 45;
 UPDATE Pazienteak
-SET irudia = CONCAT('img/png/pazientea_', paziente_id, '.png')
-WHERE paziente_id IN (51, 52, 53, 54, 55, 56);
+SET irudia = CONCAT('img/png/pazientea_', id, '.png')
+WHERE id IN (51, 52, 53, 54, 55, 56);
 UPDATE Harrerako_Langileak
-SET irudia = CONCAT('img/png/harrera_', langile_id, '.png')
-WHERE langile_id = 101;
+SET irudia = CONCAT('img/png/harrera_', id, '.png')
+WHERE id = 101;
 -- 14. Botikak (50 erabilienak)
 INSERT INTO Botikak (
         izena,

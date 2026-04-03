@@ -31,7 +31,8 @@
 }
 
 .bilaketa-barra {
-    flex: 0 1 350px;
+    width: 350px;
+    max-width: 100%;
 }
 
 .taula-inguratzailea {
@@ -168,6 +169,6 @@
     }
     
     .bilaketa-barra {
-        max-width: 100%;
+        width: 100%;
     }
 }

@@ -20,11 +20,7 @@ if (isset($_GET['error'])) {
 
 // Harrerako langileak eskuratu formalki
 try {
-    $stmt = $pdo->query("SELECT hl.langile_id, hl.izena, hl.abizenak, hl.irudia, e.email 
-                         FROM Harrerako_Langileak hl 
-                         JOIN Erabiltzaileak e ON hl.langile_id = e.erabiltzaile_id 
-                         WHERE e.aktibo = 1
-                         ORDER BY hl.abizenak ASC");
+    $stmt = $pdo->query("SELECT * FROM V_Harrera WHERE aktibo = 1 ORDER BY abizenak ASC");
     $langileak = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
     $errorea = "Errorea datuak eskuratzean: " . $e->getMessage();
@@ -41,8 +37,10 @@ include_once '../php_includeak/harrera_goiburua.php';
 
     <main class="panel-nagusia">
         <div class="orri-goiburua">
-            <h2><img src="../img/svg/users.svg" alt="" class="ikono-ertaina marjina-esk-5"> Harrerako Langileak</h2>
-            <p>Kudeatu zentroko harrerako lantaldea.</p>
+            <div>
+                <h2><img src="../img/svg/users.svg" alt="" class="ikono-ertaina marjina-esk-5"> Harrerako Langileak</h2>
+                <p>Kudeatu zentroko harrerako lantaldea.</p>
+            </div>
         </div>
 
         <?php if ($mezua): ?>
@@ -53,8 +51,8 @@ include_once '../php_includeak/harrera_goiburua.php';
         <?php endif; ?>
 
         <div class="flex-tartea-20">
-            <a href="harrerako_langile_sortu.php" class="botoia botoi-sortu marjina-behe-0" >+ Langile Berria</a>
-            <input type="text" id="bilaketaLangileak" class="inprimaki-kontrola bilaketa-barra" placeholder="Bilatu izena edo abizena...">
+            <a href="harrerako_langile_sortu.php" class="botoi-sortu marjina-behe-0">+ Langile Berria</a>
+            <input type="text" id="bilaketaLangileak" class="inprimaki-kontrola bilaketa-barra gehienezko-zabalera-300" placeholder="Bilatu izena edo abizena...">
         </div>
 
         <div class="taula-inguratzailea">
@@ -63,12 +61,15 @@ include_once '../php_includeak/harrera_goiburua.php';
                     <tr>
                         <th>Argazkia</th>
                         <th class="kurtsore-erakuslea" onclick="ordenatuTaula(1)">ID <img src="../img/svg/sort.svg" alt="" class="ikono-txikia-gardena"></th>
-                        <th class="kurtsore-erakuslea" onclick="ordenatuTaula(2)">Izena <img src="../img/svg/sort.svg" alt="" class="ikono-txikia-gardena"></th>
-                        <th class="kurtsore-erakuslea" onclick="ordenatuTaula(3)">Emaila <img src="../img/svg/sort.svg" alt="" class="ikono-txikia-gardena"></th>
+                        <th class="kurtsore-erakuslea" onclick="ordenatuTaula(2)">Izena/Abizenak <img src="../img/svg/sort.svg" alt="" class="ikono-txikia-gardena"></th>
+                        <th class="kurtsore-erakuslea" onclick="ordenatuTaula(3)">Email <img src="../img/svg/sort.svg" alt="" class="ikono-txikia-gardena"></th>
+                        <th class="kurtsore-erakuslea" onclick="ordenatuTaula(4)">Jaiotze Data <img src="../img/svg/sort.svg" alt="" class="ikono-txikia-gardena"></th>
+                        <th class="kurtsore-erakuslea" onclick="ordenatuTaula(5)">Txanda <img src="../img/svg/sort.svg" alt="" class="ikono-txikia-gardena"></th>
+                        <th class="kurtsore-erakuslea" onclick="ordenatuTaula(6)">Telefonoa <img src="../img/svg/sort.svg" alt="" class="ikono-txikia-gardena"></th>
                         <th>Ekintzak</th>
                     </tr>
                 </thead>
-                <taula_gorputza>
+                <tbody>
                     <?php if(!empty($langileak)): ?>
                         <?php foreach ($langileak as $l): ?>
                             <tr>
@@ -82,13 +83,16 @@ include_once '../php_includeak/harrera_goiburua.php';
                                     <img src="../<?php echo $irudia_bide; ?>" 
                                          alt="Langilearen argazkia" class="irudia-txikia">
                                 </td>
-                                <td>#<?php echo $l['langile_id']; ?></td>
+                                <td class="identifikadorea">#<?php echo $l['langile_id']; ?></td>
                                 <td>
                                     <a href="harrerako_langile_fitxa.php?id=<?php echo $l['langile_id']; ?>" class="esteka-langilea">
                                         <strong><?php echo htmlspecialchars($l['abizenak'] . ', ' . $l['izena']); ?></strong>
                                     </a>
                                 </td>
                                 <td><?php echo htmlspecialchars($l['email']); ?></td>
+                                <td><?php echo htmlspecialchars($l['jaiotze_data'] ?? '-'); ?></td>
+                                <td><span class="etiketa"><?php echo htmlspecialchars($l['txanda'] ?? '-'); ?></span></td>
+                                <td><?php echo htmlspecialchars($l['telefonoa'] ?? '-'); ?></td>
                                 <td>
                                     <div class="taula-ekintzak">
                                         <a href="harrerako_langile_editatu.php?id=<?php echo $l['langile_id']; ?>" class="botoi-ikonoa" title="Editatu"><img src="../img/svg/pencil.svg" alt="" class="ikono-ertaina marjina-esk-5"></a>
@@ -105,7 +109,7 @@ include_once '../php_includeak/harrera_goiburua.php';
                     <?php else: ?>
                         <tr><td colspan="5" class="testua-erdian">Ez dago harrerako langilerik erregistratuta.</td></tr>
                     <?php endif; ?>
-                </taula_gorputza>
+                </tbody>
             </table>
         </div>
     </main>

@@ -16,7 +16,7 @@ if (isset($_GET['delete_id'])) {
         $pid = $_GET['delete_id'];
         
         // Erabiltzailea ezabatu (on delete cascade denez, pazientea ere badoa)
-        $stmt = $pdo->prepare("DELETE FROM Erabiltzaileak WHERE erabiltzaile_id = ?");
+        $stmt = $pdo->prepare("DELETE FROM Erabiltzaileak WHERE id = ?");
         $stmt->execute([$pid]);
         
         $pdo->commit();
@@ -41,8 +41,10 @@ include_once '../php_includeak/harrera_goiburua.php';
 
     <main class="panel-nagusia">
         <div class="orri-goiburua">
-            <h2><img src="../img/svg/users.svg" alt="" class="ikono-ertaina marjina-esk-5"> Pazienteen Kudeaketa</h2>
-            <p>Sortu, editatu edo ezabatu zentroko paziente guztiak.</p>
+            <div>
+                <h2><img src="../img/svg/users.svg" alt="" class="ikono-ertaina marjina-esk-5"> Pazienteen Kudeaketa</h2>
+                <p>Sortu, editatu edo ezabatu zentroko paziente guztiak.</p>
+            </div>
         </div>
 
         <?php if ($mezua): ?>
@@ -63,15 +65,23 @@ include_once '../php_includeak/harrera_goiburua.php';
                     <tr>
                         <th>Argazkia</th>
                         <th class="kurtsore-erakuslea" onclick="ordenatuTaula(1)">ID <img src="../img/svg/sort.svg" alt="" class="ikono-txikia-gardena"></th>
-                        <th class="kurtsore-erakuslea" onclick="ordenatuTaula(2)">Izena <img src="../img/svg/sort.svg" alt="" class="ikono-txikia-gardena"></th>
-                        <th class="kurtsore-erakuslea" onclick="ordenatuTaula(3)">NAN <img src="../img/svg/sort.svg" alt="" class="ikono-txikia-gardena"></th>
-                        <th>Telefonoa</th>
-                        <th class="kurtsore-erakuslea" onclick="ordenatuTaula(5)">Egoera Klinikoa <img src="../img/svg/sort.svg" alt="" class="ikono-txikia-gardena"></th>
+                        <th class="kurtsore-erakuslea" onclick="ordenatuTaula(2)">Izena/Abizenak <img src="../img/svg/sort.svg" alt="" class="ikono-txikia-gardena"></th>
+                        <th class="kurtsore-erakuslea" onclick="ordenatuTaula(3)">Email <img src="../img/svg/sort.svg" alt="" class="ikono-txikia-gardena"></th>
+                        <th class="kurtsore-erakuslea" onclick="ordenatuTaula(4)">NAN <img src="../img/svg/sort.svg" alt="" class="ikono-txikia-gardena"></th>
+                        <th class="kurtsore-erakuslea" onclick="ordenatuTaula(5)">Sexua <img src="../img/svg/sort.svg" alt="" class="ikono-txikia-gardena"></th>
+                        <th class="kurtsore-erakuslea" onclick="ordenatuTaula(6)">Jaiotze Data <img src="../img/svg/sort.svg" alt="" class="ikono-txikia-gardena"></th>
+                        <th class="kurtsore-erakuslea" onclick="ordenatuTaula(7)">Telefonoa <img src="../img/svg/sort.svg" alt="" class="ikono-txikia-gardena"></th>
+                        <th class="kurtsore-erakuslea" onclick="ordenatuTaula(8)">Helbidea <img src="../img/svg/sort.svg" alt="" class="ikono-txikia-gardena"></th>
+                        <th class="kurtsore-erakuslea" onclick="ordenatuTaula(9)">Posta Kodea <img src="../img/svg/sort.svg" alt="" class="ikono-txikia-gardena"></th>
+                        <th class="kurtsore-erakuslea" onclick="ordenatuTaula(10)">Herria <img src="../img/svg/sort.svg" alt="" class="ikono-txikia-gardena"></th>
+                        <th class="kurtsore-erakuslea" onclick="ordenatuTaula(11)">Odol Taldea <img src="../img/svg/sort.svg" alt="" class="ikono-txikia-gardena"></th>
+                        <th class="kurtsore-erakuslea" onclick="ordenatuTaula(12)">Egoera <img src="../img/svg/sort.svg" alt="" class="ikono-txikia-gardena"></th>
                         <th>Ekintzak</th>
                     </tr>
                 </thead>
-                <taula_gorputza>
+                <tbody>
                     <?php foreach ($pazienteak as $p): ?>
+                        <tr>
                             <td class="zabalera-50">
                                 <?php 
                                 $irudia_bide = htmlspecialchars($p['irudia'] ?? 'img/lehenetsia_pazientea.png');
@@ -85,15 +95,21 @@ include_once '../php_includeak/harrera_goiburua.php';
                             <td class="identifikadorea">#<?php echo $p['paziente_id']; ?></td>
                             <td>
                                 <strong><a href="paziente_fitxa.php?id=<?php echo $p['paziente_id']; ?>" class="esteka-nagusia"><?php echo htmlspecialchars($p['abizenak'] . ', ' . $p['izena']); ?></a></strong>
-                                <br><small><?php echo htmlspecialchars($p['email']); ?></small>
                             </td>
+                            <td><small><?php echo htmlspecialchars($p['email']); ?></small></td>
                             <td><?php echo htmlspecialchars($p['nan']); ?></td>
+                            <td><?php echo htmlspecialchars($p['sexua'] ?? '-'); ?></td>
+                            <td><?php echo htmlspecialchars($p['jaiotze_data'] ?? '-'); ?></td>
                             <td><?php echo htmlspecialchars($p['telefonoa'] ?? '-'); ?></td>
+                            <td><?php echo htmlspecialchars($p['helbidea'] ?? '-'); ?></td>
+                            <td><?php echo htmlspecialchars($p['posta_kodea'] ?? '-'); ?></td>
+                            <td><?php echo htmlspecialchars($p['herria'] ?? '-'); ?></td>
                             <td>
-                                <?php // SQL-an gehitu berri denez, baliteke lehengo pazienteek NULL izatea 
-                                // (baina default jarri diogu, badaezpada)
-                                $egoera = $p['egoera_klinikoa'] ?? 'Alta';
-                                ?>
+                                <?php $odol = $p['odol_taldea'] ?? '-'; ?>
+                                <span class="etiketa"><?php echo htmlspecialchars($odol); ?></span>
+                            </td>
+                            <td>
+                                <?php $egoera = $p['egoera_klinikoa'] ?? 'Alta'; ?>
                                 <span class="egoera-<?php echo strtolower($egoera); ?>">
                                     <?php echo $egoera; ?>
                                 </span>
@@ -107,7 +123,7 @@ include_once '../php_includeak/harrera_goiburua.php';
                             </td>
                         </tr>
                     <?php endforeach; ?>
-                </taula_gorputza>
+                </tbody>
             </table>
         </div>
     </main>

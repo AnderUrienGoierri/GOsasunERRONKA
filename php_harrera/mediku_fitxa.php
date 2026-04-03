@@ -27,7 +27,7 @@ if (!$medikua) {
 // 2. Hitzorduak lortu (etorkizunekoak eta azkenak)
 $stmtH = $pdo->prepare("SELECT h.*, p.izena as p_izena, p.abizenak as p_abizenak 
                         FROM Hitzorduak h 
-                        JOIN Pazienteak p ON h.paziente_id = p.paziente_id 
+                        JOIN Pazienteak p ON h.paziente_id = p.id 
                         WHERE h.mediku_id = ? 
                         ORDER BY h.data DESC LIMIT 15");
 $stmtH->execute([$id]);

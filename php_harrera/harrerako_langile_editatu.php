@@ -18,28 +18,34 @@ if (!isset($_GET['id']) || empty($_GET['id'])) {
 $id = $_GET['id'];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $izena = $_POST['izena'] ?? '';
-    $abizenak = $_POST['abizenak'] ?? '';
-    $email = $_POST['email'] ?? '';
+    $izena          = $_POST['izena']                ?? '';
+    $abizenak       = $_POST['abizenak']             ?? '';
+    $email          = $_POST['email']                ?? '';
+    $txanda         = $_POST['txanda']               ?? 'Goizez';
+    $jaiotze_data   = $_POST['jaiotze_data']         ?? null;
+    $telefonoa      = $_POST['telefonoa']            ?? null;
 
     if (empty($izena) || empty($abizenak) || empty($email)) {
-        $errorea = "Eremu nagusiak bete behar dira.";
+        $errorea = "Eremu nagusiak bete behar dira (Izena, Abizenak, Email).";
     } else {
         try {
             $pdo->beginTransaction();
 
-            $stmt = $pdo->prepare("UPDATE Erabiltzaileak SET email = ? WHERE erabiltzaile_id = ?");
+            // 1. Eguneratu erabiltzailea
+            $stmt = $pdo->prepare("UPDATE Erabiltzaileak SET email = ? WHERE id = ?");
             $stmt->execute([$email, $id]); 
             
-            $stmt2 = $pdo->prepare("UPDATE Harrerako_Langileak SET izena = ?, abizenak = ? WHERE langile_id = ?");
-            $stmt2->execute([$izena, $abizenak, $id]);
+            // 2. Eguneratu langilea
+            $stmt2 = $pdo->prepare("UPDATE Harrerako_Langileak SET izena = ?, abizenak = ?, txanda = ?, jaiotze_data = ?, telefonoa = ? WHERE id = ?");
+            $stmt2->execute([$izena, $abizenak, $txanda, $jaiotze_data, $telefonoa, $id]);
 
+            // Pasahitza aldatu nahi bada
             if (!empty($_POST['pasahitza'])) {
                  if ($_POST['pasahitza'] === $_POST['pasahitza_errepikatu']) {
-                     $stmtP = $pdo->prepare("UPDATE Erabiltzaileak SET pasahitza = ? WHERE erabiltzaile_id = ?");
+                     $stmtP = $pdo->prepare("UPDATE Erabiltzaileak SET pasahitza = ? WHERE id = ?");
                      $stmtP->execute([$_POST['pasahitza'], $id]);
                  } else {
-                     throw new Exception("Pasahitzak ez datoz bat. Ez da hitz pasarik eguneratu.");
+                     throw new Exception("Pasahitzak ez datoz bat.");
                  }
             }
 
@@ -50,14 +56,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if ($e->getCode() == 23000) {
                 $errorea = "Helbide elektroniko hori jada erregistratuta dago.";
             } else {
-                $errorea = "Errorea: " . $e->getMessage();
+                $errorea = "Errorea eguneratzean: " . $e->getMessage();
             }
         }
     }
 }
 
-// Kargatu datuak
-$stmt = $pdo->prepare("SELECT hl.*, e.email FROM Harrerako_Langileak hl JOIN Erabiltzaileak e ON hl.langile_id = e.erabiltzaile_id WHERE hl.langile_id = ?");
+// Kargatu datuak eguneratuak baita ere
+$stmt = $pdo->prepare("SELECT hl.*, e.email FROM Harrerako_Langileak hl JOIN Erabiltzaileak e ON hl.id = e.id WHERE hl.id = ?");
 $stmt->execute([$id]);
 $langilea = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -73,55 +79,73 @@ include_once '../php_includeak/harrera_goiburua.php';
 ?>
 
 <main class="panel-nagusia">
-    <a href="harrerako_langileak.php" class="atzera-botoia esteka-itzuli" ><img src="../img/svg/arrow-left.svg" alt="" class="ikono-ertaina marjina-esk-5"> Itzuli zerrendara</a>
-
     <div class="orri-goiburua">
-        <h2><img src="../img/svg/pencil.svg" alt="" class="ikono-ertaina marjina-esk-5"> Langilea Editatu: <?php echo htmlspecialchars($langilea['izena']); ?>
-        </h2>
+        <div>
+            <h2><img src="../img/svg/pencil.svg" alt="" class="ikono-ertaina marjina-esk-5"> Langilea Editatu</h2>
+            <p><?php echo htmlspecialchars($langilea['abizenak'] . ', ' . $langilea['izena']); ?></p>
+        </div>
+        <a href="harrerako_langileak.php" class="botoia botoi-ertza">← Itzuli</a>
     </div>
 
     <?php if ($mezua): ?>
-            <div class="alerta alerta-arrakasta"><?php echo htmlspecialchars($mezua); ?>
-            </div>
+        <div class="alerta alerta-arrakasta"><?php echo htmlspecialchars($mezua); ?></div>
     <?php endif; ?>
 
     <?php if ($errorea): ?>
-            <div class="alerta alerta-errorea"><?php echo htmlspecialchars($errorea); ?>
-            </div>
+        <div class="alerta alerta-errorea"><?php echo htmlspecialchars($errorea); ?></div>
     <?php endif; ?>
 
-    <div class="inprimaki-edukiontzia kutxa-zuria-800" >
-        <form method="POST" action="">
-            <div class="sareta-bikoa">
-                <div class="inprimaki-taldea">
-                    <label>Izena</label>
-                    <input type="text" name="izena" class="inprimaki-kontrola" required value="<?php echo htmlspecialchars($langilea['izena']); ?>">
+    <div class="inprimaki-kutxa kutxa-zuria-800">
+        <form method="POST">
+            <div class="profil-gorputza">
+
+                <h3 class="atal-izenburua">Datu Pertsonalak</h3>
+                <div class="informazio-taldea">
+                    <label for="izena">Izena <span class="beharrezkoa">*</span></label>
+                    <input type="text" id="izena" name="izena" class="inprimaki-kontrola" value="<?php echo htmlspecialchars($langilea['izena']); ?>" required>
                 </div>
-                <div class="inprimaki-taldea">
-                    <label>Abizenak</label>
-                    <input type="text" name="abizenak" class="inprimaki-kontrola" required value="<?php echo htmlspecialchars($langilea['abizenak']); ?>">
+                <div class="informazio-taldea">
+                    <label for="abizenak">Abizenak <span class="beharrezkoa">*</span></label>
+                    <input type="text" id="abizenak" name="abizenak" class="inprimaki-kontrola" value="<?php echo htmlspecialchars($langilea['abizenak']); ?>" required>
                 </div>
-                <div class="inprimaki-taldea zutabe-osoa" >
-                    <label>Posta Elektronikoa</label>
-                    <input type="email" name="email" class="inprimaki-kontrola" required value="<?php echo htmlspecialchars($langilea['email']); ?>">
+                <div class="informazio-taldea">
+                    <label for="jaiotze_data">Jaiotze Data</label>
+                    <input type="date" id="jaiotze_data" name="jaiotze_data" class="inprimaki-kontrola" value="<?php echo $langilea['jaiotze_data'] ?? ''; ?>">
                 </div>
-                
-                <div class="inprimaki-taldea zutabe-osoa-marjina" >
-                    <label class="azpiko-marra">Pasahitza aldatu (aukerakoa)</label>
+                <div class="informazio-taldea">
+                    <label for="telefonoa">Telefonoa</label>
+                    <input type="text" id="telefonoa" name="telefonoa" class="inprimaki-kontrola" value="<?php echo htmlspecialchars($langilea['telefonoa'] ?? ''); ?>">
                 </div>
-                
-                <div class="inprimaki-taldea">
-                    <label>Pasahitz Berria</label>
-                    <input type="password" name="pasahitza" class="inprimaki-kontrola" placeholder="Hutsik utzi ez aldatzeko">
+
+                <h3 class="atal-izenburua">Lan-txanda</h3>
+                <div class="informazio-taldea">
+                    <label for="txanda">Txanda</label>
+                    <select id="txanda" name="txanda" class="inprimaki-kontrola">
+                        <option value="Goizez" <?php echo ($langilea['txanda'] ?? '') === 'Goizez' ? 'selected' : ''; ?>>Goizez</option>
+                        <option value="Arratsaldez" <?php echo ($langilea['txanda'] ?? '') === 'Arratsaldez' ? 'selected' : ''; ?>>Arratsaldez</option>
+                        <option value="Gauez" <?php echo ($langilea['txanda'] ?? '') === 'Gauez' ? 'selected' : ''; ?>>Gauez</option>
+                    </select>
                 </div>
-                <div class="inprimaki-taldea">
-                    <label>Errepikatu Pasahitza</label>
-                    <input type="password" name="pasahitza_errepikatu" class="inprimaki-kontrola" placeholder="Hutsik utzi ez aldatzeko">
+
+                <h3 class="atal-izenburua">Kontu Datuak</h3>
+                <div class="informazio-taldea">
+                    <label for="email">E-posta <span class="beharrezkoa">*</span></label>
+                    <input type="email" id="email" name="email" class="inprimaki-kontrola" value="<?php echo htmlspecialchars($langilea['email']); ?>" required>
+                </div>
+
+                <h3 class="atal-izenburua">Pasahitza Aldatu</h3>
+                <div class="informazio-taldea">
+                    <label for="pasahitza">Pasahitz Berria</label>
+                    <input type="password" id="pasahitza" name="pasahitza" class="inprimaki-kontrola" placeholder="Hutsik utzi ez aldatzeko">
+                </div>
+                <div class="informazio-taldea">
+                    <label for="pasahitza_errepikatu">Errepikatu Pasahitza</label>
+                    <input type="password" id="pasahitza_errepikatu" name="pasahitza_errepikatu" class="inprimaki-kontrola" placeholder="Hutsik utzi ez aldatzeko">
                 </div>
             </div>
             
-            <div class="botoi-taldea-flex">
-                <button type="submit" class="botoia botoi-nagusia flex-osoa" >Gorde Aldaketak</button>
+            <div class="botoi-taldea marjina-goi-20">
+                <button type="submit" class="botoia botoi-nagusia">Gorde Aldaketak</button>
                 <a href="harrerako_langileak.php" class="botoia botoi-ertza">Utzi</a>
             </div>
         </form>
@@ -129,5 +153,3 @@ include_once '../php_includeak/harrera_goiburua.php';
 </main>
 
 <?php include_once '../php_includeak/harrera_footer.php'; ?>
-
-

@@ -43,7 +43,7 @@ $itzulpenak = kargatuItzulpenak($hizkuntza_def);
 
         // Only print if file exists
         if (file_exists(__DIR__ . "/../css/" . $css_fitxategia)) {
-            echo '<link rel="stylesheet" href="' . $bide_absolutua . 'css/' . $css_fitxategia . '">';
+            echo '<link rel="stylesheet" href="' . $bide_absolutua . 'css/' . $css_fitxategia . '?v=1.1">';
         }
     ?>
     <!-- jQuery -->
@@ -67,10 +67,10 @@ $itzulpenak = kargatuItzulpenak($hizkuntza_def);
             <li><a href="index.php" class="<?php echo ($uneko_orria === 'index') ? 'aktiboa' : ''; ?>"><?php echo $itzulpenak->menua_harrera->hasiera; ?></a></li>
             <li><a href="pazienteak.php" class="<?php echo ($uneko_orria === 'pazienteak') ? 'aktiboa' : ''; ?>"><?php echo $itzulpenak->menua_harrera->pazienteak; ?></a></li>
             <li><a href="medikuak.php" class="<?php echo ($uneko_orria === 'medikuak') ? 'aktiboa' : ''; ?>"><?php echo $itzulpenak->menua_harrera->medikuak; ?></a></li>
+            <li><a href="harrerako_langileak.php" class="<?php echo ($uneko_orria === 'harrerako_langileak') ? 'aktiboa' : ''; ?>"><?php echo $itzulpenak->menua_harrera->harrerako_langileak; ?></a></li>
             <li><a href="hitzorduak.php" class="<?php echo ($uneko_orria === 'hitzorduak') ? 'aktiboa' : ''; ?>"><?php echo $itzulpenak->menua_harrera->hitzorduak; ?></a></li>
             <li><a href="mezuak.php" class="<?php echo ($uneko_orria === 'mezuak') ? 'aktiboa' : ''; ?>"><?php echo $itzulpenak->menua_harrera->mezuak; ?></a></li>
             <li><a href="kanpoko_mezuak.php" class="<?php echo ($uneko_orria === 'kanpoko_mezuak') ? 'aktiboa' : ''; ?>"><?php echo $itzulpenak->menua_harrera->kanpoko_mezuak; ?></a></li>
-            <li><a href="harrerako_langileak.php" class="<?php echo ($uneko_orria === 'harrerako_langileak') ? 'aktiboa' : ''; ?>"><?php echo $itzulpenak->menua_harrera->harrerako_langileak; ?></a></li>
             <li><a href="ezarpenak.php" class="<?php echo ($uneko_orria === 'ezarpenak') ? 'aktiboa' : ''; ?>"><?php echo $itzulpenak->menua->ezarpenak; ?></a></li>
             <li><a href="<?php echo $bide_absolutua; ?>php_laguntzaileak/logout.php" class="botoia botoi-ertza arrisku-kolorea"><?php echo $itzulpenak->erabiltzaile_panela->saioa_itxi; ?></a></li>
         </ul>

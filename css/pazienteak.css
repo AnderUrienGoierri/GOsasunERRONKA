@@ -12,6 +12,17 @@
     gap: 15px;
 }
 
+@media (max-width: 480px) {
+    .orri-goiburua {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    .orri-goiburua h2 {
+        font-size: 1.4rem;
+    }
+}
+
 .orri-goiburua h2 {
     color: var(--primary-color);
     margin: 0;
@@ -150,6 +161,12 @@
     border: 1px solid var(--border-color);
 }
 
+@media (max-width: 480px) {
+    .profil-txartela {
+        padding: 20px 15px;
+    }
+}
+
 .profil-irudia-handia {
     width: 150px;
     height: 150px;
@@ -185,9 +202,18 @@
 
 .param-sareta {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* 140px-tik murriztua 300px pantailetarako */
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); 
     gap: 10px;
     margin-top: 20px;
+}
+
+@media (max-width: 350px) {
+    .param-sareta {
+        grid-template-columns: 1fr 1fr;
+    }
+    .param-balioa {
+        font-size: 1.25rem;
+    }
 }
 
 .param-txartela {

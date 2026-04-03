@@ -1,18 +1,23 @@
 $(document).ready(function() {
-    // Bilaketa funtzionalitatea
+    // Bilaketa funtzionalitatea (Izena, Abizena, Email)
     $('#bilaketaLangileak').on('keyup', function() {
         let iragazkia = $(this).val().toLowerCase();
-        let errenkadak = $('#langileTaula taula_gorputza tr');
-        
-        // Ez egin ezer taula hutsik badago
-        if(errenkadak.length === 1 && errenkadak.find('td').length === 1) return;
+        let errenkadak = $('#langileTaula tbody tr');
         
         errenkadak.each(function() {
             let errenkada = $(this);
-            let izen_testua = errenkada.find('td').eq(2).text().toLowerCase();
-            let email_testua = errenkada.find('td').eq(3).text().toLowerCase();
+            let aurkitua = false;
             
-            if (izen_testua.includes(iragazkia) || email_testua.includes(iragazkia)) {
+            // Bilatu zutabe hauetan: Izena/Abizenak (index 2), Email (index 3)
+            [2, 3].forEach(index => {
+                let td = errenkada.find('td').eq(index);
+                if (td.length > 0) {
+                    let testua = td.text().toLowerCase();
+                    if (testua.includes(iragazkia)) aurkitua = true;
+                }
+            });
+            
+            if (aurkitua) {
                 errenkada.show();
             } else {
                 errenkada.hide();
@@ -22,29 +27,44 @@ $(document).ready(function() {
 });
 
 // Ordenazio funtzionalitatea
-let gorakaLangileak = true;
+let gorakaLan = true;
+let azkenZutabeaLan = -1;
+
 function ordenatuTaula(zutabeIndex) {
-    let taula_gorputza = $("#langileTaula taula_gorputza");
+    let taula_gorputza = $("#langileTaula tbody");
     let errenkadak = taula_gorputza.find("tr").get();
     
-    if(errenkadak.length === 1 && $(errenkadak[0]).find('td').length === 1) return;
+    if (azkenZutabeaLan === zutabeIndex) {
+        gorakaLan = !gorakaLan;
+    } else {
+        gorakaLan = true;
+        azkenZutabeaLan = zutabeIndex;
+    }
     
     errenkadak.sort((a, b) => {
         let testu_a = $(a).children('td').eq(zutabeIndex).text().trim();
         let testu_b = $(b).children('td').eq(zutabeIndex).text().trim();
         
-        if(zutabeIndex === 1) { // ID
+        // 1. Zenbakizkoak diren begiratu (ID index 1)
+        if (zutabeIndex === 1) {
              let zenbaki_a = parseInt(testu_a.replace('#', '')) || 0;
              let zenbaki_b = parseInt(testu_b.replace('#', '')) || 0;
-             return gorakaLangileak ? zenbaki_a - zenbaki_b : zenbaki_b - zenbaki_a;
+             return gorakaLan ? zenbaki_a - zenbaki_b : zenbaki_b - zenbaki_a;
         }
         
-        if (testu_a < testu_b) return gorakaLangileak ? -1 : 1;
-        if (testu_a > testu_b) return gorakaLangileak ? 1 : -1;
+        // 2. Zerbait data itxura badu (YYYY-MM-DD)
+        if (testu_a.match(/^\d{4}-\d{2}-\d{2}$/)) {
+            let data_a = new Date(testu_a);
+            let data_b = new Date(testu_b);
+            return gorakaLan ? data_a - data_b : data_b - data_a;
+        }
+        
+        // 3. Testu gisa
+        if (testu_a.toLowerCase() < testu_b.toLowerCase()) return gorakaLan ? -1 : 1;
+        if (testu_a.toLowerCase() > testu_b.toLowerCase()) return gorakaLan ? 1 : -1;
         return 0;
     });
     
-    gorakaLangileak = !gorakaLangileak; 
     $.each(errenkadak, function(index, errenkada) {
         taula_gorputza.append(errenkada);
     });

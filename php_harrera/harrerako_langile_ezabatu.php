@@ -22,7 +22,7 @@ if ($_SESSION['erabiltzaile_id'] == $id) {
 
 try {
     // Erabiltzailea taulan CASCADE duenez Harrerako_langileak taulara, nahikoa da hau:
-    $stmt = $pdo->prepare("DELETE FROM Erabiltzaileak WHERE erabiltzaile_id = ? AND rol_id = 4");
+    $stmt = $pdo->prepare("DELETE FROM Erabiltzaileak WHERE id = ? AND rol_id = 4");
     $stmt->execute([$id]);
 
     header("Location: harrerako_langileak.php?msg=" . urlencode("Harrerako langilea ongi ezabatu da."));
