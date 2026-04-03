@@ -9,11 +9,11 @@ require_once '../php_laguntzaileak/DB_konexioa.php';
 $erabiltzaile_id = $_SESSION['erabiltzaile_id'];
 
 // Lortu paziente guztiak
-$stmt_pazienteak = $pdo->query("SELECT paziente_id, izena, abizenak, nan FROM Pazienteak ORDER BY abizenak, izena");
+$stmt_pazienteak = $pdo->query("SELECT id as paziente_id, izena, abizenak, nan FROM Pazienteak ORDER BY abizenak, izena");
 $pazienteak = $stmt_pazienteak->fetchAll(PDO::FETCH_ASSOC);
 
 // Lortu mediku guztiak
-$stmt_medikuak = $pdo->query("SELECT mediku_id, izena, abizenak, espezialitatea FROM Medikuak ORDER BY abizenak, izena");
+$stmt_medikuak = $pdo->query("SELECT id as mediku_id, izena, abizenak, espezialitatea FROM Medikuak ORDER BY abizenak, izena");
 $medikuak = $stmt_medikuak->fetchAll(PDO::FETCH_ASSOC);
 
 $errore_mezua = '';

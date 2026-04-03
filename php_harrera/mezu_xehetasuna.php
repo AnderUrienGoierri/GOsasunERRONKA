@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['kanpoko_erantzuna']))
     $erantzuna = $_POST['erantzuna'] ?? '';
     if (!empty($erantzuna)) {
         try {
-            $stmt_reply = $pdo->prepare("UPDATE Kontaktua_Mezuak SET erantzuna = ?, erantzun_data = CURRENT_TIMESTAMP WHERE mezu_id = ?");
+            $stmt_reply = $pdo->prepare("UPDATE Kontaktua_Mezuak SET erantzuna = ?, erantzun_data = CURRENT_TIMESTAMP WHERE id = ?");
             $stmt_reply->execute([$erantzuna, $mezu_id]);
             $arrakasta_mezua = "Mezuari erantzun zaio ondo.";
         } catch (PDOException $e) {
@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['kanpoko_erantzuna']))
 
 try {
     if ($mota === 'kanpoko') {
-        $stmt = $pdo->prepare("SELECT * FROM Kontaktua_Mezuak WHERE mezu_id = ?");
+        $stmt = $pdo->prepare("SELECT * FROM Kontaktua_Mezuak WHERE id = ?");
         $stmt->execute([$mezu_id]);
         $lerroa = $stmt->fetch(PDO::FETCH_ASSOC);
         
@@ -51,7 +51,7 @@ try {
         ];
         
         if (!$lerroa['irakurrita']) {
-            $stmt_mark = $pdo->prepare("UPDATE Kontaktua_Mezuak SET irakurrita = 1 WHERE mezu_id = ?");
+            $stmt_mark = $pdo->prepare("UPDATE Kontaktua_Mezuak SET irakurrita = 1 WHERE id = ?");
             $stmt_mark->execute([$mezu_id]);
         }
     } else {
@@ -72,19 +72,19 @@ try {
                        ELSE e_hart.email
                    END as hartzaile_izena
             FROM Mezuak m
-            JOIN Erabiltzaileak e_bid ON m.bidaltzaile_id = e_bid.erabiltzaile_id
-            JOIN Rolak r_bid ON e_bid.rol_id = r_bid.rol_id
-            LEFT JOIN Medikuak med_bid ON e_bid.erabiltzaile_id = med_bid.mediku_id
-            LEFT JOIN Pazienteak paz_bid ON e_bid.erabiltzaile_id = paz_bid.paziente_id
-            LEFT JOIN Harrerako_Langileak hl_bid ON e_bid.erabiltzaile_id = hl_bid.langile_id
+            JOIN Erabiltzaileak e_bid ON m.bidaltzaile_id = e_bid.id
+            JOIN Rolak r_bid ON e_bid.rol_id = r_bid.id
+            LEFT JOIN Medikuak med_bid ON e_bid.id = med_bid.id
+            LEFT JOIN Pazienteak paz_bid ON e_bid.id = paz_bid.id
+            LEFT JOIN Harrerako_Langileak hl_bid ON e_bid.id = hl_bid.id
             
-            JOIN Erabiltzaileak e_hart ON m.hartzaile_id = e_hart.erabiltzaile_id
-            JOIN Rolak r_hart ON e_hart.rol_id = r_hart.rol_id
-            LEFT JOIN Medikuak med_hart ON e_hart.erabiltzaile_id = med_hart.mediku_id
-            LEFT JOIN Pazienteak paz_hart ON e_hart.erabiltzaile_id = paz_hart.paziente_id
-            LEFT JOIN Harrerako_Langileak hl_hart ON e_hart.erabiltzaile_id = hl_hart.langile_id
+            JOIN Erabiltzaileak e_hart ON m.hartzaile_id = e_hart.id
+            JOIN Rolak r_hart ON e_hart.rol_id = r_hart.id
+            LEFT JOIN Medikuak med_hart ON e_hart.id = med_hart.id
+            LEFT JOIN Pazienteak paz_hart ON e_hart.id = paz_hart.id
+            LEFT JOIN Harrerako_Langileak hl_hart ON e_hart.id = hl_hart.id
             
-            WHERE m.mezu_id = ? AND (m.bidaltzaile_id = ? OR m.hartzaile_id = ?)
+            WHERE m.id = ? AND (m.bidaltzaile_id = ? OR m.hartzaile_id = ?)
         ");
         $stmt->execute([$mezu_id, $erabiltzaile_id, $erabiltzaile_id]);
         $mezua = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -94,7 +94,7 @@ try {
         }
 
         if ($mezua['hartzaile_id'] == $erabiltzaile_id && !$mezua['irakurrita']) {
-            $stmt_mark = $pdo->prepare("UPDATE Mezuak SET irakurrita = 1 WHERE mezu_id = ?");
+            $stmt_mark = $pdo->prepare("UPDATE Mezuak SET irakurrita = 1 WHERE id = ?");
             $stmt_mark->execute([$mezu_id]);
         }
     }

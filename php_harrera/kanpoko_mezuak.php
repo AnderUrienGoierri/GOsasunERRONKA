@@ -95,14 +95,14 @@ include_once '../php_includeak/harrera_goiburua.php';
                                 </td>
                                 <td>
                                     <div class="flex-taldea-5">
-                                        <a href="mezu_xehetasuna.php?id=<?php echo $m['mezu_id']; ?>&mota=kanpoko" class="botoi-ikonoa-urdina" title="Ikusi / Erantzun">
+                                        <a href="mezu_xehetasuna.php?id=<?php echo $m['id']; ?>&mota=kanpoko" class="botoi-ikonoa-urdina" title="Ikusi / Erantzun">
                                             <img src="../img/svg/eye.svg" alt="Ikusi" class="ikono-18px">
                                         </a>
                                         
                                         <?php if ($m['irakurrita'] || $m['erantzuna']): ?>
                                             <form action="../php_laguntzaileak/mezuak_kudeatu.php" method="POST" style="display:inline;" onsubmit="return confirm('Ziur zaude mezua ezabatu nahi duzula?')">
                                                 <input type="hidden" name="ekintza" value="ezabatu">
-                                                <input type="hidden" name="id" value="<?php echo $m['mezu_id']; ?>">
+                                                <input type="hidden" name="id" value="<?php echo $m['id']; ?>">
                                                 <input type="hidden" name="mota" value="kanpoko">
                                                 <button type="submit" class="botoi-ezabatu-ikonoa" title="Ezabatu">
                                                     <img src="../img/svg/trash-2.svg" alt="Ezabatu" class="ikono-18px">
