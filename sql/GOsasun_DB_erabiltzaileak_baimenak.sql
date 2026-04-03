@@ -1,9 +1,3 @@
--- ROLAK
-INSERT IGNORE INTO Rolak (rol_id, izena)
-VALUES (1, 'Administratzailea'),
-	   (2, 'Medikua'),
-       (3, 'Pazientea'),
-       (4, 'Harrera');
 -- SEGURTASUNA ETA BAIMENAK
 CREATE USER IF NOT EXISTS 'adminRoot' @'%' IDENTIFIED BY 'PasahitzZaila123!';
 GRANT ALL PRIVILEGES ON *.* TO 'adminRoot' @'%' WITH
