@@ -1,7 +1,7 @@
 -- 50 mediku, azken 30 egunetan gutxienez 5 hitzordu egunean
-USE GOsasun_DB;
+USE gosasun_db;
 
-INSERT INTO Hitzorduak (paziente_id, mediku_id, data, hasiera_ordua, bukaera_ordua, arrazoia, egoera) VALUES
+INSERT INTO hitzorduak (paziente_id, osasun_langile_id, data, hasiera_ordua, bukaera_ordua, arrazoia, egoera) VALUES
     (93, 1, '2026-03-03', '08:00:00', '08:30:00', 'Urdaileko mina', 'Bukatuta'),
     (75, 1, '2026-03-03', '08:30:00', '09:00:00', 'Belarrietako mina', 'Bukatuta'),
     (78, 1, '2026-03-03', '09:00:00', '09:30:00', 'Txertoa jartzeko', 'Bukatuta'),
@@ -503,7 +503,7 @@ INSERT INTO Hitzorduak (paziente_id, mediku_id, data, hasiera_ordua, bukaera_ord
     (98, 27, '2026-03-04', '09:30:00', '10:00:00', 'Belarrietako mina', 'Bukatuta'),
     (68, 27, '2026-03-04', '10:00:00', '10:30:00', 'Lo egiteko zailtasunak', 'Bukatuta');
 
-INSERT INTO Hitzorduak (paziente_id, mediku_id, data, hasiera_ordua, bukaera_ordua, arrazoia, egoera) VALUES
+INSERT INTO hitzorduak (paziente_id, osasun_langile_id, data, hasiera_ordua, bukaera_ordua, arrazoia, egoera) VALUES
     (56, 27, '2026-03-04', '10:30:00', '11:00:00', 'Lo egiteko zailtasunak', 'Bukatuta'),
     (89, 28, '2026-03-04', '08:00:00', '08:30:00', 'Belarrietako mina', 'Bukatuta'),
     (56, 28, '2026-03-04', '08:30:00', '09:00:00', 'Txertoa jartzeko', 'Bukatuta'),
@@ -1005,7 +1005,7 @@ INSERT INTO Hitzorduak (paziente_id, mediku_id, data, hasiera_ordua, bukaera_ord
     (90, 4, '2026-03-06', '08:00:00', '08:30:00', 'Ekografia emaitzak', 'Bukatuta'),
     (56, 4, '2026-03-06', '08:30:00', '09:00:00', 'Ekografia emaitzak', 'Bukatuta');
 
-INSERT INTO Hitzorduak (paziente_id, mediku_id, data, hasiera_ordua, bukaera_ordua, arrazoia, egoera) VALUES
+INSERT INTO hitzorduak (paziente_id, osasun_langile_id, data, hasiera_ordua, bukaera_ordua, arrazoia, egoera) VALUES
     (58, 4, '2026-03-06', '09:00:00', '09:30:00', 'Lo egiteko zailtasunak', 'Bukatuta'),
     (72, 4, '2026-03-06', '09:30:00', '10:00:00', 'Larruazaleko arazoak', 'Ezeztatuta'),
     (54, 4, '2026-03-06', '10:00:00', '10:30:00', 'Txertoa jartzeko', 'Bukatuta'),
@@ -1507,7 +1507,7 @@ INSERT INTO Hitzorduak (paziente_id, mediku_id, data, hasiera_ordua, bukaera_ord
     (71, 28, '2026-03-09', '11:00:00', '11:30:00', 'Tentsioa neurtzeko', 'Bukatuta'),
     (69, 29, '2026-03-09', '08:00:00', '08:30:00', 'Bizkarreko mina', 'Bukatuta');
 
-INSERT INTO Hitzorduak (paziente_id, mediku_id, data, hasiera_ordua, bukaera_ordua, arrazoia, egoera) VALUES
+INSERT INTO hitzorduak (paziente_id, osasun_langile_id, data, hasiera_ordua, bukaera_ordua, arrazoia, egoera) VALUES
     (90, 29, '2026-03-09', '08:30:00', '09:00:00', 'Bizkarreko mina', 'Bukatuta'),
     (55, 29, '2026-03-09', '09:00:00', '09:30:00', 'Dietista kontsulta', 'Ezeztatuta'),
     (52, 29, '2026-03-09', '09:30:00', '10:00:00', 'Dietista kontsulta', 'Bukatuta'),
@@ -2009,7 +2009,7 @@ INSERT INTO Hitzorduak (paziente_id, mediku_id, data, hasiera_ordua, bukaera_ord
     (72, 7, '2026-03-11', '10:30:00', '11:00:00', 'Txertoa jartzeko', 'Bukatuta'),
     (96, 7, '2026-03-11', '11:00:00', '11:30:00', 'Larruazaleko arazoak', 'Bukatuta');
 
-INSERT INTO Hitzorduak (paziente_id, mediku_id, data, hasiera_ordua, bukaera_ordua, arrazoia, egoera) VALUES
+INSERT INTO hitzorduak (paziente_id, osasun_langile_id, data, hasiera_ordua, bukaera_ordua, arrazoia, egoera) VALUES
     (74, 8, '2026-03-11', '08:00:00', '08:30:00', 'Tentsioa neurtzeko', 'Bukatuta'),
     (78, 8, '2026-03-11', '08:30:00', '09:00:00', 'Urdaileko mina', 'Ezeztatuta'),
     (73, 8, '2026-03-11', '09:00:00', '09:30:00', 'Estresa/Antsietatea', 'Bukatuta'),
@@ -2511,7 +2511,7 @@ INSERT INTO Hitzorduak (paziente_id, mediku_id, data, hasiera_ordua, bukaera_ord
     (79, 35, '2026-03-12', '09:00:00', '09:30:00', 'Odol-analisiaren emaitzak', 'Bukatuta'),
     (77, 35, '2026-03-12', '09:30:00', '10:00:00', 'Tentsioa neurtzeko', 'Bukatuta');
 
-INSERT INTO Hitzorduak (paziente_id, mediku_id, data, hasiera_ordua, bukaera_ordua, arrazoia, egoera) VALUES
+INSERT INTO hitzorduak (paziente_id, osasun_langile_id, data, hasiera_ordua, bukaera_ordua, arrazoia, egoera) VALUES
     (66, 35, '2026-03-12', '10:00:00', '10:30:00', 'Eztula eta sukarra', 'Ezeztatuta'),
     (99, 36, '2026-03-12', '08:00:00', '08:30:00', 'Eztula eta sukarra', 'Bukatuta'),
     (89, 36, '2026-03-12', '08:30:00', '09:00:00', 'Begi-azterketa errutinarioa', 'Bukatuta'),
@@ -3013,7 +3013,7 @@ INSERT INTO Hitzorduak (paziente_id, mediku_id, data, hasiera_ordua, bukaera_ord
     (80, 11, '2026-03-16', '08:30:00', '09:00:00', 'Dietista kontsulta', 'Bukatuta'),
     (55, 11, '2026-03-16', '09:00:00', '09:30:00', 'Buruko mina', 'Bukatuta');
 
-INSERT INTO Hitzorduak (paziente_id, mediku_id, data, hasiera_ordua, bukaera_ordua, arrazoia, egoera) VALUES
+INSERT INTO hitzorduak (paziente_id, osasun_langile_id, data, hasiera_ordua, bukaera_ordua, arrazoia, egoera) VALUES
     (52, 11, '2026-03-16', '09:30:00', '10:00:00', 'Urdaileko mina', 'Bukatuta'),
     (52, 11, '2026-03-16', '10:00:00', '10:30:00', 'Alergia sintomak', 'Ezeztatuta'),
     (71, 11, '2026-03-16', '10:30:00', '11:00:00', 'Estresa/Antsietatea', 'Bukatuta'),
@@ -3515,7 +3515,7 @@ INSERT INTO Hitzorduak (paziente_id, mediku_id, data, hasiera_ordua, bukaera_ord
     (72, 39, '2026-03-17', '10:30:00', '11:00:00', 'Txertoa jartzeko', 'Bukatuta'),
     (98, 39, '2026-03-17', '11:00:00', '11:30:00', 'Begi-azterketa errutinarioa', 'Bukatuta');
 
-INSERT INTO Hitzorduak (paziente_id, mediku_id, data, hasiera_ordua, bukaera_ordua, arrazoia, egoera) VALUES
+INSERT INTO hitzorduak (paziente_id, osasun_langile_id, data, hasiera_ordua, bukaera_ordua, arrazoia, egoera) VALUES
     (75, 39, '2026-03-17', '11:30:00', '12:00:00', 'Bizkarreko mina', 'Bukatuta'),
     (61, 40, '2026-03-17', '08:00:00', '08:30:00', 'Buruko mina', 'Bukatuta'),
     (72, 40, '2026-03-17', '08:30:00', '09:00:00', 'Giharretako mina', 'Bukatuta'),
@@ -4017,7 +4017,7 @@ INSERT INTO Hitzorduak (paziente_id, mediku_id, data, hasiera_ordua, bukaera_ord
     (83, 16, '2026-03-19', '08:00:00', '08:30:00', 'Giharretako mina', 'Bukatuta'),
     (95, 16, '2026-03-19', '08:30:00', '09:00:00', 'Tentsioa neurtzeko', 'Ezeztatuta');
 
-INSERT INTO Hitzorduak (paziente_id, mediku_id, data, hasiera_ordua, bukaera_ordua, arrazoia, egoera) VALUES
+INSERT INTO hitzorduak (paziente_id, osasun_langile_id, data, hasiera_ordua, bukaera_ordua, arrazoia, egoera) VALUES
     (69, 16, '2026-03-19', '09:00:00', '09:30:00', 'Belarrietako mina', 'Bukatuta'),
     (94, 16, '2026-03-19', '09:30:00', '10:00:00', 'Dietista kontsulta', 'Bukatuta'),
     (73, 16, '2026-03-19', '10:00:00', '10:30:00', 'Larruazaleko arazoak', 'Ezeztatuta'),
@@ -4519,7 +4519,7 @@ INSERT INTO Hitzorduak (paziente_id, mediku_id, data, hasiera_ordua, bukaera_ord
     (82, 43, '2026-03-20', '10:00:00', '10:30:00', 'Estresa/Antsietatea', 'Bukatuta'),
     (53, 43, '2026-03-20', '10:30:00', '11:00:00', 'Belarrietako mina', 'Bukatuta');
 
-INSERT INTO Hitzorduak (paziente_id, mediku_id, data, hasiera_ordua, bukaera_ordua, arrazoia, egoera) VALUES
+INSERT INTO hitzorduak (paziente_id, osasun_langile_id, data, hasiera_ordua, bukaera_ordua, arrazoia, egoera) VALUES
     (80, 44, '2026-03-20', '08:00:00', '08:30:00', 'Txertoa jartzeko', 'Bukatuta'),
     (80, 44, '2026-03-20', '08:30:00', '09:00:00', 'Alergia sintomak', 'Bukatuta'),
     (72, 44, '2026-03-20', '09:00:00', '09:30:00', 'Alergia sintomak', 'Bukatuta'),
@@ -5021,7 +5021,7 @@ INSERT INTO Hitzorduak (paziente_id, mediku_id, data, hasiera_ordua, bukaera_ord
     (98, 19, '2026-03-24', '09:30:00', '10:00:00', 'Urdaileko mina', 'Bukatuta'),
     (52, 19, '2026-03-24', '10:00:00', '10:30:00', 'Belarrietako mina', 'Ezeztatuta');
 
-INSERT INTO Hitzorduak (paziente_id, mediku_id, data, hasiera_ordua, bukaera_ordua, arrazoia, egoera) VALUES
+INSERT INTO hitzorduak (paziente_id, osasun_langile_id, data, hasiera_ordua, bukaera_ordua, arrazoia, egoera) VALUES
     (76, 19, '2026-03-24', '10:30:00', '11:00:00', 'Errezeta berritzea', 'Bukatuta'),
     (70, 20, '2026-03-24', '08:00:00', '08:30:00', 'Belarrietako mina', 'Ezeztatuta'),
     (57, 20, '2026-03-24', '08:30:00', '09:00:00', 'Larruazaleko arazoak', 'Ezeztatuta'),
@@ -5523,7 +5523,7 @@ INSERT INTO Hitzorduak (paziente_id, mediku_id, data, hasiera_ordua, bukaera_ord
     (78, 48, '2026-03-25', '09:00:00', '09:30:00', 'Dermatologora bideratzeko', 'Bukatuta'),
     (89, 48, '2026-03-25', '09:30:00', '10:00:00', 'Errezeta berritzea', 'Ezeztatuta');
 
-INSERT INTO Hitzorduak (paziente_id, mediku_id, data, hasiera_ordua, bukaera_ordua, arrazoia, egoera) VALUES
+INSERT INTO hitzorduak (paziente_id, osasun_langile_id, data, hasiera_ordua, bukaera_ordua, arrazoia, egoera) VALUES
     (67, 48, '2026-03-25', '10:00:00', '10:30:00', 'Odol-analisiaren emaitzak', 'Bukatuta'),
     (61, 48, '2026-03-25', '10:30:00', '11:00:00', 'Lo egiteko zailtasunak', 'Bukatuta'),
     (81, 49, '2026-03-25', '08:00:00', '08:30:00', 'Alergia sintomak', 'Bukatuta'),
@@ -6025,7 +6025,7 @@ INSERT INTO Hitzorduak (paziente_id, mediku_id, data, hasiera_ordua, bukaera_ord
     (60, 25, '2026-03-27', '10:30:00', '11:00:00', 'Bizkarreko mina', 'Bukatuta'),
     (74, 26, '2026-03-27', '08:00:00', '08:30:00', 'Alergia sintomak', 'Bukatuta');
 
-INSERT INTO Hitzorduak (paziente_id, mediku_id, data, hasiera_ordua, bukaera_ordua, arrazoia, egoera) VALUES
+INSERT INTO hitzorduak (paziente_id, osasun_langile_id, data, hasiera_ordua, bukaera_ordua, arrazoia, egoera) VALUES
     (61, 26, '2026-03-27', '08:30:00', '09:00:00', 'Dietista kontsulta', 'Bukatuta'),
     (76, 26, '2026-03-27', '09:00:00', '09:30:00', 'Larruazaleko arazoak', 'Bukatuta'),
     (89, 26, '2026-03-27', '09:30:00', '10:00:00', 'Errezeta berritzea', 'Bukatuta'),
@@ -6527,7 +6527,7 @@ INSERT INTO Hitzorduak (paziente_id, mediku_id, data, hasiera_ordua, bukaera_ord
     (95, 3, '2026-03-31', '08:30:00', '09:00:00', 'Bizkarreko mina', 'Bukatuta'),
     (97, 3, '2026-03-31', '09:00:00', '09:30:00', 'Eztula eta sukarra', 'Bukatuta');
 
-INSERT INTO Hitzorduak (paziente_id, mediku_id, data, hasiera_ordua, bukaera_ordua, arrazoia, egoera) VALUES
+INSERT INTO hitzorduak (paziente_id, osasun_langile_id, data, hasiera_ordua, bukaera_ordua, arrazoia, egoera) VALUES
     (92, 3, '2026-03-31', '09:30:00', '10:00:00', 'Tentsioa neurtzeko', 'Bukatuta'),
     (86, 3, '2026-03-31', '10:00:00', '10:30:00', 'Bizkarreko mina', 'Bukatuta'),
     (73, 4, '2026-03-31', '08:00:00', '08:30:00', 'Txertoa jartzeko', 'Bukatuta'),
@@ -7029,7 +7029,7 @@ INSERT INTO Hitzorduak (paziente_id, mediku_id, data, hasiera_ordua, bukaera_ord
     (96, 28, '2026-04-01', '10:30:00', '11:00:00', 'Bizkarreko mina', 'Bukatuta'),
     (61, 29, '2026-04-01', '08:00:00', '08:30:00', 'Larruazaleko arazoak', 'Ezeztatuta');
 
-INSERT INTO Hitzorduak (paziente_id, mediku_id, data, hasiera_ordua, bukaera_ordua, arrazoia, egoera) VALUES
+INSERT INTO hitzorduak (paziente_id, osasun_langile_id, data, hasiera_ordua, bukaera_ordua, arrazoia, egoera) VALUES
     (82, 29, '2026-04-01', '08:30:00', '09:00:00', 'Txertoa jartzeko', 'Bukatuta'),
     (80, 29, '2026-04-01', '09:00:00', '09:30:00', 'Ekografia emaitzak', 'Bukatuta'),
     (81, 29, '2026-04-01', '09:30:00', '10:00:00', 'Bizkarreko mina', 'Bukatuta'),
