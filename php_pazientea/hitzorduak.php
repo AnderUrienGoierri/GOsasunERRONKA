@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['sortu_hitzordua']) || isset($_POST['editatu_hitzordua'])) {
         $h_id = $_POST['hitzordu_id'] ?? null;
         $p_id = $paziente_id;
-        $m_id = $_POST['mediku_id'];
+        $m_id = $_POST['osasun_langile_id'];
         $data = $_POST['data'];
         $h_ordua = $_POST['hasiera_ordua'];
         $b_ordua = $_POST['bukaera_ordua'];
@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($m_id && $data && $h_ordua && $b_ordua) {
             try {
                 // Egiaztatu medikuak ez duela gatazkarik
-                $kontsulta_egiaztatu = "SELECT COUNT(*) FROM Hitzorduak WHERE mediku_id = ? AND data = ? AND 
+                $kontsulta_egiaztatu = "SELECT COUNT(*) FROM Hitzorduak WHERE osasun_langile_id = ? AND data = ? AND 
                              ((hasiera_ordua < ? AND bukaera_ordua > ?) OR (hasiera_ordua < ? AND bukaera_ordua > ?))";
                 $egiaztapen_parametroak = [$m_id, $data, $b_ordua, $h_ordua, $b_ordua, $h_ordua];
                 
@@ -38,16 +38,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 
                 if ($stm_egiaztatu->fetchColumn() == 0) {
                     if ($h_id) {
-                        $stmt = $pdo->prepare("UPDATE Hitzorduak SET mediku_id = ?, data = ?, hasiera_ordua = ?, bukaera_ordua = ?, arrazoia = ? WHERE id = ? AND paziente_id = ? AND egoera = 'Zain'");
+                        $stmt = $pdo->prepare("UPDATE Hitzorduak SET osasun_langile_id = ?, data = ?, hasiera_ordua = ?, bukaera_ordua = ?, arrazoia = ? WHERE id = ? AND paziente_id = ? AND egoera = 'Zain'");
                         $stmt->execute([$m_id, $data, $h_ordua, $b_ordua, $arrazoia, $h_id, $p_id]);
                         $mezua = "Hitzordua aldatu da.";
                     } else {
-                        $stm_sartu = $pdo->prepare("INSERT INTO Hitzorduak (paziente_id, mediku_id, data, hasiera_ordua, bukaera_ordua, arrazoia, egoera) VALUES (?, ?, ?, ?, ?, ?, 'Zain')");
+                        $stm_sartu = $pdo->prepare("INSERT INTO Hitzorduak (paziente_id, osasun_langile_id, data, hasiera_ordua, bukaera_ordua, arrazoia, egoera) VALUES (?, ?, ?, ?, ?, ?, 'Zain')");
                         $stm_sartu->execute([$p_id, $m_id, $data, $h_ordua, $b_ordua, $arrazoia]);
                         $mezua = "Hitzordua sortu da.";
                     }
                 } else {
-                    $errorea = "Medikuak badu hitzordu bat ordu tarte horretan.";
+                    $errorea = "osasun_langileak badu hitzordu bat ordu tarte horretan.";
                 }
             } catch (PDOException $e) {
                 $errorea = "Errorea: " . $e->getMessage();
@@ -66,9 +66,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 // 2. Lortu esleitutako medikuen zerrenda
-$stmtM = $pdo->prepare("SELECT m.mediku_id, m.izena, m.abizenak, m.espezialitatea 
-                       FROM Medikuak m
-                       JOIN Mediku_Paziente mp ON m.mediku_id = mp.mediku_id
+$stmtM = $pdo->prepare("SELECT m.osasun_langile_id, m.izena, m.abizenak, m.espezialitatea 
+                       FROM osasun_langileak m
+                       JOIN Mediku_Paziente mp ON m.osasun_langile_id = mp.osasun_langile_id
                        WHERE mp.id = ?
                        ORDER BY m.abizenak ASC");
 $stmtM->execute([$paziente_id]);
@@ -107,7 +107,7 @@ $stmt = $pdo->prepare("
     SELECT h.id as hitzordu_id, h.data, h.hasiera_ordua, h.arrazoia, h.egoera, 
            m.izena as mediku_izena, m.abizenak as mediku_abizenak, m.espezialitatea
     FROM Hitzorduak h
-    JOIN Medikuak m ON h.mediku_id = m.id
+    JOIN osasun_langileak m ON h.osasun_langile_id = m.id
     WHERE h.paziente_id = :pid AND h.data BETWEEN :start AND :end
     ORDER BY h.data DESC, h.hasiera_ordua DESC
 ");
@@ -232,7 +232,7 @@ include_once '../php_includeak/paziente_goiburua.php';
                                 <?php foreach ($hitzordu_egunekoak as $h): ?>
                                     <div class="hitzordu-blokea status-<?php echo strtolower($h['egoera']); ?>" 
                                          data-hitzordu-id="<?php echo $h['hitzordu_id']; ?>"
-                                         title="Dr. <?php echo htmlspecialchars($h['mediku_abizenak']); ?>"
+                                         title="Osasun Langilea <?php echo htmlspecialchars($h['mediku_abizenak']); ?>"
                                          onclick="viewAppointment(<?php echo $h['hitzordu_id']; ?>)">
                                         <span class="bloke-izenik"><?php echo date('H:i', strtotime($h['hasiera_ordua'])); ?></span>
                                         <span class="bloke-mota"><?php echo htmlspecialchars($h['mediku_izena'][0] . ". " . $h['mediku_abizenak']); ?></span>
@@ -299,7 +299,7 @@ include_once '../php_includeak/paziente_goiburua.php';
                                         <?php echo date('H:i', strtotime($h['hasiera_ordua'])); ?>
                                     </div>
                                     <div class="hitzordu-xehetasunak">
-                                        <h4>Dr. <?php echo htmlspecialchars($h['mediku_izena'] . ' ' . $h['mediku_abizenak']); ?></h4>
+                                        <h4>Osasun Langilea <?php echo htmlspecialchars($h['mediku_izena'] . ' ' . $h['mediku_abizenak']); ?></h4>
                                         <p class="espezialitatea"><strong><?php echo htmlspecialchars($h['espezialitatea']); ?></strong></p>
                                         <p class="arrazoia"><?php echo htmlspecialchars($h['arrazoia'] ?? 'Arrazoirik gabe'); ?></p>
                                     </div>
@@ -340,11 +340,11 @@ include_once '../php_includeak/paziente_goiburua.php';
                 <input type="hidden" name="hitzordu_id" id="modal_hitzordu_id">
                 
                     <div class="inprimaki-taldea">
-                        <label for="mediku_id">Medikua *</label>
-                        <select name="mediku_id" id="modal_mediku_id" class="inprimaki-kontrola" required>
+                        <label for="osasun_langile_id">Medikua *</label>
+                        <select name="osasun_langile_id" id="modal_mediku_id" class="inprimaki-kontrola" required>
                         <option value="">Hautatu medikua...</option>
                         <?php foreach ($medikuak as $m): ?>
-                            <option value="<?php echo $m['mediku_id']; ?>"><?php echo htmlspecialchars($m['abizenak'] . ", " . $m['izena'] . " - " . $m['espezialitatea']); ?></option>
+                            <option value="<?php echo $m['osasun_langile_id']; ?>"><?php echo htmlspecialchars($m['abizenak'] . ", " . $m['izena'] . " - " . $m['espezialitatea']); ?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>

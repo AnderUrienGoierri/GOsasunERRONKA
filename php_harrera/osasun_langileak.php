@@ -1,6 +1,6 @@
 <?php
 $bide_absolutua = '../'; session_start();
-if (!isset($_SESSION['rol_id']) || $_SESSION['rol_izena'] !== 'Harrera') {
+if (!isset($_SESSION['rol_id']) || $_SESSION['rol_izena'] !== 'Harrera Langilea') {
     header("Location: ../php_hasiera/login.php");
     exit;
 }
@@ -21,12 +21,12 @@ if (isset($_GET['delete_id'])) {
     }
 }
 
-// Medikuen zerrenda
-$stmt = $pdo->prepare("SELECT * FROM V_Medikua ORDER BY abizenak ASC");
+// Langileen zerrenda
+$stmt = $pdo->prepare("SELECT * FROM V_Osasun_Langilea ORDER BY abizenak ASC");
 $stmt->execute();
-$medikuak = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$langileak = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-$orri_izenburua = "Medikuak Kudeatu - GOsasun";
+$orri_izenburua = "Langileak Kudeatu - GOsasun";
 $uneko_orria = "medikuak";
 $css_pertsonalizatua = 'medikuak.css';
 
@@ -36,8 +36,8 @@ include_once '../php_includeak/harrera_goiburua.php';
     <main class="panel-nagusia">
         <div class="orri-goiburua">
             <div>
-                <h2><img src="../img/svg/users.svg" alt="" class="ikono-ertaina marjina-esk-5"> Medikuen Kudeaketa</h2>
-                <p>Sortu, editatu edo ezabatu zentroko mediku guztiak.</p>
+                <h2><img src="../img/svg/users.svg" alt="" class="ikono-ertaina marjina-esk-5"> Osasun Langileen Kudeaketa</h2>
+                <p>Sortu, editatu edo ezabatu zentroko osasun langile guztiak.</p>
             </div>
         </div>
 
@@ -49,7 +49,7 @@ include_once '../php_includeak/harrera_goiburua.php';
         <?php endif; ?>
 
         <div class="flex-tartea-20">
-            <a href="mediku_sortu.php" class="botoi-sortu marjina-behe-0">+ Mediku Berria</a>
+            <a href="langile_sortu.php" class="botoi-sortu marjina-behe-0">+ Langile Berria</a>
             <input type="text" id="bilaketaMedikuak" class="inprimaki-kontrola bilaketa-barra gehienezko-zabalera-300" placeholder="Bilatu izena edo espezialitatea..." >
         </div>
 
@@ -70,34 +70,34 @@ include_once '../php_includeak/harrera_goiburua.php';
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($medikuak as $m): ?>
+                    <?php foreach ($langileak as $l): ?>
                         <tr>
                             <td class="zabalera-50">
                                 <?php 
-                                $irudia_bide = htmlspecialchars($m['irudia'] ?? 'img/lehenetsia_medikua.png');
+                                $irudia_bide = htmlspecialchars($l['irudia'] ?? 'img/lehenetsia_medikua.png');
                                 if (strpos($irudia_bide, 'img/') === 0 && strpos($irudia_bide, 'img/png/') === false && strpos($irudia_bide, 'img/svg/') === false) {
                                     $irudia_bide = str_replace('img/', 'img/png/', $irudia_bide);
                                 }
                                 ?>
                                 <img src="../<?php echo $irudia_bide; ?>" 
-                                     alt="Medikuaren argazkia" class="irudia-txikia">
+                                     alt="Argazkia" class="irudia-txikia">
                             </td>
-                            <td class="identifikadorea">#<?php echo $m['mediku_id']; ?></td>
+                            <td class="identifikadorea">#<?php echo $l['langile_id']; ?></td>
                             <td>
-                                <strong><a href="mediku_fitxa.php?id=<?php echo $m['mediku_id']; ?>" class="esteka-nagusia"><?php echo htmlspecialchars($m['abizenak'] . ', ' . $m['izena']); ?></a></strong>
+                                <strong><a href="langile_fitxa.php?id=<?php echo $l['langile_id']; ?>" class="esteka-nagusia"><?php echo htmlspecialchars($l['abizenak'] . ', ' . $l['izena']); ?></a></strong>
                             </td>
-                            <td><small><?php echo htmlspecialchars($m['email']); ?></small></td>
-                            <td><span class="etiketa"><?php echo htmlspecialchars($m['espezialitatea']); ?></span></td>
-                            <td><?php echo htmlspecialchars($m['elkargokide_zenbakia']); ?></td>
-                            <td><?php echo htmlspecialchars($m['telefonoa'] ?? '-'); ?></td>
-                            <td><?php echo htmlspecialchars($m['kontsulta'] ?? '-'); ?></td>
-                            <td><?php echo htmlspecialchars($m['lanaldia'] ?? '-'); ?></td>
+                            <td><small><?php echo htmlspecialchars($l['email']); ?></small></td>
+                            <td><span class="etiketa"><?php echo htmlspecialchars($l['espezialitatea']); ?></span></td>
+                            <td><?php echo htmlspecialchars($l['elkargokide_zenbakia']); ?></td>
+                            <td><?php echo htmlspecialchars($l['telefonoa'] ?? '-'); ?></td>
+                            <td><?php echo htmlspecialchars($l['kontsulta'] ?? '-'); ?></td>
+                            <td><?php echo htmlspecialchars($l['lanaldia'] ?? '-'); ?></td>
                             <td>
                                 <div class="taula-ekintzak">
-                                    <a href="mediku_fitxa.php?id=<?php echo $m['mediku_id']; ?>" class="botoi-ikonoa" title="Ikusi Fitxa"><img src="../img/svg/eye.svg" alt="" class="ikono-ertaina marjina-esk-5"></a>
-                                    <a href="hitzorduak.php?filter_mediku_id=<?php echo $m['mediku_id']; ?>" class="botoi-ikonoa hitzordu-botoia" title="Ikusi Agenda"><img src="../img/svg/calendar-days.svg" alt="" class="ikono-ertaina marjina-esk-5"></a>
-                                    <a href="mediku_editatu.php?id=<?php echo $m['mediku_id']; ?>" class="botoi-ikonoa editatu-botoia" title="Editatu"><img src="../img/svg/pencil.svg" alt="" class="ikono-ertaina marjina-esk-5"></a>
-                                    <a href="medikuak.php?delete_id=<?php echo $m['mediku_id']; ?>" class="botoi-ikonoa ezabatu-botoia" onclick="return confirm('Ziur zaude mediku hau ezabatu nahi duzula?');" title="Ezabatu"><img src="../img/svg/trash-2.svg" alt="" class="ikono-ertaina marjina-esk-5"></a>
+                                    <a href="langile_fitxa.php?id=<?php echo $l['langile_id']; ?>" class="botoi-ikonoa" title="Ikusi Fitxa"><img src="../img/svg/eye.svg" alt="" class="ikono-ertaina marjina-esk-5"></a>
+                                    <a href="hitzorduak.php?filter_langile_id=<?php echo $l['langile_id']; ?>" class="botoi-ikonoa hitzordu-botoia" title="Ikusi Agenda"><img src="../img/svg/calendar-days.svg" alt="" class="ikono-ertaina marjina-esk-5"></a>
+                                    <a href="langile_editatu.php?id=<?php echo $l['langile_id']; ?>" class="botoi-ikonoa editatu-botoia" title="Editatu"><img src="../img/svg/pencil.svg" alt="" class="ikono-ertaina marjina-esk-5"></a>
+                                    <a href="osasun_langileak.php?delete_id=<?php echo $l['langile_id']; ?>" class="botoi-ikonoa ezabatu-botoia" onclick="return confirm('Ziur zaude langile hau ezabatu nahi duzula? Ezabatzean bere erabiltzaile kontua ere ezabatuko da.');" title="Ezabatu"><img src="../img/svg/trash-2.svg" alt="" class="ikono-ertaina marjina-esk-5"></a>
                                 </div>
                             </td>
                         </tr>

@@ -6,7 +6,7 @@
         <div class="orri-oin-nabigazioa">
             <a href="index.php">Hasiera</a>
             <a href="pazienteak.php">Pazienteak</a>
-            <a href="medikuak.php">Medikuak</a>
+            <a href="medikuak.php">osasun_langileak</a>
             <a href="hitzorduak.php">Hitzorduak</a>
             <a href="mezuak.php">Mezuak</a>
             <a href="kanpoko_mezuak.php">Kanpoko Mezuak</a>

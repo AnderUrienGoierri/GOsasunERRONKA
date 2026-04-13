@@ -1,7 +1,7 @@
 <?php
 session_start();
 $bide_absolutua = '../';
-if (!isset($_SESSION['rol_id']) || $_SESSION['rol_izena'] !== 'Harrera') {
+if (!isset($_SESSION['rol_id']) || $_SESSION['rol_izena'] !== 'Harrera Langilea') {
     header("Location: ../php_hasiera/login.php");
     exit;
 }
@@ -44,7 +44,7 @@ include_once '../php_includeak/harrera_goiburua.php';
             </a>
             
             <a href="medikuak.php" class="menu-txartela">
-                <div class="txartel-ikonoa"><img src="../img/svg/stethoscope.svg" alt="Medikuak" class="ikono-handia-48"></div>
+                <div class="txartel-ikonoa"><img src="../img/svg/stethoscope.svg" alt="osasun_langileak" class="ikono-handia-48"></div>
                 <h3><?php echo $itzulpenak->menua_harrera->medikuak; ?></h3>
                 <p><?php echo $itzulpenak->menua_harrera->medikuak_testua; ?></p>
             </a>

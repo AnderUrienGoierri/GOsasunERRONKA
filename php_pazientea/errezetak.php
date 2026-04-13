@@ -12,7 +12,7 @@ $paziente_id = $_SESSION['erabiltzaile_id'];
 $sql = "SELECT e.*, m.izena, m.abizenak,
         GROUP_CONCAT(CONCAT(b.izena, ' (', eb.dosia, ', ', eb.maiztasuna, ')') SEPARATOR ' | ') as botikak_info 
         FROM Errezetak e
-        JOIN Medikuak m ON e.mediku_id = m.id
+        JOIN osasun_langileak m ON e.osasun_langile_id = m.id
         LEFT JOIN errezeta_botikak eb ON e.errezeta_id = eb.errezeta_id
         LEFT JOIN Botikak b ON eb.botika_id = b.botika_id
         WHERE e.paziente_id = :pid 
@@ -61,7 +61,7 @@ include_once '../php_includeak/paziente_goiburua.php';
                         </div>
                         <div class="errezeta-xehetasunak">
                             <h4><img src="../img/svg/stethoscope.svg" alt="" class="ikono-ertaina marjina-esk-5"> <?php echo htmlspecialchars($e['diagnostiko_laburra']); ?></h4>
-                            <p class="medikua">Ematen duena: Dr. <?php echo htmlspecialchars($e['izena'] . ' ' . $e['abizenak']); ?></p>
+                            <p class="medikua">Ematen duena: Osasun Langilea <?php echo htmlspecialchars($e['izena'] . ' ' . $e['abizenak']); ?></p>
                             <?php if (!empty($e['botikak_info'])): ?>
                                 <p class="botikak-info"><img src="../img/svg/pill.svg" alt="" class="ikono-ertaina marjina-esk-5"> <strong>Botikak:</strong> <?php echo htmlspecialchars($e['botikak_info']); ?></p>
                             <?php endif; ?>

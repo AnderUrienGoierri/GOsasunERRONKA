@@ -9,12 +9,12 @@ if (!isset($_SESSION['rol_id']) || $_SESSION['rol_izena'] !== 'Pazientea') {
 
 $erab_id = $_SESSION['erabiltzaile_id'];
 $stmt = $pdo->prepare("SELECT DATE(erregistro_data) AS data, tentsio_sistolikoa, tentsio_diastolikoa, pisua_kg, altuera, pultsua_ppm 
-                       FROM Neurketak WHERE paziente_id = ? ORDER BY erregistro_data ASC");
+                       FROM jarraipenak WHERE paziente_id = ? ORDER BY erregistro_data ASC");
 $stmt->execute([$erab_id]);
-$neurketak = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$jarraipenak = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 // Return standard formatting variables
-$json_neurketak = json_encode($neurketak);
+$json_jarraipenak = json_encode($jarraipenak);
 ?>
 <?php $orri_izenburua = "Nire Grafikak - GOsasun";
 $uneko_orria = "grafikak";
@@ -44,7 +44,7 @@ include_once '../php_includeak/paziente_goiburua.php';
 
         <div id="alerta-eremua" data-html2canvas-ignore="true"></div>
 
-        <?php if (count($neurketak) > 0): ?>
+        <?php if (count($jarraipenak) > 0): ?>
             <div class="grafika-txartela">
                 <canvas id="osabide-grafika" class="nire-grafika"></canvas>
             </div>
@@ -59,7 +59,7 @@ include_once '../php_includeak/paziente_goiburua.php';
 
     <script>
         // Datuak PStik JSra pasatu
-        const neurketakData = <?php echo $json_neurketak; ?>;
+        const jarraipenakData = <?php echo $json_jarraipenak; ?>;
         const paziente_id = <?php echo $erab_id; ?>;
         const pdfEndpoint = '../php_laguntzaileak/pdf_sortu.php';
     </script>

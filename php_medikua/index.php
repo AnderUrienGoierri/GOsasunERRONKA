@@ -1,29 +1,29 @@
 <?php
 session_start();
 $bide_absolutua = '../';
-if (!isset($_SESSION['rol_id']) || $_SESSION['rol_izena'] !== 'Medikua') {
+if (!isset($_SESSION['rol_id']) || $_SESSION['rol_izena'] !== 'Osasun Langilea') {
     header("Location: ../php_hasiera/login.php");
     exit;
 }
 ?>
 <?php
 require_once '../php_laguntzaileak/DB_konexioa.php';
-$mediku_id = $_SESSION['erabiltzaile_id'];
+$osasun_langile_id = $_SESSION['erabiltzaile_id'];
 
 // Medikuaren datuak lortu
-$stmt = $pdo->prepare("SELECT * FROM V_Medikua WHERE mediku_id = ?");
-$stmt->execute([$mediku_id]);
+$stmt = $pdo->prepare("SELECT * FROM V_Osasun_Langilea WHERE langile_id = ?");
+$stmt->execute([$osasun_langile_id]);
 $erabiltzaile_datuak = $stmt->fetch(PDO::FETCH_ASSOC);
 
 // Paziente kopurua lortu
-$stmtPaziente = $pdo->prepare("SELECT COUNT(*) as total FROM Mediku_Paziente WHERE mediku_id = ?");
-$stmtPaziente->execute([$mediku_id]);
+$stmtPaziente = $pdo->prepare("SELECT COUNT(*) as total FROM V_Langile_Pazienteak WHERE langile_id = ?");
+$stmtPaziente->execute([$osasun_langile_id]);
 $pazienteKopurua = $stmtPaziente->fetchColumn();
 
 // Gaurko hitzordu kopurua
 $gaur = date('Y-m-d');
-$stmtHitzordu = $pdo->prepare("SELECT COUNT(*) FROM Hitzorduak WHERE mediku_id = ? AND data = ? AND egoera = 'Zain'");
-$stmtHitzordu->execute([$mediku_id, $gaur]);
+$stmtHitzordu = $pdo->prepare("SELECT COUNT(*) FROM Hitzorduak WHERE osasun_langile_id = ? AND data = ? AND egoera = 'Zain'");
+$stmtHitzordu->execute([$osasun_langile_id, $gaur]);
 $gaurkoHitzorduak = $stmtHitzordu->fetchColumn();
 
 $orri_izenburua = "Hasiera - GOsasun";
@@ -81,21 +81,17 @@ include_once '../php_includeak/mediku_goiburua.php';
                 <h3><?php echo $itzulpenak->menua_medikua->errezetak; ?></h3>
                 <p><?php echo $itzulpenak->menua_medikua->errezetak_testua; ?></p>
             </a>
-            <a href="neurketak.php" class="menu-txartela">
-                <div class="txartel-ikonoa"><img src="../img/svg/clipboard-pen.svg" alt="Neurketak" class="ikono-handia-48"></div>
-                <h3><?php echo $itzulpenak->menua_medikua->neurketak; ?></h3>
-                <p><?php echo $itzulpenak->menua_medikua->neurketak_testua; ?></p>
+            <a href="jarraipenak.php" class="menu-txartela">
+                <div class="txartel-ikonoa"><img src="../img/svg/clipboard-pen.svg" alt="jarraipenak" class="ikono-handia-48"></div>
+                <h3><?php echo $itzulpenak->menua_medikua->jarraipenak; ?></h3>
+                <p><?php echo $itzulpenak->menua_medikua->jarraipenak_testua; ?></p>
             </a>
             <a href="grafikak.php" class="menu-txartela">
                 <div class="txartel-ikonoa"><img src="../img/svg/line-chart.svg" alt="Grafikak" class="ikono-handia-48"></div>
                 <h3><?php echo $itzulpenak->menua_medikua->grafikak; ?></h3>
                 <p><?php echo $itzulpenak->menua_medikua->grafikak_testua; ?></p>
             </a>
-            <a href="mezuak.php" class="menu-txartela">
-                <div class="txartel-ikonoa"><img src="../img/svg/mail.svg" alt="Mezuak" class="ikono-handia-48"></div>
-                <h3><?php echo $itzulpenak->menua_medikua->mezuak; ?></h3>
-                <p><?php echo $itzulpenak->menua_medikua->mezuak_testua; ?></p>
-            </a>
+
             <a href="abisuak.php" class="menu-txartela">
                 <div class="txartel-ikonoa"><img src="../img/svg/bell-ring.svg" alt="Abisuak" class="ikono-handia-48"></div>
                 <h3><?php echo $itzulpenak->menua_medikua->abisuak; ?></h3>

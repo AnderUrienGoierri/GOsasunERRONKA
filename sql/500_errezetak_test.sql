@@ -1,4 +1,4 @@
-﻿USE GOsasun_DB;
+USE GOsasun_DB;
 
 -- Errezeta #1
 INSERT INTO errezetak (mediku_id, paziente_id, igorpen_data, iraungitze_data, diagnostiko_laburra, aktibo)

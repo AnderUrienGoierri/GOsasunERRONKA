@@ -1,32 +1,31 @@
 <?php
 $bide_absolutua = '../'; session_start();
-if (!isset($_SESSION['rol_id']) || $_SESSION['rol_izena'] !== 'Medikua') {
+if (!isset($_SESSION['rol_id']) || $_SESSION['rol_izena'] !== 'Osasun Langilea') {
     header("Location: ../php_hasiera/login.php");
     exit;
 }
 
 require_once '../php_laguntzaileak/DB_konexioa.php';
-$mediku_id = $_SESSION['erabiltzaile_id'];
+$osasun_langile_id = $_SESSION['erabiltzaile_id'];
 $mezua = '';
 $errorea = '';
 
 // 1. Lortu medikuaren pazienteen zerrenda
-$stmtP = $pdo->prepare("SELECT p.id, p.izena, p.abizenak, p.nan 
-                       FROM Pazienteak p
-                       JOIN Mediku_Paziente mp ON p.id = mp.paziente_id
-                       WHERE mp.mediku_id = ?
-                       ORDER BY p.abizenak ASC");
-$stmtP->execute([$mediku_id]);
+$stmtP = $pdo->prepare("SELECT paziente_id AS id, izena, abizenak, nan 
+                       FROM V_Langile_Pazienteak
+                       WHERE langile_id = ?
+                       ORDER BY abizenak ASC");
+$stmtP->execute([$osasun_langile_id]);
 $pazienteak = $stmtP->fetchAll(PDO::FETCH_ASSOC);
 
 // 2. Lortu medikuaren hitzorduak (errezeta bati lotzeko - hautazkoa)
 $gaur = date('Y-m-d');
 $stmtH = $pdo->prepare("SELECT h.id AS hitzordu_id, h.data, h.hasiera_ordua, p.izena, p.abizenak 
                         FROM Hitzorduak h
-                        JOIN Pazienteak p ON h.paziente_id = p.id
-                        WHERE h.mediku_id = ? 
+                        JOIN V_Pazientea p ON h.paziente_id = p.paziente_id
+                        WHERE h.osasun_langile_id = ? 
                         ORDER BY h.data DESC LIMIT 50");
-$stmtH->execute([$mediku_id]);
+$stmtH->execute([$osasun_langile_id]);
 $hitzordu_aukerak = $stmtH->fetchAll(PDO::FETCH_ASSOC);
 
 // 2b. Lortu botiken zerrenda
@@ -50,12 +49,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($p_id && $i_data && $diag) {
             try {
                 if ($e_id) {
-                    $stmt = $pdo->prepare("UPDATE Errezetak SET paziente_id = ?, hitzordu_id = ?, igorpen_data = ?, iraungitze_data = ?, diagnostiko_laburra = ?, aktibo = ? WHERE id = ? AND mediku_id = ?");
-                    $stmt->execute([$p_id, $h_id, $i_data, $ir_data, $diag, $aktibo, $e_id, $mediku_id]);
+                    $stmt = $pdo->prepare("UPDATE errezetak SET paziente_id = ?, hitzordu_id = ?, igorpen_data = ?, iraungitze_data = ?, diagnostiko_laburra = ?, aktibo = ? WHERE id = ? AND osasun_langile_id = ?");
+                    $stmt->execute([$p_id, $h_id, $i_data, $ir_data, $diag, $aktibo, $e_id, $osasun_langile_id]);
                     $mezua = "Errezeta arrakastaz aldatu da.";
                 } else {
-                    $stm_sartu = $pdo->prepare("INSERT INTO Errezetak (mediku_id, paziente_id, hitzordu_id, igorpen_data, iraungitze_data, diagnostiko_laburra, aktibo) VALUES (?, ?, ?, ?, ?, ?, ?)");
-                    $stm_sartu->execute([$mediku_id, $p_id, $h_id, $i_data, $ir_data, $diag, $aktibo]);
+                    $stm_sartu = $pdo->prepare("INSERT INTO errezetak (osasun_langile_id, paziente_id, hitzordu_id, igorpen_data, iraungitze_data, diagnostiko_laburra, aktibo) VALUES (?, ?, ?, ?, ?, ?, ?)");
+                    $stm_sartu->execute([$osasun_langile_id, $p_id, $h_id, $i_data, $ir_data, $diag, $aktibo]);
                     $e_id = $pdo->lastInsertId();
                     $mezua = "Errezeta arrakastaz sortu da.";
                 }
@@ -78,8 +77,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } elseif (isset($_POST['ezabatu_errezeta'])) {
         $e_id = $_POST['errezeta_id_delete'];
         try {
-            $stmt = $pdo->prepare("DELETE FROM Errezetak WHERE id = ? AND mediku_id = ?");
-            $stmt->execute([$e_id, $mediku_id]);
+            $stmt = $pdo->prepare("DELETE FROM errezetak WHERE id = ? AND osasun_langile_id = ?");
+            $stmt->execute([$e_id, $osasun_langile_id]);
             $mezua = "Errezeta ezabatu da.";
         } catch (PDOException $e) {
             $errorea = "Errorea ezabatzean: " . $e->getMessage();
@@ -90,15 +89,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 // 4. Lortu medikuak sortutako errezeta guztiak
 $sql = "SELECT e.*, e.id AS errezeta_id, p.izena, p.abizenak, p.nan, 
         GROUP_CONCAT(CONCAT(b.izena, ' (', eb.dosia, ', ', eb.maiztasuna, ')') SEPARATOR ' | ') as botikak_info
-        FROM Errezetak e
-        JOIN Pazienteak p ON e.paziente_id = p.id
+        FROM errezetak e
+        JOIN V_Pazientea p ON e.paziente_id = p.paziente_id
         LEFT JOIN errezeta_botikak eb ON e.id = eb.errezeta_id
-        LEFT JOIN Botikak b ON eb.botika_id = b.id
-        WHERE e.mediku_id = :mid 
+        LEFT JOIN botikak b ON eb.botika_id = b.id
+        WHERE e.osasun_langile_id = :mid 
         GROUP BY e.id
         ORDER BY e.igorpen_data DESC, e.id DESC";
 $stmtErr = $pdo->prepare($sql);
-$stmtErr->execute(['mid' => $mediku_id]);
+$stmtErr->execute(['mid' => $osasun_langile_id]);
 $errezetak = $stmtErr->fetchAll(PDO::FETCH_ASSOC);
 
 $orri_izenburua = "Errezetak - GOsasun";

@@ -69,9 +69,8 @@ $itzulpenak = kargatuItzulpenak($hizkuntza_def);
             <li><a href="pazienteak.php" <?php echo (isset($uneko_orria) && $uneko_orria === 'pazienteak') ? 'class="aktiboa"' : ''; ?>><?php echo $itzulpenak->menua_medikua->pazienteak; ?></a></li>
             <li><a href="hitzorduak.php" <?php echo (isset($uneko_orria) && $uneko_orria === 'hitzorduak') ? 'class="aktiboa"' : ''; ?>><?php echo $itzulpenak->menua_medikua->hitzorduak; ?></a></li>
             <li><a href="errezetak.php" <?php echo (isset($uneko_orria) && $uneko_orria === 'errezetak') ? 'class="aktiboa"' : ''; ?>><?php echo $itzulpenak->menua_medikua->errezetak; ?></a></li>
-            <li><a href="neurketak.php" <?php echo (isset($uneko_orria) && $uneko_orria === 'neurketak') ? 'class="aktiboa"' : ''; ?>><?php echo $itzulpenak->menua_medikua->neurketak; ?></a></li>
+            <li><a href="jarraipenak.php" <?php echo (isset($uneko_orria) && $uneko_orria === 'jarraipenak') ? 'class="aktiboa"' : ''; ?>><?php echo $itzulpenak->menua_medikua->jarraipenak; ?></a></li>
             <li><a href="grafikak.php" <?php echo (isset($uneko_orria) && $uneko_orria === 'grafikak') ? 'class="aktiboa"' : ''; ?>><?php echo $itzulpenak->menua_medikua->grafikak; ?></a></li>
-            <li><a href="mezuak.php" <?php echo (isset($uneko_orria) && $uneko_orria === 'mezuak') ? 'class="aktiboa"' : ''; ?>><?php echo $itzulpenak->menua_medikua->mezuak; ?></a></li>
             <li><a href="abisuak.php" <?php echo (isset($uneko_orria) && $uneko_orria === 'abisuak') ? 'class="aktiboa"' : ''; ?>><?php echo $itzulpenak->menua_medikua->abisuak; ?></a></li>
             <li><a href="ezarpenak.php" <?php echo (isset($uneko_orria) && $uneko_orria === 'ezarpenak') ? 'class="aktiboa"' : ''; ?>><?php echo $itzulpenak->menua->ezarpenak; ?></a></li>
             <li><a href="<?php echo $bide_absolutua; ?>php_laguntzaileak/logout.php" class="botoia botoi-ertza arrisku-kolorea" ><?php echo $itzulpenak->erabiltzaile_panela->saioa_itxi; ?></a></li>

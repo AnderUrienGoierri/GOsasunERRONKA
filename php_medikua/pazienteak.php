@@ -1,20 +1,20 @@
 <?php
 $bide_absolutua = '../'; session_start();
-if (!isset($_SESSION['rol_id']) || $_SESSION['rol_izena'] !== 'Medikua') {
+if (!isset($_SESSION['rol_id']) || $_SESSION['rol_izena'] !== 'Osasun Langilea') {
     header("Location: ../php_hasiera/login.php");
     exit;
 }
 
 require_once '../php_laguntzaileak/DB_konexioa.php';
-$mediku_id = $_SESSION['erabiltzaile_id'];
+$osasun_langile_id = $_SESSION['erabiltzaile_id'];
 
 // Lortu pazienteen zerrenda
 $stmt = $pdo->prepare("
     SELECT paziente_id, paziente_izena AS izena, paziente_abizenak AS abizenak, nan, paziente_telefonoa AS telefonoa, odol_taldea, paziente_irudia AS irudia
-    FROM V_Mediku_Pazienteak
-    WHERE mediku_id = ?
+    FROM V_Langile_Pazienteak
+    WHERE langile_id = ?
 ");
-$stmt->execute([$mediku_id]);
+$stmt->execute([$osasun_langile_id]);
 $pazienteak = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <?php $orri_izenburua = "Nire Pazienteak - GOsasun";

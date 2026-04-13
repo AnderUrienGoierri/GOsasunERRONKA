@@ -1,6 +1,6 @@
 <?php
 $bide_absolutua = '../'; session_start();
-if (!isset($_SESSION['rol_id']) || $_SESSION['rol_izena'] !== 'Harrera') {
+if (!isset($_SESSION['rol_id']) || $_SESSION['rol_izena'] !== 'Harrera Langilea') {
     header("Location: ../php_hasiera/login.php");
     exit;
 }
@@ -24,15 +24,15 @@ if (!$pazientea) {
     exit;
 }
 
-// 2. Azken neurketak lortu
-$stmtN = $pdo->prepare("SELECT erregistro_data, tentsio_sistolikoa, tentsio_diastolikoa, pultsua_ppm, pisua_kg, altuera FROM Neurketak WHERE paziente_id = ? ORDER BY erregistro_data DESC LIMIT 5");
+// 2. Azken jarraipenak lortu
+$stmtN = $pdo->prepare("SELECT erregistro_data, tentsio_sistolikoa, tentsio_diastolikoa, pultsua_ppm, pisua_kg, altuera FROM jarraipenak WHERE paziente_id = ? ORDER BY erregistro_data DESC LIMIT 5");
 $stmtN->execute([$id]);
-$neurketak = $stmtN->fetchAll(PDO::FETCH_ASSOC);
+$jarraipenak = $stmtN->fetchAll(PDO::FETCH_ASSOC);
 
 // 3. Hitzorduak lortu (etorkizunekoak eta azkenak)
 $stmtH = $pdo->prepare("SELECT h.*, m.izena as m_izena, m.abizenak as m_abizenak 
                         FROM Hitzorduak h 
-                        JOIN Medikuak m ON h.mediku_id = m.id 
+                        JOIN V_Osasun_Langilea m ON h.osasun_langile_id = m.langile_id 
                         WHERE h.paziente_id = ? 
                         ORDER BY h.data DESC LIMIT 10");
 $stmtH->execute([$id]);
@@ -124,13 +124,13 @@ include_once '../php_includeak/harrera_goiburua.php';
             <div class="kutxa-zuria marjina-behe-30">
                 <h3 class="goiburu-iluna-flex">
                     <img src="../img/svg/activity.svg" alt="" class="ikono-ertaina marjina-esk-10"> Azken Parametroak
-                    <?php if(count($neurketak) > 0): ?>
-                        <small class="datu-txikia-grisa">(<?php echo date('Y/m/d', strtotime($neurketak[0]['erregistro_data'])); ?>)</small>
+                    <?php if(count($jarraipenak) > 0): ?>
+                        <small class="datu-txikia-grisa">(<?php echo date('Y/m/d', strtotime($jarraipenak[0]['erregistro_data'])); ?>)</small>
                     <?php endif; ?>
                 </h3>
                 
-                <?php if(count($neurketak) > 0): ?>
-                    <?php $azkena = $neurketak[0]; ?>
+                <?php if(count($jarraipenak) > 0): ?>
+                    <?php $azkena = $jarraipenak[0]; ?>
                     <div class="param-sareta">
                         <div class="param-txartela">
                             <div class="testu-gris-iluna">Tentsioa</div>

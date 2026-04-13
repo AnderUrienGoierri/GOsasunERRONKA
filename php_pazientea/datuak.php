@@ -19,10 +19,9 @@ $pazientea = $stmt->fetch(PDO::FETCH_ASSOC);
 
 // paziente batek dituen medikuak
 $stmtMedikuak = $pdo->prepare("
-    SELECT m.izena, m.abizenak, m.espezialitatea 
-    FROM Medikuak m
-    JOIN Mediku_Paziente mp ON m.mediku_id = mp.mediku_id
-    WHERE mp.id = ?
+    SELECT * 
+    FROM V_Langile_Pazienteak
+    WHERE paziente_id = ?
 ");
 $stmtMedikuak->execute([$paziente_id]);
 $medikuak = $stmtMedikuak->fetchAll(PDO::FETCH_ASSOC);
@@ -107,15 +106,15 @@ include_once '../php_includeak/paziente_goiburua.php';
             </section>
         </div>
 
-        <!-- Esleitutako Medikuak -->
+        <!-- Esleitutako osasun_langileak -->
         <section class="mediku-sekzioa">
-            <h3>Nire Medikuak</h3>
+            <h3>Nire osasun_langileak</h3>
             <?php if (count($medikuak) > 0): ?>
                 <div class="mediku-sareta">
                     <?php foreach ($medikuak as $m): ?>
                         <div class="mediku-txartela">
                             <div class="mediku-info">
-                                <strong>Dr. <?php echo htmlspecialchars($m['izena'] . ' ' . $m['abizenak']); ?></strong>
+                                <strong>Osasun Langilea <?php echo htmlspecialchars($m['izena'] . ' ' . $m['abizenak']); ?></strong>
                                 <p><?php echo htmlspecialchars($m['espezialitatea']); ?></p>
                             </div>
                         </div>

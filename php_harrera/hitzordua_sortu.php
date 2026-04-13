@@ -1,6 +1,6 @@
 <?php
 $bide_absolutua = '../'; session_start();
-if (!isset($_SESSION['rol_id']) || $_SESSION['rol_izena'] !== 'Harrera') {
+if (!isset($_SESSION['rol_id']) || $_SESSION['rol_izena'] !== 'Harrera Langilea') {
     header("Location: ../php_hasiera/login.php");
     exit;
 }
@@ -12,12 +12,12 @@ $errorea = '';
 
 // Default values
 $data_lehenetsia = $_GET['data'] ?? date('Y-m-d');
-$mediku_id_lehenetsia = $_GET['mediku_id'] ?? '';
+$mediku_id_lehenetsia = $_GET['osasun_langile_id'] ?? '';
 $paziente_id_lehenetsia = $_GET['paziente_id'] ?? '';
 
 // 1. Get doctors and patients for dropdowns
 try {
-    $medikuak = $pdo->query("SELECT id as mediku_id, izena, abizenak, espezialitatea FROM Medikuak ORDER BY abizenak ASC")->fetchAll(PDO::FETCH_ASSOC);
+    $medikuak = $pdo->query("SELECT id as osasun_langile_id, izena, abizenak, espezialitatea FROM osasun_langileak ORDER BY abizenak ASC")->fetchAll(PDO::FETCH_ASSOC);
     $pazienteak = $pdo->query("SELECT id as paziente_id, izena, abizenak, nan FROM Pazienteak ORDER BY abizenak ASC")->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
     $errorea = "Errorea datuak eskuratzean: " . $e->getMessage();
@@ -26,7 +26,7 @@ try {
 // 2. Handle form submission
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $p_id = $_POST['paziente_id'];
-    $m_id = $_POST['mediku_id'];
+    $m_id = $_POST['osasun_langile_id'];
     $data = $_POST['data'];
     $h_ordua = $_POST['hasiera_ordua'];
     $b_ordua = $_POST['bukaera_ordua'];
@@ -35,20 +35,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($p_id && $m_id && $data && $h_ordua && $b_ordua) {
         try {
             // Check for conflicts
-            $sql_check = "SELECT COUNT(*) FROM Hitzorduak WHERE mediku_id = ? AND data = ? AND 
+            $sql_check = "SELECT COUNT(*) FROM Hitzorduak WHERE osasun_langile_id = ? AND data = ? AND 
                          ((hasiera_ordua < ? AND bukaera_ordua > ?) OR (hasiera_ordua < ? AND bukaera_ordua > ?))";
             $stmt_check = $pdo->prepare($sql_check);
             $stmt_check->execute([$m_id, $data, $b_ordua, $h_ordua, $b_ordua, $h_ordua]);
             
             if ($stmt_check->fetchColumn() == 0) {
-                $sql_insert = "INSERT INTO Hitzorduak (paziente_id, mediku_id, data, hasiera_ordua, bukaera_ordua, arrazoia, egoera) VALUES (?, ?, ?, ?, ?, ?, 'Zain')";
+                $sql_insert = "INSERT INTO Hitzorduak (paziente_id, osasun_langile_id, data, hasiera_ordua, bukaera_ordua, arrazoia, egoera) VALUES (?, ?, ?, ?, ?, ?, 'Zain')";
                 $stmt_insert = $pdo->prepare($sql_insert);
                 $stmt_insert->execute([$p_id, $m_id, $data, $h_ordua, $b_ordua, $arrazoia]);
                 
                 header("Location: hitzorduak.php?msg=" . urlencode("Hitzordua arrakastaz sortu da."));
                 exit;
             } else {
-                $errorea = "Medikuak badu beste hitzordu bat ordu tarte horretan.";
+                $errorea = "osasun_langileak badu beste hitzordu bat ordu tarte horretan.";
             }
         } catch (PDOException $e) {
             $errorea = "Errorea datu-basean: " . $e->getMessage();
@@ -93,15 +93,15 @@ include_once '../php_includeak/harrera_goiburua.php';
                 </div>
 
                 <div class="inprimaki-taldea">
-                    <label for="mediku_id" class="testu-lodia">Medikua *</label>
+                    <label for="osasun_langile_id" class="testu-lodia">Medikua *</label>
                     <div class="flex-taldea-5 marjina-behe-5">
-                        <input type="text" class="inprimaki-kontrola" placeholder="Bilatu medikua (Abizena/Espezialitatea)..." onkeyup="filterSelect(this, 'mediku_id')">
+                        <input type="text" class="inprimaki-kontrola" placeholder="Bilatu medikua (Abizena/Espezialitatea)..." onkeyup="filterSelect(this, 'osasun_langile_id')">
                     </div>
-                    <select name="mediku_id" id="mediku_id" class="inprimaki-kontrola" required>
+                    <select name="osasun_langile_id" id="osasun_langile_id" class="inprimaki-kontrola" required>
                         <option value="">Hautatu mediku bat...</option>
                         <?php foreach ($medikuak as $m): ?>
-                            <option value="<?php echo $m['mediku_id']; ?>" <?php echo $mediku_id_lehenetsia == $m['mediku_id'] ? 'selected' : ''; ?>>
-                                Dr. <?php echo htmlspecialchars($m['abizenak'] . ", " . $m['izena'] . " - " . $m['espezialitatea']); ?>
+                            <option value="<?php echo $m['osasun_langile_id']; ?>" <?php echo $mediku_id_lehenetsia == $m['osasun_langile_id'] ? 'selected' : ''; ?>>
+                                Osasun Langilea <?php echo htmlspecialchars($m['abizenak'] . ", " . $m['izena'] . " - " . $m['espezialitatea']); ?>
                             </option>
                         <?php endforeach; ?>
                     </select>

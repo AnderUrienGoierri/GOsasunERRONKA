@@ -1,22 +1,21 @@
 <?php
 $bide_absolutua = '../'; session_start();
-if (!isset($_SESSION['rol_id']) || $_SESSION['rol_izena'] !== 'Medikua') {
+if (!isset($_SESSION['rol_id']) || $_SESSION['rol_izena'] !== 'Osasun Langilea') {
     header("Location: ../php_hasiera/login.php");
     exit;
 }
 
 require_once '../php_laguntzaileak/DB_konexioa.php';
-$mediku_id = $_SESSION['erabiltzaile_id'];
+$osasun_langile_id = $_SESSION['erabiltzaile_id'];
 $mezua = '';
 $errorea = '';
 
 // 1. Lortu esleitutako pazienteen zerrenda
-$stmtP = $pdo->prepare("SELECT p.id, p.izena, p.abizenak, p.nan 
-                       FROM Pazienteak p
-                       JOIN Mediku_Paziente mp ON p.id = mp.id
-                       WHERE mp.mediku_id = ?
-                       ORDER BY p.abizenak ASC");
-$stmtP->execute([$mediku_id]);
+$stmtP = $pdo->prepare("SELECT paziente_id AS id, izena, abizenak, nan 
+                       FROM V_Langile_Pazienteak
+                       WHERE langile_id = ?
+                       ORDER BY abizenak ASC");
+$stmtP->execute([$osasun_langile_id]);
 $pazienteak = $stmtP->fetchAll(PDO::FETCH_ASSOC);
 
 // 2. Kudeatu hitzordu ekintzak - MEDIKUARENTZAT EZINDUA (Harrerak soilik kudeatzen ditu)
@@ -58,12 +57,12 @@ if ($bista === 'eguna') {
 
 $sqlH = "SELECT h.*, h.id as hitzordu_id, p.izena, p.abizenak
          FROM Hitzorduak h
-         JOIN Pazienteak p ON h.paziente_id = p.id
-         WHERE h.mediku_id = :mid AND h.data BETWEEN :start AND :end
+         JOIN V_Pazientea p ON h.paziente_id = p.paziente_id
+         WHERE h.osasun_langile_id = :mid AND h.data BETWEEN :start AND :end
          ORDER BY h.data ASC, h.hasiera_ordua ASC";
 
 $stmtH = $pdo->prepare($sqlH);
-$stmtH->bindParam(':mid', $mediku_id);
+$stmtH->bindParam(':mid', $osasun_langile_id);
 $stmtH->bindParam(':start', $hasiera_data);
 $stmtH->bindParam(':end', $bukaera_data);
 $stmtH->execute();
@@ -81,8 +80,8 @@ $stmtStats = $pdo->prepare("SELECT COUNT(*) as denera,
     SUM(CASE WHEN egoera = 'Zain' THEN 1 ELSE 0 END) as zain,
     SUM(CASE WHEN egoera = 'Bukatuta' THEN 1 ELSE 0 END) as bukatuta,
     SUM(CASE WHEN data = :gaur THEN 1 ELSE 0 END) as gaur_kop
-    FROM Hitzorduak WHERE mediku_id = :mid");
-$stmtStats->execute(['mid' => $mediku_id, 'gaur' => $gaurko_data]);
+    FROM Hitzorduak WHERE osasun_langile_id = :mid");
+$stmtStats->execute(['mid' => $osasun_langile_id, 'gaur' => $gaurko_data]);
 $stats = $stmtStats->fetch(PDO::FETCH_ASSOC);
 $zain_kop = $stats['zain'] ?? 0;
 $bukatuta_kop = $stats['bukatuta'] ?? 0;

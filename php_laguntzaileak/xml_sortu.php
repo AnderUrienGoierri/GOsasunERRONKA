@@ -28,8 +28,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
         $jomuga_paziente_id = $_POST['paziente_id'];
         
-        // Segurtasun egiaztapena: Medikuak paziente hori badu bere zerrendan?
-        $baimen_stmt = $pdo->prepare("SELECT 1 FROM Mediku_Paziente WHERE mediku_id = ? AND paziente_id = ?");
+        // Segurtasun egiaztapena: osasun_langileak paziente hori badu bere zerrendan?
+        $baimen_stmt = $pdo->prepare("SELECT 1 FROM Mediku_Paziente WHERE osasun_langile_id = ? AND paziente_id = ?");
         $baimen_stmt->execute([$erab_id, $jomuga_paziente_id]);
         if (!$baimen_stmt->fetchColumn()) {
             http_response_code(403);
@@ -53,17 +53,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $paz_stmt->execute([$jomuga_paziente_id]);
         $paziente_info = $paz_stmt->fetch(PDO::FETCH_ASSOC);
         
-        // Lortu neurketak tarte horretan
-        $neurketak_stmt = $pdo->prepare("
-            SELECT DATE(erregistro_data) AS data, TIME(erregistro_data) AS ordua, glukosa_mg_dl, tentsio_sistolikoa, tentsio_diastolikoa, pisua_kg, altuera, sintomak 
-            FROM Neurketak 
+        // Lortu jarraipenak tarte horretan
+        $jarraipenak_stmt = $pdo->prepare("
+            SELECT DATE(erregistro_data) AS data, TIME(erregistro_data) AS ordua, glukosa_mg_dl, tentsio_sistolikoa, tentsio_diastolikoa, pisua_kg, altuera, oharrak 
+            FROM jarraipenak 
             WHERE paziente_id = ? AND DATE(erregistro_data) BETWEEN ? AND ?
             ORDER BY erregistro_data ASC
         ");
-        $neurketak_stmt->execute([$jomuga_paziente_id, $hasiera_data, $bukaera_data]);
-        $neurketak_emaitzak = $neurketak_stmt->fetchAll(PDO::FETCH_ASSOC);
+        $jarraipenak_stmt->execute([$jomuga_paziente_id, $hasiera_data, $bukaera_data]);
+        $jarraipenak_emaitzak = $jarraipenak_stmt->fetchAll(PDO::FETCH_ASSOC);
         
-        if (count($neurketak_emaitzak) === 0) {
+        if (count($jarraipenak_emaitzak) === 0) {
             return ['error' => 'Ez da neurketarik aurkitu epe horretan.'];
         }
         
@@ -83,9 +83,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $paz_node->appendChild($xml->createElement('Data_Tartea', "$hasiera_data - $bukaera_data"));
         $root->appendChild($paz_node);
         
-        // Neurketak Node
-        $neurketak_node = $xml->createElement('Neurketak');
-        foreach ($neurketak_emaitzak as $n) {
+        // jarraipenak Node
+        $jarraipenak_node = $xml->createElement('jarraipenak');
+        foreach ($jarraipenak_emaitzak as $n) {
             $neurketa_node = $xml->createElement('Neurketa');
             
             $neurketa_node->appendChild($xml->createElement('Data', $n['data']));
@@ -102,26 +102,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $neurketa_node->appendChild($tentsio_node);
             }
             
-            if (!empty($n['sintomak'])) {
-                $neurketa_node->appendChild($xml->createElement('Sintomak', htmlspecialchars($n['sintomak'])));
+            if (!empty($n['oharrak'])) {
+                $neurketa_node->appendChild($xml->createElement('oharrak', htmlspecialchars($n['oharrak'])));
             }
             
-            $neurketak_node->appendChild($neurketa_node);
+            $jarraipenak_node->appendChild($neurketa_node);
         }
-        $root->appendChild($neurketak_node);
+        $root->appendChild($jarraipenak_node);
         
         // Fitxategia Gorde
-        $xmlDir = dirname(__DIR__) . '/xml_bezero_neurketak/';
+        $xmlDir = dirname(__DIR__) . '/xml_bezero_jarraipenak/';
         if (!is_dir($xmlDir)) mkdir($xmlDir, 0777, true);
         
-        $fitxategi_izena = "Neurketak_{$jomuga_paziente_id}_" . date('Ymd_His') . ".xml";
+        $fitxategi_izena = "jarraipenak_{$jomuga_paziente_id}_" . date('Ymd_His') . ".xml";
         $jomuga_bidea = $xmlDir . $fitxategi_izena;
         
         $xml->save($jomuga_bidea);
         
         return [
             'success' => true,
-            'url' => 'xml_bezero_neurketak/' . $fitxategi_izena,
+            'url' => 'xml_bezero_jarraipenak/' . $fitxategi_izena,
             'msg' => 'XML txostena arrastaka gorde da!'
         ];
         

@@ -1,7 +1,7 @@
 <?php
 session_start();
 $bide_absolutua = '../';
-if (!isset($_SESSION['rol_id']) || $_SESSION['rol_izena'] !== 'Medikua') {
+if (!isset($_SESSION['rol_id']) || $_SESSION['rol_izena'] !== 'Osasun Langilea') {
     header("Location: ../php_hasiera/login.php");
     exit;
 }

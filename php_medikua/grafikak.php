@@ -2,25 +2,25 @@
 $bide_absolutua = '../'; session_start();
 require_once '../php_laguntzaileak/DB_konexioa.php';
 
-if (!isset($_SESSION['rol_id']) || $_SESSION['rol_izena'] !== 'Medikua') {
+if (!isset($_SESSION['rol_id']) || $_SESSION['rol_izena'] !== 'Osasun Langilea') {
     header("Location: ../php_hasiera/login.php");
     exit;
 }
 
-$mediku_id = $_SESSION['erabiltzaile_id'];
+$osasun_langile_id = $_SESSION['erabiltzaile_id'];
 
 // Get Medikuaren pazienteak
 $stmt = $pdo->prepare("
     SELECT p.id as paziente_id, p.izena, p.abizenak
     FROM Pazienteak p
     JOIN Mediku_Paziente mp ON p.id = mp.paziente_id
-    WHERE mp.mediku_id = ?
+    WHERE mp.osasun_langile_id = ?
 ");
-$stmt->execute([$mediku_id]);
+$stmt->execute([$osasun_langile_id]);
 $pazienteZerrenda = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 $aukeratutako_pazientea = $_GET['paziente_id'] ?? null;
-$neurketak = [];
+$jarraipenak = [];
 
 if ($aukeratutako_pazientea) {
     // Validate access
@@ -34,12 +34,12 @@ if ($aukeratutako_pazientea) {
     
     if ($baimena) {
         $stmt_datuak = $pdo->prepare("SELECT DATE(erregistro_data) AS data, tentsio_sistolikoa, tentsio_diastolikoa, pisua_kg, altuera, pultsua_ppm 
-                       FROM Neurketak WHERE paziente_id = ? ORDER BY erregistro_data ASC");
+                       FROM jarraipenak WHERE paziente_id = ? ORDER BY erregistro_data ASC");
         $stmt_datuak->execute([$aukeratutako_pazientea]);
-        $neurketak = $stmt_datuak->fetchAll(PDO::FETCH_ASSOC);
+        $jarraipenak = $stmt_datuak->fetchAll(PDO::FETCH_ASSOC);
     }
 }
-$json_neurketak = json_encode($neurketak);
+$json_jarraipenak = json_encode($jarraipenak);
 ?>
 <?php $orri_izenburua = "Pazienteen Grafikak - GOsasun";
 $uneko_orria = "grafikak";
@@ -68,7 +68,7 @@ include_once '../php_includeak/mediku_goiburua.php';
             </form>
         </div>
 
-        <?php if ($aukeratutako_pazientea && count($neurketak) > 0): ?>
+        <?php if ($aukeratutako_pazientea && count($jarraipenak) > 0): ?>
             <div class="grafika-goiburua marjina-goi-30" >
                 <h3>Hautatutako pazientearen bilakaera</h3>
                 <div class="grafika-kontrolak" data-html2canvas-ignore="true">
@@ -95,12 +95,12 @@ include_once '../php_includeak/mediku_goiburua.php';
         <?php elseif ($aukeratutako_pazientea): ?>
             <p class="daturik-ez">Paziente honek ez du neurketarik erregistratuta grafika sortzeko.</p>
         <?php else: ?>
-            <p class="daturik-ez">Mesedez, aukeratu paziente bat goiko zerrendan bere neurketak ikusteko.</p>
+            <p class="daturik-ez">Mesedez, aukeratu paziente bat goiko zerrendan bere jarraipenak ikusteko.</p>
         <?php endif; ?>
     </main>
 
     <script>
-        const neurketakData = <?php echo $json_neurketak; ?>;
+        const jarraipenakData = <?php echo $json_jarraipenak; ?>;
         const paziente_id = <?php echo $aukeratutako_pazientea ? $aukeratutako_pazientea : 'null'; ?>;
         const pdfEndpoint = '../php_laguntzaileak/pdf_sortu.php';
     </script>

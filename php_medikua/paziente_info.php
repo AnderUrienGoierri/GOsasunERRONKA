@@ -1,12 +1,12 @@
 <?php
 $bide_absolutua = '../'; session_start();
-if (!isset($_SESSION['rol_id']) || $_SESSION['rol_izena'] !== 'Medikua') {
+if (!isset($_SESSION['rol_id']) || $_SESSION['rol_izena'] !== 'Osasun Langilea') {
     header("Location: ../php_hasiera/login.php");
     exit;
 }
 
 require_once '../php_laguntzaileak/DB_konexioa.php';
-$mediku_id = $_SESSION['erabiltzaile_id'];
+$osasun_langile_id = $_SESSION['erabiltzaile_id'];
 
 if (!isset($_GET['id'])) {
     header("Location: pazienteak.php");
@@ -20,15 +20,15 @@ $msg_status = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['berria_egoera'])) {
     $berria = $_POST['berria_egoera'];
     if (in_array($berria, ['Alta', 'Baja'])) {
-        $stm_eguneratu = $pdo->prepare("UPDATE Pazienteak SET egoera_klinikoa = ? WHERE id = ?");
+        $stm_eguneratu = $pdo->prepare("UPDATE pazienteak SET egoera_klinikoa = ? WHERE id = ?");
         $stm_eguneratu->execute([$berria, $paziente_id]);
         $msg_status = "Egoera klinikoa harrerako langileentzat eguneratu da: " . $berria;
     }
 }
 
 // Ziurtatu medikuak paziente honetarako sarbidea duela
-$stm_egiaztatu = $pdo->prepare("SELECT 1 FROM Mediku_Paziente WHERE mediku_id = ? AND paziente_id = ?");
-$stm_egiaztatu->execute([$mediku_id, $paziente_id]);
+$stm_egiaztatu = $pdo->prepare("SELECT 1 FROM V_Langile_Pazienteak WHERE langile_id = ? AND paziente_id = ?");
+$stm_egiaztatu->execute([$osasun_langile_id, $paziente_id]);
 if (!$stm_egiaztatu->fetch()) {
     die("Ez duzu baimenik paziente honen datuak ikusteko.");
 }
@@ -38,10 +38,10 @@ $stmt = $pdo->prepare("SELECT * FROM V_Pazientea WHERE paziente_id = ?");
 $stmt->execute([$paziente_id]);
 $pazientea = $stmt->fetch(PDO::FETCH_ASSOC);
 
-// Azken neurketak
-$stmtNeurketak = $pdo->prepare("SELECT erregistro_data, tentsio_sistolikoa, tentsio_diastolikoa, pisua_kg, altuera, pultsua_ppm, sintomak FROM Neurketak WHERE paziente_id = ? ORDER BY erregistro_data DESC LIMIT 10");
-$stmtNeurketak->execute([$paziente_id]);
-$neurketak = $stmtNeurketak->fetchAll(PDO::FETCH_ASSOC);
+// Azken jarraipenak
+$stmtjarraipenak = $pdo->prepare("SELECT erregistro_data, tentsio_sistolikoa, tentsio_diastolikoa, pisua_kg, altuera, pultsua_ppm, oharrak FROM jarraipenak WHERE paziente_id = ? ORDER BY erregistro_data DESC LIMIT 10");
+$stmtjarraipenak->execute([$paziente_id]);
+$jarraipenak = $stmtjarraipenak->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 <?php $orri_izenburua = "Paziente Fitxa - " . htmlspecialchars($pazientea['izena'] . ' ' . $pazientea['abizenak']);
@@ -58,7 +58,7 @@ include_once '../php_includeak/mediku_goiburua.php';
         
         <div class="orri-goiburua">
             <h2>Pazientearen Fitxa Klinikoa</h2>
-            <p>Pazientearen informazio pertsonala eta azken neurketak.</p>
+            <p>Pazientearen informazio pertsonala eta azken jarraipenak.</p>
         </div>
 
         <?php if ($msg_status): ?>
@@ -130,8 +130,8 @@ include_once '../php_includeak/mediku_goiburua.php';
                     </div>
                 </div>
 
-                <h4 class="marjina-goi-30">Azken Neurketak</h4>
-                <?php if (count($neurketak) > 0): ?>
+                <h4 class="marjina-goi-30">Azken jarraipenak</h4>
+                <?php if (count($jarraipenak) > 0): ?>
                     <div class="korritze-horizontala">
                         <table class="neurketa-taula">
                             <thead>
@@ -145,14 +145,14 @@ include_once '../php_includeak/mediku_goiburua.php';
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php foreach ($neurketak as $n): ?>
+                                <?php foreach ($jarraipenak as $n): ?>
                                     <tr>
                                         <td><?php echo date('Y/m/d H:i', strtotime($n['erregistro_data'])); ?></td>
                                         <td><?php echo ($n['tentsio_sistolikoa'] && $n['tentsio_diastolikoa']) ? $n['tentsio_sistolikoa'] . '/' . $n['tentsio_diastolikoa'] : '-'; ?></td>
                                         <td><?php echo $n['pultsua_ppm'] ? $n['pultsua_ppm'] . ' ppm' : '-'; ?></td>
                                         <td><?php echo $n['altuera'] ? $n['altuera'] . ' cm' : '-'; ?></td>
                                         <td><?php echo $n['pisua_kg'] ? $n['pisua_kg'] . ' kg' : '-'; ?></td>
-                                        <td class="testu-gris-iluna"><?php echo htmlspecialchars($n['sintomak'] ?? '-'); ?></td>
+                                        <td class="testu-gris-iluna"><?php echo htmlspecialchars($n['oharrak'] ?? '-'); ?></td>
                                     </tr>
                                 <?php endforeach; ?>
                             </tbody>

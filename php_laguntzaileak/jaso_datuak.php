@@ -1,13 +1,13 @@
 <?php
 // PHP fitxategia: jaso_datuak.php
-// HELBURUKO KARPETA: C:\Apache24-64\htdocs\neurketak\
+// HELBURUKO KARPETA: C:\Apache24-64\htdocs\jarraipenak\
 
 // GARRANTZITSUA: Erroreak agertu daitezen baimendu behar dugu!
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
 // Bide absolutua erabiliko dugu inolako dudarik ez egoteko
-$karpeta = "C:/Apache24-64/htdocs/neurketak/";
+$karpeta = "C:/Apache24-64/htdocs/jarraipenak/";
 
 // Karpeta existitzen ote den begiratu eta bestela sortzen saiatu
 if (!file_exists($karpeta)) {

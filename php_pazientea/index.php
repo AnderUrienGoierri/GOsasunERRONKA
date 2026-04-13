@@ -16,7 +16,7 @@ $stmt->execute([$erabiltzaile_id]);
 $erabiltzaile_datuak = $stmt->fetch(PDO::FETCH_ASSOC);
 
 // Azken neurketa lortu
-$stmtNeurketa = $pdo->prepare("SELECT erregistro_data, tentsio_sistolikoa, tentsio_diastolikoa, pultsua_ppm, altuera, pisua_kg FROM Neurketak WHERE paziente_id = ? ORDER BY erregistro_data DESC LIMIT 1");
+$stmtNeurketa = $pdo->prepare("SELECT erregistro_data, tentsio_sistolikoa, tentsio_diastolikoa, pultsua_ppm, altuera, pisua_kg FROM jarraipenak WHERE paziente_id = ? ORDER BY erregistro_data DESC LIMIT 1");
 $stmtNeurketa->execute([$erabiltzaile_id]);
 $azkenNeurketa = $stmtNeurketa->fetch(PDO::FETCH_ASSOC);
 
@@ -25,7 +25,7 @@ $gaur = date('Y-m-d');
 $stmtHitzordu = $pdo->prepare("
     SELECT h.data, h.hasiera_ordua, m.izena as mediku_izena, m.abizenak as mediku_abizenak 
     FROM Hitzorduak h
-    JOIN Medikuak m ON h.mediku_id = m.id
+    JOIN V_Osasun_Langilea m ON h.osasun_langile_id = m.langile_id
     WHERE h.paziente_id = ? AND h.data >= ? AND h.egoera = 'Zain'
     ORDER BY h.data ASC, h.hasiera_ordua ASC LIMIT 1
 ");
@@ -56,9 +56,9 @@ include_once '../php_includeak/paziente_goiburua.php';
 
         <!-- Laburpen Txartelak (Dashboard) -->
         <div class="panel-sareta">
-            <!-- Azken Neurketak -->
-            <div id="dash-neurketak-card" class="kutxa-zuria-itzala">
-                <h3 class="izenburu-iluna"><img src="../img/svg/line-chart.svg" alt="" class="ikono-ertaina marjina-esk-5"> <?php echo $itzulpenak->dashboard_pazientea->azken_neurketak; ?></h3>
+            <!-- Azken jarraipenak -->
+            <div id="dash-jarraipenak-card" class="kutxa-zuria-itzala">
+                <h3 class="izenburu-iluna"><img src="../img/svg/line-chart.svg" alt="" class="ikono-ertaina marjina-esk-5"> <?php echo $itzulpenak->dashboard_pazientea->azken_jarraipenak; ?></h3>
                 
                 <div class="paziente-informazio-laburpena marjina-behe-15">
                     <p><strong><?php echo htmlspecialchars($erabiltzaile_datuak['izena'] . ' ' . $erabiltzaile_datuak['abizenak']); ?></strong></p>
@@ -88,7 +88,7 @@ include_once '../php_includeak/paziente_goiburua.php';
                 <?php else: ?>
                     <p class="testu-gris-etzana"><?php echo $itzulpenak->dashboard_pazientea->ez_dago_neurketarik; ?></p>
                 <?php endif; ?>
-                <a href="neurketak.php" id="dash-neurketak-btn" class="botoia botoi-nagusia marjina-goi-15 zabalera-osoa testua-erdian"><?php echo $itzulpenak->dashboard_pazientea->neurketa_berria; ?></a>
+                <a href="jarraipenak.php" id="dash-jarraipenak-btn" class="botoia botoi-nagusia marjina-goi-15 zabalera-osoa testua-erdian"><?php echo $itzulpenak->dashboard_pazientea->neurketa_berria; ?></a>
             </div>
 
             <!-- Hurrengo Hitzordua -->
@@ -101,7 +101,7 @@ include_once '../php_includeak/paziente_goiburua.php';
                             <div class="testu-handi-lodia"><?php echo date('d', strtotime($hurrengoHitzordua['data'])); ?></div>
                         </div>
                         <div class="flex-bat">
-                            <h4 class="izenburu-marjina-gabea">Dr. <?php echo htmlspecialchars($hurrengoHitzordua['mediku_izena'] . ' ' . $hurrengoHitzordua['mediku_abizenak']); ?></h4>
+                            <h4 class="izenburu-marjina-gabea">Osasun Langilea <?php echo htmlspecialchars($hurrengoHitzordua['mediku_izena'] . ' ' . $hurrengoHitzordua['mediku_abizenak']); ?></h4>
                             <p class="ordua ordua-marjina-doitua"><img src="../img/svg/clock.svg" alt="" class="ikono-ertaina marjina-esk-5"> <?php echo date('H:i', strtotime($hurrengoHitzordua['hasiera_ordua'])); ?></p>
                         </div>
                     </div>
@@ -119,10 +119,10 @@ include_once '../php_includeak/paziente_goiburua.php';
                 <h3><?php echo $itzulpenak->menua_pazientea->datuak; ?></h3>
                 <p><?php echo $itzulpenak->menua_pazientea->datuak_testua; ?></p>
             </a>
-            <a href="neurketak.php" class="menu-txartela" id="menu-neurketak-card">
-                <div class="txartel-ikonoa"><img src="../img/svg/clipboard-pen.svg" alt="Neurketak" class="ikono-handia-48"></div>
-                <h3><?php echo $itzulpenak->menua_pazientea->neurketak; ?></h3>
-                <p><?php echo $itzulpenak->menua_pazientea->neurketak_testua; ?></p>
+            <a href="jarraipenak.php" class="menu-txartela" id="menu-jarraipenak-card">
+                <div class="txartel-ikonoa"><img src="../img/svg/clipboard-pen.svg" alt="jarraipenak" class="ikono-handia-48"></div>
+                <h3><?php echo $itzulpenak->menua_pazientea->jarraipenak; ?></h3>
+                <p><?php echo $itzulpenak->menua_pazientea->jarraipenak_testua; ?></p>
             </a>
             <a href="grafikak.php" class="menu-txartela">
                 <div class="txartel-ikonoa"><img src="../img/svg/line-chart.svg" alt="Grafikak" class="ikono-handia-48"></div>
@@ -144,11 +144,7 @@ include_once '../php_includeak/paziente_goiburua.php';
                 <h3><?php echo $itzulpenak->menua_pazientea->hitzorduak; ?></h3>
                 <p><?php echo $itzulpenak->menua_pazientea->hitzorduak_testua; ?></p>
             </a>
-            <a href="mezuak.php" class="menu-txartela">
-                <div class="txartel-ikonoa"><img src="../img/svg/mail.svg" alt="Mezuak" class="ikono-handia-48"></div>
-                <h3><?php echo $itzulpenak->menua_pazientea->mezuak; ?></h3>
-                <p><?php echo $itzulpenak->menua_pazientea->mezuak_testua; ?></p>
-            </a>
+
             <a href="ezarpenak.php" class="menu-txartela">
                 <div class="txartel-ikonoa"><img src="../img/svg/settings.svg" alt="Ezarpenak" class="ikono-handia-48"></div>
                 <h3><?php echo $itzulpenak->menua_pazientea->ezarpenak; ?></h3>

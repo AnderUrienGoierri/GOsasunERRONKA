@@ -6,7 +6,7 @@
         <div class="orri-oin-nabigazioa">
             <a href="index.php">Hasiera</a>  
             <a href="datuak.php">Nire Datuak</a> 
-            <a href="neurketak.php" class="footer-neurketak-link">Neurketak</a> 
+            <a href="jarraipenak.php" class="footer-jarraipenak-link">jarraipenak</a> 
             <a href="grafikak.php">Grafikak</a> 
             <a href="hitzorduak.php">Hitzorduak</a> 
             <a href="errezetak.php">Errezetak</a> 

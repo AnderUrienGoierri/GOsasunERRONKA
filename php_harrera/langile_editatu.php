@@ -1,13 +1,13 @@
 <?php
 $bide_absolutua = '../'; session_start();
-if (!isset($_SESSION['rol_id']) || $_SESSION['rol_izena'] !== 'Harrera') {
+if (!isset($_SESSION['rol_id']) || $_SESSION['rol_izena'] !== 'Harrera Langilea') {
     header("Location: ../php_hasiera/login.php");
     exit;
 }
 
 require_once '../php_laguntzaileak/DB_konexioa.php';
 $id = $_GET['id'] ?? null;
-if (!$id) { header("Location: medikuak.php"); exit; }
+if (!$id) { header("Location: osasun_langileak.php"); exit; }
 
 $mezua = '';
 $errorea = '';
@@ -25,23 +25,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     try {
         $pdo->beginTransaction();
-        $pdo->prepare("UPDATE Erabiltzaileak SET email = ? WHERE id = ?")->execute([$email, $id]);
-        $pdo->prepare("UPDATE Medikuak SET izena = ?, abizenak = ?, elkargokide_zenbakia = ?, espezialitatea = ?, telefonoa = ?, kontsulta = ?, lanaldia = ?, jaiotze_data = ? WHERE id = ?")
-            ->execute([$izena, $abizenak, $elkargokide, $espezialitatea, $telefonoa, $kontsulta, $lanaldia, $jaiotze_data, $id]);
+        // 1. Update Erabiltzaileak (Personal data)
+        $pdo->prepare("UPDATE erabiltzaileak SET email = ?, izena = ?, abizenak = ?, jaiotze_data = ?, telefonoa = ? WHERE id = ?")
+            ->execute([$email, $izena, $abizenak, $jaiotze_data, $telefonoa, $id]);
+        
+        // 2. Update osasun_langileak (Work data)
+        $pdo->prepare("UPDATE osasun_langileak SET elkargokide_zenbakia = ?, espezialitatea = ?, kontsulta = ?, lanaldia = ? WHERE id = ?")
+            ->execute([$elkargokide, $espezialitatea, $kontsulta, $lanaldia, $id]);
+            
         $pdo->commit();
-        $mezua = "Medikuaren datuak eguneratu dira.";
+        $mezua = "Langilearen datuak eguneratu dira.";
     } catch (PDOException $e) {
         $pdo->rollBack();
         $errorea = "Errorea: " . $e->getMessage();
     }
 }
 
-$stmt = $pdo->prepare("SELECT * FROM V_Medikua WHERE mediku_id = ?");
+$stmt = $pdo->prepare("SELECT * FROM V_Osasun_Langilea WHERE langile_id = ?");
 $stmt->execute([$id]);
 $m = $stmt->fetch(PDO::FETCH_ASSOC);
-if (!$m) { header("Location: medikuak.php"); exit; }
+if (!$m) { header("Location: osasun_langileak.php"); exit; }
 
-$orri_izenburua = "Editatu Medikua - GOsasun";
+$orri_izenburua = "Editatu Langilea - GOsasun";
 $uneko_orria = "medikuak";
 $css_pertsonalizatua = "medikuak.css";
 include_once '../php_includeak/harrera_goiburua.php';
@@ -50,10 +55,10 @@ include_once '../php_includeak/harrera_goiburua.php';
     <main class="panel-nagusia">
         <div class="orri-goiburua">
             <div>
-                <h2><img src="../img/svg/pencil.svg" alt="" class="ikono-ertaina marjina-esk-5"> Editatu Medikua</h2>
+                <h2><img src="../img/svg/pencil.svg" alt="" class="ikono-ertaina marjina-esk-5"> Editatu Langilea</h2>
                 <p><?php echo htmlspecialchars($m['abizenak'] . ', ' . $m['izena']); ?></p>
             </div>
-            <a href="medikuak.php" class="botoia botoi-ertza">← Itzuli</a>
+            <a href="osasun_langileak.php" class="botoia botoi-ertza">← Itzuli</a>
         </div>
 
         <?php if ($mezua): ?><div class="alerta alerta-arrakasta"><?php echo htmlspecialchars($mezua); ?></div><?php endif; ?>
@@ -113,7 +118,7 @@ include_once '../php_includeak/harrera_goiburua.php';
 
                 <div class="botoi-taldea marjina-goi-20">
                     <button type="submit" class="botoia botoi-nagusia">Gorde Aldaketak</button>
-                    <a href="medikuak.php" class="botoia botoi-ertza">Itzuli</a>
+                    <a href="osasun_langileak.php" class="botoia botoi-ertza">Itzuli</a>
                 </div>
             </form>
         </div>

@@ -1,6 +1,6 @@
 <?php
 $bide_absolutua = '../'; session_start();
-if (!isset($_SESSION['rol_id']) || $_SESSION['rol_izena'] !== 'Harrera') {
+if (!isset($_SESSION['rol_id']) || $_SESSION['rol_izena'] !== 'Harrera Langilea') {
     header("Location: ../php_hasiera/login.php");
     exit;
 }
@@ -11,6 +11,7 @@ $errorea = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $izena          = $_POST['izena'] ?? '';
     $abizenak       = $_POST['abizenak'] ?? '';
+    $nan            = $_POST['nan'] ?? '';
     $email          = $_POST['email'] ?? '';
     $pasahitza      = $_POST['pasahitza'] ?? '1234';
     $elkargokide    = $_POST['elkargokide_zenbakia'] ?? '';
@@ -21,19 +22,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $jaiotze_data   = $_POST['jaiotze_data'] ?? null;
     $hizkuntza      = $_POST['hizkuntza'] ?? 'Euskara';
 
-    if ($izena && $abizenak && $email && $elkargokide) {
+    if ($izena && $abizenak && $email && $elkargokide && $nan) {
         try {
             $pdo->beginTransaction();
 
-            $stmtUser = $pdo->prepare("INSERT INTO Erabiltzaileak (email, pasahitza, rol_id, hizkuntza, aktibo) VALUES (?, ?, 1, ?, 1)");
-            $stmtUser->execute([$email, $pasahitza, $hizkuntza]);
+            // 1. Insert into Erabiltzaileak (Personal data)
+            $stmtUser = $pdo->prepare("INSERT INTO erabiltzaileak (email, pasahitza, rol_id, hizkuntza, nan, izena, abizenak, jaiotze_data, telefonoa, aktibo) VALUES (?, ?, 1, ?, ?, ?, ?, ?, ?, 1)");
+            $stmtUser->execute([$email, $pasahitza, $hizkuntza, $nan, $izena, $abizenak, $jaiotze_data, $telefonoa]);
             $id_berria = $pdo->lastInsertId();
 
-            $stmtMediku = $pdo->prepare("INSERT INTO Medikuak (id, izena, abizenak, elkargokide_zenbakia, espezialitatea, telefonoa, kontsulta, lanaldia, jaiotze_data) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-            $stmtMediku->execute([$id_berria, $izena, $abizenak, $elkargokide, $espezialitatea, $telefonoa, $kontsulta, $lanaldia, $jaiotze_data]);
+            // 2. Insert into osasun_langileak (Work data)
+            $stmtLangile = $pdo->prepare("INSERT INTO osasun_langileak (id, elkargokide_zenbakia, espezialitatea, kontsulta, lanaldia) VALUES (?, ?, ?, ?, ?)");
+            $stmtLangile->execute([$id_berria, $elkargokide, $espezialitatea, $kontsulta, $lanaldia]);
 
             $pdo->commit();
-            header("Location: medikuak.php?msg=" . urlencode("Mediku berria sortu da."));
+            header("Location: osasun_langileak.php?msg=" . urlencode("Langile berria sortu da."));
             exit;
         } catch (PDOException $e) {
             $pdo->rollBack();
@@ -44,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-$orri_izenburua = "Mediku Berria - GOsasun";
+$orri_izenburua = "Osasun Langile Berria - GOsasun";
 $uneko_orria = "medikuak";
 $css_pertsonalizatua = "medikuak.css";
 include_once '../php_includeak/harrera_goiburua.php';
@@ -53,10 +56,10 @@ include_once '../php_includeak/harrera_goiburua.php';
     <main class="panel-nagusia">
         <div class="orri-goiburua">
             <div>
-                <h2><img src="../img/svg/plus-circle.svg" alt="" class="ikono-ertaina marjina-esk-5"> Mediku Berria Sortu</h2>
-                <p>Bete beheko formularioa mediku berria sistemara gehitzeko.</p>
+                <h2><img src="../img/svg/plus-circle.svg" alt="" class="ikono-ertaina marjina-esk-5"> Osasun Langile Berria Sortu</h2>
+                <p>Bete beheko formularioa langile berria sistemara gehitzeko.</p>
             </div>
-            <a href="medikuak.php" class="botoia botoi-ertza">← Itzuli</a>
+            <a href="osasun_langileak.php" class="botoia botoi-ertza">← Itzuli</a>
         </div>
 
         <?php if ($errorea): ?><div class="alerta alerta-errorea"><?php echo htmlspecialchars($errorea); ?></div><?php endif; ?>
@@ -73,6 +76,10 @@ include_once '../php_includeak/harrera_goiburua.php';
                     <div class="informazio-taldea">
                         <label for="abizenak">Abizenak <span class="beharrezkoa">*</span></label>
                         <input type="text" id="abizenak" name="abizenak" class="inprimaki-kontrola" required>
+                    </div>
+                    <div class="informazio-taldea">
+                        <label for="nan">NAN <span class="beharrezkoa">*</span></label>
+                        <input type="text" id="nan" name="nan" class="inprimaki-kontrola" required maxlength="9" placeholder="12345678A">
                     </div>
                     <div class="informazio-taldea">
                         <label for="jaiotze_data">Jaiotze Data</label>
@@ -127,8 +134,8 @@ include_once '../php_includeak/harrera_goiburua.php';
                 </div>
 
                 <div class="botoi-taldea marjina-goi-20">
-                    <button type="submit" class="botoia botoi-nagusia">Gorde Medikua</button>
-                    <a href="medikuak.php" class="botoia botoi-ertza">Utzi</a>
+                    <button type="submit" class="botoia botoi-nagusia">Gorde Langilea</button>
+                    <a href="osasun_langileak.php" class="botoia botoi-ertza">Utzi</a>
                 </div>
             </form>
         </div>

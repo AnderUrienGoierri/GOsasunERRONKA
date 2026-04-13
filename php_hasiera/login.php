@@ -34,13 +34,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $_SESSION['rol_id'] = $user['rol_id'];
                 $_SESSION['rol_izena'] = $user['rol_izena'];
 
-                if ($user['rol_izena'] === 'Medikua') {
+                if ($user['rol_izena'] === 'Osasun Langilea') {
                     header("Location: ../php_medikua/index.php");
                     exit;
                 } else if ($user['rol_izena'] === 'Pazientea') {
                     header("Location: ../php_pazientea/index.php");
                     exit;
-                } else if ($user['rol_izena'] === 'Harrera') {
+                } else if ($user['rol_izena'] === 'Harrera Langilea') {
                     header("Location: ../php_harrera/index.php");
                     exit;
                 } else {

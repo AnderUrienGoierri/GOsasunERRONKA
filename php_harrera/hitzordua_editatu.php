@@ -1,6 +1,6 @@
 <?php
 $bide_absolutua = '../'; session_start();
-if (!isset($_SESSION['rol_id']) || $_SESSION['rol_izena'] !== 'Harrera') {
+if (!isset($_SESSION['rol_id']) || $_SESSION['rol_izena'] !== 'Harrera Langilea') {
     header("Location: ../php_hasiera/login.php");
     exit;
 }
@@ -26,7 +26,7 @@ try {
         die("Hitzordua ez da existitzen.");
     }
 
-    $medikuak = $pdo->query("SELECT id as mediku_id, izena, abizenak, espezialitatea FROM Medikuak ORDER BY abizenak ASC")->fetchAll(PDO::FETCH_ASSOC);
+    $medikuak = $pdo->query("SELECT id as osasun_langile_id, izena, abizenak, espezialitatea FROM osasun_langileak ORDER BY abizenak ASC")->fetchAll(PDO::FETCH_ASSOC);
     $pazienteak = $pdo->query("SELECT id as paziente_id, izena, abizenak, nan FROM Pazienteak ORDER BY abizenak ASC")->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
     $errorea = "Errorea datuak eskuratzean: " . $e->getMessage();
@@ -36,7 +36,7 @@ try {
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['editatu_hitzordua'])) {
         $p_id = $_POST['paziente_id'];
-        $m_id = $_POST['mediku_id'];
+        $m_id = $_POST['osasun_langile_id'];
         $data = $_POST['data'];
         $h_ordua = $_POST['hasiera_ordua'];
         $b_ordua = $_POST['bukaera_ordua'];
@@ -46,13 +46,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($p_id && $m_id && $data && $h_ordua && $b_ordua) {
             try {
                 // Conflict check (excluding current appointment)
-                $sql_check = "SELECT COUNT(*) FROM Hitzorduak WHERE mediku_id = ? AND data = ? AND id != ? AND 
+                $sql_check = "SELECT COUNT(*) FROM Hitzorduak WHERE osasun_langile_id = ? AND data = ? AND id != ? AND 
                              ((hasiera_ordua < ? AND bukaera_ordua > ?) OR (hasiera_ordua < ? AND bukaera_ordua > ?))";
                 $stmt_check = $pdo->prepare($sql_check);
                 $stmt_check->execute([$m_id, $data, $h_id, $b_ordua, $h_ordua, $b_ordua, $h_ordua]);
                 
                 if ($stmt_check->fetchColumn() == 0) {
-                    $sql_update = "UPDATE Hitzorduak SET paziente_id = ?, mediku_id = ?, data = ?, hasiera_ordua = ?, bukaera_ordua = ?, arrazoia = ?, egoera = ? WHERE id = ?";
+                    $sql_update = "UPDATE Hitzorduak SET paziente_id = ?, osasun_langile_id = ?, data = ?, hasiera_ordua = ?, bukaera_ordua = ?, arrazoia = ?, egoera = ? WHERE id = ?";
                     $stmt_update = $pdo->prepare($sql_update);
                     $stmt_update->execute([$p_id, $m_id, $data, $h_ordua, $b_ordua, $arrazoia, $egoera, $h_id]);
                     
@@ -108,11 +108,11 @@ include_once '../php_includeak/harrera_goiburua.php';
                 </div>
 
                 <div class="inprimaki-taldea">
-                    <label for="mediku_id" class="testu-lodia">Medikua *</label>
-                    <select name="mediku_id" id="mediku_id" class="inprimaki-kontrola" required>
+                    <label for="osasun_langile_id" class="testu-lodia">Medikua *</label>
+                    <select name="osasun_langile_id" id="osasun_langile_id" class="inprimaki-kontrola" required>
                         <?php foreach ($medikuak as $m): ?>
-                            <option value="<?php echo $m['mediku_id']; ?>" <?php echo $hitzordua['mediku_id'] == $m['mediku_id'] ? 'selected' : ''; ?>>
-                                Dr. <?php echo htmlspecialchars($m['abizenak'] . ", " . $m['izena'] . " - " . $m['espezialitatea']); ?>
+                            <option value="<?php echo $m['osasun_langile_id']; ?>" <?php echo $hitzordua['osasun_langile_id'] == $m['osasun_langile_id'] ? 'selected' : ''; ?>>
+                                Osasun Langilea <?php echo htmlspecialchars($m['abizenak'] . ", " . $m['izena'] . " - " . $m['espezialitatea']); ?>
                             </option>
                         <?php endforeach; ?>
                     </select>

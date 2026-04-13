@@ -1,6 +1,6 @@
 <?php
 $bide_absolutua = '../'; session_start();
-if (!isset($_SESSION['rol_id']) || $_SESSION['rol_izena'] !== 'Harrera') {
+if (!isset($_SESSION['rol_id']) || $_SESSION['rol_izena'] !== 'Harrera Langilea') {
     header("Location: ../php_hasiera/login.php");
     exit;
 }
@@ -29,9 +29,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
         $pdo->beginTransaction();
 
-        $pdo->prepare("UPDATE Erabiltzaileak SET email = ? WHERE id = ?")->execute([$email, $id]);
-        $pdo->prepare("UPDATE Pazienteak SET nan = ?, izena = ?, abizenak = ?, sexua = ?, jaiotze_data = ?, telefonoa = ?, helbidea = ?, herria = ?, posta_kodea = ?, odol_taldea = ?, egoera_klinikoa = ? WHERE id = ?")
-            ->execute([$nan, $izena, $abizenak, $sexua, $jaiotze_data, $telefonoa, $helbidea, $herria, $posta_kodea, $odol_taldea, $egoera_klinikoa, $id]);
+        // 1. Update Erabiltzaileak (Personal and Identification data)
+        $pdo->prepare("UPDATE erabiltzaileak SET email = ?, nan = ?, izena = ?, abizenak = ?, jaiotze_data = ?, telefonoa = ?, helbidea = ?, herria = ?, posta_kodea = ? WHERE id = ?")
+            ->execute([$email, $nan, $izena, $abizenak, $jaiotze_data, $telefonoa, $helbidea, $herria, $posta_kodea, $id]);
+            
+        // 2. Update pazienteak (Clinical data)
+        $pdo->prepare("UPDATE pazienteak SET sexua = ?, odol_taldea = ?, egoera_klinikoa = ? WHERE id = ?")
+            ->execute([$sexua, $odol_taldea, $egoera_klinikoa, $id]);
 
         $pdo->commit();
         $mezua = "Datuak arrakastaz eguneratu dira.";

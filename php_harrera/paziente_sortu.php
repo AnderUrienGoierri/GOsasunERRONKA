@@ -1,6 +1,6 @@
 <?php
 $bide_absolutua = '../'; session_start();
-if (!isset($_SESSION['rol_id']) || $_SESSION['rol_izena'] !== 'Harrera') {
+if (!isset($_SESSION['rol_id']) || $_SESSION['rol_izena'] !== 'Harrera Langilea') {
     header("Location: ../php_hasiera/login.php");
     exit;
 }
@@ -28,12 +28,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         try {
             $pdo->beginTransaction();
 
-            $stmtUser = $pdo->prepare("INSERT INTO Erabiltzaileak (email, pasahitza, rol_id, hizkuntza, aktibo) VALUES (?, ?, 2, ?, 1)");
-            $stmtUser->execute([$email, $pasahitza, $hizkuntza]);
+            $stmtUser = $pdo->prepare("INSERT INTO erabiltzaileak (email, pasahitza, rol_id, hizkuntza, nan, izena, abizenak, jaiotze_data, telefonoa, helbidea, herria, posta_kodea, aktibo) VALUES (?, ?, 2, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1)");
+            $stmtUser->execute([$email, $pasahitza, $hizkuntza, $nan, $izena, $abizenak, $jaiotze_data, $telefonoa, $helbidea, $herria, $posta_kodea]);
             $id_berria = $pdo->lastInsertId();
 
-            $stmtPaziente = $pdo->prepare("INSERT INTO Pazienteak (id, nan, izena, abizenak, sexua, jaiotze_data, telefonoa, helbidea, herria, posta_kodea, odol_taldea) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-            $stmtPaziente->execute([$id_berria, $nan, $izena, $abizenak, $sexua, $jaiotze_data, $telefonoa, $helbidea, $herria, $posta_kodea, $odol_taldea]);
+            $stmtPaziente = $pdo->prepare("INSERT INTO pazienteak (id, sexua, odol_taldea) VALUES (?, ?, ?)");
+            $stmtPaziente->execute([$id_berria, $sexua, $odol_taldea]);
 
             $pdo->commit();
             header("Location: pazienteak.php?msg=" . urlencode("Paziente berria arrakastaz sortu da. ID: " . $id_berria));

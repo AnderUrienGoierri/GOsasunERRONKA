@@ -1,6 +1,6 @@
 <?php
 $bide_absolutua = '../'; session_start();
-if (!isset($_SESSION['rol_id']) || $_SESSION['rol_izena'] !== 'Harrera') {
+if (!isset($_SESSION['rol_id']) || $_SESSION['rol_izena'] !== 'Harrera Langilea') {
     header("Location: ../php_hasiera/login.php");
     exit;
 }
@@ -10,7 +10,7 @@ $mezua = '';
 $errorea = '';
 
 // 1. Lortu mediku eta pazienteen zerrendak (dropdown-ak egiteko)
-$medikuak = $pdo->query("SELECT id as mediku_id, izena, abizenak, espezialitatea FROM Medikuak ORDER BY abizenak ASC")->fetchAll(PDO::FETCH_ASSOC);
+$medikuak = $pdo->query("SELECT id as osasun_langile_id, izena, abizenak, espezialitatea FROM osasun_langileak ORDER BY abizenak ASC")->fetchAll(PDO::FETCH_ASSOC);
 $pazienteak = $pdo->query("SELECT id as paziente_id, izena, abizenak, nan FROM Pazienteak ORDER BY abizenak ASC")->fetchAll(PDO::FETCH_ASSOC);
 
 // 2. Kudeatu mezuak eta ezabaketak
@@ -66,11 +66,11 @@ if ($bista === 'eguna') {
 $sqlH = "SELECT h.*, h.id as hitzordu_id, p.izena as p_izena, p.abizenak as p_abizenak, m.izena as m_izena, m.abizenak as m_abizenak 
         FROM Hitzorduak h
         JOIN Pazienteak p ON h.paziente_id = p.id
-        JOIN Medikuak m ON h.mediku_id = m.id
+        JOIN osasun_langileak m ON h.osasun_langile_id = m.id
         WHERE h.data BETWEEN :start AND :end";
 
 if ($filter_mediku_id) {
-    $sqlH .= " AND h.mediku_id = :mid";
+    $sqlH .= " AND h.osasun_langile_id = :mid";
 }
 if ($filter_paziente_id) {
     $sqlH .= " AND h.paziente_id = :pid";
@@ -132,8 +132,8 @@ include_once '../php_includeak/harrera_goiburua.php';
                     <select name="filter_mediku_id" id="filter_mediku_id" class="inprimaki-kontrola" onchange="this.form.submit()">
                         <option value="">Guztiak</option>
                         <?php foreach($medikuak as $m): ?>
-                            <option value="<?php echo $m['mediku_id']; ?>" <?php echo $filter_mediku_id == $m['mediku_id'] ? 'selected' : ''; ?>>
-                                Dr. <?php echo htmlspecialchars($m['abizenak'] . ', ' . $m['izena']); ?>
+                            <option value="<?php echo $m['osasun_langile_id']; ?>" <?php echo $filter_mediku_id == $m['osasun_langile_id'] ? 'selected' : ''; ?>>
+                                Osasun Langilea <?php echo htmlspecialchars($m['abizenak'] . ', ' . $m['izena']); ?>
                             </option>
                         <?php endforeach; ?>
                     </select>
@@ -313,7 +313,7 @@ include_once '../php_includeak/harrera_goiburua.php';
                     <select name="filter_mediku_id" class="inprimaki-kontrola zabalera-autoa" onchange="this.form.submit()">
                         <option value="">Iragazi medikua...</option>
                         <?php foreach ($medikuak as $m): ?>
-                            <option value="<?php echo $m['mediku_id']; ?>" <?php echo $filter_mediku_id == $m['mediku_id'] ? 'selected' : ''; ?>>
+                            <option value="<?php echo $m['osasun_langile_id']; ?>" <?php echo $filter_mediku_id == $m['osasun_langile_id'] ? 'selected' : ''; ?>>
                                 <?php echo htmlspecialchars($m['abizenak'] . ", " . $m['izena']); ?>
                             </option>
                         <?php endforeach; ?>

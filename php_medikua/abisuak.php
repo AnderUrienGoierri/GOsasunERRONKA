@@ -1,12 +1,12 @@
 <?php
 $bide_absolutua = '../'; session_start();
-if (!isset($_SESSION['rol_id']) || $_SESSION['rol_izena'] !== 'Medikua') {
+if (!isset($_SESSION['rol_id']) || $_SESSION['rol_izena'] !== 'Osasun Langilea') {
     header("Location: ../php_hasiera/login.php");
     exit;
 }
 
 require_once '../php_laguntzaileak/DB_konexioa.php';
-$mediku_id = $_SESSION['erabiltzaile_id'];
+$osasun_langile_id = $_SESSION['erabiltzaile_id'];
 
 // Fetch alerts for all patients assigned to this doctor
 $stmt = $pdo->prepare("
@@ -14,10 +14,10 @@ $stmt = $pdo->prepare("
     FROM Abisuak a
     JOIN Pazienteak p ON a.paziente_id = p.id
     JOIN Mediku_Paziente mp ON p.id = mp.id
-    WHERE mp.mediku_id = ?
+    WHERE mp.osasun_langile_id = ?
     ORDER BY a.data DESC
 ");
-$stmt->execute([$mediku_id]);
+$stmt->execute([$osasun_langile_id]);
 $abisuak = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
@@ -75,7 +75,7 @@ include_once '../php_includeak/mediku_goiburua.php';
             <div class="egoera-hutsa kutxa-zuria-hutsa" >
                 <div class="ikono-handia-4"><img src="../img/svg/shield.svg" alt="" class="ikono-3rem-gardena"></div>
                 <h3>Ez dago abisurik aktibo</h3>
-                <p>Zure paziente guztien neurketak normaltasunaren barruan daude momentuz.</p>
+                <p>Zure paziente guztien jarraipenak normaltasunaren barruan daude momentuz.</p>
             </div>
         <?php endif; ?>
     </main>
