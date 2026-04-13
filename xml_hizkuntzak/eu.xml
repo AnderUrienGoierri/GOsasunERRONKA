@@ -8,13 +8,13 @@
     </menua>
     <index>
         <izenburua_nagusia>Zure osasuna, gure lehentasuna</izenburua_nagusia>
-        <azpititulua>Zure osasuna kudeatzeko, neurketak jarraipena egiteko eta medikuarekin konektatzeko plataforma segurua</azpititulua>
+        <azpititulua>Zure osasuna kudeatzeko, neurketak jarraipena egiteko eta osasun langilearekin konektatzeko plataforma segurua</azpititulua>
         <paziente_izenburua>Pazienteen Txokoa</paziente_izenburua>
         <paziente_testua>Kontsultatu zure analitikak, hitzorduak eta jarraipen datuak modu seguruan.</paziente_testua>
-        <mediku_izenburua>Mediku Ataria</mediku_izenburua>
-        <mediku_testua>Kudeatu zure pazienteen hitoria, hitzorduak eta mezuak era erraz batetan.</mediku_testua>
+        <mediku_izenburua>Osasun Langile Ataria</mediku_izenburua>
+        <mediku_testua>Kudeatu zure pazienteen historia, hitzorduak eta mezuak era erraz batetan.</mediku_testua>
         <harrera_izenburua>Harrera Zerbitzua</harrera_izenburua>
-        <harrera_testua>Pazienteen harrera, medikuen agendak eta zentroko hitzordu guztiak kudeatu.</harrera_testua>
+        <harrera_testua>Pazienteen harrera, osasun langileen agendak eta zentroko hitzordu guztiak kudeatu.</harrera_testua>
         <sartu>Sartu</sartu>
     </index>
     <kontaktua>
@@ -51,7 +51,7 @@
         <hitzorduak>Hitzorduak</hitzorduak>
         <hitzorduak_testua>Kudeatu zure mediku hitzorduak.</hitzorduak_testua>
         <mezuak>Mezuak</mezuak>
-        <mezuak_testua>Komunikatu medikuarekin.</mezuak_testua>
+        <mezuak_testua>Komunikatu osasun langilearekin.</mezuak_testua>
         <ezarpenak>Ezarpenak</ezarpenak>
         <ezarpenak_testua>Pertsonalizatu webgunearen itxura.</ezarpenak_testua>
     </menua_pazientea>
@@ -102,7 +102,7 @@
         <hasiera>Hasiera</hasiera>
         <pazienteak>Pazienteak</pazienteak>
         <pazienteak_testua>Sortu edo kudeatu pazienteak.</pazienteak_testua>
-        <medikuak>Medikuak</medikuak>
+        <medikuak>Osasun Langileak</medikuak>
         <medikuak_testua>Medikuen zerrenda eta kudeaketa.</medikuak_testua>
         <hitzorduak>Hitzorduak</hitzorduak>
         <hitzorduak_testua>Erreserbatu hitzordu berriak.</hitzorduak_testua>
@@ -148,8 +148,8 @@
         <zentro_laguntza>Hemen zentroko erabiltzaile guztientzako balio lehenetsiak aldatu ditzakezu. Kontuan izan erabiltzaileek euren kabuz pertsonalizatu ditzaketela ezarpen hauek.</zentro_laguntza>
     </ezarpenak>
     <rolak>
-        <medikua>Medikua</medikua>
+        <medikua>Osasun Langilea</medikua>
         <pazientea>Pazientea</pazientea>
-        <harrera>Harrera</harrera>
+        <harrera>Harrera Langilea</harrera>
     </rolak>
 </hizkuntza>

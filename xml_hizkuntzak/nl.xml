@@ -8,7 +8,7 @@
     </menua>
     <index>
         <izenburua_nagusia>Uw gezondheid, onze prioriteit</izenburua_nagusia>
-        <azpititulua>Een veilig platform om uw gezondheid te beheren, metingen bij te houden en contact te leggen met uw arts</azpititulua>
+        <azpititulua>Een veilig platform om uw gezondheid te beheren, metingen bij te houden en contact te leggen met uw zorgverlener</azpititulua>
         <paziente_izenburua>Patiëntenhoek</paziente_izenburua>
         <paziente_testua>Raadpleeg uw analyses, afspraken en monitoringgegevens op een veilige manier.</paziente_testua>
         <mediku_izenburua>Artsenportaal</mediku_izenburua>
@@ -51,7 +51,7 @@
         <hitzorduak>Afspraken</hitzorduak>
         <hitzorduak_testua>Beheer uw medische afspraken.</hitzorduak_testua>
         <mezuak>Berichten</mezuak>
-        <mezuak_testua>Communiceer met uw arts.</mezuak_testua>
+        <mezuak_testua>Communiceer met uw zorgverlener.</mezuak_testua>
         <ezarpenak>Instellingen</ezarpenak>
         <ezarpenak_testua>Personaliseer het uiterlijk van de website.</ezarpenak_testua>
     </menua_pazientea>
@@ -102,7 +102,7 @@
         <hasiera>Home</hasiera>
         <pazienteak>Patiënten</pazienteak>
         <pazienteak_testua>Maak of beheer patiënten.</pazienteak_testua>
-        <medikuak>Artsen</medikuak>
+        <medikuak>Gezondheidsprofessionals</medikuak>
         <medikuak_testua>Lijst en beheer van artsen.</medikuak_testua>
         <hitzorduak>Afspraken</hitzorduak>
         <hitzorduak_testua>Boek nieuwe afspraken.</hitzorduak_testua>
@@ -148,8 +148,8 @@
         <zentro_laguntza>Hier kunt u de standaardwaarden voor alle gebruikers van het centrum wijzigen. Merk op dat gebruikers nog steeds hun eigen instellingen kunnen aanpassen.</zentro_laguntza>
     </ezarpenak>
     <rolak>
-        <medikua>Arts</medikua>
+        <medikua>Gezondheidsprofessional</medikua>
         <pazientea>Patiënt</pazientea>
-        <harrera>Receptie</harrera>
+        <harrera>Receptionist</harrera>
     </rolak>
 </hizkuntza>

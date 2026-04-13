@@ -8,10 +8,10 @@
     </menua>
     <index>
         <izenburua_nagusia>Su salud, nuestra prioridad</izenburua_nagusia>
-        <azpititulua>Una plataforma segura para gestionar su salud, realizar seguimiento de mediciones y conectar con su médico</azpititulua>
+        <azpititulua>Una plataforma segura para gestionar su salud, realizar seguimiento de mediciones y conectar con su profesional sanitario</azpititulua>
         <paziente_izenburua>Rincón del Paciente</paziente_izenburua>
         <paziente_testua>Consulte sus analíticas, citas y datos de seguimiento de forma segura.</paziente_testua>
-        <mediku_izenburua>Portal Médico</mediku_izenburua>
+        <mediku_izenburua>Portal del Profesional Sanitario</mediku_izenburua>
         <mediku_testua>Gestione la historia de sus pacientes, citas y mensajes de forma sencilla.</mediku_testua>
         <harrera_izenburua>Servicio de Recepción</harrera_izenburua>
         <harrera_testua>Gestión de recepción de pacientes, agendas médicas y citas del centro.</harrera_testua>
@@ -51,7 +51,7 @@
         <hitzorduak>Citas</hitzorduak>
         <hitzorduak_testua>Gestione sus citas médicas.</hitzorduak_testua>
         <mezuak>Mensajes</mezuak>
-        <mezuak_testua>Comuníquese con su médico.</mezuak_testua>
+        <mezuak_testua>Comuníquese con su profesional sanitario.</mezuak_testua>
         <ezarpenak>Ajustes</ezarpenak>
         <ezarpenak_testua>Personalice la apariencia de la web.</ezarpenak_testua>
     </menua_pazientea>
@@ -102,7 +102,7 @@
         <hasiera>Inicio</hasiera>
         <pazienteak>Pacientes</pazienteak>
         <pazienteak_testua>Cree o gestione pacientes.</pazienteak_testua>
-        <medikuak>Médicos</medikuak>
+        <medikuak>Profesionales Sanitarios</medikuak>
         <medikuak_testua>Lista y gestión de médicos.</medikuak_testua>
         <hitzorduak>Citas</hitzorduak>
         <hitzorduak_testua>Reserve nuevas citas.</hitzorduak_testua>
@@ -148,8 +148,8 @@
         <zentro_laguntza>Aquí puedes cambiar los valores predeterminados para todos los usuarios del centro. Ten en cuenta que los usuarios pueden personalizar sus propios ajustes.</zentro_laguntza>
     </ezarpenak>
     <rolak>
-        <medikua>Médico</medikua>
+        <medikua>Profesional Sanitario</medikua>
         <pazientea>Paciente</pazientea>
-        <harrera>Recepción</harrera>
+        <harrera>Personal de Recepción</harrera>
     </rolak>
 </hizkuntza>

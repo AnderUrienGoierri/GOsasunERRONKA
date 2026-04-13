@@ -8,7 +8,7 @@
     </menua>
     <index>
         <izenburua_nagusia>Your health, our priority</izenburua_nagusia>
-        <azpititulua>A secure platform to manage your health, track measurements, and connect with your doctor</azpititulua>
+        <azpititulua>A secure platform to manage your health, track measurements, and connect with your health professional</azpititulua>
         <paziente_izenburua>Patient Corner</paziente_izenburua>
         <paziente_testua>Check your analytics, appointments, and monitoring data securely.</paziente_testua>
         <mediku_izenburua>Doctor Portal</mediku_izenburua>
@@ -51,7 +51,7 @@
         <hitzorduak>Appointments</hitzorduak>
         <hitzorduak_testua>Manage your medical appointments.</hitzorduak_testua>
         <mezuak>Messages</mezuak>
-        <mezuak_testua>Communicate with your doctor.</mezuak_testua>
+        <mezuak_testua>Communicate with your health professional.</mezuak_testua>
         <ezarpenak>Settings</ezarpenak>
         <ezarpenak_testua>Customize web appearance.</ezarpenak_testua>
     </menua_pazientea>
@@ -102,7 +102,7 @@
         <hasiera>Home</hasiera>
         <pazienteak>Patients</pazienteak>
         <pazienteak_testua>Create or manage patients.</pazienteak_testua>
-        <medikuak>Doctors</medikuak>
+        <medikuak>Health Professionals</medikuak>
         <medikuak_testua>List and management of doctors.</medikuak_testua>
         <hitzorduak>Appointments</hitzorduak>
         <hitzorduak_testua>Book new appointments.</hitzorduak_testua>
@@ -148,8 +148,8 @@
         <zentro_laguntza>Here you can change the default values for all users of the center. Note that users can still customize their own settings.</zentro_laguntza>
     </ezarpenak>
     <rolak>
-        <medikua>Doctor</medikua>
+        <medikua>Health Professional</medikua>
         <pazientea>Patient</pazientea>
-        <harrera>Reception</harrera>
+        <harrera>Receptionist</harrera>
     </rolak>
 </hizkuntza>
