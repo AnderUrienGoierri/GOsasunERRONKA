@@ -1,24 +1,39 @@
 -- GOsasun_DB_trigger.sql
-USE GOsasun_DB;
+USE gosasun_db;
 
--- 1. Eguneratu_Paziente_Datuak: Azken pisua eta altuera automatikoki eguneratzeko
-DROP TRIGGER IF EXISTS Eguneratu_Paziente_Datuak;
+-- 1. Eguneratu_Paziente_Datuak: Azken pisua eta altuera automatikoki eguneratzeko (INSERT)
+DROP TRIGGER IF EXISTS Trg_Jarraipena_Insert;
 
 DELIMITER //
 
-CREATE TRIGGER Eguneratu_Paziente_Datuak
-
-AFTER INSERT ON neurketak   -- taula intermedioa (historial_neurketak) sortu beharko da? 
+CREATE TRIGGER Trg_Jarraipena_Insert
+AFTER INSERT ON jarraipenak
 FOR EACH ROW
 BEGIN
-    UPDATE pazienteak   -- neurketak taulan insert bat egiten denean eguneratu pazienteak taulako azken_pisua eta azken_altuera zutabeak
-    SET azken_pisua =   IFNULL(NEW.pisua_kg, azken_pisua),   -- pisu neurketa berriak balioa badu, eguneratu, bestela, ez
-        azken_altuera = IFNULL(NEW.altuera, azken_altuera)   -- altuera neurketa berriak balioa badu, eguneratu, bestela, ez
-    WHERE paziente_id = NEW.paziente_id;
-END 
+    UPDATE pazienteak
+    SET azken_pisua = IFNULL(NEW.pisua_kg, azken_pisua),
+        azken_altuera = IFNULL(NEW.altuera, azken_altuera)
+    WHERE id = NEW.paziente_id;
+END //
 
-// DELIMITER ;
+DELIMITER ;
 
--- nahikoa da trigger hau   ? TRIGGER BAT erabili behar da erronka honetan
+-- 2. Eguneratu_Paziente_Datuak_Update: Neurketa bat aldatzean datuak sinkronizatzeko (UPDATE)
+DROP TRIGGER IF EXISTS Trg_Jarraipena_Update;
 
+DELIMITER //
 
+CREATE TRIGGER Trg_Jarraipena_Update
+AFTER UPDATE ON jarraipenak
+FOR EACH ROW
+BEGIN
+    UPDATE pazienteak
+    SET azken_pisua = IFNULL(NEW.pisua_kg, azken_pisua),
+        azken_altuera = IFNULL(NEW.altuera, azken_altuera)
+    WHERE id = NEW.paziente_id;
+END //
+
+DELIMITER ;
+
+-- TRIGGER bakarra erabili behar bada, bi hauek nahikoak dira eta 
+-- datu-basearen trinkotasuna (consistency) bermatzen dute.
