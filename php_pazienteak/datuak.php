@@ -41,7 +41,7 @@ include_once '../php_orri_includeak/paziente_goiburua.php';
 
     <main class="panel-nagusia">
         <div class="orri-goiburua">
-            <h2><img src="../img/svg/user.svg" alt="" class="ikono-ertaina marjina-esk-5"> Nire Fitxa Klinikoa</h2>
+            <h2><img src="../img/svg/user.svg" alt="" class="ikono-ertaina tarte-eskubia"> Nire Fitxa Klinikoa</h2>
             <p>Berrikusi zure datu pertsonalak, kontaktua eta egoera klinikoa modu egituratuan.</p>
         </div>
 
@@ -49,12 +49,12 @@ include_once '../php_orri_includeak/paziente_goiburua.php';
             <!-- Goi-atala: Argazkia eta Oinarrizko Datuak -->
             <section class="fitxa-goiburua">
                 <div class="fitxa-argazkia">
-                    <?php 
+                    <?php
                         $irudia_izena = trim($pazientea['irudia'] ?? '');
                         if (empty($irudia_izena)) {
                             $irudia_izena = 'lehenetsia_pazientea.png';
                         }
-                        
+
                         // DBko ikuspegiak jada 'img/png/' badu, ez gehitu berriro
                         if (strpos($irudia_izena, 'img/') === false) {
                             $irudia_bidea_erakutsi = "../img/png/" . $irudia_izena;
@@ -67,7 +67,7 @@ include_once '../php_orri_includeak/paziente_goiburua.php';
                 <div class="fitxa-oinarrizkoa">
                     <h3 class="paziente-izena-fitxa"><?php echo htmlspecialchars($pazientea['izena'] . ' ' . $pazientea['abizenak']); ?></h3>
                     <p class="paziente-id-fitxa">ID: #<?php echo str_pad($pazientea['paziente_id'], 5, '0', STR_PAD_LEFT); ?></p>
-                    <div class="etiketa-taldea marjina-goi-10">
+                    <div class="etiketa-taldea tarte-goia">
                         <span class="egoera-txapa <?php echo ($pazientea['egoera_klinikoa'] === 'Alta') ? 'status-bukatuta' : 'status-ezeztatuta'; ?>">
                             <?php echo htmlspecialchars($pazientea['egoera_klinikoa'] ?? 'Zehaztu gabe'); ?>
                         </span>
@@ -80,7 +80,7 @@ include_once '../php_orri_includeak/paziente_goiburua.php';
                 <!-- Datu Pertsonalak eta Kontaktua -->
                 <div class="fitxa-panela">
                     <div class="fitxa-panela-goiburua">
-                        <img src="../img/svg/user.svg" alt="" class="ikono-16px marjina-esk-10">
+                        <img src="../img/svg/user.svg" alt="" class="ikono-16px tarte-eskubia">
                         Datu Pertsonalak eta Kontaktua
                     </div>
                     <table class="fitxa-taula">
@@ -115,7 +115,7 @@ include_once '../php_orri_includeak/paziente_goiburua.php';
                 <div class="fitxa-zutabe-bikoitza">
                     <div class="fitxa-panela">
                         <div class="fitxa-panela-goiburua">
-                            <img src="../img/svg/list.svg" alt="" class="ikono-16px marjina-esk-10">
+                            <img src="../img/svg/list.svg" alt="" class="ikono-16px tarte-eskubia">
                             Azken Neurketa Biometrikoak
                         </div>
                         <div class="biometria-grid">
@@ -134,7 +134,7 @@ include_once '../php_orri_includeak/paziente_goiburua.php';
 
                     <div class="fitxa-panela paziente-langile-panela">
                         <div class="fitxa-panela-goiburua">
-                            <img src="../img/svg/user.svg" alt="" class="ikono-16px marjina-esk-10">
+                            <img src="../img/svg/user.svg" alt="" class="ikono-16px tarte-eskubia">
                             Esleitutako Osasun Langileak
                         </div>
                         <?php if (count($medikuak) > 0): ?>

@@ -38,9 +38,13 @@ $stmtH = $pdo->prepare("SELECT h.*, m.izena as m_izena, m.abizenak as m_abizenak
 $stmtH->execute([$id]);
 $hitzorduak = $stmtH->fetchAll(PDO::FETCH_ASSOC);
 
-// 4. Pazientearen dokumentuak lortu
-$stmtd = $pdo->prepare("SELECT * FROM dokumentuak WHERE paziente_id = ? ORDER BY igotze_data DESC");
-$stmtd->execute([$id]);
+// 4. Pazientearen dokumentuak lortu (Zuzenean lotutakoak edo jarraipen baten bidez)
+$stmtd = $pdo->prepare("SELECT d.* 
+                        FROM dokumentuak d
+                        LEFT JOIN jarraipenak j ON d.jarraipena_id = j.id
+                        WHERE d.paziente_id = ? OR j.paziente_id = ?
+                        ORDER BY d.igotze_data DESC");
+$stmtd->execute([$id, $id]);
 $dokumentuak = $stmtd->fetchAll(PDO::FETCH_ASSOC);
 
 $orri_izenburua = $pazientea['izena'] . " " . $pazientea['abizenak'] . " - Fitxa";
@@ -61,11 +65,11 @@ include_once '../php_orri_includeak/harrera_goiburua.php';
             <span class="egoera-etiketa <?php echo $pazientea['egoera_klinikoa'] == 'Alta' ? 'egoera-alta' : 'egoera-baja'; ?>">
                 <?php echo htmlspecialchars($pazientea['egoera_klinikoa']); ?>
             </span>
-            <span class="egoera-etiketa <?php echo $pazientea['aktibo'] ? 'egoera-arrakasta' : 'egoera-baja'; ?>" style="background-color: #e0f2fe; color: #0369a1;">
+            <span class="egoera-etiketa <?php echo $pazientea['aktibo'] ? 'egoera-arrakasta' : 'egoera-baja'; ?> egoera-kolore-urdina">
                 <?php echo $pazientea['aktibo'] ? 'Kontu Aktiboa' : 'Kontu Ez-Aktiboa'; ?>
             </span>
             <a href="txostena_eraiki.php?paziente_id=<?php echo $id; ?>" class="botoia botoi-nagusia botoi-txikia marjina-ezk-15">
-                <img src="../img/svg/file-text.svg" alt="" class="ikono-txikia marjina-esk-5" style="filter: brightness(0) invert(1);"> Txostena Sortu
+                <img src="../img/svg/file-text.svg" alt="" class="ikono-txikia marjina-esk-5 ikono-zuria"> Txostena Sortu
             </a>
         </div>
     </div>

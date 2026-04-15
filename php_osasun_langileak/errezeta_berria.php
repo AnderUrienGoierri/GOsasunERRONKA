@@ -24,7 +24,7 @@ if ($e_id) {
         header("Location: errezetak.php");
         exit;
     }
-    
+
     // Lortu lehen botika (momentuz bakarra onartzen dugu inprimakian)
     $stmtB = $pdo->prepare("SELECT * FROM errezeta_botikak WHERE errezeta_id = ? LIMIT 1");
     $stmtB->execute([$e_id]);
@@ -40,11 +40,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $ir_data = !empty($_POST['iraungitze_data']) ? $_POST['iraungitze_data'] : null;
         $diag = $_POST['diagnostiko_laburra'];
         $aktibo = isset($_POST['aktibo']) ? 1 : 0;
-        
+
         if ($p_id && $i_data && $diag) {
             try {
                 $pdo->beginTransaction();
-                
+
                 if ($e_id) {
                     $stmt = $pdo->prepare("UPDATE errezetak SET paziente_id = ?, hitzordu_id = ?, igorpen_data = ?, iraungitze_data = ?, diagnostiko_laburra = ?, aktibo = ? WHERE id = ?");
                     $stmt->execute([$p_id, $h_id, $i_data, $ir_data, $diag, $aktibo, $e_id]);
@@ -53,21 +53,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $stmt->execute([$osasun_langile_id, $p_id, $h_id, $i_data, $ir_data, $diag, $aktibo]);
                     $e_id = $pdo->lastInsertId();
                 }
-                
+
                 // Botika kudeatu
                 if (!empty($_POST['botika_id'])) {
                     $b_id = $_POST['botika_id'];
                     $dosia = $_POST['dosia'] ?? '';
                     $maiztasuna = $_POST['maiztasuna'] ?? '';
-                    
+
                     // Garbitu aurrekoak
                     $stmtDel = $pdo->prepare("DELETE FROM errezeta_botikak WHERE errezeta_id = ?");
                     $stmtDel->execute([$e_id]);
-                    
+
                     $stmtEB = $pdo->prepare("INSERT INTO errezeta_botikak (errezeta_id, botika_id, dosia, maiztasuna) VALUES (?, ?, ?, ?)");
                     $stmtEB->execute([$e_id, $b_id, $dosia, $maiztasuna]);
                 }
-                
+
                 $pdo->commit();
                 header("Location: errezetak.php?mezua=Errezeta ondo gorde da");
                 exit;
@@ -101,7 +101,7 @@ include_once '../php_orri_includeak/osasun_langile_goiburua.php';
 
 <main class="panel-nagusia">
     <div class="orri-goiburua">
-        <a href="errezetak.php" class="atzera-esteka-testua"><img src="../img/svg/arrow-left.svg" alt="" class="ikono-txikia marjina-esk-5"> Itzuli errezetetara</a>
+        <a href="errezetak.php" class="atzera-esteka-testua flex-zentratua"><img src="../img/svg/arrow-left.svg" alt="" class="ikono-txikia marjina-esk-5"> Itzuli errezetetara</a>
         <h2><?php echo $e_id ? "Errezeta Editatu" : "Errezeta Berria"; ?></h2>
         <p>Bete inprimakia pazientearen errezeta eta diagnostikoa kudeatzeko.</p>
     </div>
@@ -110,7 +110,7 @@ include_once '../php_orri_includeak/osasun_langile_goiburua.php';
 
     <div class="txartel-zuria marjina-goi-20">
         <form method="POST" id="errezetaForm" class="inprimaki-form-estandarra">
-            
+
             <div class="inprimaki-taldea">
                 <label for="paziente_id">Pazientea <span class="beharrezkoa">*</span></label>
                 <select name="paziente_id" id="paziente_id" class="inprimaki-kontrola" required <?php echo $e_id ? 'disabled' : ''; ?>>
@@ -180,7 +180,7 @@ include_once '../php_orri_includeak/osasun_langile_goiburua.php';
                     </div>
                 </div>
             </div>
-            
+
             <div class="inprimaki-taldea checkbox-taldea">
                 <label class="etiketa-checkbox">
                     <input type="checkbox" name="aktibo" id="aktibo" value="1" <?php echo (!$errezeta || $errezeta['aktibo'] == 1) ? 'checked' : ''; ?>> 

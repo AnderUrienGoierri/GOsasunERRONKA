@@ -13,8 +13,8 @@ $mezua = '';
 $errorea = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $nan          = $_POST['nan'];
-    $izena        = $_POST['izena'];
+    $nan          = $_POST['nan'] ?? '';
+    $izena        = $_POST['izena'] ?? '';
     $abizenak     = $_POST['abizenak'];
     $email        = $_POST['email'];
     $sexua        = $_POST['sexua'];
@@ -82,50 +82,50 @@ include_once '../php_orri_includeak/harrera_goiburua.php';
         <?php if ($mezua): ?><div class="alerta alerta-arrakasta"><?php echo htmlspecialchars($mezua); ?></div><?php endif; ?>
         <?php if ($errorea): ?><div class="alerta alerta-errorea"><?php echo htmlspecialchars($errorea); ?></div><?php endif; ?>
 
-        <div class="inprimaki-edukiontzia form-edukiontzi-zuria padding-30 kutxa-itzala">
+        <div class="editatu-panela">
             <form method="POST" enctype="multipart/form-data">
                 
-                <h3 class="izenburu-urdina marjina-behe-20"><img src="../img/svg/user.svg" alt="" class="ikono-ertaina marjina-esk-5"> Argazkia eta Identifikazio Datuak</h3>
-                <div class="flex-erdian marjina-behe-20 p-20 fts-14 bg-gris-argia desk-marjin">
-                    <div class="argazki-inguratzailea">
+                <h3 class="atal-izenburua"><img src="../img/svg/user.svg" alt="" class="ikono-ertaina"> Argazkia eta Identifikazio Datuak</h3>
+                <div class="argazki-koadroa">
+                    <div class="argazki-ingurua">
                         <?php 
                         $irudia_bide = htmlspecialchars($p['irudia'] ?? 'img/lehenetsia_pazientea.png');
                         if (strpos($irudia_bide, 'img/') === 0 && strpos($irudia_bide, 'img/png/') === false && strpos($irudia_bide, 'img/svg/') === false) {
                             $irudia_bide = str_replace('img/', 'img/png/', $irudia_bide);
                         }
                         ?>
-                        <img src="../<?php echo $irudia_bide; ?>" alt="Profila" class="profil-irudia-80">
+                        <img src="../<?php echo $irudia_bide; ?>" alt="Profila" class="profil-argazkia">
                     </div>
-                    <div class="marjina-ezk-20">
-                        <label for="irudia" class="etiketa-lodia">Aldatu Argazkia</label><br>
-                        <input type="file" id="irudia" name="irudia" class="inprimaki-kontrola marjina-goi-10" accept="image/*">
-                        <p class="testu-gris-txikia marjina-goi-5">Irudiak laukia izan behar du, gehienez 2MB.</p>
-                    </div>
-                </div>
-
-                <div class="sareta-bikoa marjina-behe-15">
-                    <div class="inprimaki-taldea">
-                        <label for="nan" class="etiketa-lodia">NAN Identifikadorea</label>
-                        <input type="text" id="nan" name="nan" class="inprimaki-kontrola sarrera-handia" value="<?php echo htmlspecialchars($p['nan']); ?>" required>
-                    </div>
-                    <div></div> <!-- Spacer -->
-                </div>
-
-                <div class="sareta-bikoa marjina-behe-15">
-                    <div class="inprimaki-taldea">
-                        <label for="izena" class="etiketa-lodia">Izena</label>
-                        <input type="text" id="izena" name="izena" class="inprimaki-kontrola sarrera-handia" value="<?php echo htmlspecialchars($p['izena']); ?>" required>
-                    </div>
-                    <div class="inprimaki-taldea">
-                        <label for="abizenak" class="etiketa-lodia">Abizenak</label>
-                        <input type="text" id="abizenak" name="abizenak" class="inprimaki-kontrola sarrera-handia" value="<?php echo htmlspecialchars($p['abizenak']); ?>" required>
+                    <div class="argazki-aukerak">
+                        <label for="irudia" class="inprimaki-etiketa">Aldatu Argazkia</label>
+                        <input type="file" id="irudia" name="irudia" class="inprimaki-sarrera fitxategi-sarrera" accept="image/*">
+                        <p class="argibide-testua">Irudiak laukia izan behar du, gehienez 2MB.</p>
                     </div>
                 </div>
 
-                <div class="sareta-bikoa marjina-behe-15">
+                <div class="inprimaki-lerroa">
                     <div class="inprimaki-taldea">
-                        <label for="sexua" class="etiketa-lodia">Sexua</label>
-                        <select id="sexua" name="sexua" class="inprimaki-kontrola sarrera-handia">
+                        <label for="nan" class="inprimaki-etiketa">NAN Identifikadorea</label>
+                        <input type="text" id="nan" name="nan" class="inprimaki-sarrera" value="<?php echo htmlspecialchars($p['nan']); ?>" required>
+                    </div>
+                    <div class="hutsune-zatia"></div> 
+                </div>
+
+                <div class="inprimaki-lerroa">
+                    <div class="inprimaki-taldea">
+                        <label for="izena" class="inprimaki-etiketa">Izena</label>
+                        <input type="text" id="izena" name="izena" class="inprimaki-sarrera" value="<?php echo htmlspecialchars($p['izena']); ?>" required>
+                    </div>
+                    <div class="inprimaki-taldea">
+                        <label for="abizenak" class="inprimaki-etiketa">Abizenak</label>
+                        <input type="text" id="abizenak" name="abizenak" class="inprimaki-sarrera" value="<?php echo htmlspecialchars($p['abizenak']); ?>" required>
+                    </div>
+                </div>
+
+                <div class="inprimaki-lerroa">
+                    <div class="inprimaki-taldea">
+                        <label for="sexua" class="inprimaki-etiketa">Sexua</label>
+                        <select id="sexua" name="sexua" class="inprimaki-sarrera aukera-sarrera">
                             <option value="">Hautatu...</option>
                             <option value="Emakumea" <?php echo ($p['sexua'] ?? '') === 'Emakumea' ? 'selected' : ''; ?>>Emakumea</option>
                             <option value="Gizona" <?php echo ($p['sexua'] ?? '') === 'Gizona' ? 'selected' : ''; ?>>Gizona</option>
@@ -133,15 +133,15 @@ include_once '../php_orri_includeak/harrera_goiburua.php';
                         </select>
                     </div>
                     <div class="inprimaki-taldea">
-                        <label for="jaiotze_data" class="etiketa-lodia">Jaiotze Data</label>
-                        <input type="date" id="jaiotze_data" name="jaiotze_data" class="inprimaki-kontrola sarrera-handia" value="<?php echo $p['jaiotze_data'] ?? ''; ?>">
+                        <label for="jaiotze_data" class="inprimaki-etiketa">Jaiotze Data</label>
+                        <input type="date" id="jaiotze_data" name="jaiotze_data" class="inprimaki-sarrera" value="<?php echo $p['jaiotze_data'] ?? ''; ?>">
                     </div>
                 </div>
 
-                <div class="sareta-bikoa marjina-behe-30">
+                <div class="inprimaki-lerroa">
                     <div class="inprimaki-taldea">
-                        <label for="odol_taldea" class="etiketa-lodia">Odol Taldea</label>
-                        <select id="odol_taldea" name="odol_taldea" class="inprimaki-kontrola sarrera-handia">
+                        <label for="odol_taldea" class="inprimaki-etiketa">Odol Taldea</label>
+                        <select id="odol_taldea" name="odol_taldea" class="inprimaki-sarrera aukera-sarrera">
                             <option value="">Hautatu...</option>
                             <?php foreach(['A+','A-','B+','B-','AB+','AB-','0+','0-'] as $ot): ?>
                                 <option value="<?php echo $ot; ?>" <?php echo ($p['odol_taldea'] ?? '') === $ot ? 'selected' : ''; ?>><?php echo $ot; ?></option>
@@ -149,8 +149,8 @@ include_once '../php_orri_includeak/harrera_goiburua.php';
                         </select>
                     </div>
                     <div class="inprimaki-taldea">
-                        <label for="egoera_klinikoa" class="etiketa-lodia">Egoera Klinikoa</label>
-                        <select id="egoera_klinikoa" name="egoera_klinikoa" class="inprimaki-kontrola sarrera-handia">
+                        <label for="egoera_klinikoa" class="inprimaki-etiketa">Egoera Klinikoa</label>
+                        <select id="egoera_klinikoa" name="egoera_klinikoa" class="inprimaki-sarrera aukera-sarrera">
                             <option value="Alta" <?php echo ($p['egoera_klinikoa'] ?? '') === 'Alta' ? 'selected' : ''; ?>>Alta</option>
                             <option value="Aktibo" <?php echo ($p['egoera_klinikoa'] ?? '') === 'Aktibo' ? 'selected' : ''; ?>>Aktibo</option>
                             <option value="Baja" <?php echo ($p['egoera_klinikoa'] ?? '') === 'Baja' ? 'selected' : ''; ?>>Baja</option>
@@ -158,38 +158,38 @@ include_once '../php_orri_includeak/harrera_goiburua.php';
                     </div>
                 </div>
 
-                <hr class="marjina-behe-20 separator">
+                <hr class="inprimaki-banatzailea">
 
-                <h3 class="izenburu-urdina marjina-behe-20"><img src="../img/svg/phone.svg" alt="" class="ikono-ertaina marjina-esk-5"> Kontaktu Datuak</h3>
+                <h3 class="atal-izenburua"><img src="../img/svg/phone.svg" alt="" class="ikono-ertaina"> Kontaktu Datuak</h3>
                 
-                <div class="sareta-bikoa marjina-behe-15">
+                <div class="inprimaki-lerroa">
                     <div class="inprimaki-taldea">
-                        <label for="telefonoa" class="etiketa-lodia">Telefonoa</label>
-                        <input type="text" id="telefonoa" name="telefonoa" class="inprimaki-kontrola sarrera-handia" value="<?php echo htmlspecialchars($p['telefonoa'] ?? ''); ?>">
+                        <label for="telefonoa" class="inprimaki-etiketa">Telefonoa</label>
+                        <input type="text" id="telefonoa" name="telefonoa" class="inprimaki-sarrera" value="<?php echo htmlspecialchars($p['telefonoa'] ?? ''); ?>">
                     </div>
                     <div class="inprimaki-taldea">
-                        <label for="email" class="etiketa-lodia">E-posta</label>
-                        <input type="email" id="email" name="email" class="inprimaki-kontrola sarrera-handia" value="<?php echo htmlspecialchars($p['email']); ?>" required>
-                    </div>
-                </div>
-
-                <div class="inprimaki-taldea marjina-behe-15">
-                    <label for="helbidea" class="etiketa-lodia">Helbidea</label>
-                    <input type="text" id="helbidea" name="helbidea" class="inprimaki-kontrola sarrera-handia" value="<?php echo htmlspecialchars($p['helbidea'] ?? ''); ?>">
-                </div>
-
-                <div class="sareta-bikoa marjina-behe-30">
-                    <div class="inprimaki-taldea">
-                        <label for="herria" class="etiketa-lodia">Herria</label>
-                        <input type="text" id="herria" name="herria" class="inprimaki-kontrola sarrera-handia" value="<?php echo htmlspecialchars($p['herria'] ?? ''); ?>">
-                    </div>
-                    <div class="inprimaki-taldea">
-                        <label for="posta_kodea" class="etiketa-lodia">Posta Kodea</label>
-                        <input type="text" id="posta_kodea" name="posta_kodea" class="inprimaki-kontrola sarrera-handia" value="<?php echo htmlspecialchars($p['posta_kodea'] ?? ''); ?>">
+                        <label for="email" class="inprimaki-etiketa">E-posta</label>
+                        <input type="email" id="email" name="email" class="inprimaki-sarrera" value="<?php echo htmlspecialchars($p['email']); ?>" required>
                     </div>
                 </div>
 
-                <div class="botoi-taldea marjina-goi-20">
+                <div class="inprimaki-taldea talde-osoa">
+                    <label for="helbidea" class="inprimaki-etiketa">Helbidea</label>
+                    <input type="text" id="helbidea" name="helbidea" class="inprimaki-sarrera" value="<?php echo htmlspecialchars($p['helbidea'] ?? ''); ?>">
+                </div>
+
+                <div class="inprimaki-lerroa">
+                    <div class="inprimaki-taldea">
+                        <label for="herria" class="inprimaki-etiketa">Herria</label>
+                        <input type="text" id="herria" name="herria" class="inprimaki-sarrera" value="<?php echo htmlspecialchars($p['herria'] ?? ''); ?>">
+                    </div>
+                    <div class="inprimaki-taldea">
+                        <label for="posta_kodea" class="inprimaki-etiketa">Posta Kodea</label>
+                        <input type="text" id="posta_kodea" name="posta_kodea" class="inprimaki-sarrera" value="<?php echo htmlspecialchars($p['posta_kodea'] ?? ''); ?>">
+                    </div>
+                </div>
+
+                <div class="ekintza-botoiak">
                     <button type="submit" class="botoia botoi-nagusia">Gorde Aldaketak</button>
                     <a href="pazienteak.php" class="botoia botoi-ertza">Itzuli</a>
                 </div>

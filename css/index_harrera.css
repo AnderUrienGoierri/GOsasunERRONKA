@@ -124,6 +124,8 @@
 }
 
 /* Mugikorrerako egokitzapenak */
+
+/* === @MEDIA KONTSULTAK === */
 @media (max-width: 768px) {
     .kaixo-atal-modernoa {
         flex-direction: column;

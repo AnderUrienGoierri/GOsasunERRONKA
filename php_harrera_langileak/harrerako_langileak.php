@@ -58,11 +58,11 @@ include_once '../php_orri_includeak/harrera_goiburua.php';
         <div class="kutxa-zuria-itzala marjina-behe-20 padding-15">
             <div class="testu-lodia marjina-behe-10">Zutabeak Erakutsi/Ezkutatu:</div>
             <div class="flex-sareta-5">
-                <label><input type="checkbox" checked onchange="toggleColumn(0, this, 'langileTaula')"> Argazkia</label>
-                <label><input type="checkbox" checked onchange="toggleColumn(3, this, 'langileTaula')"> Email</label>
-                <label><input type="checkbox" checked onchange="toggleColumn(4, this, 'langileTaula')"> Jaiotze Data</label>
-                <label><input type="checkbox" checked onchange="toggleColumn(5, this, 'langileTaula')"> Txanda</label>
-                <label><input type="checkbox" checked onchange="toggleColumn(6, this, 'langileTaula')"> Telefonoa</label>
+                <label><input type="checkbox" checked onchange="toggleColumn(3, this, 'langileTaula')"> Argazkia</label>
+                <label><input type="checkbox" checked onchange="toggleColumn(4, this, 'langileTaula')"> Email</label>
+                <label><input type="checkbox" checked onchange="toggleColumn(5, this, 'langileTaula')"> Jaiotze Data</label>
+                <label><input type="checkbox" checked onchange="toggleColumn(6, this, 'langileTaula')"> Txanda</label>
+                <label><input type="checkbox" checked onchange="toggleColumn(7, this, 'langileTaula')"> Telefonoa</label>
             </div>
         </div>
 
@@ -70,40 +70,26 @@ include_once '../php_orri_includeak/harrera_goiburua.php';
             <table class="erabiltzaile-taula" id="langileTaula">
                 <thead>
                     <tr>
-                        <th>Argazkia</th>
-                        <th class="kurtsore-erakuslea" onclick="ordenatuTaula(1)">ID <img src="../img/svg/sort.svg" alt="" class="ikono-txikia-gardena"></th>
-                        <th class="kurtsore-erakuslea" onclick="ordenatuTaula(2)">Izena/Abizenak <img src="../img/svg/sort.svg" alt="" class="ikono-txikia-gardena"></th>
-                        <th class="kurtsore-erakuslea" onclick="ordenatuTaula(3)">Email <img src="../img/svg/sort.svg" alt="" class="ikono-txikia-gardena"></th>
-                        <th class="kurtsore-erakuslea" onclick="ordenatuTaula(4)">Jaiotze Data <img src="../img/svg/sort.svg" alt="" class="ikono-txikia-gardena"></th>
-                        <th class="kurtsore-erakuslea" onclick="ordenatuTaula(5)">Txanda <img src="../img/svg/sort.svg" alt="" class="ikono-txikia-gardena"></th>
-                        <th class="kurtsore-erakuslea" onclick="ordenatuTaula(6)">Telefonoa <img src="../img/svg/sort.svg" alt="" class="ikono-txikia-gardena"></th>
+                        <th class="kurtsore-erakuslea" onclick="ordenatuTaula(0)">ID <img src="../img/svg/sort.svg" alt="" class="ikono-txikia-gardena"></th>
+                        <th class="kurtsore-erakuslea" onclick="ordenatuTaula(1)">Izena/Abizenak <img src="../img/svg/sort.svg" alt="" class="ikono-txikia-gardena"></th>
                         <th>Ekintzak</th>
+                        <th>Argazkia</th>
+                        <th class="kurtsore-erakuslea" onclick="ordenatuTaula(4)">Email <img src="../img/svg/sort.svg" alt="" class="ikono-txikia-gardena"></th>
+                        <th class="kurtsore-erakuslea" onclick="ordenatuTaula(5)">Jaiotze Data <img src="../img/svg/sort.svg" alt="" class="ikono-txikia-gardena"></th>
+                        <th class="kurtsore-erakuslea" onclick="ordenatuTaula(6)">Txanda <img src="../img/svg/sort.svg" alt="" class="ikono-txikia-gardena"></th>
+                        <th class="kurtsore-erakuslea" onclick="ordenatuTaula(7)">Telefonoa <img src="../img/svg/sort.svg" alt="" class="ikono-txikia-gardena"></th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php if(!empty($langileak)): ?>
                         <?php foreach ($langileak as $l): ?>
                             <tr>
-                                <td class="zabalera-50">
-                                    <?php
-                                    $irudia_bide = htmlspecialchars($l['irudia'] ?? 'img/lehenetsia_harrera.png');
-                                    if (strpos($irudia_bide, 'img/') === 0 && strpos($irudia_bide, 'img/png/') === false && strpos($irudia_bide, 'img/svg/') === false) {
-                                        $irudia_bide = str_replace('img/', 'img/png/', $irudia_bide);
-                                    }
-                                    ?>
-                                    <img src="../<?php echo $irudia_bide; ?>"
-                                        alt="Langilearen argazkia" class="irudia-txikia">
-                                </td>
                                 <td class="identifikadorea">#<?php echo $l['langile_id']; ?></td>
                                 <td>
                                     <a href="harrerako_langile_fitxa.php?id=<?php echo $l['langile_id']; ?>" class="esteka-langilea">
                                         <strong><?php echo htmlspecialchars($l['abizenak'] . ', ' . $l['izena']); ?></strong>
                                     </a>
                                 </td>
-                                <td><?php echo htmlspecialchars($l['email']); ?></td>
-                                <td><?php echo htmlspecialchars($l['jaiotze_data'] ?? '-'); ?></td>
-                                <td><span class="etiketa"><?php echo htmlspecialchars($l['txanda'] ?? '-'); ?></span></td>
-                                <td><?php echo htmlspecialchars($l['telefonoa'] ?? '-'); ?></td>
                                 <td>
                                     <div class="taula-ekintzak">
                                         <a href="harrerako_langile_fitxa.php?id=<?php echo $l['langile_id']; ?>" class="botoi-ikonoa" title="Ikusi Fitxa"><img src="../img/svg/eye.svg" alt="" class="ikono-ertaina"></a>
@@ -115,6 +101,20 @@ include_once '../php_orri_includeak/harrera_goiburua.php';
                                         <?php endif; ?>
                                     </div>
                                 </td>
+                                <td class="zabalera-50">
+                                    <?php
+                                    $irudia_bide = htmlspecialchars($l['irudia'] ?? 'img/lehenetsia_harrera.png');
+                                    if (strpos($irudia_bide, 'img/') === 0 && strpos($irudia_bide, 'img/png/') === false && strpos($irudia_bide, 'img/svg/') === false) {
+                                        $irudia_bide = str_replace('img/', 'img/png/', $irudia_bide);
+                                    }
+                                    ?>
+                                    <img src="../<?php echo $irudia_bide; ?>"
+                                        alt="Langilearen argazkia" class="irudia-txikia">
+                                </td>
+                                <td><?php echo htmlspecialchars($l['email']); ?></td>
+                                <td><?php echo htmlspecialchars($l['jaiotze_data'] ?? '-'); ?></td>
+                                <td><span class="etiketa"><?php echo htmlspecialchars($l['txanda'] ?? '-'); ?></span></td>
+                                <td><?php echo htmlspecialchars($l['telefonoa'] ?? '-'); ?></td>
                             </tr>
                         <?php endforeach; ?>
                     <?php else: ?>

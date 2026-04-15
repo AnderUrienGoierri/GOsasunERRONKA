@@ -29,11 +29,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
         } else {
             $pdf_dir = '../paziente_dokumentuak/';
             if (!is_dir($pdf_dir)) mkdir($pdf_dir, 0777, true);
-            
+
             $timestamp = date('Ymd_His');
             $garbi_titulua = preg_replace('/[^a-zA-Z0-9._-]/', '_', $titulua);
             $dest_name = "dok_manuala_{$p_id}_{$timestamp}_{$garbi_titulua}.pdf";
-            
+
             if (move_uploaded_file($pdf['tmp_name'], $pdf_dir . $dest_name)) {
                 $stmtInsert = $pdo->prepare("INSERT INTO dokumentuak (paziente_id, fitxategi_izena, bidea_zerbitzarian, dokumentu_izena, deskribapena) VALUES (?, ?, ?, ?, ?)");
                 $stmtInsert->execute([$p_id, $dest_name, 'paziente_dokumentuak/' . $dest_name, $titulua, $desk]);
@@ -68,9 +68,11 @@ $sort_columns = [
 ];
 $order_by = $sort_columns[$sort] ?? 'd.igotze_data';
 
+
 $sql = "SELECT d.*, p.izena as p_izena, p.abizenak as p_abizenak, p.nan as p_nan 
-        FROM dokumentuak d 
-        JOIN V_Pazientea p ON d.paziente_id = p.paziente_id";
+    FROM dokumentuak d
+    LEFT JOIN jarraipenak j ON d.jarraipena_id = j.id
+    JOIN V_Pazientea p ON (p.paziente_id = COALESCE(d.paziente_id, j.paziente_id))";
 
 $params = [];
 if ($q) {
@@ -82,15 +84,44 @@ if ($q) {
 // Normalean dokumentu orokorra denez, beharbada dena ikusi dezakete, edo bereak bakarrik.
 // Kasu honetan, bere pazienteei mugatuko diegu segurtasunagatik (Harrerakoek denak ikusten dituzte)
 if ($_SESSION['rol_izena'] === 'Osasun Langilea') {
-    $sql .= ($q ? " AND " : " WHERE ") . " p.paziente_id IN (SELECT paziente_id FROM V_Langile_Pazienteak WHERE langile_id = ?)";
+    $sql .= ($q ? " AND " : " WHERE ") . " p.paziente_id IN (SELECT     paziente_id FROM V_Langile_Pazienteak WHERE langile_id = ?)";
     $params[] = $langile_id;
 }
 
-$sql .= " ORDER BY $order_by $order";
+// --- PAGINAZIOA ---
+$orria = isset($_GET['orria']) ? (int)$_GET['orria'] : 1;
+if ($orria < 1) $orria = 1;
+$limitea = 10;
+$desplazamendua = ($orria - 1) * $limitea;
+
+// Kontatu guztira (filtroak aplikatuta)
+$sqlCount = "SELECT COUNT(*) 
+    FROM dokumentuak d
+    LEFT JOIN jarraipenak j ON d.jarraipena_id = j.id
+    JOIN V_Pazientea p ON (p.paziente_id = COALESCE(d.paziente_id, j.paziente_id))";
+
+if ($q) {
+    $sqlCount .= " WHERE (p.izena LIKE ? OR p.abizenak LIKE ? OR p.nan LIKE ? OR d.dokumentu_izena LIKE ?)";
+}
+
+if ($_SESSION['rol_izena'] === 'Osasun Langilea') {
+    $sqlCount .= ($q ? " AND " : " WHERE ") . " p.paziente_id IN (SELECT paziente_id FROM V_Langile_Pazienteak WHERE langile_id = ?)";
+}
+
+$stmtCount = $pdo->prepare($sqlCount);
+$stmtCount->execute($params);
+$guztira = $stmtCount->fetchColumn();
+$orri_kopurua = ceil($guztira / $limitea);
+
+
+$sql .= " ORDER BY $order_by $order LIMIT $limitea OFFSET $desplazamendua";
 
 $stmt = $pdo->prepare($sql);
 $stmt->execute($params);
 $dokumentuak = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+// URL oinarria paginaziorako
+$url_oinarria = "dokumentuak.php?q=" . urlencode($q) . "&sort=" . urlencode($sort) . "&order=" . urlencode($order);
 
 $orri_izenburua = 'Dokumentuak Bilatu - GOsasun';
 $uneko_orria = 'dokumentuak';
@@ -106,7 +137,7 @@ if ($_SESSION['rol_izena'] === 'Osasun Langilea') {
 <main class="panel-nagusia">
     <div class="orri-goiburua">
         <div>
-            <h2><img src="../img/svg/search.svg" alt="" class="ikono-ertaina marjina-esk-5"> Dokumentuen Bilaketa</h2>
+            <h2><img src="../img/svg/search.svg" alt="" class="ikono-ertaina tarte-eskubia"> Dokumentuen Bilaketa</h2>
             <p>Bilatu eta kudeatu pazienteen agiri klinikoak eta dokumentu erregistroak.</p>
         </div>
     </div>
@@ -115,15 +146,15 @@ if ($_SESSION['rol_izena'] === 'Osasun Langilea') {
     <?php if ($errorea): ?><div class="alerta alerta-errorea"><?php echo $errorea; ?></div><?php endif; ?>
 
     <!-- DOKUMENTU BERRIA (MODALAREN ORDEZ DETAILS ERABILIKO DUGU ESTILOA MANTENTZEKO) -->
-     
-    <details class="marjina-behe-20">
-        <summary class="botoia botoi-sortu flex-zentratua"><img src="../img/svg/plus-circle.svg" alt="" class="ikono-ertaina marjina-esk-5" style="filter: brightness(0) invert(1);"> Dokumentu Berria Gehitu</summary>
-        <div class="inprimaki-edukiontzia form-edukiontzi-zuria padding-30 marjina-goi-20 kutxa-itzala">
-            <h3 class="izenburu-urdina marjina-behe-20"><img src="../img/svg/file-plus.svg" alt="" class="ikono-ertaina marjina-esk-5"> Dokumentu Berriaren Erregistroa</h3>
+    <div style="display: flex; gap: 15px; align-items: flex-start; flex-wrap: wrap;" class="tarte-behea">
+        <details style="flex-grow: 1;">
+            <summary class="botoia botoi-sortu flex-zentratu" style="width:fit-content;"><img src="../img/svg/plus-circle.svg" alt="" class="ikono-ertaina tarte-eskubia" style="filter: brightness(0) invert(1);"> Dokumentu Berria Gehitu</summary>
+            <div class="txartel-atala tarte-goia" style="max-width: 800px; margin-bottom: 20px;">
+            <h3 class="izenburu-nabarmena tarte-behea"><img src="../img/svg/file-text.svg" alt="" class="ikono-ertaina tarte-eskubia"> Dokumentu Berriaren Erregistroa</h3>
             <form method="POST" enctype="multipart/form-data">
                 <input type="hidden" name="action" value="create">
-                
-                <div class="sareta-bikoa marjina-behe-15">
+
+                <div class="sareta-bikoa tarte-behea">
                     <div class="inprimaki-taldea">
                         <label class="etiketa-lodia">Hautatu Pazientea *</label>
                         <select name="paziente_id" required class="inprimaki-kontrola sarrera-handia">
@@ -141,7 +172,7 @@ if ($_SESSION['rol_izena'] === 'Osasun Langilea') {
                     </div>
                 </div>
 
-                <div class="sareta-bikoa marjina-behe-20">
+                <div class="sareta-bikoa tarte-behea">
                     <div class="inprimaki-taldea">
                         <label class="etiketa-lodia">Dokumentu Titulua *</label>
                         <input type="text" name="dokumentu_izena" required class="inprimaki-kontrola sarrera-handia" placeholder="Adib: Analisi Odol-analisiak">
@@ -153,14 +184,19 @@ if ($_SESSION['rol_izena'] === 'Osasun Langilea') {
                 </div>
 
                 <div class="flex-bukaera">
-                    <button type="submit" class="botoia botoi-nagusia"><img src="../img/svg/upload.svg" alt="" class="ikono-txikia marjina-esk-5" style="filter: brightness(0) invert(1);"> Igo Zerbitzarira</button>
+                    <button type="submit" class="botoia botoi-nagusia"><img src="../img/svg/upload.svg" alt="" class="ikono-txikia tarte-eskubia" style="filter: brightness(0) invert(1);"> Igo Zerbitzarira</button>
                 </div>
             </form>
         </div>
-    </details>
+        </details>
+
+        <a href="txostena_eraiki.php" class="botoia botoi-nagusia flex-zentratu" style="background-color: var(--primary-color); height: fit-content;">
+            <img src="../img/svg/file-text.svg" alt="" class="ikono-ertaina tarte-eskubia ikono-zuria"> Txostena Sortu (PDF)
+        </a>
+    </div>
 
     <div class="bilaketa-eremua">
-        <form method="get" class="flex-tartea-10 flex-erdia">
+        <form method="get" class="tarte-flex flex-erdia">
             <input type="text" name="q" value="<?php echo htmlspecialchars($q); ?>" placeholder="Bilatu pazientea edo dokumentua..." class="inprimaki-kontrola">
             <input type="hidden" name="sort" value="<?php echo $sort; ?>">
             <input type="hidden" name="order" value="<?php echo strtolower($order); ?>">
@@ -175,7 +211,7 @@ if ($_SESSION['rol_izena'] === 'Osasun Langilea') {
         <table class="dokumentu-taula">
             <thead>
                 <tr>
-                    <?php 
+                    <?php
                     function getSortUrl($col, $current_sort, $current_order, $q) {
                         $new_order = ($current_sort === $col && $current_order === 'DESC') ? 'asc' : 'desc';
                         return "?q=" . urlencode($q) . "&sort=$col&order=$new_order";
@@ -186,13 +222,13 @@ if ($_SESSION['rol_izena'] === 'Osasun Langilea') {
                     <th><a href="<?php echo getSortUrl('nan', $sort, $order, $q); ?>" class="esteka-garbia"><img src="../img/svg/sort.svg" alt="" class="ikono-txikia opazitatea-50"> NAN</a></th>
                     <th><a href="<?php echo getSortUrl('titulua', $sort, $order, $q); ?>" class="esteka-garbia"><img src="../img/svg/sort.svg" alt="" class="ikono-txikia opazitatea-50"> Dokumentua</a></th>
                     <th>Deskribapena</th>
-                    <th class="testua-erdian">Ekintzak</th>
+                    <th class="zentratu">Ekintzak</th>
                 </tr>
             </thead>
             <tbody>
-                <?php if (empty($dokumentuak)): ?>
+                    <?php if (empty($dokumentuak)): ?>
                     <tr>
-                        <td colspan="6" class="testua-erdian padding-30 opazitatea-50">Ez da dokumenturik aurkitu zure bilaketarako.</td>
+                        <td colspan="6" class="zentratu padding-30 opazitatea-50">Ez da dokumenturik aurkitu zure bilaketarako.</td>
                     </tr>
                 <?php else: ?>
                     <?php foreach ($dokumentuak as $d): ?>
@@ -211,22 +247,32 @@ if ($_SESSION['rol_izena'] === 'Osasun Langilea') {
                                 </a>
                             </td>
                         </tr>
-                    <?php endforeach; ?>
-                <?php endif; ?>
-            </tbody>
-        </table>
+                <?php endforeach; ?>
+            <?php endif; ?>
+        </tbody>
+    </table>
+</div>
+
+<!-- PAGINAZIO BOTOIAK -->
+<?php if ($orri_kopurua > 1): ?>
+    <div class="paginazioa flex-zentratu tarte-goia-20 talde-flex">
+        <a href="<?php echo $url_oinarria; ?>&orria=<?php echo max(1, $orria - 1); ?>"
+            class="botoia botoi-ertza-txikia <?php echo ($orria <= 1) ? 'desaktibatuta' : ''; ?>">
+            <img src="../img/svg/chevron-left.svg" alt="" class="ikono-txikia"> Aurrekoak
+        </a>
+
+        <span class="orrialde-info">Orrialdea: <strong><?php echo $orria; ?></strong> / <?php echo $orri_kopurua; ?></span>
+
+        <a href="<?php echo $url_oinarria; ?>&orria=<?php echo min($orri_kopurua, $orria + 1); ?>"
+            class="botoia botoi-ertza-txikia <?php echo ($orria >= $orri_kopurua) ? 'desaktibatuta' : ''; ?>">
+            Hurrengoak <img src="../img/svg/chevron-right.svg" alt="" class="ikono-txikia">
+        </a>
     </div>
+<?php endif; ?>
+
 </main>
 
-<?php 
-if ($_SESSION['rol_izena'] === 'Osasun Langilea') {
-    include_once '../php_orri_includeak/osasun_footer.php';
-} else {
-    include_once '../php_orri_includeak/harrera_footer.php';
-}
-?>
-
-<?php 
+<?php
 if ($_SESSION['rol_izena'] === 'Osasun Langilea') {
     include_once '../php_orri_includeak/osasun_footer.php';
 } else {

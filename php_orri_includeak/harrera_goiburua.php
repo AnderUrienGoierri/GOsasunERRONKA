@@ -22,7 +22,7 @@ $itzulpenak = kargatuItzulpenak($hizkuntza_def);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <title><?php echo $orri_izenburua; ?></title>
 
     <!-- Google-etik deskargatutako estiloak -->
@@ -33,7 +33,7 @@ $itzulpenak = kargatuItzulpenak($hizkuntza_def);
     <link rel="stylesheet" href="<?php echo $bide_absolutua; ?>css/goiburua.css">
 
     <?php
-        $orri_izena = basename($_SERVER['PHP_SELF'], '.php'); 
+        $orri_izena = basename($_SERVER['PHP_SELF'], '.php');
         if (isset($css_pertsonalizatua)) {
             $css_fitxategia = $css_pertsonalizatua;
         } else {

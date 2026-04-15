@@ -1,31 +1,31 @@
 :root {
   /* Koloreak */
-  --primary-color: #4361ee;
-  --secondary-color: #3f37c9;
-  --success-color: #4cc9f0;
-  --danger-color: #f72585;
-  --white: #ffffff;
-  --gray: #8d99ae;
-  --black: #000000;
-  
+    --primary-color: #4361ee;
+    --secondary-color: #3f37c9;
+    --success-color: #4cc9f0;
+    --danger-color: #f72585;
+    --white: #ffffff;
+    --gray: #8d99ae;
+    --black: #000000;
+
   /* Gaia (Light - Default) */
-  --bg-body: #f8faff;
-  --bg-surface: #ffffff;
-  --text-main: #2b2d42;
-  --text-muted: #8d99ae;
-  --border-color: #edf2f7;
-  --input-bg: #ffffff;
-  --input-border: #cccccc;
-  --shadow-color: rgba(67, 97, 238, 0.1);
-  --logo-filter: none;
+    --bg-body: #f8faff;
+    --bg-surface: #ffffff;
+    --text-main: #2b2d42;
+    --text-muted: #8d99ae;
+    --border-color: #edf2f7;
+    --input-bg: #ffffff;
+    --input-border: #cccccc;
+    --shadow-color: rgba(67, 97, 238, 0.1);
+    --logo-filter: none;
 
   /* Neurriak eta Efektuak */
-  --border-radius: 16px;
-  --border-radius-sm: 8px;
-  --box-shadow: 0 10px 30px var(--shadow-color);
-  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  --primary-filter: invert(34%) sepia(85%) saturate(2250%) hue-rotate(222deg) brightness(98%) contrast(92%);
-  --white-filter: brightness(0) invert(1);
+    --border-radius: 16px;
+    --border-radius-sm: 8px;
+    --box-shadow: 0 10px 30px var(--shadow-color);
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --primary-filter: invert(34%) sepia(85%) saturate(2250%) hue-rotate(222deg) brightness(98%) contrast(92%);
+    --white-filter: brightness(0) invert(1);
 }
 
 .ikono-txikia { width: 14px; height: 14px; vertical-align: middle; }
@@ -50,62 +50,62 @@ body::before {
 }
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 html, body {
-  overflow-x: hidden;
-  width: 100%;
+    overflow-x: hidden;
+    width: 100%;
 }
 
 body {
-  font-family: "Inter", "Roboto", sans-serif;
-  background-color: var(--bg-body);
-  color: var(--text-main);
-  line-height: 1.6;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+    font-family: "Inter", "Roboto", sans-serif;
+    background-color: var(--bg-body);
+    color: var(--text-main);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 
 
 /* ================= INPRIMAKIAK (Komunak) ================= */
 .inprimaki-taldea {
-  margin-bottom: 20px;
+    margin-bottom: 20px;
 }
 
 .inprimaki-taldea label {
-  display: block;
-  margin-bottom: 8px;
-  font-weight: 500;
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
 }
 
 .inprimaki-kontrola {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid var(--input-border);
-  background-color: var(--input-bg);
-  color: var(--text-main);
-  border-radius: var(--border-radius);
-  font-family: inherit;
-  font-size: 1rem;
-  transition: var(--transition);
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--input-border);
+    background-color: var(--input-bg);
+    color: var(--text-main);
+    border-radius: var(--border-radius);
+    font-family: inherit;
+    font-size: 1rem;
+    transition: var(--transition);
 }
 
 .inprimaki-kontrola:focus {
-  outline: none;
-  border-color: var(--primary-color);
-  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
 }
 
 .errore-mezua {
-  color: var(--danger-color);
-  font-size: 0.875rem;
-  margin-top: 5px;
-  display: none; /* jQuery bidez erakusteko */
+    color: var(--danger-color);
+    font-size: 0.875rem;
+    margin-top: 5px;
+    display: none; /* jQuery bidez erakusteko */
 }
 
 /* Datu / Informazio Bistarapena */
@@ -133,82 +133,82 @@ body {
 
 /* Alertak */
 .alerta {
-  padding: 15px;
-  border-radius: var(--border-radius);
-  margin-bottom: 20px;
+    padding: 15px;
+    border-radius: var(--border-radius);
+    margin-bottom: 20px;
 }
 
 .alerta-errorea {
-  background-color: #f8d7da;
-  color: #721c24;
-  border: 1px solid #f5c6cb;
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
 }
 .alerta-arrakasta {
-  background-color: #d4edda;
-  color: #155724;
-  border: 1px solid #c3e6cb;
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
 }
 
 /* Modalak */
 .modala {
-  display: none;
-  position: fixed;
-  z-index: 2000;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.5); /* Overlay iluna */
-  -webkit-backdrop-filter: blur(4px);
-  backdrop-filter: blur(4px);
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5); /* Overlay iluna */
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
 
 }
 
 .modala-edukia {
-  background-color: var(--bg-surface);
-  margin: 10% auto;
-  padding: 30px;
-  border-radius: var(--border-radius);
-  width: 90%;
-  max-width: 500px;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-  position: relative;
-  animation: modalSarrera 0.3s ease-out;
+    background-color: var(--bg-surface);
+    margin: 10% auto;
+    padding: 30px;
+    border-radius: var(--border-radius);
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    position: relative;
+    animation: modalSarrera 0.3s ease-out;
 }
 
 .modala-handia {
-  max-width: 800px;
+    max-width: 800px;
 }
 
 @keyframes modalSarrera {
-  from { transform: translateY(-30px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
+    from { transform: translateY(-30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
 }
 
 .itxi-modala {
-  color: var(--text-muted);
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: var(--transition);
-  line-height: 1;
+    color: var(--text-muted);
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: var(--transition);
+    line-height: 1;
 }
 
 .itxi-modala:hover {
-  color: var(--danger-color);
+    color: var(--danger-color);
 }
 
 .taula-sinplea {
-  width: 100%;
-  border-collapse: collapse;
+    width: 100%;
+    border-collapse: collapse;
 }
 
 .taula-sinplea th, .taula-sinplea td {
-  padding: 12px;
-  text-align: left;
-  border-bottom: 1px solid var(--border-color);
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
 }
 
 /* ================= DATU TAULA ETA ETIKETA PARTEKATUAK ================= */
@@ -266,26 +266,9 @@ body {
     width: 100%;
 }
 
-@media (min-width: 768px) {
-    .hero-errenkada-1 {
-        flex-direction: row;
-        gap: 30px;
-    }
-    .hero-sekzioa h1 {
-        font-size: 3rem;
-        white-space: nowrap;
-    }
-    .hero-logo-handia {
-        height: 60px;
-    }
-}
 
-@media (min-width: 1024px) {
-    .portal-sarbideak {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 30px;
-    }
-}
+
+
 
 .portal-txartela {
     background: var(--bg-surface);
@@ -444,21 +427,27 @@ body {
 
 
 /* ================= SORTUTAKO LINEAKO ESTILOAK ================= */
-.flex-tartea-20 {
+.flex-tartea-20, .tarte-behea-fleks {
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
     flex-wrap: wrap; /* Mugikorrerako gehitua */
     gap: 10px;
 }
-.marjina-behe-0 {
+.marjina-behe-0, .marjina-gabea {
     margin-bottom: 0;
 }
-.kurtsore-erakuslea {
+.kurtsore-erakuslea, .kurtsorea {
     cursor: pointer;
 }
 .zabalera-50 {
     width: 50px;
+}
+.marjina-esk-10, .tarte-eskubia {
+    margin-right: 10px;
+}
+.marjina-ezk-10, .tarte-ezkerra {
+    margin-left: 10px;
 }
 .irudia-txikia {
     width: 40px;
@@ -467,10 +456,10 @@ body {
     border-radius: 4px;
     border: 1px solid #ddd;
 }
-.kolorea-grisa {
+.kolorea-grisa, .testu-grisa {
     color: grey;
 }
-.testua-erdian {
+.testua-erdian, .zentratu {
     text-align: center;
 }
 .esteka-itzuli {
@@ -512,23 +501,24 @@ body {
 .flex-osoa {
     flex:1;
 }
-.marjina-goi-20 {
+.marjina-goi-20, .tarte-goia {
     margin-top:20px;
 }
-.zabalera-osoa {
+.zabalera-osoa, .w-osoa {
     width:100%;
 }
-.flex-tartea-15 {
+.flex-tartea-15, .tarte-flex {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 15px;
     flex-wrap: wrap;
 }
-.flex-taldea-10 {
+.flex-taldea-10, .talde-flex {
     display: flex;
     gap: 10px;
     align-items: center;
+    flex-wrap: wrap;
 }
 .zabalera-autoa {
     width: auto;
@@ -738,14 +728,14 @@ body {
     margin-top: 20px;
     width: 100%;
 }
-.kutxa-zuria {
+.kutxa-zuria, .txartel-atala {
     background: white;
     padding: 20px; 
     border-radius: 15px;
     box-shadow: var(--box-shadow);
     margin-bottom: 30px;
 }
-.goiburu-iluna-flex {
+.goiburu-iluna-flex, .izenburu-taldea {
     margin-bottom: 15px;
     color: var(--dark-text);
     display: flex;
@@ -845,11 +835,12 @@ body {
     flex: 1;
     width: 100%;
 }
-.izenburu-urdina {
+.izenburu-urdina, .izenburu-nabarmena {
     margin-top: 0;
     color: #1a73e8;
     border-bottom: 2px solid #e8f0fe;
     padding-bottom: 10px;
+    margin-bottom: 15px;
 }
 .testu-gris-iluna {
     font-size: 0.85rem;
@@ -895,21 +886,11 @@ body {
     border-radius: 12px;
     background: #f0f0f0;
 }
-@media (min-width: 769px) {
-  .kutxa-osoa {
-      grid-column: span 2;
-      text-align: left !important;
-      display: block !important;
-  }
-}
+
 
 /* ================= (Media queries) (Mahaigaina - gutxieneko zabalera) ================= */
 
-@media (min-width: 480px) {
-  .sareta-bikoa {
-      grid-template-columns: 1fr 1fr;
-  }
-}
+
 
 
   /* Mugikorra lehenesteko hurbilketa panel nagusirako */
@@ -928,16 +909,7 @@ body {
   }
 
   /* 480px-tik gora, row diseinua eta lerrokadorea aldatu */
-  @media (min-width: 480px) {
-    .kaixo-atalak {
-      align-items: center; 
-    }
-
-    .flex-zentratua-20 {
-      flex-direction: row;
-      text-align: left;
-    }
-  }
+  
 
   .menu-sareta {
     grid-template-columns: 1fr; /* zutabe bat mugikorrean */
@@ -964,43 +936,10 @@ body {
   }
 
 
-@media (min-width: 768px) {
-  .panel-nagusia {
-    padding: 40px 5%;
-  }
-  .kaixo-atalak {
-    padding: 40px;
-    align-items: center;
-  }
-  .menu-sareta {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
-  }
-  .flex-bukaera {
-    flex-direction: row;
-    align-items: flex-end;
-  }
-}
+
 
 /* Espezifikoa responsiveness Pantaila txikietarako like 300px */
-@media (max-width: 350px) {
-  body {
-    font-size: 14px;
-  }
-  
-  .logoa a {
-    font-size: 1.2rem;
-  }
 
-  .botoia {
-      padding: 8px 15px;
-      font-size: 0.9rem;
-  }
-
-  .datu-taula th, .datu-taula td {
-      padding: 10px 12px;
-  }
-}
 
 /* Automatikoki sortutako klasa laguntzaileak lineako estiloak kentzeko */
 .ikono-ertaina { width: 1.2em; height: 1.2em; vertical-align: middle; filter: var(--primary-filter); }
@@ -1028,9 +967,7 @@ body {
 /* Bistarapena eta Flex/Grid */
 .ezkutatu { display: none; }
 .sareta-bikoa-sareta { display: grid; grid-template-columns: 1fr; gap: 15px; }
-@media (min-width: 768px) {
-    .sareta-bikoa-sareta { grid-template-columns: 1fr 1fr; }
-}
+
 .flex-hazkundea-1 { flex-grow: 1; }
 
 /* Ertzak eta Atzeko planoak */
@@ -1077,7 +1014,7 @@ body {
 .hutsartea-15 { gap: 15px; }
 
 /* In-line estiloen ordezkapen berriak */
-.ikono-32px-erdian { width: 32px; vertical-align: middle; margin-right: 10px; }
+.ikono-32px-erdian { width: 32px; vertical-align: middle; margin-right: 10px; filter: var(--primary-filter); }
 .ikono-16px-erdian { width: 16px; vertical-align: middle; margin-right: 5px; }
 .ikono-48px { width: 48px; height: 48px; }
 .edukiontzi-ertaina { max-width: 800px; margin: 0 auto; margin-top: 30px; }
@@ -1156,8 +1093,132 @@ body {
     color: var(--primary-color);
 }
 
+
+
+
+.editatu-panela { background: var(--bg-surface); padding: 40px; border-radius: 16px; max-width: 900px; margin: 0 auto; box-shadow: 0 15px 35px rgba(0,0,0,0.04); border: 1px solid #f1f5f9; }
+.atal-izenburua { font-size: 1.3rem; color: var(--primary-dark, #1e293b); display: flex; align-items: center; gap: 12px; margin-bottom: 25px; padding-bottom: 10px; border-bottom: 2px solid #f1f5f9; }
+.argazki-koadroa { display: flex; align-items: center; gap: 25px; padding: 20px; background: #f8fafc; border-radius: 12px; margin-bottom: 30px; border: 1px dashed #e2e8f0; }
+.profil-argazkia { width: 90px; height: 90px; border-radius: 50%; object-fit: cover; border: 3px solid var(--primary-color); box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); }
+.argazki-aukerak { display: flex; flex-direction: column; gap: 8px; }
+.inprimaki-lerroa { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-bottom: 20px; }
+.talde-osoa { margin-bottom: 20px; }
+.inprimaki-etiketa { display: block; margin-bottom: 8px; font-size: 0.9rem; font-weight: 600; color: #475569; }
+.inprimaki-sarrera { width: 100%; padding: 12px 15px; border: 1px solid #cbd5e1; border-radius: 8px; background-color: #ffffff; color: #1e293b; font-size: 0.95rem; transition: all 0.3s ease; }
+.inprimaki-sarrera:focus { outline: none; border-color: var(--primary-color); box-shadow: 0 0 0 4px rgba(67, 97, 238, 0.1); }
+.aukera-sarrera { cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23475569' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E"); 
+    background-repeat: no-repeat; background-position: right 12px center; background-size: 16px; padding-right: 40px; -webkit-appearance: none; appearance: none; 
+    }
+.fitxategi-sarrera { padding: 8px; border: 1px dashed #cbd5e1; background: white; }
+.argibide-testua { font-size: 0.8rem; color: #64748b; margin: 0; }
+.hutsune-zatia { display: none; }
+.inprimaki-banatzailea { border: 0; border-top: 1px solid #e2e8f0; margin: 30px 0; }
+.ekintza-botoiak { display: flex; justify-content: flex-end; gap: 15px; margin-top: 40px; padding-top: 20px; border-top: 1px solid #e2e8f0; }
+
+
+.hizkuntza-borobila { width: 60px !important; height: 60px !important; border-radius: 50%; object-fit: cover; }
+.ikono-zuria { filter: brightness(0) invert(1); }
+.zerrenda-korritzailea { max-height: 200px; overflow-y: auto; }
+.egoera-kolore-urdina { background-color: #e0f2fe; color: #0369a1; }
+.kontaktu-kutxa-erdian { margin: 0 auto; max-width: 600px; text-align: center; }
+
+
+/* === @MEDIA KONTSULTAK === */
+@media (min-width: 768px) {
+    .hero-errenkada-1 {
+        flex-direction: row;
+        gap: 30px;
+    }
+    .hero-sekzioa h1 {
+        font-size: 3rem;
+        white-space: nowrap;
+    }
+    .hero-logo-handia {
+        height: 60px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .portal-sarbideak {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+    }
+}
+
+@media (min-width: 769px) {
+    .kutxa-osoa {
+        grid-column: span 2;
+        text-align: left !important;
+        display: block !important;
+    }
+}
+
+@media (min-width: 480px) {
+    .sareta-bikoa {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (min-width: 480px) {
+    .kaixo-atalak {
+        align-items: center;
+    }
+
+    .flex-zentratua-20 {
+        flex-direction: row;
+        text-align: left;
+    }
+}
+
+@media (min-width: 768px) {
+    .panel-nagusia {
+    padding: 40px 5%;
+    }
+    .kaixo-atalak {
+    padding: 40px;
+    align-items: center;
+    }
+    .menu-sareta {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    }
+    .flex-bukaera {
+    flex-direction: row;
+    align-items: flex-end;
+    }
+}
+
+@media (max-width: 350px) {
+    body {
+    font-size: 14px;
+    }
+
+    .logoa a {
+    font-size: 1.2rem;
+    }
+
+    .botoia {
+        padding: 8px 15px;
+        font-size: 0.9rem;
+    }
+
+    .datu-taula th, .datu-taula td {
+        padding: 10px 12px;
+    }
+}
+
+@media (min-width: 768px) {
+    .sareta-bikoa-sareta { grid-template-columns: 1fr 1fr; }
+}
+
 @media (min-width: 480px) {
     .hizkuntza-hautatzailea {
         grid-template-columns: repeat(4, 1fr);
     }
 }
+
+@media (min-width: 480px) { .hutsune-zatia { display: block; } }
+
+@media (max-width: 768px) { .inprimaki-lerroa { grid-template-columns: 1fr; gap: 15px; } .argazki-koadroa { flex-direction: column; text-align: center; } .ekintza-botoiak { flex-direction: column-reverse; } .ekintza-botoiak .botoia { width: 100%; text-align: center; } }
+
+

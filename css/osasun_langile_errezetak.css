@@ -128,13 +128,7 @@
   animation: fadeIn 0.3s;
 }
 
-@media (min-width: 600px) {
-  .modala-edukia {
-    width: 90%;
-    max-width: 600px;
-    margin: 5% auto;
-  }
-}
+
 
 .modala-goiburua {
   padding: 20px 25px;
@@ -153,6 +147,15 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/* === @MEDIA KONTSULTAK === */
+@media (min-width: 600px) {
+  .modala-edukia {
+    width: 90%;
+    max-width: 600px;
+    margin: 5% auto;
   }
 }
 

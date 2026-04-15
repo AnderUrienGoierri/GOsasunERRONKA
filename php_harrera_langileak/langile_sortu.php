@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $ext = pathinfo($_FILES['irudia']['name'], PATHINFO_EXTENSION);
         $fitxategi_izena = $nan . "_" . time() . ".png"; // PNG formatura behartuta erabiltzaileak eskatu bezala (edo jatorrizkoa gordez gero)
         $helburua = "../img/png/" . $fitxategi_izena;
-        
+
         if (move_uploaded_file($_FILES['irudia']['tmp_name'], $helburua)) {
             $irudia_izena = "img/png/" . $fitxategi_izena;
         }
@@ -77,7 +77,7 @@ include_once '../php_orri_includeak/harrera_goiburua.php';
 
         <div class="inprimaki-edukiontzia form-edukiontzi-zuria padding-30 kutxa-itzala">
             <form method="POST" enctype="multipart/form-data">
-                
+
                 <h3 class="izenburu-urdina marjina-behe-20"><img src="../img/svg/user.svg" alt="" class="ikono-ertaina marjina-esk-5"> Datu Pertsonalak eta Argazkia</h3>
                 <div class="inprimaki-taldea marjina-behe-20 p-20 fts-14 bg-gris-argia desk-marjin">
                     <label for="irudia" class="etiketa-lodia">Profil Argazkia</label><br>
@@ -118,7 +118,7 @@ include_once '../php_orri_includeak/harrera_goiburua.php';
                 <hr class="marjina-behe-20 separator">
 
                 <h3 class="izenburu-urdina marjina-behe-20"><img src="../img/svg/briefcase.svg" alt="" class="ikono-ertaina marjina-esk-5"> Lan Datuak</h3>
-                
+
                 <div class="sareta-bikoa marjina-behe-15">
                     <div class="inprimaki-taldea">
                         <label for="elkargokide_zenbakia" class="etiketa-lodia">Elkargokide Zkia. <span class="beharrezkoa">*</span></label>
@@ -149,7 +149,7 @@ include_once '../php_orri_includeak/harrera_goiburua.php';
                 <hr class="marjina-behe-20 separator">
 
                 <h3 class="izenburu-urdina marjina-behe-20"><img src="../img/svg/key.svg" alt="" class="ikono-ertaina marjina-esk-5"> Kontu Datuak</h3>
-                
+
                 <div class="sareta-bikoa marjina-behe-15">
                     <div class="inprimaki-taldea">
                         <label for="email" class="etiketa-lodia">E-posta <span class="beharrezkoa">*</span></label>

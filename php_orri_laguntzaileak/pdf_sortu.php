@@ -27,12 +27,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['pdf'])) {
     
     if (move_uploaded_file($_FILES['pdf']['tmp_name'], $jomuga_bidea)) {
         try {
-            // 3. Erregistratu datu-basean dokumentu gisa
+            $pdo->beginTransaction();
+
+            $jarraipena_id = null;
+            $create_jarraipen = isset($_POST['create_jarraipen']) && $_POST['create_jarraipen'] == '1';
+
+            // 3. Historia klinikoan erregistratu (jarraipen berria)
+            if ($create_jarraipen) {
+                $langile_id = ($_SESSION['rol_izena'] === 'Osasun Langilea') ? $igotzaile_id : null;
+                $oharrak = "Sistema: PDF Txostena sortu da - " . $txosten_izena;
+                
+                $stmtJ = $pdo->prepare("INSERT INTO jarraipenak (paziente_id, osasun_langile_id, oharrak, erregistro_data) VALUES (?, ?, ?, NOW())");
+                $stmtJ->execute([$paziente_id, $langile_id, $oharrak]);
+                $jarraipena_id = $pdo->lastInsertId();
+            }
+
+            // 4. Erregistratu datu-basean dokumentu gisa
             $bide_erlatiboa = 'paziente_dokumentuak/' . $fitxategi_izena;
             $deskribapena = "Sistemak automatikoki sortutako txostena. Igotzailea ID: " . $igotzaile_id;
             
-            $stmt = $pdo->prepare("INSERT INTO dokumentuak (paziente_id, fitxategi_izena, bidea_zerbitzarian, dokumentu_izena, deskribapena, igotze_data) VALUES (?, ?, ?, ?, ?, NOW())");
-            $stmt->execute([$paziente_id, $fitxategi_izena, $bide_erlatiboa, $txosten_izena, $deskribapena]);
+            $stmt = $pdo->prepare("INSERT INTO dokumentuak (paziente_id, jarraipena_id, fitxategi_izena, bidea_zerbitzarian, dokumentu_izena, deskribapena, igotze_data) VALUES (?, ?, ?, ?, ?, ?, NOW())");
+            $stmt->execute([$paziente_id, $jarraipena_id, $fitxategi_izena, $bide_erlatiboa, $txosten_izena, $deskribapena]);
+
+            $pdo->commit();
 
             echo json_encode([
                 'success' => true, 
@@ -41,6 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['pdf'])) {
                 'filename' => $fitxategi_izena
             ]);
         } catch (PDOException $e) {
+            $pdo->rollBack();
             http_response_code(500);
             echo json_encode(['error' => 'Errorea datu-basean erregistratzean: ' . $e->getMessage()]);
         }

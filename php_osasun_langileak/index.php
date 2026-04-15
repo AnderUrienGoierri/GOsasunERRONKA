@@ -39,8 +39,8 @@ include_once '../php_orri_includeak/osasun_langile_goiburua.php';
 ?>
 
     <main class="panel-nagusia">
-        <section class="kaixo-atalak flex-zentratua-20" >
-            <?php 
+        <section class="kaixo-atal-modernoa flex-zentratu" >
+            <?php
             $irudia_bide = htmlspecialchars($erabiltzaile_datuak['irudia'] ?? 'img/lehenetsia_medikua.png');
             if (strpos($irudia_bide, 'img/') === 0 && strpos($irudia_bide, 'img/png/') === false && strpos($irudia_bide, 'img/svg/') === false) {
                 $irudia_bide = str_replace('img/', 'img/png/', $irudia_bide);
@@ -54,28 +54,28 @@ include_once '../php_orri_includeak/osasun_langile_goiburua.php';
         </section>
 
         <!-- Estatistika Txartelak (Dashboard) -->
-        <div class="index-aginte-panela marjina-behe-30">
+        <div class="index-aginte-panela tarte-behea">
             <div class="aginte-panel-kutxa">
-                <div class="ikono-kutxa-handia"><img src="../img/svg/users.svg" alt="" class="ikono-ertaina marjina-esk-5"></div>
+                <div class="ikono-kutxa-handia"><img src="../img/svg/users.svg" alt="" class="ikono-ertaina tarte-eskubia"></div>
                 <h3 class="zenbaki-handi-urdina"><?php echo $pazienteKopurua; ?></h3>
                 <p class="azpititulu-grisa"><?php echo $itzulpenak->dashboard_medikua->paziente_kopurua; ?></p>
-                <a href="pazienteak.php" class="botoia botoi-ertza marjina-goi-15 zabalera-osoa"><?php echo $itzulpenak->dashboard_medikua->zerrenda_ikusi; ?></a>
-            </div>
-               <div class="aginte-panel-kutxa">
-                <div class="ikono-kutxa-handia"><img src="../img/svg/clipboard-pen.svg" alt="" class="ikono-ertaina marjina-esk-5"></div>
-                <h3 class="zenbaki-handi-urdina"><?php echo $jarraipenKopurua; ?></h3>
-                <p class="azpititulu-grisa">Jarraipen Guztiak</p>
-                <a href="jarraipenak.php" class="botoia botoi-ertza marjina-goi-15 zabalera-osoa">Jarraipena Kudeatu</a>
+                <a href="pazienteak.php" class="botoia botoi-ertza tarte-goia w-osoa zentratu"><?php echo $itzulpenak->dashboard_medikua->zerrenda_ikusi; ?></a>
             </div>
             <div class="aginte-panel-kutxa">
-                <div class="ikono-kutxa-handia"><img src="../img/svg/calendar-days.svg" alt="" class="ikono-ertaina marjina-esk-5"></div>
+                <div class="ikono-kutxa-handia"><img src="../img/svg/clipboard-pen.svg" alt="" class="ikono-ertaina tarte-eskubia"></div>
+                <h3 class="zenbaki-handi-urdina"><?php echo $jarraipenKopurua; ?></h3>
+                <p class="azpititulu-grisa">Jarraipen Guztiak</p>
+                <a href="jarraipenak.php" class="botoia botoi-ertza tarte-goia w-osoa zentratu">Jarraipena Kudeatu</a>
+            </div>
+            <div class="aginte-panel-kutxa">
+                <div class="ikono-kutxa-handia"><img src="../img/svg/calendar-days.svg" alt="" class="ikono-ertaina tarte-eskubia"></div>
                 <h3 class="zenbaki-handi-urdina"><?php echo $gaurkoHitzorduak; ?></h3>
                 <p class="azpititulu-grisa"><?php echo $itzulpenak->dashboard_medikua->gaurko_hitzorduak; ?></p>
-                <a href="hitzorduak.php" class="botoia botoi-ertza marjina-goi-15 zabalera-osoa"><?php echo $itzulpenak->dashboard_medikua->agenda_kudeatu; ?></a>
-            </div>         
+                <a href="hitzorduak.php" class="botoia botoi-ertza tarte-goia w-osoa zentratu"><?php echo $itzulpenak->dashboard_medikua->agenda_kudeatu; ?></a>
+            </div>
         </div>
 
-        <h2 class="izenburu-nagusia marjina-behe-20"><img src="../img/svg/zap.svg" alt="" class="ikono-ertaina marjina-esk-5"> <?php echo $itzulpenak->erabiltzaile_panela->ekintza_azkarrak; ?></h2>
+        <h2 class="izenburu-nagusia tarte-behea"><img src="../img/svg/zap.svg" alt="" class="ikono-ertaina tarte-eskubia"> <?php echo $itzulpenak->erabiltzaile_panela->ekintza_azkarrak; ?></h2>
         <section class="menu-sareta">
             <a href="pazienteak.php" class="menu-txartela">
                 <div class="txartel-ikonoa"><img src="../img/svg/users.svg" alt="Nire Pazienteak" class="ikono-handia-48"></div>

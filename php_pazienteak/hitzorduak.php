@@ -19,9 +19,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 // 2. Lortu esleitutako medikuen zerrenda (Iragazleentzat)
 $stmtM = $pdo->prepare("SELECT langile_id as osasun_langile_id, langile_izena as izena, langile_abizenak as abizenak 
-                       FROM V_Langile_Pazienteak
-                       WHERE paziente_id = ?
-                       ORDER BY langile_abizenak ASC");
+                        FROM V_Langile_Pazienteak
+                        WHERE paziente_id = ?
+                        ORDER BY langile_abizenak ASC");
 $stmtM->execute([$paziente_id]);
 $medikuak_iragazki = $stmtM->fetchAll(PDO::FETCH_ASSOC);
 
@@ -64,7 +64,7 @@ if ($bista === 'eguna') {
 // SQL Dinamikoa eraiki
 $sql_h = "
     SELECT h.id as hitzordu_id, h.data, h.hasiera_ordua, h.arrazoia, h.egoera, 
-           m.izena as mediku_izena, m.abizenak as mediku_abizenak, m.espezialitatea
+            m.izena as mediku_izena, m.abizenak as mediku_abizenak, m.espezialitatea
     FROM hitzorduak h
     JOIN v_osasun_langilea m ON h.osasun_langile_id = m.langile_id
     WHERE h.paziente_id = :pid AND h.data BETWEEN :start AND :end
@@ -131,7 +131,7 @@ include_once '../php_orri_includeak/paziente_goiburua.php';
 
     <main class="panel-nagusia">
         <div class="orri-goiburua">
-            <h2><img src="../img/svg/calendar-days.svg" alt="" class="ikono-ertaina marjina-esk-5"> Nire Hitzorduen Agenda</h2>
+            <h2><img src="../img/svg/calendar-days.svg" alt="" class="ikono-ertaina tarte-eskubia"> Nire Hitzorduen Agenda</h2>
         </div>
 
         <script>
@@ -142,7 +142,7 @@ include_once '../php_orri_includeak/paziente_goiburua.php';
             <!-- Iragazki Sidebar -->
             <aside class="sidebar-iragazkiak">
                 <details id="filterDetailsPazientea" open>
-                    <summary class="izenburu-urdina kurtsore-erakuslea marjina-behe-10">Iragazkiak Erakutsi</summary>
+                    <summary class="izenburu-nabarmena kurtsorea tarte-behea">Iragazkiak Erakutsi</summary>
                 <form action="" method="GET" id="filterForm">
                     <input type="hidden" name="bista" value="<?php echo htmlspecialchars($bista); ?>">
                     <input type="hidden" name="hilabetea" value="<?php echo htmlspecialchars($hilabetea); ?>">
@@ -162,7 +162,7 @@ include_once '../php_orri_includeak/paziente_goiburua.php';
                         </div>
                     </div>
 
-                    <div class="iragazki-taldea marjina-goi-20">
+                    <div class="iragazki-taldea tarte-goia">
                         <h4><img src="../img/svg/user-md.svg" alt="" class="ikono-txikia"> Osasun-Langilea</h4>
                         <div class="checkbox-zerrenda">
                             <?php foreach ($medikuak_iragazki as $m): ?>
@@ -176,7 +176,7 @@ include_once '../php_orri_includeak/paziente_goiburua.php';
                         </div>
                     </div>
 
-                    <div class="iragazki-ekintzak marjina-goi-20">
+                    <div class="iragazki-ekintzak tarte-goia">
                         <a href="hitzorduak.php" class="testu-botoia">Iragazkiak Garbitu</a>
                     </div>
                 </form>
@@ -190,7 +190,7 @@ include_once '../php_orri_includeak/paziente_goiburua.php';
                     <div class="itxurazko-txartela">
                         <div class="txartel-info">
                             <h4>Gaurko Hitzorduak</h4>
-                            <div class="txartel-balioa"><?php echo $hitzorduak_data_arabera[date('Y-m-d')] ? count($hitzorduak_data_arabera[date('Y-m-d')]) : 0; ?></div>
+                            <div class="txartel-balioa"><?php echo isset($hitzorduak_data_arabera[date('Y-m-d')]) ? count($hitzorduak_data_arabera[date('Y-m-d')]) : 0; ?></div>
                         </div>
                         <div class="joera-etiketa joera-igoera">Aktibo</div>
                     </div>
@@ -214,9 +214,9 @@ include_once '../php_orri_includeak/paziente_goiburua.php';
                 <section class="egutegia-edukiontzia">
                     <div class="egutegia-goiburua">
                         <div class="egutegia-nabigazioa">
-                            <a href="?<?php echo http_build_query(array_merge($_GET, ['hilabetea' => $aurreko_hilabetea, 'urtea' => $aurreko_urtea])); ?>" class="botoia botoi-ertza">&lt;</a>
+                            <a href="?<?php echo http_build_query(array_merge($_GET, ['hilabetea' => $aurreko_hilabetea, 'urtea' => $aurreko_urtea])); ?>" class="botoia botoi-ertza" title="Aurreko hilabetea"><img src="../img/svg/chevron-left.svg" alt="Aurrekoa" class="ikono-txikia"></a>
                             <div class="egutegia-titulua"><?php echo $hilabete_izena; ?></div>
-                            <a href="?<?php echo http_build_query(array_merge($_GET, ['hilabetea' => $hurrengo_hilabetea, 'urtea' => $hurrengo_urtea])); ?>" class="botoia botoi-ertza">&gt;</a>
+                            <a href="?<?php echo http_build_query(array_merge($_GET, ['hilabetea' => $hurrengo_hilabetea, 'urtea' => $hurrengo_urtea])); ?>" class="botoia botoi-ertza" title="Hurrengo hilabetea"><img src="../img/svg/chevron-right.svg" alt="Hurrengoa" class="ikono-txikia"></a>
                         </div>
                         <div class="bista-hautatzailea">
                             <a href="?<?php echo http_build_query(array_merge($_GET, ['bista' => 'astea'])); ?>" class="bista-botoia <?php echo $bista === 'astea' ? 'aktiboa' : ''; ?>">Astea</a>
@@ -308,50 +308,7 @@ include_once '../php_orri_includeak/paziente_goiburua.php';
             </section>
             </div>
 
-        <div class="agenda-edukiontzia marjina-goi-30">
-            <h3><img src="../img/svg/list.svg" alt="" class="ikono-ertaina marjina-esk-5"> Xehetasunak Zerrendan</h3>
-            <br>
-            <?php if (count($hitzorduak_data_arabera) > 0): ?>
-                <?php foreach ($hitzorduak_data_arabera as $data => $hitz_zerrenda): ?>
-                    <?php $gaurkoa = ($data === date('Y-m-d')) ? 'gaur-goiburua' : '';
-                        $dataIzena = ($data === date('Y-m-d')) ? 'Gaurkoa (' . $data . ')' : $data;
-                    ?>
-                    <div class="egun-taldea">
-                        <h3 class="egun-goiburua <?php echo $gaurkoa; ?>"><?php echo htmlspecialchars($dataIzena); ?></h3>
-                        <div class="hitzordu-zerrenda">
-                            <?php foreach ($hitz_zerrenda as $h): ?>
-                                <div class="hitzordu-txartela <?php echo strtolower($h['egoera']); ?> kurtsore-erakuslea" onclick="viewAppointment(<?php echo $h['hitzordu_id']; ?>)">
-                                    <div class="ordu-tartea">
-                                        <?php echo date('H:i', strtotime($h['hasiera_ordua'])); ?>
-                                    </div>
-                                    <div class="hitzordu-xehetasunak">
-                                        <h4><?php echo htmlspecialchars($h['mediku_izena'] . ' ' . $h['mediku_abizenak']); ?></h4>
-                                        <p class="espezialitatea"><strong><?php echo htmlspecialchars($h['espezialitatea']); ?></strong></p>
-                                        <p class="arrazoia"><?php echo htmlspecialchars($h['arrazoia'] ?? 'Arrazoirik gabe'); ?></p>
-                                    </div>
-                                    <div class="hitzordu-egoera">
-                                        <span class="egoera-txapa status-<?php echo strtolower($h['egoera']); ?>">
-                                            <?php echo htmlspecialchars($h['egoera']); ?>
-                                        </span>
-                                    </div>
-                                    <div class="hitzordu-ekintzak" onclick="event.stopPropagation();">
-                                        <?php if ($h['egoera'] === 'Zain'): ?>
-                                            <button class="botoia botoi-nagusia botoi-txikia" onclick="viewAppointment(<?php echo $h['hitzordu_id']; ?>)">Ikusi</button>
-                                        <?php endif; ?>
-                                    </div>
-                                </div>
-                            <?php endforeach; ?>
-                        </div>
-                    </div>
-                <?php endforeach; ?>
-            <?php else: ?>
-                <div class="egoera-hutsa">
-                    <div class="ikono-hutsa"><img src="../img/svg/calendar-days.svg" alt="" class="ikono-ertaina marjina-esk-5"></div>
-                    <h3>Ez duzu hitzordurik</h3>
-                    <p>Ez daukazu hitzordurik gordeta zure historialean.</p>
-                </div>
-            <?php endif; ?>
-        </div>
+
     </main>
 
     <script src="../js/hitzorduak_egutegia.js"></script>

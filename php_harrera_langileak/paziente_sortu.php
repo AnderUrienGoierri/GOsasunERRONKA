@@ -63,111 +63,148 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <main class="panel-nagusia">
         <div class="orri-goiburua">
             <div>
-                <h2><img src="../img/svg/plus-circle.svg" alt="" class="ikono-ertaina marjina-esk-5"> Paziente Berria Sortu</h2>
-                <p>Sartu paziente berriaren datuak sisteman erregistratzeko.</p>
+                <h2><img src="../img/svg/user-plus.svg" alt="" class="ikono-handia marjina-esk-10"> Paziente Berria Erregistratu</h2>
+                <p>Sartu pazientearen informazioa sistema sanitarioan sartzeko.</p>
             </div>
-            <a href="pazienteak.php" class="botoia botoi-ertza">← Itzuli</a>
+            <a href="pazienteak.php" class="botoia botoi-ertza flex-zentratua"><img src="../img/svg/arrow-left.svg" alt="" class="ikono-txikia marjina-esk-5"> Zerrendara itzuli</a>
         </div>
 
         <?php if ($errorea): ?>
-            <div class="alerta alerta-errorea"><?php echo htmlspecialchars($errorea); ?></div>
+            <div class="alerta alerta-errorea marjina-behe-20">
+                <img src="../img/svg/alert-circle.svg" alt="" class="ikono-ertaina marjina-esk-10">
+                <?php echo htmlspecialchars($errorea); ?>
+            </div>
         <?php endif; ?>
 
-        <div class="inprimaki-kutxa">
-            <form method="POST" enctype="multipart/form-data">
-                <div class="profil-gorputza">
+        <form method="POST" enctype="multipart/form-data" class="modern-inprimakia">
+            <div class="sareta-konfigurazioa">
+                <!-- 1. ZUTABEA: Datu Pertsonalak eta Identifikazioa -->
+                <div class="sareta-zutabea">
+                    <div class="kutxa-zuria-itzala padding-25 marjina-behe-30">
+                        <h3 class="izenburu-atal-urdina"><img src="../img/svg/user.svg" alt="" class="ikono-ertaina marjina-esk-10"> Identifikazioa</h3>
+                        
+                        <div class="inprimaki-taldea marjina-goi-20">
+                            <label for="irudia" class="testu-lodia">Profil Argazkia</label>
+                            <input type="file" id="irudia" name="irudia" class="inprimaki-kontrola" accept="image/*">
+                            <small class="testu-gris-txikia">PNG/JPG formatua gomendatzen da.</small>
+                        </div>
 
-                    <h3 class="atal-izenburua">Identifikazio Datuak eta Argazkia</h3>
-                    <div class="informazio-taldea">
-                        <label for="irudia" class="etiketa-lodia">Profil Argazkia</label>
-                        <input type="file" id="irudia" name="irudia" class="inprimaki-kontrola" accept="image/*">
-                        <small class="testu-gris-txikia">PNG formatuan gordeko da img/png karpetan.</small>
-                    </div>
+                        <div class="inprimaki-taldea">
+                            <label for="nan">NAN / Identifikazio dokumentua <span class="testu-gorria">*</span></label>
+                            <input type="text" id="nan" name="nan" class="inprimaki-kontrola" required placeholder="Adib: 12345678Z">
+                        </div>
 
-                    <div class="informazio-taldea">
-                        <label for="nan">NAN <span class="beharrezkoa">*</span></label>
-                        <input type="text" id="nan" name="nan" class="inprimaki-kontrola" required>
-                    </div>
-                    <div class="informazio-taldea">
-                        <label for="izena">Izena <span class="beharrezkoa">*</span></label>
-                        <input type="text" id="izena" name="izena" class="inprimaki-kontrola" required>
-                    </div>
-                    <div class="informazio-taldea">
-                        <label for="abizenak">Abizenak <span class="beharrezkoa">*</span></label>
-                        <input type="text" id="abizenak" name="abizenak" class="inprimaki-kontrola" required>
-                    </div>
-                    <div class="informazio-taldea">
-                        <label for="sexua">Sexua</label>
-                        <select id="sexua" name="sexua" class="inprimaki-kontrola">
-                            <option value="">Hautatu...</option>
-                            <option value="Emakumea">Emakumea</option>
-                            <option value="Gizona">Gizona</option>
-                            <option value="Bestea">Bestea</option>
-                        </select>
-                    </div>
-                    <div class="informazio-taldea">
-                        <label for="jaiotze_data">Jaiotze Data</label>
-                        <input type="date" id="jaiotze_data" name="jaiotze_data" class="inprimaki-kontrola">
-                    </div>
-                    <div class="informazio-taldea">
-                        <label for="odol_taldea">Odol Taldea</label>
-                        <select id="odol_taldea" name="odol_taldea" class="inprimaki-kontrola">
-                            <option value="">Hautatu...</option>
-                            <option value="A+">A+</option>
-                            <option value="A-">A-</option>
-                            <option value="B+">B+</option>
-                            <option value="B-">B-</option>
-                            <option value="AB+">AB+</option>
-                            <option value="AB-">AB-</option>
-                            <option value="0+">0+</option>
-                            <option value="0-">0-</option>
-                        </select>
-                    </div>
+                        <div class="sareta-bikoa-flex">
+                            <div class="inprimaki-taldea">
+                                <label for="izena">Izena <span class="testu-gorria">*</span></label>
+                                <input type="text" id="izena" name="izena" class="inprimaki-kontrola" required placeholder="Izena">
+                            </div>
+                            <div class="inprimaki-taldea">
+                                <label for="abizenak">Abizenak <span class="testu-gorria">*</span></label>
+                                <input type="text" id="abizenak" name="abizenak" class="inprimaki-kontrola" required placeholder="Abizenak">
+                            </div>
+                        </div>
 
-                    <h3 class="atal-izenburua">Kontaktu Datuak</h3>
-                    <div class="informazio-taldea">
-                        <label for="telefonoa">Telefonoa</label>
-                        <input type="text" id="telefonoa" name="telefonoa" class="inprimaki-kontrola">
-                    </div>
-                    <div class="informazio-taldea">
-                        <label for="helbidea">Helbidea</label>
-                        <input type="text" id="helbidea" name="helbidea" class="inprimaki-kontrola">
-                    </div>
-                    <div class="informazio-taldea">
-                        <label for="herria">Herria</label>
-                        <input type="text" id="herria" name="herria" class="inprimaki-kontrola">
-                    </div>
-                    <div class="informazio-taldea">
-                        <label for="posta_kodea">Posta Kodea</label>
-                        <input type="text" id="posta_kodea" name="posta_kodea" class="inprimaki-kontrola">
-                    </div>
+                        <div class="sareta-bikoa-flex">
+                            <div class="inprimaki-taldea">
+                                <label for="sexua">Sexua</label>
+                                <select id="sexua" name="sexua" class="inprimaki-kontrola">
+                                    <option value="">Hautatu...</option>
+                                    <option value="Emakumea">Emakumea</option>
+                                    <option value="Gizona">Gizona</option>
+                                    <option value="Bestea">Bestea</option>
+                                </select>
+                            </div>
+                            <div class="inprimaki-taldea">
+                                <label for="odol_taldea">Odol Taldea</label>
+                                <select id="odol_taldea" name="odol_taldea" class="inprimaki-kontrola">
+                                    <option value="">Hautatu...</option>
+                                    <?php foreach(['A+','A-','B+','B-','AB+','AB-', '0+','0-'] as $ot): ?>
+                                        <option value="<?php echo $ot; ?>"><?php echo $ot; ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
+                        </div>
 
-                    <h3 class="atal-izenburua">Kontu Datuak</h3>
-                    <div class="informazio-taldea">
-                        <label for="email">E-posta <span class="beharrezkoa">*</span></label>
-                        <input type="email" id="email" name="email" class="inprimaki-kontrola" required>
-                    </div>
-                    <div class="informazio-taldea">
-                        <label for="pasahitza">Pasahitza (lehenetsia: 1234)</label>
-                        <input type="password" id="pasahitza" name="pasahitza" class="inprimaki-kontrola" value="1234">
-                    </div>
-                    <div class="informazio-taldea">
-                        <label for="hizkuntza">Hizkuntza</label>
-                        <select id="hizkuntza" name="hizkuntza" class="inprimaki-kontrola">
-                            <option value="Euskara">Euskara</option>
-                            <option value="Gaztelania">Gaztelania</option>
-                            <option value="Ingelesa">Ingelesa</option>
-                            <option value="Nederlandera">Nederlandera</option>
-                        </select>
+                        <div class="inprimaki-taldea">
+                            <label for="jaiotze_data">Jaiotze Data</label>
+                            <input type="date" id="jaiotze_data" name="jaiotze_data" class="inprimaki-kontrola">
+                        </div>
                     </div>
                 </div>
 
-                <div class="botoi-taldea">
-                    <button type="submit" class="botoia botoi-nagusia">Gorde Pazientea</button>
-                    <a href="pazienteak.php" class="botoia botoi-ertza">Utzi</a>
+                <!-- 2. ZUTABEA: Kontaktua eta Kokapena -->
+                <div class="sareta-zutabea">
+                    <div class="kutxa-zuria-itzala padding-25 marjina-behe-30">
+                        <h3 class="izenburu-atal-urdina"><img src="../img/svg/map-pin.svg" alt="" class="ikono-ertaina marjina-esk-10"> Kokapena eta Kontaktua</h3>
+                        
+                        <div class="inprimaki-taldea marjina-goi-20">
+                            <label for="helbidea">Helbidea</label>
+                            <input type="text" id="helbidea" name="helbidea" class="inprimaki-kontrola" placeholder="Kale izena, ataria, solairua">
+                        </div>
+
+                        <div class="sareta-bikoa-flex">
+                            <div class="inprimaki-taldea">
+                                <label for="herria">Herria</label>
+                                <input type="text" id="herria" name="herria" class="inprimaki-kontrola" placeholder="Herria">
+                            </div>
+                            <div class="inprimaki-taldea">
+                                <label for="posta_kodea">Posta Kodea</label>
+                                <input type="text" id="posta_kodea" name="posta_kodea" class="inprimaki-kontrola" placeholder="P.K.">
+                            </div>
+                        </div>
+
+                        <div class="inprimaki-taldea">
+                            <label for="telefonoa">Telefono Zenbakia</label>
+                            <input type="text" id="telefonoa" name="telefonoa" class="inprimaki-kontrola" placeholder="600 000 000">
+                        </div>
+
+                        <hr class="banatzaile-marra-fin">
+
+                        <h3 class="izenburu-atal-urdina marjina-goi-20"><img src="../img/svg/mail.svg" alt="" class="ikono-ertaina marjina-esk-10"> Kontuaren Segurtasuna</h3>
+                        
+                        <div class="inprimaki-taldea marjina-goi-15">
+                            <label for="email">E-posta <span class="testu-gorria">*</span></label>
+                            <input type="email" id="email" name="email" class="inprimaki-kontrola" required placeholder="pazientea@adibidea.eus">
+                        </div>
+
+                        <div class="sareta-bikoa-flex">
+                            <div class="inprimaki-taldea">
+                                <label for="pasahitza">Behin-behineko Pasahitza</label>
+                                <input type="password" id="pasahitza" name="pasahitza" class="inprimaki-kontrola" value="1234">
+                                <small class="testu-gris-txikia">Defektuz: 1234</small>
+                            </div>
+                            <div class="inprimaki-taldea">
+                                <label for="hizkuntza">Hizkuntza</label>
+                                <select id="hizkuntza" name="hizkuntza" class="inprimaki-kontrola">
+                                    <option value="Euskara">Euskara</option>
+                                    <option value="Gaztelania">Gaztelania</option>
+                                    <option value="Ingelesa">Ingelesa</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </form>
-        </div>
+            </div>
+
+            <div class="akzio-botoiak-finkoak">
+                <button type="reset" class="botoia botoi-ertza marjina-esk-10">Datuak garbitu</button>
+                <button type="submit" class="botoia botoi-nagusia flex-hazkundea-1">
+                    <img src="../img/svg/save.svg" alt="" class="ikono-txikia marjina-esk-5 ikono-zuria"> Pazientea Gorde eta Erregistratu
+                </button>
+            </div>
+        </form>
+    </main>
+
+    <style>
+    .sareta-konfigurazioa { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 20px; }
+    .modern-inprimakia { max-width: 1000px; margin: 0 auto; }
+    .izenburu-atal-urdina { font-size: 1.1rem; color: var(--primary-color); border-bottom: 2px solid #f1f5f9; padding-bottom: 15px; margin-bottom: 5px; font-weight: 600; display: flex; align-items: center; }
+    .banatzaile-marra-fin { border: none; border-top: 1px solid #f1f5f9; margin: 25px 0; }
+    .akzio-botoiak-finkoak { display: flex; background: white; padding: 20px 30px; border-radius: 16px; border: 1px solid var(--border-color); box-shadow: 0 -4px 15px rgba(0,0,0,0.05); margin-top: 20px; position: sticky; bottom: 20px; z-index: 10; align-items: center; }
+    .testu-gorria { color: #cc0000; font-weight: bold; }
+    @media (max-width: 768px) { .sareta-konfigurazioa { grid-template-columns: 1fr; } }
+    </style>
     </main>
 
 <?php include_once '../php_orri_includeak/harrera_footer.php'; ?>

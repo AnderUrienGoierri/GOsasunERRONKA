@@ -85,7 +85,7 @@ include_once '../php_orri_includeak/harrera_goiburua.php';
 
 <main class="panel-nagusia">
     <div class="orri-goiburua marjina-behe-20">
-        <a href="hitzorduak.php" class="esteka-itzuli">&larr; Itzuli egutegira</a>
+        <a href="hitzorduak.php" class="esteka-itzuli flex-zentratua"><img src="../img/svg/arrow-left.svg" alt="" class="ikono-txikia marjina-esk-5"> Itzuli egutegira</a>
         <h2 class="izenburu-nagusia marjina-goi-10">Hitzordua Editatu</h2>
     </div>
 

@@ -130,7 +130,7 @@ include_once '../php_orri_includeak/harrera_goiburua.php';
                 <p class="azpititulu-grisa">Kudeatu klinikako ordutegia eta erregistroak</p>
             </div>
             <div class="flex-taldea-10">
-                <a href="hitzordua_sortu.php" class="botoia botoi-nagusia">+ Hitzordu Berria</a>
+                <a href="hitzordua_sortu.php" class="botoia botoi-nagusia"><img src="../img/svg/plus-circle.svg" alt="" class="ikono-ertaina marjina-esk-5"> Hitzordu Berria</a>
             </div>
         </div>
 
@@ -169,7 +169,7 @@ include_once '../php_orri_includeak/harrera_goiburua.php';
                         <h4><img src="../img/svg/user.svg" alt="" class="ikono-txikia"> Pazientea</h4>
                         <div class="checkbox-zerrenda">
                             <input type="text" class="inprimaki-kontrola marjina-behe-10" placeholder="Bilatu pazientea..." onkeyup="filterCheckboxes(this, 'paziente-list')">
-                            <div id="paziente-list" style="max-height: 200px; overflow-y: auto;">
+                            <div id="paziente-list" class="zerrenda-korritzailea">
                                 <?php foreach ($pazienteak as $p): ?>
                                     <label class="iragazki-aukera">
                                         <input type="radio" name="filter_paziente_id" value="<?php echo $p['paziente_id']; ?>"
@@ -237,10 +237,9 @@ include_once '../php_orri_includeak/harrera_goiburua.php';
         <section class="egutegia-edukiontzia">
             <div class="egutegia-goiburua">
                 <div class="egutegia-nabigazioa">
-                    <a href="?hilabetea=<?php echo $aurreko_hilabetea; ?>&urtea=<?php echo $aurreko_urtea; ?><?php echo $filter_qs; ?>" class="botoia botoi-ertza">&lt;</a>
+                    <a href="?hilabetea=<?php echo $aurreko_hilabetea; ?>&urtea=<?php echo $aurreko_urtea; ?><?php echo $filter_qs; ?>" class="botoia botoi-ertza" title="Aurreko hilabetea"><img src="../img/svg/chevron-left.svg" alt="Aurrekoa" class="ikono-txikia"></a>
                     <div class="egutegia-titulua"><?php echo $hilabete_izena; ?></div>
-                    <a href="?hilabetea=<?php echo $hurrengo_hilabetea; ?>&urtea=<?php echo $hurrengo_urtea; ?><?php echo $filter_qs; ?>" class="botoia botoi-ertza">&gt;</a>
-                    <a href="hitzorduak.php?bista=<?php echo $bista; ?><?php echo $filter_qs; ?>" class="bista-botoia marjina-ezk-10">Gaur</a>
+                    <a href="?hilabetea=<?php echo $hurrengo_hilabetea; ?>&urtea=<?php echo $hurrengo_urtea; ?><?php echo $filter_qs; ?>" class="botoia botoi-ertza" title="Hurrengo hilabetea"><img src="../img/svg/chevron-right.svg" alt="Hurrengoa" class="ikono-txikia"></a>
                 </div>
                 <div class="bista-hautatzailea">
                     <a href="?bista=astea<?php echo $filter_qs; ?>" class="bista-botoia <?php echo $bista === 'astea' ? 'aktiboa' : ''; ?>">Astea</a>
@@ -331,100 +330,7 @@ include_once '../php_orri_includeak/harrera_goiburua.php';
             </div>
         </section>
 
-        <!-- Zerrenda orokorra (behean mantentzen dugu segurtasun gisa momentuz) -->
 
-        <section class="hitzordu-zerrenda marjina-goi-30">
-            <div class="flex-tartea-15">
-                <h3><img src="../img/svg/list.svg" alt="" class="ikono-ertaina marjina-esk-5"> Hitzordu Guztiak</h3>
-                <form method="GET" class="flex-taldea-10">
-                    <select name="filter_mediku_id" class="inprimaki-kontrola zabalera-autoa" onchange="this.form.submit()">
-                        <option value="">Iragazi medikua...</option>
-                        <?php foreach ($medikuak as $m): ?>
-                            <option value="<?php echo $m['osasun_langile_id']; ?>" <?php echo $filter_mediku_id == $m['osasun_langile_id'] ? 'selected' : ''; ?>>
-                                <?php echo htmlspecialchars($m['abizenak'] . ", " . $m['izena']); ?>
-                            </option>
-                        <?php endforeach; ?>
-                    </select>
-                </form>
-            </div>
-            <div class="taula-inguratzailea kutxa-txikia">
-                <table class="paziente-taula">
-                    <thead>
-                        <tr>
-                            <th>Data/Ordua</th>
-                            <th>Medikua</th>
-                            <th>Pazientea</th>
-                            <th>Egoera</th>
-                            <th>Ekintzak</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach (array_slice($hitzorduak, 0, 5) as $h): ?>
-                            <tr>
-                                <td><strong><?php echo date('Y/m/d', strtotime($h['data'])); ?></strong> (<?php echo substr($h['hasiera_ordua'],0,5); ?>)</td>
-                                <td><?php echo htmlspecialchars($h['m_abizenak']); ?></td>
-                                <td><?php echo htmlspecialchars($h['p_abizenak']); ?></td>
-                                <td><span class="egoera-<?php echo strtolower($h['egoera']); ?>"><?php echo $h['egoera']; ?></span></td>
-                                <td>
-                                    <div class="taula-ekintzak">
-                                        <a href="hitzordua_editatu.php?id=<?php echo $h['hitzordu_id']; ?>" class="botoi-ikonoa" title="Editatu">
-                                            <img src="../img/svg/pencil.svg" alt="Editatu" class="ikono-ertaina">
-                                        </a>
-                                        <a href="hitzorduak.php?delete_id=<?php echo $h['hitzordu_id']; ?>" class="botoi-ikonoa ezabatu-botoia" 
-                                            onclick="return confirm('Ziur zaude hitzordu hau ezabatu nahi duzula?');" title="Ezabatu">
-                                            <img src="../img/svg/trash-2.svg" alt="Ezabatu" class="ikono-ertaina">
-                                        </a>
-                                    </div>
-                                </td>
-                            </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
-        <div class="agenda-edukiontzia marjina-goi-30">
-            <h3><img src="../img/svg/list.svg" alt="" class="ikono-ertaina marjina-esk-5"> Xehetasunak Zerrendan</h3>
-            <br>
-            <?php if (count($hitzorduak_data_arabera) > 0): ?>
-                <?php foreach ($hitzorduak_data_arabera as $data => $hitz_zerrenda): ?>
-                    <?php $gaurkoa = ($data === date('Y-m-d')) ? 'gaur-goiburua' : '';
-                        $dataIzena = ($data === date('Y-m-d')) ? 'Gaurkoa (' . $data . ')' : $data;
-                    ?>
-                    <div class="egun-taldea">
-                        <h3 class="egun-goiburua <?php echo $gaurkoa; ?>"><?php echo htmlspecialchars($dataIzena); ?></h3>
-                        <div class="hitzordu-zerrenda">
-                            <?php foreach ($hitz_zerrenda as $h): ?>
-                                <div class="hitzordu-txartela <?php echo strtolower($h['egoera']); ?> kurtsore-erakuslea" onclick="viewAppointment(<?php echo $h['hitzordu_id']; ?>)">
-                                    <div class="ordu-tartea">
-                                        <?php echo date('H:i', strtotime($h['hasiera_ordua'])); ?>
-                                    </div>
-                                    <div class="hitzordu-xehetasunak">
-                                        <h4>Dr. <?php echo htmlspecialchars($h['m_abizenak']); ?> - Pazientea: <?php echo htmlspecialchars($h['p_izena'] . ' ' . $h['p_abizenak']); ?></h4>
-                                        <p class="arrazoia"><strong>Arrazoia:</strong> <?php echo htmlspecialchars($h['arrazoia'] ?? 'Arrazoirik gabe'); ?></p>
-                                    </div>
-                                    <div class="hitzordu-egoera">
-                                        <span class="egoera-txapa status-<?php echo strtolower($h['egoera']); ?>">
-                                            <?php echo htmlspecialchars($h['egoera']); ?>
-                                        </span>
-                                    </div>
-                                    <div class="hitzordu-ekintzak" onclick="event.stopPropagation();">
-                                        <a href="hitzordua_editatu.php?id=<?php echo $h['hitzordu_id']; ?>" class="botoia botoi-nagusia botoi-txikia">Editatu</a>
-                                        <a href="?delete_id=<?php echo $h['hitzordu_id']; ?>" class="botoia botoi-gorria botoi-txikia" onclick="return confirm('Ziur zaude ezabatu nahi duzula?')">Ezabatu</a>
-                                    </div>
-                                </div>
-                            <?php endforeach; ?>
-                        </div>
-                    </div>
-                <?php endforeach; ?>
-            <?php else: ?>
-                <div class="egoera-hutsa">
-                    <div class="ikono-hutsa"><img src="../img/svg/calendar-days.svg" alt="" class="ikono-ertaina marjina-esk-5"></div>
-                    <h3>Ez dago hitzordurik</h3>
-                    <p>Hautatutako iragazkiekin ez da hitzordurik aurkitu.</p>
-                </div>
-            <?php endif; ?>
-        </div>
     </main>
 
     <script src="../js/hitzorduak_egutegia.js"></script>

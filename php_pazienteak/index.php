@@ -85,13 +85,12 @@ include_once '../php_orri_includeak/paziente_goiburua.php';
 
         <!-- Laburpen Txartelak (Dashboard) -->
         <div class="panel-sareta">
-            <!-- Azken jarraipenak -->
             <div id="dash-jarraipenak-card" class="kutxa-zuria-itzala">
-                <div class="izenburu-urdina flex-zentratua marjina-behe-15"><img src="../img/svg/line-chart.svg" alt="" class="ikono-ertaina marjina-esk-5"> Azken Neurketak</div>
+                <div class="izenburu-nabarmena flex-zentratu"><img src="../img/svg/line-chart.svg" alt="" class="ikono-ertaina marjina-esk-10"> Azken Neurketak</div>
                 
-                <div class="paziente-informazio-laburpena marjina-behe-15">
+                <div class="paziente-informazio-laburpena tarte-behea">
                     <p><strong><?php echo htmlspecialchars($erabiltzaile_datuak['izena'] . ' ' . $erabiltzaile_datuak['abizenak']); ?></strong></p>
-                    <p class="testu-gris-txikia"><?php echo date('Y/m/d', strtotime($erabiltzaile_datuak['jaiotze_data'])); ?> (<?php echo $erabiltzaile_datuak['odol_taldea']; ?>)</p>
+                    <p class="testu-grisa-txikia"><?php echo date('Y/m/d', strtotime($erabiltzaile_datuak['jaiotze_data'])); ?> (<?php echo $erabiltzaile_datuak['odol_taldea']; ?>)</p>
                 </div>
 
                 <?php if ($azken_erregistro_data): ?>
@@ -109,16 +108,16 @@ include_once '../php_orri_includeak/paziente_goiburua.php';
                             <div class="informazio-balioa"><?php echo htmlspecialchars($pisua ?: $erabiltzaile_datuak['azken_pisua'] ?: '-'); ?> kg</div>
                         </div>
                     </div>
-                    <p class="testu-gris-txikia marjina-goi-15"><?php echo $itzulpenak->dashboard_pazientea->eguneratua; ?>: <?php echo date('Y/m/d', strtotime($azken_erregistro_data)); ?></p>
+                    <p class="testu-grisa-txikia tarte-goia"><?php echo $itzulpenak->dashboard_pazientea->eguneratua; ?>: <?php echo date('Y/m/d', strtotime($azken_erregistro_data)); ?></p>
                 <?php else: ?>
                     <p class="testu-gris-etzana"><?php echo $itzulpenak->dashboard_pazientea->ez_dago_neurketarik; ?></p>
                 <?php endif; ?>
-                <a href="jarraipenak.php" id="dash-jarraipenak-btn" class="botoia botoi-nagusia marjina-goi-15 zabalera-osoa testua-erdian"><?php echo $itzulpenak->dashboard_pazientea->neurketa_berria; ?></a>
+                <a href="jarraipenak.php" id="dash-jarraipenak-btn" class="botoia botoi-nagusia tarte-goia w-osoa zentratu"><?php echo $itzulpenak->dashboard_pazientea->neurketa_berria; ?></a>
             </div>
 
             <!-- Hurrengo Hitzordua -->
             <div class="kutxa-zuria-itzala">
-                <h3 class="izenburu-iluna"><img src="../img/svg/calendar-days.svg" alt="" class="ikono-ertaina marjina-esk-5"> <?php echo $itzulpenak->dashboard_pazientea->hurrengo_hitzordua; ?></h3>
+                <h3 class="izenburu-iluna"><img src="../img/svg/calendar-days.svg" alt="" class="ikono-ertaina marjina-esk-10"> <?php echo $itzulpenak->dashboard_pazientea->hurrengo_hitzordua; ?></h3>
                 <?php if ($hurrengoHitzordua): ?>
                     <div class="paziente-txartel-zuria marjina-behe-0 txartel-zuri-argia kurtsore-erakuslea" onclick="viewAppointment(<?php echo $hurrengoHitzordua['id']; ?>)">
                         <div class="testua-erdian data-kutxa">
@@ -127,17 +126,17 @@ include_once '../php_orri_includeak/paziente_goiburua.php';
                         </div>
                         <div class="flex-bat">
                             <h4 class="izenburu-marjina-gabea">Osasun Langilea <?php echo htmlspecialchars($hurrengoHitzordua['mediku_izena'] . ' ' . $hurrengoHitzordua['mediku_abizenak']); ?></h4>
-                            <p class="ordua ordua-marjina-doitua"><img src="../img/svg/clock.svg" alt="" class="ikono-ertaina marjina-esk-5"> <?php echo date('H:i', strtotime($hurrengoHitzordua['hasiera_ordua'])); ?></p>
+                            <p class="ordua ordua-marjina-doitua"><img src="../img/svg/clock.svg" alt="" class="ikono-ertaina marjina-esk-10"> <?php echo date('H:i', strtotime($hurrengoHitzordua['hasiera_ordua'])); ?></p>
                         </div>
                     </div>
                 <?php else: ?>
                     <p class="testu-gris-etzana"><?php echo $itzulpenak->dashboard_pazientea->ez_hitzordurik; ?></p>
                 <?php endif; ?>
-                <a href="hitzorduak.php" class="botoia botoi-ertza marjina-goi-15 zabalera-osoa testua-erdian"><?php echo $itzulpenak->dashboard_pazientea->agenda_ikusi; ?></a>
+                <a href="hitzorduak.php" class="botoia botoi-ertza tarte-goia w-osoa zentratu"><?php echo $itzulpenak->dashboard_pazientea->agenda_ikusi; ?></a>
             </div>
         </div>
 
-        <h2 class="izenburu-nagusia marjina-behe-20"><img src="../img/svg/zap.svg" alt="" class="ikono-ertaina marjina-esk-5"> <?php echo $itzulpenak->erabiltzaile_panela->ekintza_azkarrak; ?></h2>
+        <h2 class="izenburu-nagusia tarte-behea"><img src="../img/svg/zap.svg" alt="" class="ikono-ertaina marjina-esk-10"> <?php echo $itzulpenak->erabiltzaile_panela->ekintza_azkarrak; ?></h2>
         <section class="menu-sareta">
             <a href="datuak.php" class="menu-txartela">
                 <div class="txartel-ikonoa"><img src="../img/svg/user-cog.svg" alt="Nire Datuak" class="ikono-handia-48"></div>
@@ -158,11 +157,6 @@ include_once '../php_orri_includeak/paziente_goiburua.php';
                 <div class="txartel-ikonoa"><img src="../img/svg/pill.svg" alt="Errezetak" class="ikono-handia-48"></div>
                 <h3><?php echo $itzulpenak->menua_pazientea->errezetak; ?></h3>
                 <p><?php echo $itzulpenak->menua_pazientea->errezetak_testua; ?></p>
-            </a>
-            <a href="abisuak.php" class="menu-txartela">
-                <div class="txartel-ikonoa"><img src="../img/svg/bell-ring.svg" alt="Abisuak" class="ikono-handia-48"></div>
-                <h3><?php echo $itzulpenak->menua_pazientea->abisuak; ?></h3>
-                <p><?php echo $itzulpenak->menua_pazientea->abisuak_testua; ?></p>
             </a>
             <a href="dokumentuak.php" class="menu-txartela">
                 <div class="txartel-ikonoa"><img src="../img/svg/file-text.svg" alt="Dokumentuak" class="ikono-handia-48"></div>
@@ -186,58 +180,13 @@ include_once '../php_orri_includeak/paziente_goiburua.php';
                 <p><?php echo $itzulpenak->erabiltzaile_panela->saioa_itxi_testua; ?></p>
             </a>
 
-            <div class="menu-txartela kutxa-osoa">
-                <div class="flex-tartea-15 marjina-behe-10">
-                    <h3 class="izenburu-marjina-gabea"><div class="txartel-ikonoa ikono-inline-handia"><img src="../img/svg/download.svg" alt="Download" class="ikono-24px-iragazkia"></div> <?php echo $itzulpenak->dashboard_pazientea->esportatu_xml; ?></h3>
-                </div>
-                <form id="xmlEsportazioForm" class="flex-tartea-15 flex-bukaera hutsartea-15">
-                    <div class="informazio-taldea flex-bat marjina-behe-0">
-                        <label for="xml_hasiera" class="testu-gris-txikia"><?php echo $itzulpenak->dashboard_pazientea->hasiera_data; ?>:</label>
-                        <input type="date" id="xml_hasiera" name="hasiera_data" class="inprimaki-kontrola" required>
-                    </div>
-                    <div class="informazio-taldea flex-bat marjina-behe-0">
-                        <label for="xml_bukaera" class="testu-gris-txikia"><?php echo $itzulpenak->dashboard_pazientea->bukaera_data; ?>:</label>
-                        <input type="date" id="xml_bukaera" name="bukaera_data" class="inprimaki-kontrola" value="<?php echo date('Y-m-d'); ?>" required>
-                    </div>
-                    <button type="button" id="btn-esportatu-xml" class="botoia botoi-nagusia marjina-behe-0"><?php echo $itzulpenak->dashboard_pazientea->deskargatu; ?></button>
-                </form>
-                <div id="xml-mezua"></div>
-            </div>
+            <!-- XML esportazio blokea kenduta -->
         </section>
     </main>
 
-    <script>
-    $(document).ready(function() {
-        $('#btn-esportatu-xml').click(function() {
-            const hasiera = $('#xml_hasiera').val();
-            const bukaera = $('#xml_bukaera').val();
-            const mezuEremua = $('#xml-mezua');
-            if (!hasiera) { mezuEremua.html('<div class="alerta alerta-errorea alerta-tartea" >Aukeratu hasiera data bat gutxienez.</div>'); return; }
-            mezuEremua.html('<div class="testu-gris-txikia marjina-goi-15" >XML txostena sortzen...</div>');
-            
-            $.ajax({
-                url: '../php_orri_laguntzaileak/xml_sortu.php', type: 'POST', dataType: 'json', 
-                data: { hasiera_data: hasiera, bukaera_data: bukaera },
-                success: function(response) {
-                    if(response.success) {
-                        mezuEremua.html('<div class="alerta alerta-arrakasta alerta-tartea" >' + response.msg + ' <a href="../' + response.url + '" target="_blank" class="esteka-arrakasta">Egin klik hemen!</a></div>');
-                        const a = document.createElement('a'); a.href = '../' + response.url;
-                        a.download = response.url.split('/').pop(); document.body.appendChild(a); a.click(); document.body.removeChild(a);
-                    } else {
-                        mezuEremua.html('<div class="alerta alerta-errorea alerta-tartea" >' + response.error + '</div>');
-                    }
-                },
-                error: function(xhr, status, error) {
-                    let msg = error; if(xhr.responseJSON && xhr.responseJSON.error) msg = xhr.responseJSON.error;
-                    mezuEremua.html('<div class="alerta alerta-errorea alerta-tartea" >Errorea: ' + msg + '</div>');
-                }
-            });
-        });
-    });
-    </script>
+    <!-- XML esportazio script kenduta -->
 
 <?php
-$js_gehigarria = ["paziente_menua.js"];
 include_once '../php_orri_includeak/paziente_footer.php';
 ?>
 

@@ -1,0 +1,85 @@
+<!-- MODALA: Dokumentu berria igo (PAZIENTEA) -->
+<div id="igoDokumentuaModala" class="modala">
+  <div class="modala-edukia">
+    <span class="itxi-modala" onclick="itxiModala('igoDokumentuaModala')"
+      >&times;</span
+    >
+    <h3 class="izenburu-nabarmena">
+      <img
+        src="../img/svg/download.svg"
+        alt=""
+        class="ikono-ertaina tarte-eskubia"
+      />
+      Dokumentu berria igo
+    </h3>
+    <form method="POST" enctype="multipart/form-data" class="tarte-goia">
+      <input type="hidden" name="action" value="gehitu_dokumentua" />
+      <input type="hidden" name="jarraipen_id" id="modal_jarraipen_id" />
+
+      <div class="inprimaki-taldea tarte-behea">
+        <label class="etiketa-lodia">Dokumentuaren izena *</label>
+        <input
+          type="text"
+          name="dokumentu_izena"
+          required
+          class="inprimaki-kontrola"
+          placeholder="Adib: Analisia, Txostena..."
+        />
+      </div>
+
+      <div class="inprimaki-taldea tarte-behea">
+        <label class="etiketa-lodia">Deskribapena</label>
+        <textarea
+          name="deskribapena"
+          class="inprimaki-kontrola"
+          rows="2"
+        ></textarea>
+      </div>
+
+      <div class="inprimaki-taldea tarte-behea">
+        <label class="etiketa-lodia">PDF fitxategia *</label>
+        <input
+          type="file"
+          name="pdf_fitxategia"
+          required
+          accept="application/pdf"
+          class="inprimaki-kontrola"
+        />
+      </div>
+
+      <div class="botoi-taldea flex-bukaera">
+        <button
+          type="button"
+          class="botoia botoi-ertza"
+          onclick="itxiModala('igoDokumentuaModala')"
+        >
+          Utzi
+        </button>
+        <button type="submit" class="botoia botoi-nagusia">
+          Gorde Dokumentua
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- MODALA: Lotutako Dokumentuak ikusi (PAZIENTEA) -->
+<div id="ikusiDokumentuakModala" class="modala">
+  <div class="modala-edukia modala-handia">
+    <span class="itxi-modala" onclick="itxiModala('ikusiDokumentuakModala')"
+      >&times;</span
+    >
+    <h3 class="izenburu-nabarmena">
+      <img
+        src="../img/svg/file-text.svg"
+        alt=""
+        class="ikono-ertaina tarte-eskubia"
+      />
+      Lotutako Dokumentuak
+    </h3>
+    <div id="dokumentuZerrendaEremua" class="tarte-goia">
+      <!-- AJAX bidez beteko da -->
+      <p class="testua-erdian padding-20">Kargatzen...</p>
+    </div>
+  </div>
+</div>

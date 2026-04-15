@@ -6,7 +6,7 @@
                 <span class="itxi-modala">&times;</span>
             </div>
             <div class="modal-gorputza">
-                
+
                 <p class="testu-grisa testua-erdian-marjina-behe-20"><?php echo $itzulpenak->ezarpenak->laguntza; ?></p>
                 <?php if (isset($_GET['ezarpenak_gordeta'])): ?>
                     <div class="alerta alerta-arrakasta marjina-goi-15 testua-erdian-marjina-behe-20"><?php echo $itzulpenak->ezarpenak->gordeta; ?></div>
@@ -14,11 +14,11 @@
                 <?php if (isset($_GET['ezarpenak_reset'])): ?>
                     <div class="alerta alerta-arrakasta marjina-goi-15 testua-erdian-marjina-behe-20"><?php echo $itzulpenak->ezarpenak->reset_mezua; ?></div>
                 <?php endif; ?>
-                
+
                 <form action="<?php echo $bide_absolutua; ?>php_orri_laguntzaileak/ezarpenak_gorde.php" method="POST">
                     <input type="hidden" name="form_type" value="orokorra">
                     <input type="hidden" name="nondik" value="<?php echo htmlspecialchars($_SERVER['REQUEST_URI']); ?>">
-                    
+
                     <div class="inprimaki-taldea">
                         <label><?php echo $itzulpenak->ezarpenak->hizkuntza; ?></label>
                         <div class="hizkuntza-hautatzailea">
@@ -52,22 +52,22 @@
                             </div>
                         </div>
                     </div>
- 
+
                     <div class="inprimaki-taldea">
                         <label><?php echo $itzulpenak->ezarpenak->kolore_nagusia; ?></label>
                         <input type="color" name="kolore_nagusia" value="<?php echo htmlspecialchars($kolore_nagusia_def); ?>" class="inprimaki-kontrola sarrera-altuera-50">
                     </div>
- 
+
                     <div class="inprimaki-taldea">
                         <label><?php echo $itzulpenak->ezarpenak->bigarren_kolorea; ?></label>
                         <input type="color" name="bigarren_kolorea" value="<?php echo htmlspecialchars($bigarren_kolorea_def); ?>" class="inprimaki-kontrola sarrera-altuera-50">
                     </div>
- 
+
                     <div class="inprimaki-taldea">
                         <label><?php echo $itzulpenak->ezarpenak->footer_kolorea; ?></label>
                         <input type="color" name="footer_kolorea" value="<?php echo htmlspecialchars($footer_kolorea_def); ?>" class="inprimaki-kontrola sarrera-altuera-50">
                     </div>
- 
+
                     <div class="inprimaki-taldea">
                         <label><?php echo $itzulpenak->ezarpenak->itxura; ?></label>
                         <select name="gaia" class="inprimaki-kontrola">
@@ -75,12 +75,12 @@
                             <option value="iluna" <?php echo ($gaia_def === 'iluna') ? 'selected' : ''; ?>><?php echo $itzulpenak->ezarpenak->gaia_iluna; ?></option>
                         </select>
                     </div>
- 
+
                     <div class="testua-erdian-marjina-goi-30">
                         <button type="submit" class="botoia botoi-nagusia zabalera-osoa-300px"><?php echo $itzulpenak->ezarpenak->gorde_botoia; ?></button>
                     </div>
                 </form>
- 
+
                 <form action="<?php echo $bide_absolutua; ?>php_orri_laguntzaileak/ezarpenak_gorde.php" method="POST" class="marjina-goi-15">
                     <input type="hidden" name="ekintza" value="reset">
                     <input type="hidden" name="form_type" value="orokorra">

@@ -11,7 +11,15 @@ $(document).ready(function() {
         const pisua = $('#pisua').val();
         const pultsua = $('#pultsua').val();
         const oharrak = $('#sintomak').val();
+        const paziente_id_input = $('#paziente_id').val(); // Medikuaren formularioan egon daiteke
         
+        // Medikuaren formularioa bada, pazientea hautatua dagoela ziurtatu
+        if ($('#paziente_id').length > 0 && !paziente_id_input) {
+            e.preventDefault();
+            alert("Paziente bat aukeratu behar duzu.");
+            return;
+        }
+
         // Egiaztatu gutxienez datu bat sartu dela
         if (glukosa !== '' || (sistolikoa !== '' && diastolikoa !== '') || pisua !== '' || pultsua !== '' || oharrak !== '') {
             gutxienez_bat_behar_da = true;
@@ -19,30 +27,34 @@ $(document).ready(function() {
 
         if (!gutxienez_bat_behar_da) {
             e.preventDefault();
-            alerta("Gutxienez neurketa edo ohar bat bete behar duzu gordetzeko.");
+            if (typeof alerta === 'function') alerta("Gutxienez neurketa edo ohar bat bete behar duzu gordetzeko.");
+            else alert("Gutxienez neurketa edo ohar bat bete behar duzu gordetzeko.");
             return;
         }
 
         // Glukosa balidazioa (baldin badago)
         if (glukosa !== '') {
             if (parseInt(glukosa) < 20 || parseInt(glukosa) > 600) {
-                $('#err-glukosa').show();
+                if ($('#err-glukosa').length) $('#err-glukosa').show();
+                else alert("Glukosa balio ezegokia.");
                 baliozkoa_da = false;
             } else {
-                $('#err-glukosa').hide();
+                if ($('#err-glukosa').length) $('#err-glukosa').hide();
             }
         }
 
         // Tentsio balidazioa (baldin badago bata, bestea ere behar da)
         if (sistolikoa !== '' || diastolikoa !== '') {
             if (sistolikoa === '' || diastolikoa === '') {
-                $('#err-tentsioa').text("Bi balioak (sistolikoa eta diastolikoa) behar dira.").show();
+                if ($('#err-tentsioa').length) $('#err-tentsioa').text("Bi balioak (sistolikoa eta diastolikoa) behar dira.").show();
+                else alert("Bi balioak (sistolikoa eta diastolikoa) behar dira.");
                 baliozkoa_da = false;
             } else if (parseInt(sistolikoa) < 50 || parseInt(diastolikoa) < 30 || parseInt(diastolikoa) >= parseInt(sistolikoa)) {
-                $('#err-tentsioa').text("Balio ezegokiak. Sis > Dia izan behar da (Sis > 50, Dia > 30).").show();
+                if ($('#err-tentsioa').length) $('#err-tentsioa').text("Balio ezegokiak. Sis > Dia izan behar da (Sis > 50, Dia > 30).").show();
+                else alert("Balio ezegokiak. Sis > Dia izan behar da.");
                 baliozkoa_da = false;
             } else {
-                $('#err-tentsioa').hide();
+                if ($('#err-tentsioa').length) $('#err-tentsioa').hide();
             }
         }
 
@@ -50,10 +62,11 @@ $(document).ready(function() {
         if (pisua !== '') {
             let numPisua = parseFloat(pisua.replace(',', '.'));
             if (numPisua < 20 || numPisua > 300) {
-                $('#err-pisua').show();
+                if ($('#err-pisua').length) $('#err-pisua').show();
+                else alert("Pisu balio ezegokia.");
                 baliozkoa_da = false;
             } else {
-                $('#err-pisua').hide();
+                if ($('#err-pisua').length) $('#err-pisua').hide();
             }
         }
 
@@ -70,21 +83,21 @@ $(document).ready(function() {
         }
 
         if (baliozkoa_da) {
-            // Logika hemen: Formularioa bidali aurretik abisuak egiaztatu ditzakegu
-            // Edo formularioa bidali ondoren (AJAX bidez bada hobe)
-            // Kasu honetan, PHP-k orria birkargatuko duenez, hobe da submit-aren aurretik egitea
-            // baina pazient_id behar dugu orrialdetik lortu
-            const pazienteId = $('.panel-nagusia').data('paziente-id');
+            // Abisuak egiaztatu AJAX bidez
+            const pazienteId = paziente_id_input || $('.panel-nagusia').data('paziente-id');
             
-            const data = {
-                glukosa: glukosa,
-                sistolikoa: sistolikoa,
-                diastolikoa: diastolikoa,
-                pisua: pisua,
-                pultsua: pultsua
-            };
-
-            egiaztatuAbisuak(pazienteId, data);
+            if (pazienteId) {
+                const data = {
+                    glukosa: glukosa,
+                    sistolikoa: sistolikoa,
+                    diastolikoa: diastolikoa,
+                    pisua: pisua,
+                    pultsua: pultsua
+                };
+                if (typeof egiaztatuAbisuak === 'function') {
+                    egiaztatuAbisuak(pazienteId, data);
+                }
+            }
         } else {
             e.preventDefault();
         }

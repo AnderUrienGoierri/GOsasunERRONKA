@@ -1,7 +1,7 @@
 <?php
 /**
  * Hizkuntza kargatzen du XML-tik.
- * 
+ *
  * @param string $hizkuntza Hizkuntza kodea (eu, es, en, nl).
  * @return SimpleXMLElement|null Itzulpenen objektua edo null akatsa badago.
  */

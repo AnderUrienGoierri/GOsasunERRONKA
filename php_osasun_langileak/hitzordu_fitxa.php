@@ -40,10 +40,10 @@ include_once '../php_orri_includeak/osasun_langile_goiburua.php';
 <main class="panel-nagusia">
     <div class="orri-goiburua">
         <div>
-            <h2><img src="../img/svg/calendar-check.svg" alt="" class="ikono-ertaina marjina-esk-5"> Hitzordua</h2>
+            <h2><img src="../img/svg/calendar.svg" alt="" class="ikono-ertaina marjina-esk-5"> Hitzordua</h2>
             <p>Pazientearen hitzorduaren xehetasunak.</p>
         </div>
-        <a href="hitzorduak.php" class="botoia botoi-ertza">â† Itzuli</a>
+        <a href="hitzorduak.php" class="botoia botoi-ertza flex-zentratua"><img src="../img/svg/arrow-left.svg" alt="" class="ikono-txikia marjina-esk-5"> Itzuli</a>
     </div>
 
     <div class="kutxa-zuria-700">

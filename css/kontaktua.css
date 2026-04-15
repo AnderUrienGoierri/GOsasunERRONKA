@@ -87,6 +87,16 @@
 }
 
 /* ================= EBAZPEN-ARAUAK (Media queries) ================= */
+
+
+
+
+.mapa-iframe {
+  border: 0;
+  border-radius: 12px;
+}
+
+/* === @MEDIA KONTSULTAK === */
 @media (max-width: 768px) {
     .kontaktu-edukiontzia {
         padding: 25px;
@@ -94,11 +104,4 @@
     .kontaktu-sekzioa {
         flex-direction: column;
     }
-}
-
-
-
-.mapa-iframe {
-  border: 0;
-  border-radius: 12px;
 }

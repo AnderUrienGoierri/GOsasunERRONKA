@@ -90,33 +90,36 @@ async function hasiTxostenSorkuntza() {
             
             for (const chartType of charts) {
                 const canvasId = `chart_${chartType}`;
-                container.innerHTML += `<div style="margin-bottom: 30px; height: 300px; width: 100%;">
-                                            <canvas id="${canvasId}"></canvas>
+                container.innerHTML += `<div style="margin-bottom: 30px; width: 100%;">
+                                            <canvas id="${canvasId}" width="800" height="400"></canvas>
                                          </div>`;
                 
                 // We need to render the chart AFTER it's in the DOM
-                await new Promise(resolve => setTimeout(resolve, 100));
+                await new Promise(resolve => setTimeout(resolve, 300));
                 
-                const ctx = document.getElementById(canvasId).getContext('2d');
+                const canvasEl = document.getElementById(canvasId);
+                const ctx = canvasEl.getContext('2d');
                 let datasets = [];
                 let labels = rawData.map(d => d.erregistro_data.split(' ')[0]);
 
                 if (chartType === 'tentsioa') {
                     datasets = [
-                        { label: 'Sistolikoa', data: rawData.map(d => d.tentsio_sistolikoa), borderColor: '#dc3545', tension: 0.1 },
-                        { label: 'Diastolikoa', data: rawData.map(d => d.tentsio_diastolikoa), borderColor: '#17a2b8', tension: 0.1 }
+                        { label: 'Sistolikoa', data: rawData.map(d => d.tentsio_sistolikoa), borderColor: '#dc3545', backgroundColor: '#dc3545', tension: 0.1, fill: false },
+                        { label: 'Diastolikoa', data: rawData.map(d => d.tentsio_diastolikoa), borderColor: '#17a2b8', backgroundColor: '#17a2b8', tension: 0.1, fill: false }
                     ];
                 } else {
                     const config = {
-                        'pisua_kg': { label: 'Pisua (kg)', color: '#007bff' },
-                        'pultsua_ppm': { label: 'Pultsua (ppm)', color: '#fd7e14' },
-                        'altuera': { label: 'Altuera (cm)', color: '#28a745' }
+                        'pisua_kg': { label: 'Pisua (kg)', color: '#2563eb' },
+                        'pultsua_ppm': { label: 'Pultsua (ppm)', color: '#d97706' },
+                        'altuera': { label: 'Altuera (cm)', color: '#059669' }
                     };
                     datasets = [{
                         label: config[chartType].label,
                         data: rawData.map(d => d[chartType]),
                         borderColor: config[chartType].color,
-                        tension: 0.1
+                        backgroundColor: config[chartType].color,
+                        tension: 0.1,
+                        fill: false
                     }];
                 }
 
@@ -124,36 +127,67 @@ async function hasiTxostenSorkuntza() {
                     type: 'line',
                     data: { labels, datasets },
                     options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        animation: false, // Important for PDF capture
-                        plugins: { legend: { position: 'top' } }
+                        responsive: false, // Use hardcoded width/height for PDF stability
+                        maintainAspectRatio: true,
+                        animation: false,
+                        plugins: { 
+                            legend: { position: 'top', labels: { boxWidth: 12, font: { size: 10 } } } 
+                        },
+                        scales: {
+                            y: { beginAtZero: false, ticks: { font: { size: 9 } } },
+                            x: { ticks: { font: { size: 9 } } }
+                        }
                     }
                 });
                 
                 // Wait for chart to settle
-                await new Promise(resolve => setTimeout(resolve, 200));
+                await new Promise(resolve => setTimeout(resolve, 300));
             }
         }
 
         // 4. Generate PDF
-        statusText.textContent = "PDF-a sortzen...";
+        statusText.textContent = "PDF-a sortzen... (Hau luzeagoa izan daiteke)";
+        
+        // Ensure the container is "visible" for html2canvas
+        // We move it from off-screen to a visible but hidden state if needed
+        container.style.position = 'fixed';
+        container.style.top = '0';
+        container.style.left = '0';
+        container.style.zIndex = '-9999';
+        container.style.visibility = 'visible';
+        container.style.opacity = '1';
+
         const opt = {
             margin:       10,
-            filename:     t_izena + '.pdf',
+            filename:     t_izena.replace(/\s+/g, '_') + '.pdf',
             image:        { type: 'jpeg', quality: 0.98 },
-            html2canvas:  { scale: 2 },
+            html2canvas:  { 
+                scale: 2, 
+                useCORS: true, 
+                allowTaint: true,
+                letterRendering: true,
+                logging: false
+            },
             jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
         };
 
+        // Wait for EVERYTHING to be stable
+        await new Promise(resolve => setTimeout(resolve, 800));
+        
         const pdfBlob = await html2pdf().set(opt).from(container).output('blob');
+        
+        // Restore container hidden state
+        container.style.position = 'fixed';
+        container.style.top = '-10000px';
 
         // 5. Upload to pdf_sortu.php
-        statusText.textContent = "Zerbitzarian gordetzen...";
+        statusText.textContent = "Zure txostena gorde eta prestatzen...";
+        const c_jarraipen = document.getElementById('create_jarraipen')?.checked ? 1 : 0;
         const formData = new FormData();
         formData.append('pdf', pdfBlob, opt.filename);
         formData.append('paziente_id', p_id);
         formData.append('txosten_izena', t_izena);
+        formData.append('create_jarraipen', c_jarraipen);
 
         const uploadResp = await fetch('../php_orri_laguntzaileak/pdf_sortu.php', {
             method: 'POST',
@@ -162,12 +196,20 @@ async function hasiTxostenSorkuntza() {
         const uploadResult = await uploadResp.json();
 
         if (uploadResult.success) {
+            // Build a reliable absolute web URL
+            const urlParts = window.location.pathname.split('/');
+            // Expecting: ["", "GOsasun_web", "php_osasun_langileak", "txostena_eraiki.php"]
+            // We want everything up to the project root (GOsasun_web)
+            const rootIndex = urlParts.indexOf('GOsasun_web');
+            const basePath = rootIndex !== -1 ? urlParts.slice(0, rootIndex + 1).join('/') + '/' : '/';
+            const fullUrl = window.location.origin + basePath + uploadResult.url;
+
             status.innerHTML = `<p style="color: #059669; font-weight: bold;">Txostena ondo sortu da!</p>
-                                <a href="../${uploadResult.url}" target="_blank" style="color: #0369a1; text-decoration: underline;">Klikatu hemen ikusteko</a>`;
+                                <a href="${fullUrl}" target="_blank" style="color: #0369a1; text-decoration: underline;">Klikatu hemen ikusteko</a>`;
             
             // Auto download
             const link = document.createElement('a');
-            link.href = '../' + uploadResult.url;
+            link.href = fullUrl;
             link.download = uploadResult.filename;
             document.body.appendChild(link);
             link.click();

@@ -8,7 +8,7 @@
 
         <form id="txostenForm">
             <input type="hidden" id="txosten_paziente_id" value="<?php echo $paziente_id; ?>">
-            
+
             <div class="inprimaki-taldea" style="margin-bottom:20px;">
                 <label style="display:block; font-weight:600; margin-bottom:8px; color:#1e293b;">Txostenaren Izena</label>
                 <input type="text" id="txosten_izena" class="inprimaki-kontrola" placeholder="Adib: Jarraipen Klinikoa Ane" style="width:100%; padding:10px; border:1px solid #cbd5e1; border-radius:6px;">

@@ -124,10 +124,10 @@ include_once '../php_orri_includeak/osasun_langile_goiburua.php';
         <div class="errezetak-edukiontzia marjina-goi-30">
             <?php if (count($errezetak) > 0): ?>
                 <?php foreach ($errezetak as $e): ?>
-                    <?php 
+                    <?php
                         $gaurH = strtotime(date('Y-m-d'));
                         $iraungitzeaH = $e['iraungitze_data'] ? strtotime($e['iraungitze_data']) : null;
-                        
+
                         if ($e['aktibo'] == 0) {
                             $egoeraKoba = 'baliogabetuta';
                             $egoeraTestua = 'Baliogabetuta';

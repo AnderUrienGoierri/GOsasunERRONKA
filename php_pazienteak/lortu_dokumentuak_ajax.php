@@ -1,15 +1,14 @@
 <?php
-// lortu_dokumentuak_ajax.php
+// lortu_dokumentuak_ajax.php (PAZIENTEA)
 require_once '../php_orri_laguntzaileak/DB_konexioa.php';
 session_start();
 
-if (!isset($_SESSION['rol_id']) || $_SESSION['rol_izena'] !== 'Osasun Langilea') {
+if (!isset($_SESSION['rol_id']) || $_SESSION['rol_izena'] !== 'Pazientea') {
     echo "<p class='alerta alerta-errorea'>Baimenik gabe.</p>";
     exit;
 }
 
 $j_id = intval($_GET['id'] ?? 0);
-
 if (!$j_id) {
     echo "<p class='testua-erdian padding-20'>Ez da jarraipenik aurkitu.</p>";
     exit;

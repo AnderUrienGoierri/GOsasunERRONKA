@@ -43,7 +43,7 @@ include_once '../php_orri_includeak/harrera_goiburua.php';
             <h2><img src="../img/svg/calendar-days.svg" alt="" class="ikono-ertaina marjina-esk-5"> Hitzordua</h2>
             <p>Hitzorduaren xehetasunak (Harrera).</p>
         </div>
-        <a href="hitzorduak.php"  class="botoia botoi-ertza">← Itzuli</a>
+        <a href="hitzorduak.php"  class="botoia botoi-ertza flex-zentratua"><img src="../img/svg/arrow-left.svg" alt="" class="ikono-txikia marjina-esk-5"> Itzuli</a>
     </div>
 
     <div class="kutxa-zuria-700">

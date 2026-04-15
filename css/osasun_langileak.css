@@ -91,6 +91,24 @@
     margin-top: 10px;
 }
 
+/* === TXOSTENA ERAIKI - ESPECIFIC STYLES === */
+.txartel-zuria { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
+.izenburu-urdina-txikia { color: var(--primary-color); display: flex; align-items: center; border-bottom: 1px solid #e2e8f0; padding-bottom: 10px; margin-bottom: 20px; }
+.konfigurazio-atala { border-bottom: 1px solid #f1f5f9; padding-bottom: 20px; }
+.etiketa-lodibitxia { font-weight: 600; color: var(--text-base); margin-bottom: 8px; display: block; }
+.aukera-etiketa { display: block; margin-bottom: 10px; cursor: pointer; color: var(--text-dark); }
+.aukera-etiketa input { margin-right: 10px; transform: scale(1.2); }
+.botoia-preset { background: #f1f5f9; border: 1px solid #e2e8f0; padding: 5px 12px; border-radius: 20px; font-size: 0.85rem; cursor: pointer; transition: all 0.2s; }
+.botoia-preset:hover { background: var(--primary-color); color: white; border-color: var(--primary-color); }
+.loader-txikia { border: 3px solid #f3f3f3; border-top: 3px solid var(--primary-color); border-radius: 50%; width: 20px; height: 20px; animation: spin 1s linear infinite; }
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+.informazio-kutxa-lagungarria { background: #fffcf0; border: 1px solid #fef3c7; padding: 15px; border-radius: 8px; font-size: 0.9rem; color: #92400e; }
+.informazio-kutxa-lagungarria ul { margin: 10px 0 0 20px; padding: 0; }
+.zabal-100 { width: 100%; justify-content: center; padding: 15px; font-size: 1.1rem; }
+.ezkutatuta { display: none; }
+.aukera-etiketa-txikia { display: block; margin-bottom: 5px; font-size: 0.9rem; color: #475569; }
+
+/* === @MEDIA KONTSULTAK === */
 @media (max-width: 768px) {
     .fitxa-edukiontzia { grid-template-columns: 1fr; }
 }

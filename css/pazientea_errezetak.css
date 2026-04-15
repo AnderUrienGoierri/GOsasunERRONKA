@@ -153,6 +153,7 @@
 .marjina-ezk-10 { margin-left: 10px; }
 .marjina-goi-30 { margin-top: 30px; }
 
+/* === @MEDIA KONTSULTAK === */
 @media (max-width: 600px) {
     .errezeta-txartela {
         flex-direction: column;

@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $ext = pathinfo($_FILES['irudia']['name'], PATHINFO_EXTENSION);
         $fitxategi_izena = $izena . "_" . time() . ".png";
         $helburua = "../img/png/" . $fitxategi_izena;
-        
+
         if (move_uploaded_file($_FILES['irudia']['tmp_name'], $helburua)) {
             $irudia_izena = "img/png/" . $fitxategi_izena;
         }
@@ -73,7 +73,7 @@ include_once '../php_orri_includeak/harrera_goiburua.php';
             <h2><img src="../img/svg/plus-circle.svg" alt="" class="ikono-ertaina marjina-esk-5"> Harrerako Langile Berria</h2>
             <p>Sortu harrerako langile berri bat sisteman sartzeko.</p>
         </div>
-        <a href="harrerako_langileak.php" class="botoia botoi-ertza">← Itzuli</a>
+        <a href="harrerako_langileak.php" class="botoia botoi-ertza flex-zentratua"><img src="../img/svg/arrow-left.svg" alt="" class="ikono-txikia marjina-esk-5"> Itzuli</a>
     </div>
 
     <?php if ($errorea): ?>
@@ -82,7 +82,7 @@ include_once '../php_orri_includeak/harrera_goiburua.php';
 
     <div class="inprimaki-edukiontzia form-edukiontzi-zuria padding-30 kutxa-itzala">
         <form method="POST" enctype="multipart/form-data">
-            
+
             <h3 class="izenburu-urdina marjina-behe-20"><img src="../img/svg/user.svg" alt="" class="ikono-ertaina marjina-esk-5"> Datu Pertsonalak eta Argazkia</h3>
             <div class="inprimaki-taldea marjina-behe-20 p-20 fts-14 bg-gris-argia desk-marjin">
                 <label for="irudia" class="etiketa-lodia">Profil Argazkia</label><br>
@@ -115,7 +115,7 @@ include_once '../php_orri_includeak/harrera_goiburua.php';
             <hr class="marjina-behe-20 separator">
 
             <h3 class="izenburu-urdina marjina-behe-20"><img src="../img/svg/briefcase.svg" alt="" class="ikono-ertaina marjina-esk-5"> Lan-txanda</h3>
-            
+
             <div class="sareta-bikoa marjina-behe-30">
                 <div class="inprimaki-taldea">
                     <label for="txanda" class="etiketa-lodia">Txanda</label>
@@ -131,7 +131,7 @@ include_once '../php_orri_includeak/harrera_goiburua.php';
             <hr class="marjina-behe-20 separator">
 
             <h3 class="izenburu-urdina marjina-behe-20"><img src="../img/svg/key.svg" alt="" class="ikono-ertaina marjina-esk-5"> Kontu Datuak</h3>
-            
+
             <div class="sareta-bikoa marjina-behe-15">
                 <div class="inprimaki-taldea">
                     <label for="email" class="etiketa-lodia">E-posta <span class="beharrezkoa">*</span></label>

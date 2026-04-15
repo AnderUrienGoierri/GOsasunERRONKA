@@ -62,17 +62,17 @@ include_once '../php_orri_includeak/harrera_goiburua.php';
         <div class="kutxa-zuria-itzala marjina-behe-20 padding-15">
             <div class="testu-lodia marjina-behe-10">Zutabeak Erakutsi/Ezkutatu:</div>
             <div class="flex-sareta-5">
-                <label><input type="checkbox" checked onchange="toggleColumn(0, this, 'pazienteTaula')"> Argazkia</label>
-                <label><input type="checkbox" checked onchange="toggleColumn(3, this, 'pazienteTaula')"> Email</label>
-                <label><input type="checkbox" checked onchange="toggleColumn(4, this, 'pazienteTaula')"> NAN</label>
-                <label><input type="checkbox" checked onchange="toggleColumn(5, this, 'pazienteTaula')"> Sexua</label>
-                <label><input type="checkbox" checked onchange="toggleColumn(6, this, 'pazienteTaula')"> Jaiotze Data</label>
-                <label><input type="checkbox" checked onchange="toggleColumn(7, this, 'pazienteTaula')"> Telefonoa</label>
-                <label><input type="checkbox" checked onchange="toggleColumn(8, this, 'pazienteTaula')"> Helbidea</label>
-                <label><input type="checkbox" checked onchange="toggleColumn(9, this, 'pazienteTaula')"> P.K.</label>
-                <label><input type="checkbox" checked onchange="toggleColumn(10, this, 'pazienteTaula')"> Herria</label>
-                <label><input type="checkbox" checked onchange="toggleColumn(11, this, 'pazienteTaula')"> O.T.</label>
-                <label><input type="checkbox" checked onchange="toggleColumn(12, this, 'pazienteTaula')"> Egoera</label>
+                <label><input type="checkbox" checked onchange="toggleColumn(3, this, 'pazienteTaula')"> Argazkia</label>
+                <label><input type="checkbox" checked onchange="toggleColumn(4, this, 'pazienteTaula')"> Email</label>
+                <label><input type="checkbox" checked onchange="toggleColumn(5, this, 'pazienteTaula')"> NAN</label>
+                <label><input type="checkbox" checked onchange="toggleColumn(6, this, 'pazienteTaula')"> Sexua</label>
+                <label><input type="checkbox" checked onchange="toggleColumn(7, this, 'pazienteTaula')"> Jaiotze Data</label>
+                <label><input type="checkbox" checked onchange="toggleColumn(8, this, 'pazienteTaula')"> Telefonoa</label>
+                <label><input type="checkbox" checked onchange="toggleColumn(9, this, 'pazienteTaula')"> Helbidea</label>
+                <label><input type="checkbox" checked onchange="toggleColumn(10, this, 'pazienteTaula')"> P.K.</label>
+                <label><input type="checkbox" checked onchange="toggleColumn(11, this, 'pazienteTaula')"> Herria</label>
+                <label><input type="checkbox" checked onchange="toggleColumn(12, this, 'pazienteTaula')"> O.T.</label>
+                <label><input type="checkbox" checked onchange="toggleColumn(13, this, 'pazienteTaula')"> Egoera</label>
             </div>
         </div>
 
@@ -80,25 +80,37 @@ include_once '../php_orri_includeak/harrera_goiburua.php';
             <table class="erabiltzaile-taula" id="pazienteTaula">
                 <thead>
                     <tr>
-                        <th>Argazkia</th>
-                        <th class="kurtsore-erakuslea" onclick="ordenatuTaula(1)">ID <img src="../img/svg/sort.svg" alt="" class="ikono-txikia-gardena"></th>
-                        <th class="kurtsore-erakuslea" onclick="ordenatuTaula(2)">Izena/Abizenak <img src="../img/svg/sort.svg" alt="" class="ikono-txikia-gardena"></th>
-                        <th class="kurtsore-erakuslea" onclick="ordenatuTaula(3)">Email <img src="../img/svg/sort.svg" alt="" class="ikono-txikia-gardena"></th>
-                        <th class="kurtsore-erakuslea" onclick="ordenatuTaula(4)">NAN <img src="../img/svg/sort.svg" alt="" class="ikono-txikia-gardena"></th>
-                        <th class="kurtsore-erakuslea" onclick="ordenatuTaula(5)">Sexua <img src="../img/svg/sort.svg" alt="" class="ikono-txikia-gardena"></th>
-                        <th class="kurtsore-erakuslea" onclick="ordenatuTaula(6)">Jaiotze Data <img src="../img/svg/sort.svg" alt="" class="ikono-txikia-gardena"></th>
-                        <th class="kurtsore-erakuslea" onclick="ordenatuTaula(7)">Telefonoa <img src="../img/svg/sort.svg" alt="" class="ikono-txikia-gardena"></th>
-                        <th class="kurtsore-erakuslea" onclick="ordenatuTaula(8)">Helbidea <img src="../img/svg/sort.svg" alt="" class="ikono-txikia-gardena"></th>
-                        <th class="kurtsore-erakuslea" onclick="ordenatuTaula(9)">P.K. <img src="../img/svg/sort.svg" alt="" class="ikono-txikia-gardena"></th>
-                        <th class="kurtsore-erakuslea" onclick="ordenatuTaula(10)">Herria <img src="../img/svg/sort.svg" alt="" class="ikono-txikia-gardena"></th>
-                        <th class="kurtsore-erakuslea" onclick="ordenatuTaula(11)">O.T. <img src="../img/svg/sort.svg" alt="" class="ikono-txikia-gardena"></th>
-                        <th class="kurtsore-erakuslea" onclick="ordenatuTaula(12)">Egoera <img src="../img/svg/sort.svg" alt="" class="ikono-txikia-gardena"></th>
+                        <th class="kurtsore-erakuslea" onclick="ordenatuTaula(0)">ID <img src="../img/svg/sort.svg" alt="" class="ikono-txikia-gardena"></th>
+                        <th class="kurtsore-erakuslea" onclick="ordenatuTaula(1)">Izena/Abizenak <img src="../img/svg/sort.svg" alt="" class="ikono-txikia-gardena"></th>
                         <th>Ekintzak</th>
+                        <th>Argazkia</th>
+                        <th class="kurtsore-erakuslea" onclick="ordenatuTaula(4)">Email <img src="../img/svg/sort.svg" alt="" class="ikono-txikia-gardena"></th>
+                        <th class="kurtsore-erakuslea" onclick="ordenatuTaula(5)">NAN <img src="../img/svg/sort.svg" alt="" class="ikono-txikia-gardena"></th>
+                        <th class="kurtsore-erakuslea" onclick="ordenatuTaula(6)">Sexua <img src="../img/svg/sort.svg" alt="" class="ikono-txikia-gardena"></th>
+                        <th class="kurtsore-erakuslea" onclick="ordenatuTaula(7)">Jaiotze Data <img src="../img/svg/sort.svg" alt="" class="ikono-txikia-gardena"></th>
+                        <th class="kurtsore-erakuslea" onclick="ordenatuTaula(8)">Telefonoa <img src="../img/svg/sort.svg" alt="" class="ikono-txikia-gardena"></th>
+                        <th class="kurtsore-erakuslea" onclick="ordenatuTaula(9)">Helbidea <img src="../img/svg/sort.svg" alt="" class="ikono-txikia-gardena"></th>
+                        <th class="kurtsore-erakuslea" onclick="ordenatuTaula(10)">P.K. <img src="../img/svg/sort.svg" alt="" class="ikono-txikia-gardena"></th>
+                        <th class="kurtsore-erakuslea" onclick="ordenatuTaula(11)">Herria <img src="../img/svg/sort.svg" alt="" class="ikono-txikia-gardena"></th>
+                        <th class="kurtsore-erakuslea" onclick="ordenatuTaula(12)">O.T. <img src="../img/svg/sort.svg" alt="" class="ikono-txikia-gardena"></th>
+                        <th class="kurtsore-erakuslea" onclick="ordenatuTaula(13)">Egoera <img src="../img/svg/sort.svg" alt="" class="ikono-txikia-gardena"></th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php foreach ($pazienteak as $p): ?>
                         <tr>
+                            <td class="identifikadorea">#<?php echo $p['paziente_id']; ?></td>
+                            <td>
+                                <strong><a href="paziente_fitxa.php?id=<?php echo $p['paziente_id']; ?>" class="esteka-nagusia"><?php echo htmlspecialchars($p['abizenak'] . ', ' . $p['izena']); ?></a></strong>
+                            </td>
+                            <td>
+                                <div class="taula-ekintzak">
+                                    <a href="paziente_fitxa.php?id=<?php echo $p['paziente_id']; ?>" class="botoi-ikonoa" title="Ikusi Fitxa"><img src="../img/svg/eye.svg" alt="" class="ikono-ertaina"></a>
+                                    <a href="hitzorduak.php?filter_paziente_id=<?php echo $p['paziente_id']; ?>" class="botoi-ikonoa hitzordu-botoia" title="Hitzorduak"><img src="../img/svg/calendar-days.svg" alt="" class="ikono-ertaina"></a>
+                                    <a href="paziente_editatu.php?id=<?php echo $p['paziente_id']; ?>" class="botoi-ikonoa editatu-botoia" title="Editatu"><img src="../img/svg/pencil.svg" alt="" class="ikono-ertaina"></a>
+                                    <a href="pazienteak.php?delete_id=<?php echo $p['paziente_id']; ?>" class="botoi-ikonoa ezabatu-botoia" onclick="return confirm('Ziur zaude paziente hau eta bere datu guztiak ezabatu nahi dituzula?');" title="Ezabatu"><img src="../img/svg/trash-2.svg" alt="" class="ikono-ertaina"></a>
+                                </div>
+                            </td>
                             <td class="zabalera-50">
                                 <?php 
                                 $irudia_bide = htmlspecialchars($p['irudia'] ?? 'img/lehenetsia_pazientea.png');
@@ -108,10 +120,6 @@ include_once '../php_orri_includeak/harrera_goiburua.php';
                                 ?>
                                 <img src="../<?php echo $irudia_bide; ?>" 
                                      alt="ID" class="irudia-txikia">
-                            </td>
-                            <td class="identifikadorea">#<?php echo $p['paziente_id']; ?></td>
-                            <td>
-                                <strong><a href="paziente_fitxa.php?id=<?php echo $p['paziente_id']; ?>" class="esteka-nagusia"><?php echo htmlspecialchars($p['abizenak'] . ', ' . $p['izena']); ?></a></strong>
                             </td>
                             <td><small><?php echo htmlspecialchars($p['email']); ?></small></td>
                             <td><?php echo htmlspecialchars($p['nan']); ?></td>
@@ -130,14 +138,6 @@ include_once '../php_orri_includeak/harrera_goiburua.php';
                                 <span class="egoera-<?php echo strtolower($egoera); ?>">
                                     <?php echo $egoera; ?>
                                 </span>
-                            </td>
-                            <td>
-                                <div class="taula-ekintzak">
-                                    <a href="paziente_fitxa.php?id=<?php echo $p['paziente_id']; ?>" class="botoi-ikonoa" title="Ikusi Fitxa"><img src="../img/svg/eye.svg" alt="" class="ikono-ertaina"></a>
-                                    <a href="hitzorduak.php?filter_paziente_id=<?php echo $p['paziente_id']; ?>" class="botoi-ikonoa hitzordu-botoia" title="Hitzorduak"><img src="../img/svg/calendar-days.svg" alt="" class="ikono-ertaina"></a>
-                                    <a href="paziente_editatu.php?id=<?php echo $p['paziente_id']; ?>" class="botoi-ikonoa editatu-botoia" title="Editatu"><img src="../img/svg/pencil.svg" alt="" class="ikono-ertaina"></a>
-                                    <a href="pazienteak.php?delete_id=<?php echo $p['paziente_id']; ?>" class="botoi-ikonoa ezabatu-botoia" onclick="return confirm('Ziur zaude paziente hau eta bere datu guztiak ezabatu nahi dituzula?');" title="Ezabatu"><img src="../img/svg/trash-2.svg" alt="" class="ikono-ertaina"></a>
-                                </div>
                             </td>
                         </tr>
                     <?php endforeach; ?>

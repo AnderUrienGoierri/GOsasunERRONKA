@@ -11,11 +11,7 @@
     margin-top: 20px;
 }
 
-@media (min-width: 1024px) {
-    .index-aginte-panela {
-        grid-template-columns: repeat(3, 300px);
-    }
-}
+
 
 .aginte-panel-kutxa {
     background: var(--bg-surface);
@@ -43,4 +39,11 @@
 
 .irteera-txartela {
     border-bottom-color: var(--danger-color);
+}
+
+/* === @MEDIA KONTSULTAK === */
+@media (min-width: 1024px) {
+    .index-aginte-panela {
+        grid-template-columns: repeat(3, 300px);
+    }
 }

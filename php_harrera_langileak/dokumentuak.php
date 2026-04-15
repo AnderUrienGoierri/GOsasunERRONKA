@@ -28,12 +28,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action']) && $_POST['
         } else {
             $pdf_dir = '../paziente_dokumentuak/';
             if (!is_dir($pdf_dir)) mkdir($pdf_dir, 0777, true);
-            
+
             $data = date('Ymd');
             $ordua = date('His');
             $garbi_titulua = preg_replace('/[^a-zA-Z0-9._-]/', '_', $titulua);
             $dest_name = "dok_paziente_{$hautatutako_id}_{$data}_{$ordua}_{$garbi_titulua}.pdf";
-            
+
             if (move_uploaded_file($pdf['tmp_name'], $pdf_dir . $dest_name)) {
                 $stmtInsert = $pdo->prepare("INSERT INTO dokumentuak (paziente_id, fitxategi_izena, bidea_zerbitzarian, dokumentu_izena, deskribapena) VALUES (?, ?, ?, ?, ?)");
                 $stmtInsert->execute([$hautatutako_id, $dest_name, 'paziente_dokumentuak/' . $dest_name, $titulua, $desk]);
@@ -89,7 +89,7 @@ include_once '../php_orri_includeak/harrera_goiburua.php';
     <?php if ($errorea): ?><div class="alerta alerta-errorea"><?php echo htmlspecialchars($errorea); ?></div><?php endif; ?>
 
     <details class="marjina-behe-20">
-        <summary class="botoia botoi-sortu"><img src="../img/svg/bell-ring.svg" alt="" class="ikono-ertaina marjina-esk-5" style="filter: brightness(0) invert(1);"> Hasi Dokumentu Berria Igotzen</summary>
+        <summary class="botoia botoi-sortu"><img src="../img/svg/bell-ring.svg" alt="" class="ikono-ertaina marjina-esk-5 ikono-zuria"> Hasi Dokumentu Berria Igotzen</summary>
         <div class="inprimaki-edukiontzia form-edukiontzi-zuria padding-30 marjina-goi-20 kutxa-itzala">
             <h3 class="izenburu-urdina marjina-behe-20"><img src="../img/svg/file-plus.svg" alt="" class="ikono-ertaina marjina-esk-5"> Dokumentuaren xehetasunak</h3>
             <form method="POST" enctype="multipart/form-data">
@@ -125,7 +125,7 @@ include_once '../php_orri_includeak/harrera_goiburua.php';
                 </div>
 
                 <div class="botoi-taldea">
-                    <button type="submit" class="botoia botoi-nagusia"><img src="../img/svg/bell-ring.svg" alt="" class="ikono-ertaina marjina-esk-5" style="filter: brightness(0) invert(1);"> Gorde eta Igo</button>
+                    <button type="submit" class="botoia botoi-nagusia"><img src="../img/svg/bell-ring.svg" alt="" class="ikono-ertaina marjina-esk-5 ikono-zuria"> Gorde eta Igo</button>
                 </div>
             </form>
         </div>

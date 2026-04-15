@@ -11,15 +11,15 @@ $mezua = '';
 $errorea = '';
 
 // 1. Lortu esleitutako pazienteen zerrenda
-$stmtP = $pdo->prepare("SELECT paziente_id AS id, izena, abizenak, nan 
-                       FROM V_Langile_Pazienteak
-                       WHERE langile_id = ?
-                       ORDER BY abizenak ASC");
+$stmtP = $pdo->prepare("SELECT paziente_id AS id, izena, abizenak, nan
+                        FROM V_Langile_Pazienteak
+                        WHERE langile_id = ?
+                        ORDER BY abizenak ASC");
 $stmtP->execute([$osasun_langile_id]);
 $pazienteak = $stmtP->fetchAll(PDO::FETCH_ASSOC);
 
 // 2. Kudeatu hitzordu ekintzak - MEDIKUARENTZAT EZINDUA (Harrerak soilik kudeatzen ditu)
-/* 
+/*
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // ... lehenagoko logika ezabatuta baimenak harrerara pasatzean
 }
@@ -58,12 +58,12 @@ if ($bista === 'eguna') {
 $filter_paziente = trim($_GET['filter_paziente'] ?? '');
 
 $sqlH = "SELECT h.*, h.id as hitzordu_id, p.izena, p.abizenak, p.nan
-         FROM Hitzorduak h
-         JOIN V_Pazientea p ON h.paziente_id = p.paziente_id
-         WHERE h.osasun_langile_id = :mid AND h.data BETWEEN :start AND :end";
+        FROM Hitzorduak h
+        JOIN V_Pazientea p ON h.paziente_id = p.paziente_id
+        WHERE h.osasun_langile_id = :mid AND h.data BETWEEN :start AND :end";
 
 if (!empty($filter_paziente)) {
-     $sqlH .= " AND (p.izena LIKE :search OR p.abizenak LIKE :search OR p.nan LIKE :search)";
+    $sqlH .= " AND (p.izena LIKE :search OR p.abizenak LIKE :search OR p.nan LIKE :search)";
 }
 $sqlH .= " ORDER BY h.data ASC, h.hasiera_ordua ASC";
 
@@ -72,8 +72,8 @@ $stmtH->bindParam(':mid', $osasun_langile_id);
 $stmtH->bindParam(':start', $hasiera_data);
 $stmtH->bindParam(':end', $bukaera_data);
 if (!empty($filter_paziente)) {
-     $searchTerm = "%$filter_paziente%";
-     $stmtH->bindParam(':search', $searchTerm);
+    $searchTerm = "%$filter_paziente%";
+    $stmtH->bindParam(':search', $searchTerm);
 }
 $stmtH->execute();
 $hitzorduak = $stmtH->fetchAll(PDO::FETCH_ASSOC);
@@ -126,7 +126,7 @@ include_once '../php_orri_includeak/osasun_langile_goiburua.php';
                         <input type="hidden" name="bista" value="<?php echo htmlspecialchars($bista); ?>">
                         <input type="hidden" name="hilabetea" value="<?php echo htmlspecialchars($hilabetea); ?>">
                         <input type="hidden" name="urtea" value="<?php echo htmlspecialchars($urtea); ?>">
-                        
+
                         <div class="iragazki-taldea">
                             <h4><img src="../img/svg/search.svg" alt="" class="ikono-txikia"> Bilaketa</h4>
                             <input type="text" name="filter_paziente" class="inprimaki-kontrola" value="<?php echo htmlspecialchars($filter_paziente); ?>" placeholder="Izena, abizena edo NAN...">
@@ -168,10 +168,9 @@ include_once '../php_orri_includeak/osasun_langile_goiburua.php';
         <section class="egutegia-edukiontzia">
             <div class="egutegia-goiburua">
                 <div class="egutegia-nabigazioa">
-                    <a href="?hilabetea=<?php echo $aurreko_hilabetea; ?>&urtea=<?php echo $aurreko_urtea; ?><?php echo $filter_qs; ?>" class="botoia botoi-ertza">&lt;</a>
+                    <a href="?hilabetea=<?php echo $aurreko_hilabetea; ?>&urtea=<?php echo $aurreko_urtea; ?><?php echo $filter_qs; ?>" class="botoia botoi-ertza" title="Aurreko hilabetea"><img src="../img/svg/chevron-left.svg" alt="Aurrekoa" class="ikono-txikia"></a>
                     <div class="egutegia-titulua"><?php echo $hilabete_izena; ?></div>
-                    <a href="?hilabetea=<?php echo $hurrengo_hilabetea; ?>&urtea=<?php echo $hurrengo_urtea; ?><?php echo $filter_qs; ?>" class="botoia botoi-ertza">&gt;</a>
-                    <a href="hitzorduak.php?bista=<?php echo $bista; ?><?php echo $filter_qs; ?>" class="bista-botoia marjina-ezk-10">Gaur</a>
+                    <a href="?hilabetea=<?php echo $hurrengo_hilabetea; ?>&urtea=<?php echo $hurrengo_urtea; ?><?php echo $filter_qs; ?>" class="botoia botoi-ertza" title="Hurrengo hilabetea"><img src="../img/svg/chevron-right.svg" alt="Hurrengoa" class="ikono-txikia"></a>
                 </div>
                 <div class="bista-hautatzailea">
                     <a href="?bista=astea<?php echo $filter_qs; ?>" class="bista-botoia <?php echo $bista === 'astea' ? 'aktiboa' : ''; ?>">Astea</a>
@@ -209,9 +208,9 @@ include_once '../php_orri_includeak/osasun_langile_goiburua.php';
                             <div class="eguneko-hitzorduak">
                                 <?php foreach ($eguneko_hitzorduak as $h): ?>
                                     <div class="hitzordu-blokea status-<?php echo strtolower($h['egoera']); ?>" 
-                                         data-hitzordu-id="<?php echo $h['hitzordu_id']; ?>"
-                                         title="<?php echo htmlspecialchars($h['izena'] . " " . $h['abizenak'] . ": " . $h['arrazoia']); ?>"
-                                         onclick="viewAppointment(<?php echo $h['hitzordu_id']; ?>)">
+                                        data-hitzordu-id="<?php echo $h['hitzordu_id']; ?>"
+                                        title="<?php echo htmlspecialchars($h['izena'] . " " . $h['abizenak'] . ": " . $h['arrazoia']); ?>"
+                                        onclick="viewAppointment(<?php echo $h['hitzordu_id']; ?>)">
                                         <span class="bloke-izenik"><?php echo substr($h['hasiera_ordua'], 0, 5); ?></span>
                                         <span class="bloke-mota"><?php echo htmlspecialchars($h['izena'][0] . ". " . $h['abizenak']); ?></span>
                                     </div>
@@ -221,7 +220,7 @@ include_once '../php_orri_includeak/osasun_langile_goiburua.php';
                     <?php endfor; ?>
                 <?php elseif ($bista === 'astea'): ?>
                     <?php $hasiera_astea = strtotime('monday this week');
-                        for($i=0; $i<7; $i++): 
+                        for($i=0; $i<7; $i++):
                             $d_ast = date('Y-m-d', strtotime("+$i days", $hasiera_astea));
                             $gaurkoa = ($d_ast === date('Y-m-d')) ? 'gaurkoa' : '';
                             $eguneko_hitzorduak = $hitzorduak_data_arabera[$d_ast] ?? [];
@@ -231,7 +230,7 @@ include_once '../php_orri_includeak/osasun_langile_goiburua.php';
                             <div class="eguneko-hitzorduak">
                                 <?php foreach ($eguneko_hitzorduak as $h): ?>
                                     <div class="hitzordu-blokea status-<?php echo strtolower($h['egoera']); ?> kurtsore-erakuslea"
-                                         onclick="viewAppointment(<?php echo $h['hitzordu_id']; ?>)">
+                                        onclick="viewAppointment(<?php echo $h['hitzordu_id']; ?>)">
                                         <span class="bloke-izenik"><?php echo substr($h['hasiera_ordua'], 0, 5); ?></span>
                                         <span class="bloke-mota"><?php echo htmlspecialchars($h['izena'][0] . ". " . $h['abizenak']); ?></span>
                                     </div>
@@ -240,7 +239,7 @@ include_once '../php_orri_includeak/osasun_langile_goiburua.php';
                         </div>
                     <?php endfor; ?>
                 <?php else: // eguna ?>
-                    <?php for($i=1; $i<=7; $i++): 
+                    <?php for($i=1; $i<=7; $i++):
                             $egun_izena_zenb = date('N', strtotime($gaurko_data));
                             $data_sel = ($i == $egun_izena_zenb) ? $gaurko_data : null;
                             $eguneko_hitzorduak = $data_sel ? ($hitzorduak_data_arabera[$data_sel] ?? []) : [];
@@ -250,7 +249,7 @@ include_once '../php_orri_includeak/osasun_langile_goiburua.php';
                             <div class="eguneko-hitzorduak">
                                 <?php foreach ($eguneko_hitzorduak as $h): ?>
                                     <div class="hitzordu-blokea status-<?php echo strtolower($h['egoera']); ?> kurtsore-erakuslea"
-                                         onclick="viewAppointment(<?php echo $h['hitzordu_id']; ?>)">
+                                        onclick="viewAppointment(<?php echo $h['hitzordu_id']; ?>)">
                                         <span class="bloke-izenik"><?php echo substr($h['hasiera_ordua'], 0, 5); ?></span>
                                         <span class="bloke-mota"><?php echo htmlspecialchars($h['izena'][0] . ". " . $h['abizenak']); ?></span>
                                     </div>
@@ -265,47 +264,7 @@ include_once '../php_orri_includeak/osasun_langile_goiburua.php';
         </div>
         </section>
 
-        <div class="agenda-edukiontzia marjina-goi-30">
-            <h3><img src="../img/svg/list.svg" alt="" class="ikono-ertaina marjina-esk-5"> Hitzorduen Zerrenda</h3>
-            <br>
-            <?php if (count($hitzorduak_data_arabera) > 0): ?>
-                <?php foreach ($hitzorduak_data_arabera as $data => $hitz_zerrenda): ?>
-                    <?php $gaurkoa = ($data === date('Y-m-d')) ? 'gaur-goiburua' : '';
-                        $dataIzena = ($data === date('Y-m-d')) ? 'Gaurkoa (' . $data . ')' : $data;
-                    ?>
-                    <div class="egun-taldea">
-                        <h3 class="egun-goiburua <?php echo $gaurkoa; ?>"><?php echo htmlspecialchars($dataIzena); ?></h3>
-                        <div class="hitzordu-zerrenda">
-                            <?php foreach ($hitz_zerrenda as $h): ?>
-                                <div class="hitzordu-txartela <?php echo strtolower($h['egoera']); ?> kurtsore-erakuslea" onclick="viewAppointment(<?php echo $h['hitzordu_id']; ?>)">
-                                    <div class="ordu-tartea">
-                                        <?php echo date('H:i', strtotime($h['hasiera_ordua'])); ?>
-                                    </div>
-                                    <div class="hitzordu-xehetasunak">
-                                        <h4><?php echo htmlspecialchars($h['izena'] . ' ' . $h['abizenak']); ?></h4>
-                                        <p class="arrazoia"><?php echo htmlspecialchars($h['arrazoia'] ?? 'Arrazoirik gabe'); ?></p>
-                                    </div>
-                                    <div class="hitzordu-egoera">
-                                        <span class="egoera-txapa status-<?php echo strtolower($h['egoera']); ?>">
-                                            <?php echo htmlspecialchars($h['egoera']); ?>
-                                        </span>
-                                    </div>
-                                    <div class="hitzordu-ekintzak" onclick="event.stopPropagation();">
-                                        <button class="botoia botoi-ertza botoi-txikia" onclick="viewAppointment(<?php echo $h['hitzordu_id']; ?>)">Ikusi Xehetasunak</button>
-                                    </div>
-                                </div>
-                            <?php endforeach; ?>
-                        </div>
-                    </div>
-                <?php endforeach; ?>
-            <?php else: ?>
-                <div class="egoera-hutsa">
-                    <div class="ikono-hutsa"><img src="../img/svg/calendar-days.svg" alt="" class="ikono-ertaina marjina-esk-5"></div>
-                    <h3>Ez duzu hitzordurik</h3>
-                    <p>Une honetan ez daukazu hitzordurik programatuta.</p>
-                </div>
-            <?php endif; ?>
-        </div>
+
     </main>
 
     <!-- Hitzordu Modala (Bakarrik Ikusteko) -->

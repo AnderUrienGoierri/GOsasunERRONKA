@@ -140,6 +140,7 @@
     font-weight: 500;
 }
 
+/* === @MEDIA KONTSULTAK === */
 @media (max-width: 768px) {
     .grafika-goiburua {
         flex-direction: column;

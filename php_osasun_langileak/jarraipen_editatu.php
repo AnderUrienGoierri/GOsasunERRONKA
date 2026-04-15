@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         try {
             $stmtUpd = $pdo->prepare("UPDATE jarraipenak SET tentsio_sistolikoa = ?, tentsio_diastolikoa = ?, pultsua_ppm = ?, pisua_kg = ?, altuera = ?, oharrak = ? WHERE id = ?");
             $stmtUpd->execute([$sis, $dia, $pultsua, $pisua, $altuera, $oharrak, $j_id]);
-            
+
             // Dokumentu berriak kudeatu (multiple)
             if (isset($_FILES['dokumentuak']) && count($_FILES['dokumentuak']['name']) > 0) {
                 $pdf_dir = '../paziente_dokumentuak/';
@@ -49,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         $tmp_name = $_FILES['dokumentuak']['tmp_name'][$i];
                         $name = $_FILES['dokumentuak']['name'][$i];
                         $ext = strtolower(pathinfo($name, PATHINFO_EXTENSION));
-                        
+
                         if ($ext === 'pdf') {
                             $timestamp = date('Ymd_His');
                             $dest_name = "dok_edit_j{$j_id}_{$timestamp}_{$i}.pdf";
@@ -61,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     }
                 }
             }
-            
+
             $mezua = "Jarraipena arrakastaz eguneratu da.";
             // Freskatu datuak
             $stmt->execute([$j_id]);
@@ -85,7 +85,7 @@ include_once '../php_orri_includeak/osasun_langile_goiburua.php';
 ?>
 
 <main class="panel-nagusia">
-    <a href="jarraipenak.php?paziente_id=<?php echo $jarraipena['paziente_id']; ?>" class="atzera-esteka"><img src="../img/svg/arrow-left.svg" alt="" class="ikono-1em marjina-esk-5"> Itzuli historrialera</a>
+    <a href="jarraipenak.php?paziente_id=<?php echo $jarraipena['paziente_id']; ?>" class="atzera-esteka flex-zentratua"><img src="../img/svg/arrow-left.svg" alt="" class="ikono-1em marjina-esk-5"> Itzuli historrialera</a>
 
     <div class="orri-goiburua">
         <h2><img src="../img/svg/pencil.svg" alt="" class="ikono-ertaina marjina-esk-5"> Editatu Jarraipen Erregistroa</h2>

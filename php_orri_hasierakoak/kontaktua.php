@@ -14,9 +14,9 @@ include '../php_orri_includeak/goiburua.php';
 
     <main class="kontaktu-sekzioa">
         
-        <div class="kontaktu-informazioa" style="margin: 0 auto; max-width: 600px; text-align: center;">
-            <h2 style="margin-bottom: 20px;"><?php echo $itzulpenak->kontaktua->izenburua; ?></h2>
-            <p style="margin-bottom: 30px;"><?php echo $itzulpenak->kontaktua->azpititulua; ?></p>
+        <div class="kontaktu-informazioa kontaktu-kutxa-erdian">
+            <h2 class="marjina-behe-20"><?php echo $itzulpenak->kontaktua->izenburua; ?></h2>
+            <p class="marjina-behe-30"><?php echo $itzulpenak->kontaktua->azpititulua; ?></p>
             <h3><?php echo $itzulpenak->kontaktua->bulegoak; ?></h3>
             <p> <a href="https://maps.app.goo.gl/dSYPAQ8F2d5wJ3RX6" target="_blank">Arranomendia, 2, 20240 Ordizia, Gipuzkoa</a></p>
             <p> <a href="tel:+34944123456" >+34 944 123 456</a></p>

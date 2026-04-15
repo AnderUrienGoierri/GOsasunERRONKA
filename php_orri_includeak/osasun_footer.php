@@ -5,12 +5,12 @@
         </div>
         <div class="orri-oin-nabigazioa">
             <a href="index.php">Hasiera</a>
-            <a href="hitzorduak.php">Hitzorduak</a>
-            <a href="errezetak.php">Errezetak</a>
+            <a hred="pazienteak.php">Nire pazienteak</a>
             <a href="jarraipenak.php">Jarraipenak</a>
             <a href="grafikak.php">Grafikak</a>
-            <a href="dokumentuak.php">Dokumentuak</a>            
-            <a href="abisuak.php">Abisuak</a>
+            <a href="dokumentuak.php">Dokumentuak</a>
+            <a href="hitzorduak.php">Hitzorduak</a>
+            <a href="errezetak.php">Errezetak</a>
             <a href="<?php echo $bide_absolutua; ?>php_orri_laguntzaileak/logout.php">Saioa Itxi</a>
         </div>
         <p>&copy; 2026 GOsasun</p>

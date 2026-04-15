@@ -35,10 +35,18 @@ if (!$pazientea) {
 $response = [];
 
 // A. BRANDING (Beti)
+$logo_path = dirname(__DIR__) . '/img/png/GOsasun_logoa.png';
+$logo_data = '';
+if (file_exists($logo_path)) {
+    $type = pathinfo($logo_path, PATHINFO_EXTENSION);
+    $data = file_get_contents($logo_path);
+    $logo_data = 'data:image/' . $type . ';base64,' . base64_encode($data);
+}
+
 $branding_html = '
     <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid #0369a1; padding-bottom: 20px; margin-bottom: 30px;">
         <div style="display: flex; align-items: center;">
-            <img src="../img/png/GOsasun_logoa.png" style="width: 50px; height: 50px; margin-right: 15px;">
+            ' . ($logo_data ? '<img src="' . $logo_data . '" style="width: 50px; height: 50px; margin-right: 15px;">' : '') . '
             <div>
                 <h1 style="margin: 0; color: #0369a1; font-size: 28px; letter-spacing: -0.5px;">GOsasun</h1>
                 <p style="margin: 0; font-size: 12px; color: #64748b; font-weight: 500;">Zure Osasun Ataria</p>

@@ -94,7 +94,7 @@ include_once '../php_orri_includeak/harrera_goiburua.php';
             <h2><img src="../img/svg/pencil.svg" alt="" class="ikono-ertaina marjina-esk-5"> Langilea Editatu</h2>
             <p><?php echo htmlspecialchars($langilea['abizenak'] . ', ' . $langilea['izena']); ?></p>
         </div>
-        <a href="harrerako_langileak.php" class="botoia botoi-ertza">← Itzuli</a>
+        <a href="harrerako_langileak.php" class="botoia botoi-ertza flex-zentratua"><img src="../img/svg/arrow-left.svg" alt="" class="ikono-txikia marjina-esk-5"> Itzuli</a>
     </div>
 
     <?php if ($mezua): ?>
@@ -105,87 +105,87 @@ include_once '../php_orri_includeak/harrera_goiburua.php';
         <div class="alerta alerta-errorea"><?php echo htmlspecialchars($errorea); ?></div>
     <?php endif; ?>
 
-    <div class="inprimaki-edukiontzia form-edukiontzi-zuria padding-30 kutxa-itzala">
+    <div class="editatu-panela">
         <form method="POST" enctype="multipart/form-data">
 
-            <h3 class="izenburu-urdina marjina-behe-20"><img src="../img/svg/user.svg" alt="" class="ikono-ertaina marjina-esk-5"> Argazkia eta Datu Pertsonalak</h3>
-            <div class="flex-erdian marjina-behe-20 p-20 fts-14 bg-gris-argia desk-marjin">
-                <div class="argazki-inguratzailea">
+            <h3 class="atal-izenburua"><img src="../img/svg/user.svg" alt="" class="ikono-ertaina"> Argazkia eta Datu Pertsonalak</h3>
+            <div class="argazki-koadroa">
+                <div class="argazki-ingurua">
                     <?php 
                     $irudia_bide = htmlspecialchars($langilea['irudia'] ?? 'img/lehenetsia_harrera.png');
                     if (strpos($irudia_bide, 'img/') === 0 && strpos($irudia_bide, 'img/png/') === false && strpos($irudia_bide, 'img/svg/') === false) {
                         $irudia_bide = str_replace('img/', 'img/png/', $irudia_bide);
                     }
                     ?>
-                    <img src="../<?php echo $irudia_bide; ?>" alt="Profila" class="profil-irudia-80">
+                    <img src="../<?php echo $irudia_bide; ?>" alt="Profila" class="profil-argazkia">
                 </div>
-                <div class="marjina-ezker-20">
-                    <label for="irudia" class="etiketa-lodia">Aldatu Argazkia</label><br>
-                    <input type="file" id="irudia" name="irudia" class="inprimaki-kontrola marjina-goi-10" accept="image/*">
-                    <p class="testu-gris-txikia marjina-goi-5">PNG formatuan gehienez 2MB.</p>
-                </div>
-            </div>
-
-            <div class="sareta-bikoa marjina-behe-15">
-                <div class="inprimaki-taldea">
-                    <label for="izena" class="etiketa-lodia">Izena <span class="beharrezkoa">*</span></label>
-                    <input type="text" id="izena" name="izena" class="inprimaki-kontrola sarrera-handia" value="<?php echo htmlspecialchars($langilea['izena']); ?>" required>
-                </div>
-                <div class="inprimaki-taldea">
-                    <label for="abizenak" class="etiketa-lodia">Abizenak <span class="beharrezkoa">*</span></label>
-                    <input type="text" id="abizenak" name="abizenak" class="inprimaki-kontrola sarrera-handia" value="<?php echo htmlspecialchars($langilea['abizenak']); ?>" required>
+                <div class="argazki-aukerak">
+                    <label for="irudia" class="inprimaki-etiketa">Aldatu Argazkia</label>
+                    <input type="file" id="irudia" name="irudia" class="inprimaki-sarrera fitxategi-sarrera" accept="image/*">
+                    <p class="argibide-testua">PNG formatuan gehienez 2MB.</p>
                 </div>
             </div>
 
-            <div class="sareta-bikoa marjina-behe-30">
+            <div class="inprimaki-lerroa">
                 <div class="inprimaki-taldea">
-                    <label for="jaiotze_data" class="etiketa-lodia">Jaiotze Data</label>
-                    <input type="date" id="jaiotze_data" name="jaiotze_data" class="inprimaki-kontrola sarrera-handia" value="<?php echo $langilea['jaiotze_data'] ?? ''; ?>">
+                    <label for="izena" class="inprimaki-etiketa">Izena <span class="beharrezkoa">*</span></label>
+                    <input type="text" id="izena" name="izena" class="inprimaki-sarrera" value="<?php echo htmlspecialchars($langilea['izena']); ?>" required>
                 </div>
                 <div class="inprimaki-taldea">
-                    <label for="telefonoa" class="etiketa-lodia">Telefonoa</label>
-                    <input type="text" id="telefonoa" name="telefonoa" class="inprimaki-kontrola sarrera-handia" value="<?php echo htmlspecialchars($langilea['telefonoa'] ?? ''); ?>">
+                    <label for="abizenak" class="inprimaki-etiketa">Abizenak <span class="beharrezkoa">*</span></label>
+                    <input type="text" id="abizenak" name="abizenak" class="inprimaki-sarrera" value="<?php echo htmlspecialchars($langilea['abizenak']); ?>" required>
                 </div>
             </div>
 
-            <hr class="marjina-behe-20 separator">
+            <div class="inprimaki-lerroa">
+                <div class="inprimaki-taldea">
+                    <label for="jaiotze_data" class="inprimaki-etiketa">Jaiotze Data</label>
+                    <input type="date" id="jaiotze_data" name="jaiotze_data" class="inprimaki-sarrera" value="<?php echo $langilea['jaiotze_data'] ?? ''; ?>">
+                </div>
+                <div class="inprimaki-taldea">
+                    <label for="telefonoa" class="inprimaki-etiketa">Telefonoa</label>
+                    <input type="text" id="telefonoa" name="telefonoa" class="inprimaki-sarrera" value="<?php echo htmlspecialchars($langilea['telefonoa'] ?? ''); ?>">
+                </div>
+            </div>
 
-            <h3 class="izenburu-urdina marjina-behe-20"><img src="../img/svg/briefcase.svg" alt="" class="ikono-ertaina marjina-esk-5"> Lan-txanda</h3>
+            <hr class="inprimaki-banatzailea">
+
+            <h3 class="atal-izenburua"><img src="../img/svg/briefcase.svg" alt="" class="ikono-ertaina"> Lan-txanda</h3>
             
-            <div class="sareta-bikoa marjina-behe-30">
+            <div class="inprimaki-lerroa">
                 <div class="inprimaki-taldea">
-                    <label for="txanda" class="etiketa-lodia">Txanda</label>
-                    <select id="txanda" name="txanda" class="inprimaki-kontrola sarrera-handia">
+                    <label for="txanda" class="inprimaki-etiketa">Txanda</label>
+                    <select id="txanda" name="txanda" class="inprimaki-sarrera aukera-sarrera">
                         <option value="Goizez" <?php echo ($langilea['txanda'] ?? '') === 'Goizez' ? 'selected' : ''; ?>>Goizez</option>
                         <option value="Arratsaldez" <?php echo ($langilea['txanda'] ?? '') === 'Arratsaldez' ? 'selected' : ''; ?>>Arratsaldez</option>
                         <option value="Gauez" <?php echo ($langilea['txanda'] ?? '') === 'Gauez' ? 'selected' : ''; ?>>Gauez</option>
                     </select>
                 </div>
-                <div></div> <!-- Spacer -->
+                <div class="hutsune-zatia"></div>
             </div>
 
-            <hr class="marjina-behe-20 separator">
+            <hr class="inprimaki-banatzailea">
 
-            <h3 class="izenburu-urdina marjina-behe-20"><img src="../img/svg/key.svg" alt="" class="ikono-ertaina marjina-esk-5"> Kontu Datuak</h3>
+            <h3 class="atal-izenburua"><img src="../img/svg/key.svg" alt="" class="ikono-ertaina"> Kontu Datuak</h3>
             
-            <div class="inprimaki-taldea marjina-behe-15">
-                <label for="email" class="etiketa-lodia">E-posta <span class="beharrezkoa">*</span></label>
-                <input type="email" id="email" name="email" class="inprimaki-kontrola sarrera-handia" value="<?php echo htmlspecialchars($langilea['email']); ?>" required>
+            <div class="inprimaki-taldea talde-osoa">
+                <label for="email" class="inprimaki-etiketa">E-posta <span class="beharrezkoa">*</span></label>
+                <input type="email" id="email" name="email" class="inprimaki-sarrera" value="<?php echo htmlspecialchars($langilea['email']); ?>" required>
             </div>
 
-            <p class="testu-gris-txikia marjina-behe-10 etiketa-lodia">Pasahitza Aldatu (Hutsik utzi ez aldatzeko)</p>
-            <div class="sareta-bikoa marjina-behe-20">
+            <p class="inprimaki-etiketa">Pasahitza Aldatu (Hutsik utzi ez aldatzeko)</p>
+            <div class="inprimaki-lerroa">
                 <div class="inprimaki-taldea">
-                    <label for="pasahitza" class="etiketa-lodia">Pasahitz Berria</label>
-                    <input type="password" id="pasahitza" name="pasahitza" class="inprimaki-kontrola sarrera-handia" placeholder="Pasahitz berria...">
+                    <label for="pasahitza" class="inprimaki-etiketa">Pasahitz Berria</label>
+                    <input type="password" id="pasahitza" name="pasahitza" class="inprimaki-sarrera" placeholder="Pasahitz berria...">
                 </div>
                 <div class="inprimaki-taldea">
-                    <label for="pasahitza_errepikatu" class="etiketa-lodia">Errepikatu Pasahitza</label>
-                    <input type="password" id="pasahitza_errepikatu" name="pasahitza_errepikatu" class="inprimaki-kontrola sarrera-handia" placeholder="Errepikatu...">
+                    <label for="pasahitza_errepikatu" class="inprimaki-etiketa">Errepikatu Pasahitza</label>
+                    <input type="password" id="pasahitza_errepikatu" name="pasahitza_errepikatu" class="inprimaki-sarrera" placeholder="Errepikatu...">
                 </div>
             </div>
             
-            <div class="botoi-taldea marjina-goi-20">
+            <div class="ekintza-botoiak">
                 <button type="submit" class="botoia botoi-nagusia">Gorde Aldaketak</button>
                 <a href="harrerako_langileak.php" class="botoia botoi-ertza">Utzi</a>
             </div>

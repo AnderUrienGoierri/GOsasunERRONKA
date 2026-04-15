@@ -45,8 +45,9 @@ include_once '../php_orri_includeak/paziente_goiburua.php';
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
     <main class="grafika-edukiontzia" id="pdf-eremua">
+        <h2><img src="../img/svg/line-chart.svg" alt="" class="ikono-ertaina marjina-esk-5"> Nire Datuen Bilakaera</h2>
         <div class="grafika-goiburua">
-            <h2>Nire Datuen Bilakaera</h2>
+
             <div class="grafika-kontrolak" data-html2canvas-ignore="true">
                 <form action="grafikak.php" method="GET" class="flex-zentratua-10">
                     <div class="flex-taldea-5">
@@ -56,8 +57,7 @@ include_once '../php_orri_includeak/paziente_goiburua.php';
                     </div>
                     <select id="datu-mota" class="inprimaki-kontrola">
                         <option value="pisua_kg">Pisua (kg)</option>
-                        <option value="tentsio_sistolikoa">Tentsio Sistolikoa (mmHg)</option>
-                        <option value="tentsio_diastolikoa">Tentsio Diastolikoa (mmHg)</option>
+                        <option value="tentsioa">Tentsio Arteriala (SIS/DIA)</option>
                         <option value="pultsua_ppm">Pultsua (ppm)</option>
                         <option value="altuera">Altuera (cm)</option>
                     </select>

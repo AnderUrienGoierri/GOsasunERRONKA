@@ -73,7 +73,7 @@ $itzulpenak = kargatuItzulpenak($hizkuntza_def);
         $l_id = $_SESSION['erabiltzaile_id'];
         $c_name = 'abisu_irakurrita_jarraipenak';
         $ir_ids = isset($_COOKIE[$c_name]) ? json_decode($_COOKIE[$c_name], true) ?: [] : [];
-        
+
         $m_data = date('Y-m-d H:i:s', strtotime('-7 days')); // Azken astea bakarrik headerrarentzat
         $st_abs = $pdo->prepare("
             SELECT j.id, j.tentsio_sistolikoa, j.tentsio_diastolikoa, j.pultsua_ppm
@@ -83,7 +83,7 @@ $itzulpenak = kargatuItzulpenak($hizkuntza_def);
         ");
         $st_abs->execute([$l_id, $m_data]);
         $neurketak = $st_abs->fetchAll(PDO::FETCH_ASSOC);
-        
+
         foreach ($neurketak as $n) {
             if (!in_array($n['id'], $ir_ids)) {
                 // Thresholds
@@ -97,10 +97,7 @@ $itzulpenak = kargatuItzulpenak($hizkuntza_def);
         }
     }
     ?>
-    <style>
-        .abisu-berria-link { color: #f72585 !important; font-weight: 800 !important; animation: blinker 1.5s linear infinite; }
-        @keyframes blinker { 50% { opacity: 0.5; } }
-    </style>
+
 </head>
 <body class="<?php echo $body_class ?? 'panel-gorputza'; ?>">
     <header class="panel-goiburua">
@@ -122,7 +119,6 @@ $itzulpenak = kargatuItzulpenak($hizkuntza_def);
             <li><a href="dokumentuak.php" <?php echo (isset($uneko_orria) && $uneko_orria === 'dokumentuak') ? 'class="aktiboa"' : ''; ?>><?php echo $itzulpenak->menua_medikua->dokumentuak; ?></a></li>
             <li><a href="hitzorduak.php" <?php echo (isset($uneko_orria) && $uneko_orria === 'hitzorduak') ? 'class="aktiboa"' : ''; ?>><?php echo $itzulpenak->menua_medikua->hitzorduak; ?></a></li>
             <li><a href="errezetak.php" <?php echo (isset($uneko_orria) && $uneko_orria === 'errezetak') ? 'class="aktiboa"' : ''; ?>><?php echo $itzulpenak->menua_medikua->errezetak; ?></a></li>
-            <li><a href="abisuak.php" <?php echo (isset($uneko_orria) && $uneko_orria === 'abisuak') ? 'class="aktiboa"' : ($ba_dago_abisurik ? 'class="abisu-berria-link"' : ''); ?>><?php echo $itzulpenak->menua_medikua->abisuak; ?></a></li>
             <li><a href="ezarpenak.php" <?php echo (isset($uneko_orria) && $uneko_orria === 'ezarpenak') ? 'class="aktiboa"' : ''; ?>><img src="<?php echo $bide_absolutua; ?>img/svg/settings.svg" alt=""> <?php echo $itzulpenak->menua->ezarpenak; ?></a></li>
             <li><a href="<?php echo $bide_absolutua; ?>php_orri_laguntzaileak/logout.php" class="botoia botoi-ertza arrisku-kolorea" ><?php echo $itzulpenak->erabiltzaile_panela->saioa_itxi; ?></a></li>
         </ul>

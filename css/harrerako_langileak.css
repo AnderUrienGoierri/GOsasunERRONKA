@@ -151,6 +151,7 @@
     color: var(--primary-color);
 }
 
+/* === @MEDIA KONTSULTAK === */
 @media (max-width: 768px) {
     .orri-goiburua {
         flex-direction: column;

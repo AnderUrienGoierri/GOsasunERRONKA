@@ -27,6 +27,7 @@
     line-height: 1.4;
 }
 
+/* === @MEDIA KONTSULTAK === */
 @media (min-width: 992px) {
     #dash-neurketak-card .sareta-bikoa {
         grid-template-columns: repeat(3, 1fr);

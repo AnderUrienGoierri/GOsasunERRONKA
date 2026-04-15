@@ -11,7 +11,7 @@
 }
 
 .orri-goiburua h2 {
-  color: var(--primary-color);
+  color: #333;
   margin: 0;
   font-size: 1.75rem;
   font-weight: 700;
@@ -30,15 +30,6 @@
   margin-top: 15px;
 }
 
-@media (min-width: 992px) {
-  .hitzorduak-dashboard {
-    display: grid;
-    grid-template-columns: 280px 1fr;
-    gap: 30px;
-    margin-top: 20px;
-  }
-}
-
 /* Sidebar Iragazkiak - Default (Mobile) */
 .sidebar-iragazkiak {
   background: var(--bg-surface);
@@ -47,14 +38,6 @@
   box-shadow: var(--box-shadow);
   border: 1px solid var(--border-color);
   width: 100%;
-}
-
-@media (min-width: 992px) {
-  .sidebar-iragazkiak {
-    padding: 25px;
-    position: sticky;
-    top: 90px;
-  }
 }
 
 .iragazki-taldea h4 {
@@ -112,7 +95,7 @@
 .egutegia-panel-nagusia {
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 2px;
 }
 
 /* Laburpen Txartelak - Default (Mobile) */
@@ -120,19 +103,6 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: 15px;
-}
-
-@media (min-width: 480px) {
-  .laburpen-txartelak {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-  }
-}
-
-@media (min-width: 1200px) {
-  .laburpen-txartelak {
-    grid-template-columns: repeat(3, 1fr);
-  }
 }
 
 .itxurazko-txartela {
@@ -192,15 +162,6 @@
   flex-direction: column;
   gap: 15px;
   margin-bottom: 20px;
-}
-
-@media (min-width: 600px) {
-  .egutegia-goiburua {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 25px;
-  }
 }
 
 .egutegia-nabigazioa {
@@ -460,3 +421,43 @@
 }
 
 /* Responsive Overrides already handled via Mobile-First above */
+
+/* === @MEDIA KONTSULTAK === */
+@media (min-width: 992px) {
+  .hitzorduak-dashboard {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 30px;
+    margin-top: 20px;
+  }
+}
+
+@media (min-width: 992px) {
+  .sidebar-iragazkiak {
+    padding: 25px;
+    position: sticky;
+    top: 90px;
+  }
+}
+
+@media (min-width: 480px) {
+  .laburpen-txartelak {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .laburpen-txartelak {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 600px) {
+  .egutegia-goiburua {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+  }
+}

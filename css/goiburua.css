@@ -191,56 +191,10 @@ header {
   border-bottom: 1px solid var(--border-color);
 }
 
-@media (min-width: 769px) {
-  .mugikorreko-ikonoak {
-    display: none;
-  }
 
-  .nabigazio-barra {
-    padding: 1rem 5%;
-  }
-
-  .nabigazio-estekak {
-    display: flex;
-    flex-direction: row;
-    position: static;
-    width: auto;
-    background: none;
-    box-shadow: none;
-    padding: 0;
-    text-align: left;
-    gap: 20px;
-    padding-left: 2rem;
-    align-items: center;
-  }
-
-  .nabigazio-estekak li {
-    margin: 0;
-  }
-
-  .panel-goiburua {
-    padding: 1rem 5%;
-    gap: 40px;
-  }
-}
 
 /* Espezifikoa responsiveness Pantaila txikietarako */
-@media (max-width: 400px) {
-  .logoa a {
-    font-size: 1.3rem;
-    gap: 8px;
-  }
-  .logo-irudia {
-    height: 40px;
-  }
-  .logo-etiketa {
-    font-size: 0.9rem;
-    display: block; /* Erakutsi 'Medikua'/'Pazientea' label on very pantaila txikiak as requested */
-  }
-  .menu-botoia {
-    font-size: 1.6rem;
-  }
-}
+
 
 /* Modalaren estiloak Ezarpenentzako */
 .modal-wrapper {
@@ -351,4 +305,55 @@ header {
 /* Kendu ::after edukia, ez da behar */
 .abisuak-gorriz::after {
   content: "";
+}
+
+/* === @MEDIA KONTSULTAK === */
+@media (min-width: 769px) {
+  .mugikorreko-ikonoak {
+    display: none;
+  }
+
+  .nabigazio-barra {
+    padding: 1rem 5%;
+  }
+
+  .nabigazio-estekak {
+    display: flex;
+    flex-direction: row;
+    position: static;
+    width: auto;
+    background: none;
+    box-shadow: none;
+    padding: 0;
+    text-align: left;
+    gap: 20px;
+    padding-left: 2rem;
+    align-items: center;
+  }
+
+  .nabigazio-estekak li {
+    margin: 0;
+  }
+
+  .panel-goiburua {
+    padding: 1rem 5%;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 400px) {
+  .logoa a {
+    font-size: 1.3rem;
+    gap: 8px;
+  }
+  .logo-irudia {
+    height: 40px;
+  }
+  .logo-etiketa {
+    font-size: 0.9rem;
+    display: block; /* Erakutsi 'Medikua'/'Pazientea' label on very pantaila txikiak as requested */
+  }
+  .menu-botoia {
+    font-size: 1.6rem;
+  }
 }

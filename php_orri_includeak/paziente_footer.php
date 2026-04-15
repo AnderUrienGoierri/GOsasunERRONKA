@@ -4,14 +4,13 @@
             <img src="<?php echo $bide_absolutua; ?>img/png/GOsasun_logoa-removebg-preview-white.png" alt="GOsasun Logo" class="footer-logo">
         </div>
         <div class="orri-oin-nabigazioa">
-            <a href="index.php">Hasiera</a>  
-            <a href="datuak.php">Nire Datuak</a> 
+            <a href="index.php">Hasiera</a>
+            <a href="datuak.php">Nire Datuak</a>
             <a href="jarraipenak.php" class="footer-jarraipenak-link">Jarraipenak</a> 
-            <a href="grafikak.php">Grafikak</a> 
-            <a href="hitzorduak.php">Hitzorduak</a> 
-            <a href="errezetak.php">Errezetak</a> 
-            <a href="dokumentuak.php">Dokumentuak</a> 
-            <a href="abisuak.php">Abisuak</a> 
+            <a href="grafikak.php">Grafikak</a>
+            <a href="hitzorduak.php">Hitzorduak</a>
+            <a href="errezetak.php">Errezetak</a>
+            <a href="dokumentuak.php">Dokumentuak</a>
             <a href="<?php echo $bide_absolutua; ?>php_orri_laguntzaileak/logout.php">Irten</a>
         </div>
         <p>&copy; 2026 GOsasun</p>

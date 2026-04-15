@@ -31,15 +31,15 @@ if ($aukeratutako_pazientea) {
             break;
         }
     }
-    
+
     if ($baimena) {
         $h_data = $_GET['hasiera_data'] ?? null;
         $b_data = $_GET['bukaera_data'] ?? null;
-        
+
         $sql_graf = "SELECT DATE(erregistro_data) AS data, tentsio_sistolikoa, tentsio_diastolikoa, pisua_kg, altuera, pultsua_ppm 
                     FROM jarraipenak WHERE paziente_id = ?";
         $params_graf = [$aukeratutako_pazientea];
-        
+
         if ($h_data) {
             $sql_graf .= " AND erregistro_data >= ?";
             $params_graf[] = $h_data . " 00:00:00";
@@ -48,9 +48,9 @@ if ($aukeratutako_pazientea) {
             $sql_graf .= " AND erregistro_data <= ?";
             $params_graf[] = $b_data . " 23:59:59";
         }
-        
+
         $sql_graf .= " ORDER BY erregistro_data ASC";
-        
+
         $stmt_datuak = $pdo->prepare($sql_graf);
         $stmt_datuak->execute($params_graf);
         $jarraipenak = $stmt_datuak->fetchAll(PDO::FETCH_ASSOC);

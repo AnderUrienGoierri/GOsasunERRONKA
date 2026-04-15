@@ -27,7 +27,7 @@ include_once '../php_orri_includeak/osasun_langile_goiburua.php';
     <main class="panel-nagusia">
         <div class="orri-goiburua">
             <div>
-                <h2><img src="../img/svg/users.svg" alt="" class="ikono-ertaina marjina-esk-5"> Nire Pazienteak</h2>
+                <h2><img src="../img/svg/users.svg" alt="" class="ikono-ertaina tarte-eskubia"> Nire Pazienteak</h2>
                 <p>Zuri esleitutako pazienteen zerrenda eta jarraipena.</p>
             </div>
             <div class="bilaketa-barra">
@@ -40,27 +40,27 @@ include_once '../php_orri_includeak/osasun_langile_goiburua.php';
                 <thead>
                     <tr>
                         <th>Argazkia</th>
-                        <th class="kurtsore-erakuslea" onclick="ordenatuTaula(1)">ID <img src="../img/svg/sort.svg" alt="" class="ikono-txikia-gardena"></th>
-                        <th class="kurtsore-erakuslea" onclick="ordenatuTaula(2)">Izen-abizenak <img src="../img/svg/sort.svg" alt="" class="ikono-txikia-gardena"></th>
-                        <th class="kurtsore-erakuslea" onclick="ordenatuTaula(3)">NAN <img src="../img/svg/sort.svg" alt="" class="ikono-txikia-gardena"></th>
+                        <th class="kurtsorea" onclick="ordenatuTaula(1)">ID <img src="../img/svg/sort.svg" alt="" class="ikono-txikia-gardena"></th>
+                        <th class="kurtsorea" onclick="ordenatuTaula(2)">Izen-abizenak <img src="../img/svg/sort.svg" alt="" class="ikono-txikia-gardena"></th>
+                        <th class="kurtsorea" onclick="ordenatuTaula(3)">NAN <img src="../img/svg/sort.svg" alt="" class="ikono-txikia-gardena"></th>
                         <th>Telefonoa</th>
                         <th>Odol Taldea</th>
                         <th>Ekintzak</th>
                     </tr>
                 </thead>
-                <taula_gorputza>
+                <tbody>
                     <?php if (count($pazienteak) > 0): ?>
                         <?php foreach ($pazienteak as $p): ?>
                             <tr>
                                 <td class="zabalera-50">
-                                    <?php 
+                                    <?php
                                     $irudia_bide = htmlspecialchars($p['irudia'] ?? 'img/lehenetsia_pazientea.png');
                                     if (strpos($irudia_bide, 'img/') === 0 && strpos($irudia_bide, 'img/png/') === false && strpos($irudia_bide, 'img/svg/') === false) {
                                         $irudia_bide = str_replace('img/', 'img/png/', $irudia_bide);
                                     }
                                     ?>
-                                    <img src="../<?php echo $irudia_bide; ?>" 
-                                         alt="ID" class="irudia-txikia">
+                                    <img src="../<?php echo $irudia_bide; ?>"
+                                        alt="ID" class="irudia-txikia">
                                 </td>
                                 <td class="identifikadorea">#<?php echo $p['paziente_id']; ?></td>
                                 <td>
@@ -71,7 +71,7 @@ include_once '../php_orri_includeak/osasun_langile_goiburua.php';
                                 <td><span class="badge odol-txapa"><?php echo htmlspecialchars($p['odol_taldea'] ?? '-'); ?></span></td>
                                 <td>
                                     <div class="taula-ekintzak">
-                                        <a href="paziente_info.php?id=<?php echo $p['paziente_id']; ?>" class="botoi-ikonoa ikusi-botoia" title="Ikusi xehetasunak"><img src="../img/svg/eye.svg" alt="" class="ikono-ertaina marjina-esk-5"></a>
+                                        <a href="paziente_info.php?id=<?php echo $p['paziente_id']; ?>" class="botoi-ikonoa ikusi-botoia" title="Ikusi xehetasunak"><img src="../img/svg/eye.svg" alt="" class="ikono-ertaina tarte-eskubia"></a>
                                     </div>
                                 </td>
                             </tr>
@@ -81,7 +81,7 @@ include_once '../php_orri_includeak/osasun_langile_goiburua.php';
                             <td colspan="7">Ez duzu pazienterik esleituta momentuz.</td>
                         </tr>
                     <?php endif; ?>
-                </taula_gorputza>
+                </tbody>
             </table>
         </div>
     </main>

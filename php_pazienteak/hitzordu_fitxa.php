@@ -77,7 +77,7 @@ include_once '../php_orri_includeak/paziente_goiburua.php';
             <div class="informazio-taldea">
                 <label>Arrazoia / Oharrak</label>
                 <div class="informazio-balioa">
-                    <?php echo htmlspecialchars($hitzordua['oharrak'] ?: 'Ez dago oharrik.'); ?>
+                    <?php echo isset($hitzordua['arrazoia']) && $hitzordua['arrazoia'] ? htmlspecialchars($hitzordua['arrazoia']) : 'Ez dago oharrik.'; ?>
                 </div>
             </div>
         </div>
